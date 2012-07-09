@@ -4,7 +4,7 @@
  * Every sitewide features and modules should be based from this class
  * @author albertdiones@gmail.com
  * @package ADD MVC
- * @version 0.5.1
+ * @version 0.5.2
  */
 CLASS add {
 
@@ -317,7 +317,7 @@ CLASS add {
 
       if (!isset($current_controller)) {
          $class_name = self::current_controller_class();
-         if (class_exists($class_name)) {
+         if ($class_name && class_exists($class_name)) {
             $current_controller = new $class_name();
          }
          else {
@@ -360,7 +360,7 @@ CLASS add {
          $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
 
          if (preg_match('/\W+/',$current_controller_basename)) {
-            throw new e_hack("Invalid controller name: $current_controller_basename");
+            return null;
          }
 
          if (!$current_controller_basename)
