@@ -404,20 +404,20 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
          throw new Exception("Image parameter is empty");
       }
 
-      static::$D->StartTrans();
+      static::db()->StartTrans();
 
       $image = parent::add_new($data);
 
       if ($image) {
          $image_gd = self::get_gd($image_arg);
          if (!$image->save_gd($image_gd))
-            static::$D->FailTrans();
+            static::db()->FailTrans();
       }
       else {
          throw new e_developer("Failed to insert image ".print_r($data,true));
       }
 
-      static::$D->CompleteTrans();
+      static::db()->CompleteTrans();
 
       return $image;
    }

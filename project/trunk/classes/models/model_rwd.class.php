@@ -63,6 +63,17 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
    static $D;
 
    /**
+    * db function
+    *
+    * @since ADD MVC 0.6
+    */
+   public static function db() {
+      if (!static::$D)
+         throw new e_developer("No default db variable");
+      return static::$D;
+   }
+
+   /**
     * Sets a field
     * (also updates the db row on the end of the script)
     *
@@ -132,7 +143,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     */
    public function update_db_row() {
       if ($this->updated_data) {
-         $result = static::$D->autoExecute(static::TABLE,$this->updated_data,"UPDATE",$this->pk_where());
+         $result = static::db()->autoExecute(static::TABLE,$this->updated_data,"UPDATE",$this->pk_where());
          $this->updated_data = array();
          return true;
       }
@@ -172,7 +183,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          $instances = static::instances_from_sql(
                "
                SELECT %s FROM %s
-               WHERE ".static::$D->meta_quote($field)." = ".str_replace('%','%%',static::$D->quote($field_value))
+               WHERE ".static::db()->meta_quote($field)." = ".str_replace('%','%%',static::$D->quote($field_value))
             );
          if (!$instances)
             return false;
@@ -295,7 +306,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     */
    public static function instances_from_sql($sql_format,$page=null,$per_page=null) {
       e_developer::assert($sql_format,"Missing argument on ".__FUNCTION__);
-      $Q_table = static::$D->meta_quote(static::TABLE);
+      $Q_table = static::db()->meta_quote(static::TABLE);
 
       $sql = sprintf(
             $sql_format,
@@ -316,7 +327,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          $offset = $numrows = -1;
       }
 
-      $rows       = static::$D->SelectLimit(
+      $rows       = static::db()->SelectLimit(
             $sql,
             $numrows,
             $offset
@@ -359,9 +370,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @since ADD MVC 0.0
     */
    static function get_count($conditions=array()) {
-      return (int)static::$D->getOne(
+      return (int)static::db()->getOne(
          "SELECT count(*) AS count
-            FROM ".static::$D->meta_quote(static::TABLE)
+            FROM ".static::db()->meta_quote(static::TABLE)
             .static::normalize_where($conditions)
          );
    }
@@ -392,12 +403,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          return false;
       }
 
-      static::$D->AutoExecute(static::TABLE,$row_data,"INSERT");
+      static::db()->AutoExecute(static::TABLE,$row_data,"INSERT");
 
       $table_pk = static::table_pk();
 
       if (is_string($table_pk)) {
-         $id = isset($row_data[static::table_pk()]) ? $row_data[static::table_pk()] : static::$D->Insert_ID();
+         $id = isset($row_data[static::table_pk()]) ? $row_data[static::table_pk()] : static::db()->Insert_ID();
       }
       # Multi PK support
       else if (is_array($table_pk)) {
@@ -467,7 +478,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
             else {
                $operator = "=";
             }
-            $where_conditions[] = static::$D->meta_quote($field)."$operator".static::$D->quote($value);
+            $where_conditions[] = static::db()->meta_quote($field)."$operator".static::db()->quote($value);
          }
 
          if ($where_conditions) {
@@ -510,7 +521,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @since ADD MVC 0.0
     */
    public function delete() {
-      $delete_query_successful = static::$D->query(
+      $delete_query_successful = static::db()->query(
             "
             DELETE
             FROM ".static::TABLE."
@@ -519,7 +530,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          );
 
       if ($delete_query_successful) {
-         return (bool) static::$D->Affected_Rows();
+         return (bool) static::db()->Affected_Rows();
       }
       else {
          return false;
@@ -547,15 +558,15 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          return array();
       }
 
-      $Q_like_query = static::$D->quote("%$query%");
+      $Q_like_query = static::db()->quote("%$query%");
       $query_length = strlen($query);
 
-      $instances = static::get_all(static::$D->meta_quote($field)." LIKE $Q_like_query");
+      $instances = static::get_all(static::db()->meta_quote($field)." LIKE $Q_like_query");
 
       if (!$instances) {
-         $Q_like_query0 = static::$D->quote("% ".$query{0}."%");
+         $Q_like_query0 = static::db()->quote("% ".$query{0}."%");
 
-         $probable_instances = static::get_all("CONCAT(' ',".static::$D->meta_quote($field).") LIKE $Q_like_query0");
+         $probable_instances = static::get_all("CONCAT(' ',".static::db()->meta_quote($field).") LIKE $Q_like_query0");
          $instance_scores = array();
 
          foreach ($probable_instances as $probable_instance) {
@@ -701,9 +712,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     */
    public static function get_column_array($field,$where=array()) {
 
-      $column = static::$D->getAssoc(
+      $column = static::db()->getAssoc(
             "
-            SELECT ".static::table_pk().",".static::$D->meta_quote($field)
+            SELECT ".static::table_pk().",".static::db()->meta_quote($field)
             ."FROM   ".static::TABLE
             .static::normalize_where($where)
          );
@@ -752,10 +763,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     */
    static function db_row_array($table,$field,$field_value) {
       e_developer::assert(is_object(static::$D),get_called_class().' $D is not an object');
-      $row = static::$D->getRow(
+      $row = static::db()->getRow(
             "
-            SELECT * FROM ".static::$D->meta_quote($table)."
-            WHERE ".static::$D->meta_quote($field)." = ".static::$D->quote($field_value)
+            SELECT * FROM ".static::db()->meta_quote($table)."
+            WHERE ".static::db()->meta_quote($field)." = ".static::db()->quote($field_value)
          );
       return $row;
    }
@@ -807,7 +818,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @deprecated use model_rwd::instances_from_sql()
     */
    static function get_all_id_query($sql) {
-      $rows = static::$D->getAll($sql);
+      $rows = static::db()->getAll($sql);
       $instances = array();
 
       foreach ($rows as $row) {
