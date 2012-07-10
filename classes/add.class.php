@@ -4,7 +4,7 @@
  * Every sitewide features and modules should be based from this class
  * @author albertdiones@gmail.com
  * @package ADD MVC
- * @version 0.5.2
+ * @version 0.6
  */
 CLASS add {
 

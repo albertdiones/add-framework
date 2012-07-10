@@ -6,14 +6,14 @@
  *
  * @package ADD MVC\Controllers
  * @since ADD MVC 0.0
- * @version 0.3
+ * @version 1.0
  */
-ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
+ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
-/**
- * The mode of the process
- * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
- */
+   /**
+    * The mode of the process
+    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
+    */
    protected $mode;
 
    /**
@@ -22,18 +22,52 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
     */
    protected static $views = array();
 
+
    /**
-    * Process the page response
+    * The view data
+    *
+    * @since ADD MVC 0.6
+    */
+   protected $data = array();
+
+   /**
+    * __call() magic function
+    *
+    * @since ADD MVC 0.6
+    */
+   public function __call($function_name,$arguments) {
+      static $renamed_functions = array(
+            'page'         => 'execute',
+            'process'      => 'process_data',
+            'display_view' => 'print_response'
+         );
+
+      if (isset($renamed_functions[$function_name])) {
+         call_user_func_array(array($this,$renamed_functions[$function_name]),$arguments);
+      }
+      else {
+         throw new e_developer("Undefined function: ".get_called_class()." $function_name",func_get_args());
+      }
+
+   }
+
+   /**
+    * Process the page response (former $this->page())
     * @todo use a better term that is applicable to all response
     *
     * @since ADD MVC 0.0
-    * @version 0.1.1
+    * @version 0.2
     */
-   public function page() {
+   public function execute() {
+
+      # ADD MVC 0.5 backward support
+      if (method_exists($this,'page')) {
+         return $this->page();
+      }
 
       try {
          $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
-         $this->process();
+         $this->process_data();
       }
       catch(e_user $e) {
 
@@ -50,15 +84,33 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
          $this->add_exception($e,$exception_label);
       }
 
-      $this->display_view();
+      $this->assign('ctrl_basename',$this->basename());
+      $this->assign('C',add::config());
+
+      $error_messages = $this->view()->getTemplateVars('error_messages');
+
+      if (is_array($error_messages))
+         $this->assign('error_message',$error_messages[0]);
+
+      $this->print_response($this->data);
    }
 
    /**
     * The pre-display process of the controller
+    * (former $this->process())
+    *
     * @since ADD MVC 0.0
     * @version 0.1
+    *
+    * @todo remove version 0.5 support on ADD MVC 1.0
     */
-   public function process() {
+   public function process_data() {
+
+      # ADD MVC 0.5 backward support
+      if (method_exists($this,'process')) {
+         return $this->process();
+      }
+
       return $this->process_mode();
    }
 
@@ -72,9 +124,11 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
     */
    public function process_mode() {
       $mode = $this->mode;
+
       if (!$mode) {
          $mode = "default";
       }
+
       $method_name = "process_mode_$mode";
 
       if (method_exists($this,$method_name)) {
@@ -83,6 +137,9 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
          if (isset($this->$gpc_key_var)) {
             $compact_array = $this->recursive_compact( $this->$gpc_key_var );
+         }
+         else {
+            throw new e_developer(get_called_class()."::$gpc_key_var not declared");
          }
 
          $this->view()->assign($compact_array);
@@ -174,55 +231,22 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
    }
 
    /**
-    * The default page title
-    *
-    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
-    * @version 0.1
-    */
-   public function meta_title() {
-      if (isset(add::config()->default_meta_title))
-         return add::config()->default_meta_title;
-      else
-         return null;
-   }
-
-   /**
-    * meta description
-    *
-    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
-    */
-   public function meta_description() {
-      return isset(add::config()->default_meta_description) ? add::config()->default_meta_description : null;
-   }
-
-   /**
-    * meta keywords
-    *
-    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
-    */
-   public function meta_keywords() {
-      return isset(add::config()->default_meta_keywords) ? add::config()->default_meta_keywords : null;
-   }
-
-   /**
     * display() the Smarty template of $this controller
     * @since ADD MVC 0.0, ctrl_tpl_page 0.1
     * @version 0.1
     */
-   public function display_view() {
-      $this->view()->assign('meta_title',$this->meta_title());
-      $this->view()->assign('meta_description',$this->meta_description());
-      $this->view()->assign('meta_keywords',$this->meta_keywords());
-      $this->view()->assign('ctrl_basename',$this->basename());
-      $this->view()->assign('C',add::config());
+   public function print_response($data) {
 
-      $error_messages = $this->view()->getTemplateVars('error_messages');
+      # ADD MVC 0.5 backward support
+      if (method_exists($this,'display_view')) {
+         return $this->display_view();
+      }
 
-      if (is_array($error_messages))
-         $this->view()->assign('error_message',$error_messages[0]);
+      $this->view()->assign($data);
 
       $this->view()->display(static::view_filepath());
    }
+
 
    /**
     * Register an exception to the view
@@ -248,5 +272,57 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
       }
 
       $this->view()->assign('error_messages',$error_messages);
+   }
+
+   /**
+    * Assign a variable to the view
+    *
+    * @since ADD MVC 0.6, ctrl_tpl_page 1.0
+    */
+   public function assign() {
+      $arg1 = func_get_arg(0);
+
+      if (is_array($arg1) || is_object($arg1)) {
+         $this->data = array_merge($this->data,(array) $arg1);
+      }
+      else {
+         $this->data[$arg1] = func_get_arg(1);
+      }
+
+   }
+
+
+
+# DEPRECATED FUNCTIONS
+
+   /**
+    * The default page title
+    *
+    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
+    * @deprecated use the view instead
+    * @version 0.1
+    */
+   public function meta_title() {
+      return add::config()->default_meta_title;
+   }
+
+   /**
+    * meta description
+    *
+    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
+    * @deprecated use the view instead
+    */
+   public function meta_description() {
+      return isset(add::config()->default_meta_description) ? add::config()->default_meta_description : null;
+   }
+
+   /**
+    * meta keywords
+    *
+    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
+    * @deprecated use the view instead
+    */
+   public function meta_keywords() {
+      return isset(add::config()->default_meta_keywords) ? add::config()->default_meta_keywords : null;
    }
 }

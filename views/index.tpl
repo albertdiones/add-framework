@@ -1,5 +1,7 @@
 {*SMARTY*}
-{include file="common_header.tpl"}
+{extends file='common_layout.tpl'}
+{block name=main}
+
    <h1>New Website</h1>
    Hello, this website is very new, please comeback again later to see contents.
    {if $log.warnings}
@@ -18,4 +20,5 @@
       {/foreach}
       </ul>
    {/if}
-{include file="common_footer.tpl"}
+   
+{/block}
