@@ -177,8 +177,11 @@ CLASS add {
    static function handle_exception(Exception $e) {
       if (method_exists($e,'handle_exception'))
          return $e->handle_exception();
-      else
+      else {
+         if (ob_get_level())
+            ob_end_clean();
          die("<div style='color:red'>".$e->getMessage()."</div>");
+      }
    }
 
    /**
