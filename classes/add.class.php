@@ -178,8 +178,9 @@ CLASS add {
       if (method_exists($e,'handle_exception'))
          return $e->handle_exception();
       else {
-         if (ob_get_level())
+         while (ob_get_level()) {
             ob_end_clean();
+         }
          die("<div style='color:red'>".$e->getMessage()."</div>");
       }
    }
