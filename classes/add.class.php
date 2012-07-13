@@ -4,7 +4,7 @@
  * Every sitewide features and modules should be based from this class
  * @author albertdiones@gmail.com
  * @package ADD MVC
- * @version 0.6
+ * @version 0.6.1
  */
 CLASS add {
 
@@ -413,4 +413,15 @@ CLASS add {
       return redirect("?".http_build_query($query));
    }
 
+
+   /**
+    * Get the $_GET without the additional add-mvc $_GET parameters like add_mvc_path
+    *
+    * @since add 0.6.1
+    */
+   static function gpc_get() {
+      $get = $_GET;
+      unset($get['add_mvc_path']);
+      return $get;
+   }
 }
