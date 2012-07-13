@@ -420,8 +420,7 @@ CLASS add {
     * @since add 0.6.1
     */
    static function gpc_get() {
-      $get = $_GET;
-      unset($get['add_mvc_path']);
+      $get = parse_str($_SERVER['QUERY_STRING']);
       return $get;
    }
 }
