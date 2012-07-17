@@ -15,7 +15,7 @@ ABSTRACT CLASS ctrl_tpl_aux {
    /**
     * run the page
     *
-    * @since ADD MVC 0.4
+    * @since ADD MVC 0.6.2
     */
    public function execute() {
       header("Content-type: text/plain");
