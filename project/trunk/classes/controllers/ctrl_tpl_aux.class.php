@@ -6,7 +6,7 @@
  *
  * @since ADD MVC 0.4
  * @author albertdiones@gmail.com
- * @version 0.1
+ * @version 1.0
  *
  */
 ABSTRACT CLASS ctrl_tpl_aux {
