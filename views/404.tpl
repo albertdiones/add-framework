@@ -6,7 +6,7 @@
    Configuration:
    <ul>
       <li>path: {$C->path}</li>
-      <li>controller rewritten: {$_GET.add_mvc_path}</li>
+      <li>controller rewritten: {$smarty.get.add_mvc_path}</li>
       <li>current controller: {add::current_controller_basename()}</li>
    </ul>
 {/block}
