@@ -63,7 +63,10 @@ ABSTRACT CLASS ldap_member EXTENDS session_user IMPLEMENTS i_auth_entity {
       }
 
       if ($group) {
-         if (!static::user_member_of($username,$group)) {
+         # You have to declare ::validate_group_membership() on the late static class
+         $late_static_class = get_called_class();
+         e_developer::assert(method_exists($late_static_class,'validate_group_membership'),$late_static_class.'::validate_group_membership() function is not declared');
+         if (!static::validate_group_membership($username,$group)) {
             throw new e_user_input("Failed to login: invalid group");
          }
       }
