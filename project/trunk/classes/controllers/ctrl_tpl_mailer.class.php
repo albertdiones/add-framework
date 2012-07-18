@@ -21,7 +21,7 @@ ABSTRACT CLASS ctrl_tpl_mailer EXTENDS phpMailer IMPLEMENTS i_ctrl, i_ctrl_with_
     */
    public function execute() {
       $this->process_data();
-      parent::Send();
+      return parent::Send();
    }
 
    /**
