@@ -135,6 +135,9 @@ CLASS pagination EXTENDS dom_element_wrapper {
                   $this->merge_get
                   ? array_merge($_GET,$page_query)
                   : $page_query;
+
+            unset($query_array['add_mvc_path']);
+
             $query_string = http_build_query($query_array);
             $this->append("<a href='".htmlentities("$this->base_url?$query_string")."'>$pagex</a>");
          }
