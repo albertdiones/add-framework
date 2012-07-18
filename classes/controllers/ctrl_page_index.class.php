@@ -57,10 +57,10 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
     */
    public static function require_dir_exists($dir,$writable=null) {
       if (!file_exists($dir)) {
-         throw new e_system("Directory $dir is not existing");
+         throw new e_system("Directory $dir is not existing",add::config());
       }
       if (!is_writable($dir)) {
-         throw new e_system("Directory $dir is not writable");
+         throw new e_system("Directory $dir is not writable",add::config());
       }
    }
 

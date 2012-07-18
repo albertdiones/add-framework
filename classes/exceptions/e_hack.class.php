@@ -17,6 +17,6 @@ CLASS e_hack EXTENDS e_user_malicious {
     * @since ADD MVC 0.0
     */
    public function handle_exception() {
-      return $this->mail();
+      return $this->handle_sensitive_exception("An authentication error occured, please try going back to the homepage");
    }
 }

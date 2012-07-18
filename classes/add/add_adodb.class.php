@@ -87,4 +87,13 @@ ABSTRACT CLASS add_adodb {
 
    abstract public function Connect();
 
+   /**
+    * The variable name of the singleton of this class
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function varname() {
+      return get_called_class();
+   }
+
 }
