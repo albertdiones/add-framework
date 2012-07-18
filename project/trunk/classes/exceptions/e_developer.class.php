@@ -9,17 +9,7 @@
  * @since ADD MVC 0.0
  * @version 0.0
  */
-CLASS e_developer EXTENDS e_add {
-
-   /**
-    * Handle exception
-    * Mail the error to developers
-    *
-    * @since ADD MVC 0.0
-    */
-   public function handle_exception() {
-      $this->mail();
-   }
+CLASS e_developer EXTENDS e_system {
 
    /**
     * The email subject

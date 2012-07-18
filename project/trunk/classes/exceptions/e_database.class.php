@@ -60,6 +60,6 @@ CLASS e_database EXTENDS e_unknown {
     * @since ADD MVC 0.0
     */
    public function handle_exception() {
-      return $this->mail() && print("A database error occured");
+      $this->handle_sensitive_exception("A database error occured");
    }
 }

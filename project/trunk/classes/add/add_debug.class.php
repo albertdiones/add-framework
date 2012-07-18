@@ -99,19 +99,13 @@ ABSTRACT CLASS add_debug {
    * @since ADD MVC 0.0
    */
    static function caller_file_line() {
-      $backtraces = debug_backtrace();
+      $backtrace = static::caller_backtrace();
 
-      foreach ($backtraces as $backtrace) {
-         $is_trace_class_debug = ($backtrace['class'] == __CLASS__ || is_subclass_of($backtrace['class'],__CLASS__));
-         if (empty($backtrace['class']) || !$is_trace_class_debug) {
-            break;
-         }
-         $file_line = $backtrace['file'].':'.$backtrace['line'];
-      }
-
-      if (!$file_line) {
+      if (!$backtrace) {
          return "Unknown Location";
       }
+
+      $file_line = $backtrace['file'].':'.$backtrace['line'];
 
       $file_line            = preg_replace('/^'.preg_quote(add::config()->root_dir,'/').'\//','',$file_line);
 
@@ -119,7 +113,23 @@ ABSTRACT CLASS add_debug {
 
    }
 
+  /**
+   * Returns the debug info of the caller
+   * @since ADD MVC 0.7
+   */
+   static function caller_backtrace() {
+      $backtraces = debug_backtrace();
 
+      foreach ($backtraces as $backtrace) {
+         $is_trace_class_debug = ($backtrace['class'] == __CLASS__ || is_subclass_of($backtrace['class'],__CLASS__));
+         if (empty($backtrace['class']) || !$is_trace_class_debug) {
+            break;
+         }
+      }
+
+      return $backtrace;
+
+   }
 
    /**
     * XMP Var Dump

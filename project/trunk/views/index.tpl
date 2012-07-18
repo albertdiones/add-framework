@@ -1,7 +1,6 @@
 {*SMARTY*}
 {extends file='common_layout.tpl'}
-{block name=main}
-
+{block name='main'}
    <h1>New Website</h1>
    Hello, this website is very new, please comeback again later to see contents.
    {if $log.warnings}
@@ -20,5 +19,4 @@
       {/foreach}
       </ul>
    {/if}
-   
 {/block}

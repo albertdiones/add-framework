@@ -13,7 +13,7 @@ CLASS e_spam EXTENDS e_user_malicious {
 
 
    public function handle_exception() {
-      die("You have been detected as spam");
+
    }
 
 }

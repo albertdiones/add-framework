@@ -7,7 +7,7 @@
  *
  * @author albertdiones@gmail.com
  * @package ADD MVC
- * @version 0.6.1
+ * @version 0.7
  */
 CLASS add {
 
@@ -19,6 +19,9 @@ CLASS add {
 
    /**
     * The config variable name
+    *
+    * @todo remove support for $C on ADD MVC 1.0
+    *
     * @since ADD MVC 0.0
     */
    const CONFIG_VARNAME = 'C';
@@ -29,6 +32,14 @@ CLASS add {
     * @since ADD MVC 0.0
     */
    static $HOME_CONTROLLER = 'index';
+
+
+   /**
+    * Errors Array
+    *
+    * @since ADD MVC 0.7
+    */
+   static $errors = array();
 
    /**
     * Gets the site config
@@ -41,12 +52,60 @@ CLASS add {
    static function config(STDClass $C = null) {
 
       if ($C) {
-         self::$C = $C;
-         $GLOBALS[self::CONFIG_VARNAME] = self::$C;
+         $config_array = (array) $C;
+         $full_default_config_array = (array) self::default_config();
+
+         $default_config_array = array_diff_key($full_default_config_array, $config_array);
+         $merge_config_array = array_intersect_key($config_array,$full_default_config_array);
+
+         $config_array = array_merge( $default_config_array , $config_array );
+
+         foreach ($merge_config_array as $key => $value) {
+            if (is_object($value))
+               $value = (array) $value;
+            if (is_array($value))
+               $config_array[$key] = array_merge((array) $value, (array) $full_default_config_array[$key]);
+            else
+               $config_array[$key] = $value;
       }
 
+         self::$C = $GLOBALS[self::CONFIG_VARNAME] = (object) $config_array;
+
+         # Convert to object
+         foreach (self::$C as &$var) {
+            if (is_array($var)) {
+               $var = (object) $var;
+            }
+         }
+
+      }
       return self::$C;
 
+   }
+
+   /**
+    * The default config
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function default_config() {
+      preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      return (object) array(
+            'super_domain'       => $domain_parts['super_domain'],
+            'sub_domain'         => $domain_parts['sub_domain'],
+            'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
+            'root_dir'           => realpath('./'),
+            'environment_status' => 'live',
+
+            /**
+             * Library init files
+             */
+            'libs'            => (object) array(
+                  'adodb'     => 'adodb/adodb.inc.php',
+                  'smarty'    => 'smarty/Smarty.class.php',
+                  'phpmailer' => 'phpmailer/class.phpmailer.php',
+               ),
+         );
    }
 
    /**
@@ -201,34 +260,66 @@ CLASS add {
     * @see http://www.php.net/manual/en/function.set-error-handler.php
     */
    public static function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $errcontext = NULL) {
-      global $G_errors;
 
-      static $error_indexes = array(
-            E_ERROR        => 'error',
-            E_WARNING      => 'warnings',
-            E_NOTICE       => 'notices',
-            E_STRICT       => 'strict',
-            E_USER_ERROR   => 'user_errors',
-            E_USER_WARNING => 'user_warnings',
-            E_USER_NOTICE  => 'user_notices'
+      static $error_code_strings = array(
+            E_ERROR           => 'E_ERROR',
+            E_WARNING         => 'E_WARNING',
+            E_PARSE           => 'E_PARSE',
+            E_NOTICE          => 'E_NOTICE',
+            E_STRICT          => 'E_STRICT',
+            E_CORE_ERROR      => 'E_CORE_ERROR',
+            E_CORE_WARNING    => 'E_CORE_WARNING',
+            E_COMPILE_ERROR   => 'E_COMPILE_ERROR',
+            E_COMPILE_WARNING => 'E_COMPILE_WARNING',
+            E_USER_ERROR      => 'E_USER_ERROR',
+            E_USER_WARNING    => 'E_USER_WARNING',
+            E_USER_NOTICE     => 'E_USER_NOTICE'
          );
 
-      if (!isset($G_errors)) {
-         $G_errors = array();
-      }
+      static $error_code_readable_strings = array(
+            E_ERROR           => 'Fatal Error',
+            E_WARNING         => 'Warning',
+            E_PARSE           => 'Parse Error',
+            E_NOTICE          => 'Notice',
+            E_STRICT          => 'PHP Strict Standards',
+            E_CORE_ERROR      => 'Core Error',
+            E_CORE_WARNING    => 'Core warning',
+            E_COMPILE_ERROR   => 'Compile Error',
+            E_COMPILE_WARNING => 'Compile Warning',
+            E_USER_ERROR      => 'Developer Issued Error',
+            E_USER_WARNING    => 'Developer Issued Warning',
+            E_USER_NOTICE     => 'Developer Issued Notice'
+         );
+
 
       if (!(error_reporting() & $errno)) {
          return;
       }
 
-      $error_index = isset($error_indexes[$errno]) ? $error_indexes[$errno] : $errno;
+      $error_index = isset($error_code_strings[$errno]) ? $error_code_strings[$errno] : $errno;
 
-      if (!isset($G_errors[$error_index]))
-         $G_errors[$error_index] = array();
-      $G_errors[$error_index][] = array(
+      if (!isset(static::$errors[$error_index]))
+         static::$errors[$error_index] = array();
+
+      $backtrace = debug_backtrace();
+
+      array_shift($backtrace);
+
+      while (
+            isset($backtrace[0]['file'])
+            && $backtrace[0]['file'] == $errfile
+            && $backtrace[0]['line'] == $errline
+         ) {
+         array_shift($backtrace);
+      }
+
+      static::$errors[$error_index][] = array(
+            'type' => isset($error_code_readable_strings [$errno]) ? $error_code_readable_strings [$errno] : $errno,
+            'errno'      => $errno,
             'message' => $errstr,
             'file'    => $errfile,
-            'line'    => $errline
+            'line'       => $errline,
+            'backtrace'  => $backtrace,
          );
    }
 
@@ -236,11 +327,53 @@ CLASS add {
     * Print errors
     */
    static function print_errors() {
-      global $G_errors;
-      foreach ($G_errors as $error_index => $errors) {
-         foreach ($errors as $error) {
-            echo("<div style='margin:5px 10px;border:1px solid #333; background: #faa; padding:5px 10px'><small>$error_index</small><p>$error[message]</p><small>".basename($error['file']).":$error[line]</small></div>");
+      $default_error_tpl = "errors/default.tpl";
+      $smarty = new add_smarty();
+      foreach (static::$errors as $error_index => $errors) {
+         $error_tpl = "errors/".strtolower($error_index).".tpl";
+         if (!$smarty->templateExists($error_tpl)) {
+            $error_tpl = $default_error_tpl;
          }
+
+         foreach ($errors as $error) {
+
+            # The chunk of code on the location of the error
+            if (!add::is_live()) {
+               $code_on_error = "";
+               $file_codes = file($error['file']);
+
+               $code_on_error_padding = 3;
+
+               $code_on_error_start = max($error['line'] - 3,1);
+
+               $smarty->assign('code_on_error_start', $code_on_error_start);
+
+               for ($code_on_error_x = $code_on_error_start; $code_on_error_x <= ($error['line'] + $code_on_error_padding); $code_on_error_x++) {
+                  $code_on_error .= $file_codes[$code_on_error_x-1];
+         }
+
+               $smarty->assign('code_on_error',highlight_string($code_on_error,true));
+               $smarty->assign('code_on_error_end',$code_on_error_x);
+
+      }
+
+            $error['file'] = basename($error['file']);
+
+            $error['file_lines'] = array();
+            foreach ($error['backtrace'] as $backtrace_data) {
+               $error['file_lines'][] = array( 'file' => basename($backtrace_data['file']), 'line' => $backtrace_data['line'] );
+   }
+
+
+            if ($smarty->templateExists($error_tpl)) {
+               $smarty->assign("error",$error);
+               $smarty->display($error_tpl);
+            }
+            else {
+               echo "<div>$error[type] : $error[file]:$error[line] : <b>$error[message]</b></div>";
+            }
+         }
+
       }
    }
 
@@ -256,28 +389,60 @@ CLASS add {
    /**
     * include() include file path
     * example add::include_include_file('functions/date.functions.php')
+    *
     * @param string $include_path the include path
-    * @since ADD MVC 0.0
+    * @param boolean $include_once weather to include it only once
+    *
+    * @since ADD MVC 1.0
     */
-   protected static function include_include_file($include_path) {
-      return include(static::include_filepath($include_path));
+   protected static function include_include_file($include_path, $include_once = true) {
+      $filepath = static::include_filepath($include_path);
+
+      if (!add::is_live()) {
+         static::php_check_syntax($filepath);
    }
+
+      if ($include_once)
+         return include_once($filepath);
+      else
+         return include($filepath);
+   }
+
+   /**
+    * Check php syntax
+    *
+    * @param string $filepath to the file
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function php_check_syntax($filepath) {
+      $cmd_line = 'php -n -l '.escapeshellarg($filepath);
+      $output = shell_exec($cmd_line);
+
+      if ($output) {
+         if (preg_match('/^PHP Parse error/',$output)) {
+            throw new e_syntax($output);
+         }
+      }
+   }
+
+
    /**
     * load_functions($functions_group_name)
     *
     * @param string $functions_group_name the base name of the function file to include
     *
     * example: add::load_functions('date');
-    * @since ADD MVC 0.0
+    * @since ADD MVC 0.1
     */
    static function load_functions($functions_group_name) {
-      return include_once(static::include_filepath("functions/$functions_group_name.functions.php"));
+      return self::include_include_file("functions/$functions_group_name.functions.php");
    }
 
    /**
     * Load library from $C config
     * @param string $lib_name the $C->libs index
-    * @since ADD MVC 0.0
+    * @since ADD MVC 0.1
     */
    static function load_lib($lib_name) {
       static $loaded_libs=array();
@@ -303,13 +468,7 @@ CLASS add {
          throw new logic_exception("Invalid format for $lib_name");
       }
 
-      $file = self::include_filepath('libs/'.$lib_path);
-
-      if (file_exists($file))
-         require_once($file);
-      else
-         throw new e_developer("Failed to load library $lib from ".$file);
-
+      self::include_include_file('libs/'.$lib_path);
    }
 
 
@@ -426,5 +585,34 @@ CLASS add {
       $get = $_GET;
       unset($get['add_mvc_path']);
       return $get;
+   }
+
+   /**
+    * environment check: is live?
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function is_live() {
+      return add::config()->environment_status === 'live';
+   }
+
+
+   /**
+    * environment check: is debugging
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function is_debugging() {
+      return add::config()->environment_status === 'debugging';
+   }
+
+
+   /**
+    * environment check: is_development()
+    *
+    * @since ADD MVC 0.7
+    */
+   public static function is_development() {
+      return add::config()->environment_status === 'development';
    }
 }

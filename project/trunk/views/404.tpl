@@ -1,6 +1,6 @@
 {*SMARTY*}
 {extends file='common_layout.tpl'}
-{block name=main}
+{block name='main'}
    <h1>Page not found</h1>
    <p>The page you are looking for is not found</p>
    Configuration:
