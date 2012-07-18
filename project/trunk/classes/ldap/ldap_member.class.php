@@ -5,7 +5,7 @@ ABSTRACT CLASS ldap_member EXTENDS session_user IMPLEMENTS i_auth_entity {
 
    abstract public static function host();
 
-   abstract public function login_href();
+   abstract public static function login_href();
 
    abstract public static function user_member_of($user, $group);
 
