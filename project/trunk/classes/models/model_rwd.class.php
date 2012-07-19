@@ -68,9 +68,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @since ADD MVC 0.6
     */
    public static function db() {
-      if (!static::$D)
+      if (!static::db())
          throw new e_developer("No default db variable");
-      return static::$D;
+      return static::db();
    }
 
    /**
@@ -183,7 +183,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          $instances = static::instances_from_sql(
                "
                SELECT %s FROM %s
-               WHERE ".static::db()->meta_quote($field)." = ".str_replace('%','%%',static::$D->quote($field_value))
+               WHERE ".static::db()->meta_quote($field)." = ".str_replace('%','%%',static::db()->quote($field_value))
             );
          if (!$instances)
             return false;
@@ -762,7 +762,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @deprecated use get_row_instance()
     */
    static function db_row_array($table,$field,$field_value) {
-      e_developer::assert(is_object(static::$D),get_called_class().' $D is not an object');
+      e_developer::assert(is_object(static::db()),get_called_class().' $D is not an object');
       $row = static::db()->getRow(
             "
             SELECT * FROM ".static::db()->meta_quote($table)."
