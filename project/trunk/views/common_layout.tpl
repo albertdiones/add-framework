@@ -9,7 +9,7 @@
 {/block}
 
 {block name=styles}
-      <link href="//presentable-css.googlecode.com/svn/project/trunk/all.css" rel="stylesheet" />
+      <link href="//presentable-css.googlecode.com/svn/project/tags/0.0/all.css" rel="stylesheet" />
 {/block}
 
 {block name=head_scripts}{/block}
