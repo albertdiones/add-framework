@@ -236,7 +236,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       else {
          $this->mail();
          $this->view()->assign('exception',$this);
-         $this->view()->assign('$C',add::config());
+         $this->view()->assign('C',add::config());
          $this->display_view();
       }
    }
