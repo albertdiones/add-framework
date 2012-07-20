@@ -232,8 +232,12 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
    /**
     * display() the Smarty template of $this controller
+    *
     * @since ADD MVC 0.0, ctrl_tpl_page 0.1
-    * @version 0.1
+    * @version 0.2
+    *
+    * @todo remove ADD MVC 0.5 version support
+    *
     */
    public function print_response($data) {
 
@@ -242,9 +246,18 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
          return $this->display_view();
       }
 
-      $this->view()->assign($data);
+      $tpl = static::view_filepath();
 
-      $this->view()->display(static::view_filepath());
+      if ($this->view()->templateExists($tpl)) {
+      $this->view()->assign($data);
+         $this->view()->display($tpl);
+      }
+      else {
+         $template_vars = $data;
+         unset($template_vars['C']);
+         $this->view()->assign('template_vars',$template_vars);
+         $this->view()->display('debug/list_array_page.tpl');
+      }
    }
 
 
