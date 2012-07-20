@@ -139,7 +139,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
             $compact_array = $this->recursive_compact( $this->$gpc_key_var );
          }
          else {
-            throw new e_developer(get_called_class()."::$gpc_key_var not declared");
+            throw new e_developer(get_called_class()."->$gpc_key_var not declared");
          }
 
          $this->view()->assign($compact_array);
