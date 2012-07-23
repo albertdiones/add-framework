@@ -379,10 +379,15 @@ CLASS add {
 
    /**
     * Handle shutdown
+    * When development, record the time spent on script execution (since 0.7.2)
     *
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
+      if (static::is_development()) {
+         if (add::config()->root_timer instanceof add_debug_timer)
+            add::config()->root_timer->lap("Shutdown");
+      }
       return static::print_errors();
    }
 
