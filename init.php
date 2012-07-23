@@ -71,7 +71,7 @@ $C->assets_libs_path   = $C->assets_path.'libs/';
 /**
  * No errors if live
  *
- * @since 0.7
+ * @since 0.7.2
  */
 if (add::is_live()) {
    error_reporting(0);
