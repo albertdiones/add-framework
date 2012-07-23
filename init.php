@@ -71,13 +71,22 @@ $C->assets_libs_path   = $C->assets_path.'libs/';
 /**
  * No errors if live
  *
- * @since 0.7.2
+ * @since ADD MVC 0.7.2
  */
 if (add::is_live()) {
    error_reporting(0);
 }
 else {
    error_reporting(E_ALL);
+
+   /**
+    * When development, record the time spent on script execution
+    *
+    * @since ADD MVC 0.7.2
+    */
+   if (add::is_development()) {
+      add::config()->root_timer = add_development_timer::start("Framework Configuration");
+   }
 }
 
 add::load_functions('common');
