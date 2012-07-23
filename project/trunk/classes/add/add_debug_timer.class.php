@@ -111,6 +111,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     */
    public function us_diff_html($string,$microseconds) {
       $styles_array = array();
+      var_dump($microseconds);
       if ($microseconds > 1000000) {
          $styles_array[] = 'color:red';
          if ($microseconds > 10000000.0) {
