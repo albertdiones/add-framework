@@ -109,18 +109,19 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     *
     * @since ADD MVC 0.4
     */
-   public function us_diff_html($string,$microseconds) {
+   public function us_diff_html($string, $second_difference) {
       $styles_array = array();
-      var_dump($microseconds);
-      if ($microseconds > 1000000) {
+
+      if ($second_difference > 1) {
          $styles_array[] = 'color:red';
-         if ($microseconds > 10000000.0) {
+         if ($second_difference > 10) {
             $styles_array[] = 'font-weight:bold';
          }
       }
-      else if ($microseconds < 1000) {
+      else if ($second_difference < 1) {
          $styles_array[] = 'color:green';
       }
+
       $styles = implode(';',$styles_array);
       return "<span style='$styles'>$string</span>";
    }
