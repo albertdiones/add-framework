@@ -106,7 +106,7 @@ CLASS pagination EXTENDS dom_element_wrapper {
 
       $visible_page_start = max(
             1,
-            $this->current_page - $this->hidden_page_padding
+            min($this->current_page,$max_page) - $this->hidden_page_padding
          );
 
       $visible_page_end = min(
