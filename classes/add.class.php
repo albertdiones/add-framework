@@ -385,7 +385,6 @@ CLASS add {
     */
    static function handle_shutdown() {
       if (static::is_development()) {
-         debug::var_dump(add::config()->root_timer);
          if (add::config()->root_timer instanceof add_debug_timer)
             add::config()->root_timer->print_lap("Shutdown");
       }
