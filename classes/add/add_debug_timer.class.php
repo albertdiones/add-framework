@@ -64,10 +64,10 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
       if (!$label)
          $label = static::caller_file_line();
 
-      if (!isset($this->lap_timestamps["$timestamp"]))
-         $this->lap_timestamps["$timestamp"] = $label;
-      else
-         $this->lap_timestamps["$timestamp_".uniqid()] = $label;
+      $this->lap_timestamps[] = array(
+            'label' => $label,
+            'timestamp' => $timestamp,
+         );
 
       return $timestamp - $this->start_timestamp;
    }
@@ -85,12 +85,40 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
       $lap_difference = $this->lap($label);
 
-      list($lap_label_x) = array_slice(array_keys($this->lap_timestamps),-1,1);
-      list($first_lap_label_x) = array_slice(array_keys($this->lap_timestamps),0,1);
+      $lap1 = array_slice($this->lap_timestamps,0,1);
+      $lap2 = array_slice($this->lap_timestamps,-1,1);
 
-      #var_dump($previous_lap_label,$lap_label);
+      return static::print_lap_difference($lap1, $lap2);
+   }
 
-      static::restricted_echo("<div>".static::us_diff_html(static::us_diff_readable_format($lap_difference),$lap_difference)." from {$this->lap_timestamps[$first_lap_label_x]} to {$this->lap_timestamps[$lap_label_x]}</div>");
+
+   /**
+    * Print lap details from lap1 to lap2
+    *
+    * @since ADD MVC 0.7.2
+    */
+   public function print_lap_difference($lap1, $lap2) {
+
+      $lap_difference = $lap1['timestamp'] - $lap2['timestamp'];
+
+      static::restricted_echo("<div>".static::us_diff_html(static::us_diff_readable_format($lap_difference),$lap_difference)." from $lap1[label] to $lap2[label] </div>");
+   }
+
+   /**
+    * Print all laps
+    *
+    * @since ADD MVC 0.7.2
+    */
+   public function print_all_laps() {
+
+      $laps = $this->lap_timestamps;
+
+      $previous_lap = array_shift($laps);
+
+      foreach ($laps as $lap) {
+         static::print_lap_difference($previous_lap, $lap);
+      }
+
    }
 
    /**
