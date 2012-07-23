@@ -92,6 +92,9 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       if (is_array($error_messages))
          $this->assign('error_message',$error_messages[0]);
 
+      if (add::is_development())
+         add::config()->lap("Before Printing");
+
       $this->print_response($this->data);
    }
 
