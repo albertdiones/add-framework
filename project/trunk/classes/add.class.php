@@ -42,6 +42,13 @@ CLASS add {
    static $errors = array();
 
    /**
+    * Weather to handle shutdown or not
+    *
+    * @since ADD MVC 0.7.2
+    */
+   static $handle_shutdown = true;
+
+   /**
     * Gets the site config
     *
     * @param STDClass $C the config variable
@@ -384,14 +391,26 @@ CLASS add {
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
-      global $add_mvc_root_timer;
+      if (static::$handle_shutdown) {
+         global $add_mvc_root_timer;
 
-      if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
-         $add_mvc_root_timer->lap("Shutdown");
-         $add_mvc_root_timer->print_all_laps();
+         if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
+            $add_mvc_root_timer->lap("Shutdown");
+            $add_mvc_root_timer->print_all_laps();
+         }
+
+         return static::print_errors();
       }
+   }
 
-      return static::print_errors();
+   /**
+    * Custom die() function
+    *
+    * @since ADD MVC 0.7.2
+    */
+   static function shutdown($handle_shutdown = true) {
+      self::$handle_shutdown = $handle_shutdown;
+      die();
    }
 
    /**
