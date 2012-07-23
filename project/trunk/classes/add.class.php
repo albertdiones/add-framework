@@ -385,7 +385,7 @@ CLASS add {
     */
    static function handle_shutdown() {
       global $add_mvc_root_timer;
-      debug::var_dump($add_mvc_root_timer);
+
       if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer)
          $add_mvc_root_timer->print_lap("Shutdown");
       }
