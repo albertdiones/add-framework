@@ -14,7 +14,7 @@ ABSTRACT CLASS session_user EXTENDS session_entity {
     *
     * @since
     */
-   public function singleton() {
+   public static function singleton() {
       if (!isset(static::$singleton[get_called_class()] )) {
          if (!isset($_SESSION[static::session_key()]))
             $_SESSION[static::session_key()] = array();
