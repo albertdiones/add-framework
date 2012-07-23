@@ -85,7 +85,8 @@ else {
     * @since ADD MVC 0.7.2
     */
    if (add::is_development()) {
-      add::config()->root_timer = add_development_timer::start("Framework Configuration");
+      $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
+      add::config()->root_timer = $GLOBALS['add_mvc_root_timer'];
    }
 }
 
