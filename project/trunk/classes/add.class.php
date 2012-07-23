@@ -384,9 +384,9 @@ CLASS add {
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
-      if (static::is_development()) {
-         if (add::config()->root_timer instanceof add_debug_timer)
-            add::config()->root_timer->print_lap("Shutdown");
+      global $add_mvc_root_timer;
+      if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer)
+         add::config()->root_timer->print_lap("Shutdown");
       }
       return static::print_errors();
    }
