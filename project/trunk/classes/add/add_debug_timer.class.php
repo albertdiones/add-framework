@@ -117,6 +117,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
       foreach ($laps as $lap) {
          static::print_lap_difference($previous_lap, $lap);
+         $previous_lap = $lap;
       }
 
    }
