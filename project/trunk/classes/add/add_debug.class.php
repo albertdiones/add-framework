@@ -31,7 +31,9 @@ ABSTRACT CLASS add_debug {
     * @return boolean true if allowed false if not
     * @since ADD MVC 0.0
     */
-   abstract static function current_user_allowed();
+   static function current_user_allowed() {
+      return add::is_developer();
+   }
 
 
 
