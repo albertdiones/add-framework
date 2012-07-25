@@ -437,7 +437,7 @@ CLASS add {
    }
 
    /**
-    * Check php syntax
+    * Check php syntax(this still needs to be tested and fixed)
     *
     * @param string $filepath to the file
     *
