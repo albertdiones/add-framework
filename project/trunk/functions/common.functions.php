@@ -24,6 +24,7 @@
  * @version 1.0
  */
 function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $errcontext = NULL) {
+   trigger_error( "Deprecated handle_error function", E_USER_DEPRECATED );
    return add::handle_error( $errno , $errstr , $errfile, $errline, $errcontext );
 }
 /**
@@ -179,3 +180,5 @@ function salt_string( $string, $salt = DEFAULT_SALT) {
       throw new Exception("DEFAULT_SALT is not defined");
    return sha1($string.$salt);
 }
+
+add::load_functions('network');
