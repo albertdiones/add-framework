@@ -426,9 +426,11 @@ CLASS add {
    protected static function include_include_file($include_path, $include_once = true) {
       $filepath = static::include_filepath($include_path);
 
+      /*
       if (!add::is_live()) {
          static::php_check_syntax($filepath);
-   }
+      }
+      */
 
       if ($include_once)
          return include_once($filepath);
@@ -444,6 +446,7 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function php_check_syntax($filepath) {
+      /*
       $cmd_line = 'php -n -l '.escapeshellarg($filepath);
       $output = shell_exec($cmd_line);
 
@@ -452,6 +455,7 @@ CLASS add {
             throw new e_syntax($output);
          }
       }
+      */
    }
 
 
