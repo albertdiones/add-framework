@@ -7,7 +7,7 @@
  *
  * @author albertdiones@gmail.com
  * @package ADD MVC
- * @version 0.7.1
+ * @version 0.7.3
  */
 CLASS add {
 
@@ -641,5 +641,17 @@ CLASS add {
     */
    public static function is_development() {
       return add::config()->environment_status === 'development';
+   }
+
+
+   /**
+    * is_developer()
+    *
+    * Checks if the user is developer according to his/her IP
+    *
+    * @since ADD MVC 0.7.2
+    */
+   public static function is_developer() {
+      return in_array(current_user_ip(),add::config()->developer_ips) || current_ip_in_network();
    }
 }
