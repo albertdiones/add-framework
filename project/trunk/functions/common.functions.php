@@ -29,18 +29,16 @@ function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $err
 }
 /**
  * Print errors
+ *
  */
 function print_errors() {
-   global $G_errors;
-   debug::x($G_errors);
+   add::print_errors();
 }
 /**
  * Handle shutdown
  */
 function handle_shutdown() {
-   global $C;
-   echo "<!-- end of document -->";
-   print_errors();
+   add::handle_shutdown();
 }
 
 /**
@@ -146,8 +144,7 @@ function s2globals(/* args */) {
  * @deprecated see add::redirect()
  */
 function redirect($url) {
-   header("Location: $url");
-   die();
+   add::redirect($url);
 }
 
 /**
@@ -161,11 +158,7 @@ function redirect($url) {
  * @deprecated see add::redirect_query()
  */
 function redirect_query($new_query,$merge_current=true) {
-   if ($merge_current)
-      $query = array_merge($_GET,$new_query);
-   else
-      $query = $new_query;
-   return redirect("?".http_build_query($query));
+   add::redirect_query($new_query, $merge_current);
 }
 
 
