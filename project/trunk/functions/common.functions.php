@@ -32,12 +32,14 @@ function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $err
  *
  */
 function print_errors() {
+   trigger_error( "Deprecated print_errors function", E_USER_DEPRECATED );
    add::print_errors();
 }
 /**
  * Handle shutdown
  */
 function handle_shutdown() {
+   trigger_error( "Deprecated handle_shutdown function", E_USER_DEPRECATED );
    add::handle_shutdown();
 }
 
@@ -144,6 +146,7 @@ function s2globals(/* args */) {
  * @deprecated see add::redirect()
  */
 function redirect($url) {
+   trigger_error( "Deprecated redirect function", E_USER_DEPRECATED );
    add::redirect($url);
 }
 
@@ -158,6 +161,7 @@ function redirect($url) {
  * @deprecated see add::redirect_query()
  */
 function redirect_query($new_query,$merge_current=true) {
+   trigger_error( "Deprecated redirect_query function", E_USER_DEPRECATED );
    add::redirect_query($new_query, $merge_current);
 }
 
