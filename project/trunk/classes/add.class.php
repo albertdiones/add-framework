@@ -103,6 +103,7 @@ CLASS add {
             'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
             'root_dir'           => realpath('./'),
             'environment_status' => 'live',
+            'developers_ip'      => array(),
 
             /**
              * Library init files
