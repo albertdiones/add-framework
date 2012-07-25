@@ -70,7 +70,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
    public static function db() {
       if (!static::$D)
          throw new e_developer("No default db variable");
-      return static::db();
+      return static::$D;
    }
 
    /**
