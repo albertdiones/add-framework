@@ -52,10 +52,57 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       if (!$condition) {
          if (!$message) {
             $caller_backtrace = debug::caller_backtrace();
+
             $file_lines = file($caller_backtrace['file']);
+
             $file_line_content = $file_lines[$caller_backtrace['line']-1];
-            $assert_condition = preg_replace('/^\s*\w+\:\:assert\((.+)(\,.+)?\)\;/','$1',$file_line_content);
-            if (preg_match('/(?P<function_name>\w+)\((?P<arguments>.*?)\)/', $assert_condition, $assert_condition_parts)) {
+
+            $tokens = token_get_all("<?php $file_line_content ?>");
+
+            $assert_arguments = array();
+            $assert_argument_string = "";
+            $on_argument      = false;
+            for ( $token_x = 0; isset($tokens[$token_x]); ++$token_x ) {
+               $token = $tokens[$token_x];
+               if ($token === array(307,get_called_class(),1) && isset($tokens[$token_x+1])) {
+                  $pn_token = $tokens[++$token_x]; # Paamayim Nekudotayim
+                  if ($pn_token === array(376,"::",1) && isset($tokens[$token_x+2])) {
+                     $assert_token = $tokens[++$token_x];
+                     if ($assert_token === array(307,__FUNCTION__,1)) {
+                        $parenthesis_count = 1;
+                        $on_argument = true;
+                        ++$token_x;
+                        continue;
+                     }
+                  }
+               }
+
+               if ($on_argument) {
+
+                  if ($token === '(') {
+                     ++$parenthesis_count;
+                  }
+
+
+                  if ($token === ')') {
+                     --$parenthesis_count;
+                  }
+
+                  if ($parenthesis_count<=0) {
+                     break;
+                  }
+
+                  $assert_argument_string .= is_array($token) ? $token[1] : $token;
+
+               }
+
+            }
+
+            if (!$assert_argument_string) {
+               $assert_argument_string = preg_replace('/^\s*\$?\w+\:\:assert\((.+)(\,.+)?\)\;/','$1',$file_line_content);
+            }
+
+            if (preg_match('/(?P<function_name>\w+)\((?P<arguments>.*?)\)/', $assert_argument_string, $assert_condition_parts)) {
                $function = $assert_condition_parts['function_name'];
                $arguments = $assert_condition_parts['arguments'];
                switch ($function) {
@@ -142,13 +189,12 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
                      $message = "$arguments does not exist";
                   break;
 
-
                   default:
                      $message ="Failed to validate $function ($arguments) ";
                }
             }
             else {
-               $message = "Failed to validate condition ".$assert_condition;
+               $message = "Failed to validate condition ".$assert_argument_string;
             }
          }
          $e = new static($message,$error_number);
