@@ -32,14 +32,14 @@ CLASS add_ldap {
       if (isset($this->search))
          return ldap_get_entries($this->ds, $this->search);
       else
-         throw new e_developer("Invalid get entries",$this);
+         return 0;
    }
 
    public function count_entries() {
       if (isset($this->search))
          return ldap_count_entries($this->ds, $this->search);
       else
-         throw new e_developer("Invalid count entries",$this);
+         return 0;
    }
 
    public static function escape($str, $for_dn = true) {
