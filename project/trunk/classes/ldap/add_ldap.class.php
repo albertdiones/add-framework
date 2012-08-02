@@ -32,7 +32,7 @@ CLASS add_ldap {
       if (!empty($this->search))
          return ldap_get_entries($this->ds, $this->search);
       else
-         throw new e_developer("Invalid get entries");
+         throw new e_developer("Invalid get entries",$this);
    }
 
    public function count_entries() {
