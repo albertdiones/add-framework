@@ -42,7 +42,7 @@ CLASS add_ldap {
          throw new e_developer("Invalid count entries",$this);
    }
 
-   public static function escape($str) {
+   public static function escape($str, $for_dn = true) {
       if  ($for_dn)
          $metaChars = array(',','=', '+', '<','>',';', '\\', '"', '#');
       else
