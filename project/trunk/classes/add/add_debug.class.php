@@ -300,4 +300,17 @@ ABSTRACT CLASS add_debug {
                )
          );
    }
+
+
+   /**
+    * Prints the config value
+    *
+    * @since ADD MVC 0.7.3
+    */
+   public static function print_config($field) {
+      $smarty = new add_smarty();
+      $smarty -> assign('field',$field);
+      $smarty -> assign(add::config()->$field,$field);
+      static::restricted_echo($smarty->fetch('debug/print_config.tpl'));
+   }
 }
