@@ -400,7 +400,7 @@ CLASS add {
                add_debug::print_config('environment_status');
                add_debug::print_config('add_dir');
                add_debug::print_config('path');
-               add_debug::print_config('developer_ips');
+               add_debug::print_data('Developer IPs Declared: ', (bool)add::config()->developer_ips);
             }
             $add_mvc_root_timer->lap("Shutdown");
             $add_mvc_root_timer->print_all_laps();
@@ -666,6 +666,6 @@ CLASS add {
       if (isset(add::config()->developer_ips) && is_array(add::config()->developer_ips))
          return in_array(current_user_ip(),add::config()->developer_ips) || current_ip_in_network();
       else
-         return !add::is_live();
+         return add::is_development();
    }
 }
