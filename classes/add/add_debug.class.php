@@ -319,8 +319,8 @@ ABSTRACT CLASS add_debug {
     */
    public static function print_data($label,$value) {
       $smarty = new add_smarty();
-      $smarty -> assign('field',$field);
+      $smarty -> assign('label',$label);
       $smarty -> assign('value',$value);
-      static::restricted_echo($smarty->fetch('debug/print_config.tpl'));
+      static::restricted_echo($smarty->fetch('debug/print_data.tpl'));
    }
 }
