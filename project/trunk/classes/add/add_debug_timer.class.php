@@ -114,7 +114,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     *
     * @since ADD MVC 0.7.4
     */
-   public static function print_data($label,$us_time) {
+   public static function print_data($label,$lap_difference) {
       parent::print_data($label,static::us_diff_html(static::us_diff_readable_format($lap_difference),$lap_difference));
    }
 
