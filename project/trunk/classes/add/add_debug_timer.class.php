@@ -101,8 +101,21 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
       $lap_difference = $lap2['timestamp'] - $lap1['timestamp'];
 
-      self::print_config($lap_difference,"$lap1[label]-$lap2[label]");
+      self::print_data("Time Elapse: $lap1[label] -- $lap2[label]",$lap_difference);
 
+   }
+
+
+   /**
+    * print_data extended
+    *
+    * @param float $us_time the microsecond time
+    * @param
+    *
+    * @since ADD MVC 0.7.4
+    */
+   public static function print_data($label,$us_time) {
+      parent::print_data($label,static::us_diff_html(static::us_diff_readable_format($lap_difference),$lap_difference));
    }
 
    /**
