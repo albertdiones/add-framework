@@ -101,7 +101,8 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
       $lap_difference = $lap2['timestamp'] - $lap1['timestamp'];
 
-      static::restricted_echo("<div>".static::us_diff_html(static::us_diff_readable_format($lap_difference),$lap_difference)." from $lap1[label] to $lap2[label] </div>");
+      self::print_config($lap_difference,"$lap1[label]-$lap2[label]");
+
    }
 
    /**
