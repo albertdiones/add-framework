@@ -396,6 +396,8 @@ CLASS add {
          global $add_mvc_root_timer;
 
          if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
+            if (!add::is_live())
+               debug::print_config('environment_status');
             $add_mvc_root_timer->lap("Shutdown");
             $add_mvc_root_timer->print_all_laps();
          }
