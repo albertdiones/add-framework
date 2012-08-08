@@ -310,7 +310,7 @@ ABSTRACT CLASS add_debug {
    public static function print_config($field) {
       $smarty = new add_smarty();
       $smarty -> assign('field',$field);
-      $smarty -> assign(add::config()->$field,$field);
+      $smarty -> assign('value',add::config()->$field);
       static::restricted_echo($smarty->fetch('debug/print_config.tpl'));
    }
 }
