@@ -313,7 +313,7 @@ ABSTRACT CLASS add_debug {
 
 
    /**
-    * Prints a data
+    * Prints a data with label
     *
     * @since ADD MVC 0.7.4
     */
