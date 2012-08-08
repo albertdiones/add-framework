@@ -397,9 +397,9 @@ CLASS add {
 
          if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
             if (!add::is_live()) {
-               debug::print_config('environment_status');
-               debug::print_config('add_dir');
-               debug::print_config('path');
+               add_debug::print_config('environment_status');
+               add_debug::print_config('add_dir');
+               add_debug::print_config('path');
             }
             $add_mvc_root_timer->lap("Shutdown");
             $add_mvc_root_timer->print_all_laps();
