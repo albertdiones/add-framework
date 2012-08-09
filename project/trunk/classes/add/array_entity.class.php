@@ -43,7 +43,7 @@ CLASS array_entity {
     * @since ADD MVC 0.4
     */
    final public static function construct($array) {
-      return new self($array);
+      return new static($array);
    }
 
    /**
