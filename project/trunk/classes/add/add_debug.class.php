@@ -310,9 +310,14 @@ ABSTRACT CLASS add_debug {
    public static function print_config($field, $boolean = false) {
       $value = add::config()->$field;
 
-      if ($boolean)
+      $label = "config - $field";
+
+      if ($boolean) {
          $value = (bool)$value;
-      static::print_data("config - $field declared",$value);
+         $label .= " declared";
+      }
+
+      static::print_data($label,$value);
    }
 
 
