@@ -101,7 +101,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
       $lap_difference = $lap2['timestamp'] - $lap1['timestamp'];
 
-      self::print_data("Time Elapse: $lap1[label] -- $lap2[label]",$lap_difference);
+      self::print_data("Time elapse - $lap1[label] -- $lap2[label]",$lap_difference);
 
    }
 
