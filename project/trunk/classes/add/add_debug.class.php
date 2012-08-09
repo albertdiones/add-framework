@@ -320,13 +320,7 @@ ABSTRACT CLASS add_debug {
    public static function print_data($label,$value) {
       $smarty = new add_smarty();
       $smarty -> assign('label',$label);
-
-      if (is_boolean($value)) {
-         $value = $value ? "(bool) Yes" : "(bool) No";
-      }
-
       $smarty -> assign('value',$value);
-
       static::restricted_echo($smarty->fetch('debug/print_data.tpl'));
    }
 }
