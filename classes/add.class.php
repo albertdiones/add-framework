@@ -395,6 +395,9 @@ CLASS add {
       if (static::$handle_shutdown) {
          global $add_mvc_root_timer;
 
+         $smarty = new add_smarty();
+            $smarty->display('debug/handle_shutdown.tpl');
+
          if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
             if (!add::is_live()) {
                add_debug::print_config('environment_status');
