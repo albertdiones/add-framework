@@ -396,7 +396,7 @@ CLASS add {
          global $add_mvc_root_timer;
 
          $smarty = new add_smarty();
-            $smarty->display('debug/handle_shutdown.tpl');
+         $smarty->display('debug/handle_shutdown.tpl');
 
          if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
             if (!add::is_live()) {
@@ -506,7 +506,7 @@ CLASS add {
          $lib_path = $lib->init_path;
       }
       else {
-         throw new logic_exception("Invalid format for $lib_name");
+         throw new e_developer("Invalid format for $lib_name");
       }
 
       self::include_include_file('libs/'.$lib_path);
