@@ -308,7 +308,7 @@ ABSTRACT CLASS add_debug {
     * @since ADD MVC 0.7.4
     */
    public static function print_config($field) {
-      static::print_data($field,add::config()->$field);
+      static::print_data("config - $field",add::config()->$field);
    }
 
 
