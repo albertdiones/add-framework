@@ -613,7 +613,7 @@ CLASS add {
          $query = array_merge($_GET,$new_query);
       else
          $query = $new_query;
-      return redirect("?".http_build_query($query));
+      return add::redirect("?".http_build_query($query));
    }
 
 
