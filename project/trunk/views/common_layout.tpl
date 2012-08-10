@@ -14,7 +14,7 @@
 
 {block name=head_scripts}{/block}
    </head>
-   <body class="{$ctrl_basename}">
+   <body class="{$ctrl_basename} mode_{$mode}">
       <div id="page">
 
 {block name=header}
