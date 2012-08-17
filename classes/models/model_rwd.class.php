@@ -141,7 +141,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     *
     * @since ADD MVC 0.8
     */
-   public static __add_loaded() {
+   public static function __add_loaded() {
       $table_constant = get_called_class().'::TABLE';
       e_developer::assert(DEFINED($table_constant),"$table_constant is not declared");
    }
