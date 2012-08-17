@@ -25,7 +25,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     *
     * @since ADD MVC 0.0
     */
-   const VERSION = '1.3';
+   const VERSION = '1.4';
 
    /**
     * $this->data
@@ -133,6 +133,17 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     */
    public function __toString() {
       return get_called_class()."#".$this->id();
+   }
+
+
+   /**
+    * Loaded Class Event Handler
+    *
+    * @since ADD MVC 0.8
+    */
+   public static __add_loaded() {
+      $table_constant = get_called_class().'::TABLE';
+      e_developer::assert(DEFINED($table_constant),"$table_constant is not declared");
    }
 
    /**
