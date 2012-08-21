@@ -55,6 +55,7 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl {
       $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
       $this->process_data();
       $this->print_response($this->data);
+      add::$handle_shutdown = false;
    }
 
    /**
