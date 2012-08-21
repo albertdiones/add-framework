@@ -56,7 +56,6 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl {
       $this->process_data();
       $this->print_response($this->data);
       add::$handle_shutdown = false;
-      debug::var_dump(add::$handle_shutdown);
    }
 
    /**
