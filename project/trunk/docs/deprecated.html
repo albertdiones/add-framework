@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC</title>
+<title>ADD MVC Framework</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -52,12 +62,21 @@
 <div class="row">
 <div class="span4"><ul class="side-nav nav nav-list">
 <li class="nav-header">Navigation</li>
+<li><a href="#classes/deprecated/config.class.php"><i class="icon-file"></i>classes/deprecated/config.class.php</a></li>
+<li><a href="#classes/controllers/ctrl_tpl_page.class.php"><i class="icon-file"></i>classes/controllers/ctrl_tpl_page.class.php</a></li>
+<li><a href="#classes/models/model_rwd.class.php"><i class="icon-file"></i>classes/models/model_rwd.class.php</a></li>
+<li><a href="#classes/models/model_image_rwd.class.php"><i class="icon-file"></i>classes/models/model_image_rwd.class.php</a></li>
+<li><a href="#classes/session/session_entity.class.php"><i class="icon-file"></i>classes/session/session_entity.class.php</a></li>
+<li><a href="#classes/add/add_debug_mail.class.php"><i class="icon-file"></i>classes/add/add_debug_mail.class.php</a></li>
+<li><a href="#classes/smarty/add_smarty.class.php"><i class="icon-file"></i>classes/smarty/add_smarty.class.php</a></li>
+<li><a href="#classes/interfaces/i_ctrl_with_view.class.php"><i class="icon-file"></i>classes/interfaces/i_ctrl_with_view.class.php</a></li>
+<li><a href="#classes/interfaces/i_non_overwritable.class.php"><i class="icon-file"></i>classes/interfaces/i_non_overwritable.class.php</a></li>
+<li><a href="#libs/adodb/adodb-xmlschema03.inc.php"><i class="icon-file"></i>libs/adodb/adodb-xmlschema03.inc.php</a></li>
+<li><a href="#libs/adodb/adodb-xmlschema.inc.php"><i class="icon-file"></i>libs/adodb/adodb-xmlschema.inc.php</a></li>
+<li><a href="#libs/adodb/adodb.inc.php"><i class="icon-file"></i>libs/adodb/adodb.inc.php</a></li>
+<li><a href="#libs/smarty/sysplugins/smarty_internal_resource_registered.php"><i class="icon-file"></i>libs/smarty/sysplugins/smarty_internal_resource_registered.php</a></li>
+<li><a href="#libs/smarty/Smarty.class.php"><i class="icon-file"></i>libs/smarty/Smarty.class.php</a></li>
 <li><a href="#functions/common.functions.php"><i class="icon-file"></i>functions/common.functions.php</a></li>
-<li><a href="#classes/add_smarty.class.php"><i class="icon-file"></i>classes/add_smarty.class.php</a></li>
-<li><a href="#classes/i_non_overwritable.class.php"><i class="icon-file"></i>classes/i_non_overwritable.class.php</a></li>
-<li><a href="#classes/model_rwd.class.php"><i class="icon-file"></i>classes/model_rwd.class.php</a></li>
-<li><a href="#classes/add_debug_mail.class.php"><i class="icon-file"></i>classes/add_debug_mail.class.php</a></li>
-<li><a href="#classes/config.class.php"><i class="icon-file"></i>classes/config.class.php</a></li>
 </ul></div>
 <div class="span8">
 <ul class="breadcrumb">
@@ -67,58 +86,28 @@
 <li>Deprecated elements</li>
 </ul>
 <div id="marker-accordion">
-<a name="functions/common.functions.php" id="functions/common.functions.php"></a><h3>
-<i class="icon-file"></i>functions/common.functions.php<small style="float: right;padding-right: 10px;">8</small>
+<a name="classes/deprecated/config.class.php" id="classes/deprecated/config.class.php"></a><h3>
+<i class="icon-file"></i>classes/deprecated/config.class.php<small style="float: right;padding-right: 10px;">2</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
 <th>Type</th>
 <th>Line</th>
 <th>Description</th>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>107</td>
-<td>due to incompatibility with ADD MVC</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>117</td>
-<td>due to incompatibility with ADD MVC</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>127</td>
-<td>due to incompatibility with ADD MVC</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>137</td>
-<td>due to incompatibility with ADD MVC</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>147</td>
-<td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
 <td>2</td>
-<td></td>
+<td>see add::config()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>63</td>
-<td>due to incompatibility with ADD MVC</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>85</td>
-<td>due to incompatibility with ADD MVC</td>
+<td>2</td>
+<td>see add::config()</td>
 </tr>
 </table></div>
-<a name="classes/add_smarty.class.php" id="classes/add_smarty.class.php"></a><h3>
-<i class="icon-file"></i>classes/add_smarty.class.php<small style="float: right;padding-right: 10px;">1</small>
+<a name="classes/controllers/ctrl_tpl_page.class.php" id="classes/controllers/ctrl_tpl_page.class.php"></a><h3>
+<i class="icon-file"></i>classes/controllers/ctrl_tpl_page.class.php<small style="float: right;padding-right: 10px;">3</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
@@ -128,12 +117,22 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>49</td>
-<td>unused</td>
+<td>314</td>
+<td>use the view instead</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>325</td>
+<td>use the view instead</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>335</td>
+<td>use the view instead</td>
 </tr>
 </table></div>
-<a name="classes/i_non_overwritable.class.php" id="classes/i_non_overwritable.class.php"></a><h3>
-<i class="icon-file"></i>classes/i_non_overwritable.class.php<small style="float: right;padding-right: 10px;">2</small>
+<a name="classes/models/model_rwd.class.php" id="classes/models/model_rwd.class.php"></a><h3>
+<i class="icon-file"></i>classes/models/model_rwd.class.php<small style="float: right;padding-right: 10px;">7</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
@@ -143,62 +142,72 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>3</td>
-<td>unused</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>3</td>
-<td>unused</td>
-</tr>
-</table></div>
-<a name="classes/model_rwd.class.php" id="classes/model_rwd.class.php"></a><h3>
-<i class="icon-file"></i>classes/model_rwd.class.php<small style="float: right;padding-right: 10px;">7</small>
-</h3>
-<div><table class="table markers table-bordered">
-<tr>
-<th>Type</th>
-<th>Line</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>703</td>
+<td>731</td>
 <td>use get_row_instance()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>729</td>
+<td>757</td>
 <td>use get_row_instance()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>746</td>
+<td>774</td>
 <td>use model_rwd::get_where_order_page</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>760</td>
+<td>788</td>
 <td>static::get_all</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>772</td>
+<td>800</td>
 <td>see static::get_page_instances()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>787</td>
+<td>815</td>
 <td>use model_rwd::instances_from_sql()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>807</td>
+<td>835</td>
 <td></td>
 </tr>
 </table></div>
-<a name="classes/add_debug_mail.class.php" id="classes/add_debug_mail.class.php"></a><h3>
-<i class="icon-file"></i>classes/add_debug_mail.class.php<small style="float: right;padding-right: 10px;">1</small>
+<a name="classes/models/model_image_rwd.class.php" id="classes/models/model_image_rwd.class.php"></a><h3>
+<i class="icon-file"></i>classes/models/model_image_rwd.class.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>381</td>
+<td>use add_new_image()</td>
+</tr>
+</table></div>
+<a name="classes/session/session_entity.class.php" id="classes/session/session_entity.class.php"></a><h3>
+<i class="icon-file"></i>classes/session/session_entity.class.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>12</td>
+<td>use $this->data instead</td>
+</tr>
+</table></div>
+<a name="classes/add/add_debug_mail.class.php" id="classes/add/add_debug_mail.class.php"></a><h3>
+<i class="icon-file"></i>classes/add/add_debug_mail.class.php<small style="float: right;padding-right: 10px;">1</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
@@ -212,8 +221,23 @@
 <td>unused</td>
 </tr>
 </table></div>
-<a name="classes/config.class.php" id="classes/config.class.php"></a><h3>
-<i class="icon-file"></i>classes/config.class.php<small style="float: right;padding-right: 10px;">2</small>
+<a name="classes/smarty/add_smarty.class.php" id="classes/smarty/add_smarty.class.php"></a><h3>
+<i class="icon-file"></i>classes/smarty/add_smarty.class.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>49</td>
+<td>unused</td>
+</tr>
+</table></div>
+<a name="classes/interfaces/i_ctrl_with_view.class.php" id="classes/interfaces/i_ctrl_with_view.class.php"></a><h3>
+<i class="icon-file"></i>classes/interfaces/i_ctrl_with_view.class.php<small style="float: right;padding-right: 10px;">2</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
@@ -224,12 +248,182 @@
 <tr>
 <td>deprecated</td>
 <td>2</td>
-<td>see add::config()</td>
+<td>use i_with_view</td>
 </tr>
 <tr>
 <td>deprecated</td>
 <td>2</td>
-<td>see add::config()</td>
+<td>use i_with_view</td>
+</tr>
+</table></div>
+<a name="classes/interfaces/i_non_overwritable.class.php" id="classes/interfaces/i_non_overwritable.class.php"></a><h3>
+<i class="icon-file"></i>classes/interfaces/i_non_overwritable.class.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>3</td>
+<td>unused</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>3</td>
+<td>unused</td>
+</tr>
+</table></div>
+<a name="libs/adodb/adodb-xmlschema03.inc.php" id="libs/adodb/adodb-xmlschema03.inc.php"></a><h3>
+<i class="icon-file"></i>libs/adodb/adodb-xmlschema03.inc.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>1570</td>
+<td>Replaced by adoSchema::ParseSchema() and adoSchema::ParseSchemaString()</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>2371</td>
+<td>adoSchema now cleans up automatically.</td>
+</tr>
+</table></div>
+<a name="libs/adodb/adodb-xmlschema.inc.php" id="libs/adodb/adodb-xmlschema.inc.php"></a><h3>
+<i class="icon-file"></i>libs/adodb/adodb-xmlschema.inc.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>1422</td>
+<td>Replaced by adoSchema::ParseSchema() and adoSchema::ParseSchemaString()</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>2190</td>
+<td>adoSchema now cleans up automatically.</td>
+</tr>
+</table></div>
+<a name="libs/adodb/adodb.inc.php" id="libs/adodb/adodb.inc.php"></a><h3>
+<i class="icon-file"></i>libs/adodb/adodb.inc.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>4142</td>
+<td></td>
+</tr>
+</table></div>
+<a name="libs/smarty/sysplugins/smarty_internal_resource_registered.php" id="libs/smarty/sysplugins/smarty_internal_resource_registered.php"></a><h3>
+<i class="icon-file"></i>libs/smarty/sysplugins/smarty_internal_resource_registered.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>11</td>
+<td></td>
+</tr>
+</table></div>
+<a name="libs/smarty/Smarty.class.php" id="libs/smarty/Smarty.class.php"></a><h3>
+<i class="icon-file"></i>libs/smarty/Smarty.class.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>64</td>
+<td>in favor of Smarty::$_CHARSET</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>70</td>
+<td>in favor of Smarty::$_DATE_FORMAT</td>
+</tr>
+</table></div>
+<a name="functions/common.functions.php" id="functions/common.functions.php"></a><h3>
+<i class="icon-file"></i>functions/common.functions.php<small style="float: right;padding-right: 10px;">10</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>100</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>110</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>120</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>130</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>140</td>
+<td>see add::redirect()</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>153</td>
+<td>see add::redirect_query()</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>46</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>68</td>
+<td>due to incompatibility with ADD MVC</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>90</td>
+<td>due to incompatibility with ADD MVC</td>
 </tr>
 </table></div>
 </div>
@@ -238,7 +432,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:49:01+04:00.<br></footer></div>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » \e_add</title>
+<title>ADD MVC Framework » \e_add</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -62,6 +72,8 @@
 <li class="method public "><a href="#__toString" title="__toString :: "><span class="description">__toString()
         </span><pre>__toString()</pre></a></li>
 <li class="method public "><a href="#assert" title="assert :: Checks $condition, if false, throw the exception class"><span class="description">Checks $condition, if false, throw the exception class</span><pre>assert()</pre></a></li>
+<li class="method public "><a href="#display_view" title="display_view :: "><span class="description">display_view()
+        </span><pre>display_view()</pre></a></li>
 <li class="method public "><a href="#getCode" title="getCode :: "><span class="description">getCode()
         </span><pre>getCode()</pre></a></li>
 <li class="method public "><a href="#getFile" title="getFile :: "><span class="description">getFile()
@@ -79,6 +91,7 @@
 <li class="method public "><a href="#handle_exception" title="handle_exception :: The handling of the exception
 Extend this to child classes"><span class="description">The handling of the exception
 Extend this to child classes</span><pre>handle_exception()</pre></a></li>
+<li class="method public "><a href="#handle_sensitive_exception" title="handle_sensitive_exception :: Handling Exceptions"><span class="description">Handling Exceptions</span><pre>handle_sensitive_exception()</pre></a></li>
 <li class="method public "><a href="#mail" title="mail :: Send email about the exception"><span class="description">Send email about the exception</span><pre>mail()</pre></a></li>
 <li class="method public "><a href="#mail_body" title="mail_body :: The mail body / message
 Extend this to child classes"><span class="description">The mail body / message
@@ -87,12 +100,14 @@ Extend this to child classes</span><pre>mail_body()</pre></a></li>
 <li class="method public "><a href="#mail_to" title="mail_to :: The email recipient
 Extend this to child classes"><span class="description">The email recipient
 Extend this to child classes</span><pre>mail_to()</pre></a></li>
+<li class="method public "><a href="#print_exception" title="print_exception :: print_exception()"><span class="description">print_exception()</span><pre>print_exception()</pre></a></li>
+<li class="method public "><a href="#view" title="view :: The smarty object"><span class="description">The smarty object</span><pre>view()</pre></a></li>
+<li class="method public "><a href="#view_basename" title="view_basename :: The view base file name of $this controller"><span class="description">The view base file name of $this controller</span><pre>view_basename()</pre></a></li>
+<li class="method public "><a href="#view_filepath" title="view_filepath :: The view filepath of $this controller"><span class="description">The view filepath of $this controller</span><pre>view_filepath()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24data" title="$data :: exception data"><span class="description">exception data</span><pre>$data</pre></a></li>
-<li class="nav-header">
-<i class="icon-custom icon-constant"></i> Constants</li>
-<li class="constant  "><a href="#EMAIL" title="EMAIL :: Email adress(es) to send debug email to"><span class="description">Email adress(es) to send debug email to</span><pre>EMAIL</pre></a></li>
+<li class="property public "><a href="#%24email_addresses" title="$email_addresses :: Email adress(es) to send debug email to"><span class="description">Email adress(es) to send debug email to</span><pre>$email_addresses</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -116,7 +131,7 @@ Custom Exception Class</p>
 </tr>
 <tr>
 <th>version</th>
-<td>0.0</td>
+<td>0.2</td>
 </tr>
 </table>
 <h3>
@@ -124,14 +139,31 @@ Custom Exception Class</p>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
 <h2>__construct()
         </h2>
-<pre>__construct() </pre>
+<pre>__construct(string $message, mixed $data, int $code, Exception $exception) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>Exception::__construct()</td>
+<th>since</th>
+<td>ADD MVC 0.4</td>
 </tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$code</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$exception</h4>
+<code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code>
+</div>
 </div></div>
 </div>
 <a name="__toString" id="__toString"></a><div class="element clickable method public __toString" data-toggle="collapse" data-target=".__toString .collapse">
@@ -149,14 +181,20 @@ Custom Exception Class</p>
 </div>
 <a name="assert" id="assert"></a><div class="element clickable method public assert" data-toggle="collapse" data-target=".assert .collapse">
 <h2>Checks $condition, if false, throw the exception class</h2>
-<pre>assert(mixed $condition, string $message, int $error_number, mixed $data) </pre>
+<pre>assert(mixed $condition, string $message, mixed $data, int $error_number) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
 <td>ADD MVC 0.0</td>
-</tr></table>
+</tr>
+<tr>
+<th>version</th>
+<td>0.1</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$condition</h4>
@@ -166,12 +204,19 @@ Custom Exception Class</p>
 <h4>$message</h4>
 <code>string</code><p>the error message</p></div>
 <div class="subelement argument">
-<h4>$error_number</h4>
-<code>int</code><p>the error code</p></div>
-<div class="subelement argument">
 <h4>$data</h4>
 <code>mixed</code><p>extra data of the error</p></div>
+<div class="subelement argument">
+<h4>$error_number</h4>
+<code>int</code><p>the error code</p></div>
 </div></div>
+</div>
+<a name="display_view" id="display_view"></a><div class="element clickable method public display_view" data-toggle="collapse" data-target=".display_view .collapse">
+<h2>display_view()
+        </h2>
+<pre>display_view() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="getCode" id="getCode"></a><div class="element clickable method public getCode" data-toggle="collapse" data-target=".getCode .collapse">
 <h2>getCode()
@@ -277,6 +322,23 @@ Extend this to child classes</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="handle_sensitive_exception" id="handle_sensitive_exception"></a><div class="element clickable method public handle_sensitive_exception" data-toggle="collapse" data-target=".handle_sensitive_exception .collapse">
+<h2>Handling Exceptions</h2>
+<pre>handle_sensitive_exception($user_message) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_message</h4>
+<code></code>
+</div>
+</div></div>
+</div>
 <a name="mail" id="mail"></a><div class="element clickable method public mail" data-toggle="collapse" data-target=".mail .collapse">
 <h2>Send email about the exception</h2>
 <pre>mail() </pre>
@@ -327,6 +389,42 @@ Extend this to child classes</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="print_exception" id="print_exception"></a><div class="element clickable method public print_exception" data-toggle="collapse" data-target=".print_exception .collapse">
+<h2>print_exception()</h2>
+<pre>print_exception() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr></table>
+</div></div>
+</div>
+<a name="view" id="view"></a><div class="element clickable method public view" data-toggle="collapse" data-target=".view .collapse">
+<h2>The smarty object</h2>
+<pre>view() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr></table>
+</div></div>
+</div>
+<a name="view_basename" id="view_basename"></a><div class="element clickable method public view_basename" data-toggle="collapse" data-target=".view_basename .collapse">
+<h2>The view base file name of $this controller</h2>
+<pre>view_basename() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="view_filepath" id="view_filepath"></a><div class="element clickable method public view_filepath" data-toggle="collapse" data-target=".view_filepath .collapse">
+<h2>The view filepath of $this controller</h2>
+<pre>view_filepath() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24data" id="$data"> </a><div class="element clickable property public $data" data-toggle="collapse" data-target=".$data .collapse">
@@ -341,11 +439,9 @@ Extend this to child classes</h2>
 </tr></table>
 </div></div>
 </div>
-<h3>
-<i class="icon-custom icon-constant"></i> Constants</h3>
-<a name="EMAIL" id="EMAIL"> </a><div class="element clickable constant  EMAIL" data-toggle="collapse" data-target=".EMAIL .collapse">
+<a name="%24email_addresses" id="$email_addresses"> </a><div class="element clickable property public $email_addresses" data-toggle="collapse" data-target=".$email_addresses .collapse">
 <h2>Email adress(es) to send debug email to</h2>
-<pre>EMAIL </pre>
+<pre>$email_addresses </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -356,7 +452,7 @@ Extend this to child classes</h2>
 </tr>
 <tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
+<td>ADD MVC 0.3</td>
 </tr>
 </table>
 </div></div>
@@ -368,7 +464,7 @@ Extend this to child classes</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:42:29+04:00.<br></footer></div>
 </div>
 </body>
 </html>

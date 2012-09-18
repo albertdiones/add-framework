@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » \pagination</title>
+<title>ADD MVC Framework » \pagination</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -70,6 +80,8 @@ example: $document('div &gt; .odd');</span><pre>__invoke()</pre></a></li>
 <li class="method public inherited"><a href="#css2xpath" title="css2xpath :: css2xpath($selector)
 Converts CSS3 path to Xpath"><span class="description">css2xpath($selector)
 Converts CSS3 path to Xpath</span><pre>css2xpath()</pre></a></li>
+<li class="method public inherited"><a href="#dom_xpath" title="dom_xpath :: Returns the DOMXPath object to use"><span class="description">Returns the DOMXPath object to use</span><pre>dom_xpath()</pre></a></li>
+<li class="method public inherited"><a href="#dummy_document" title="dummy_document :: Creates a dummy document"><span class="description">Creates a dummy document</span><pre>dummy_document()</pre></a></li>
 <li class="method public inherited"><a href="#factory" title="factory :: factory
 factory function"><span class="description">factory
 factory function</span><pre>factory()</pre></a></li>
@@ -78,16 +90,19 @@ factory function</span><pre>factory()</pre></a></li>
 <li class="method public inherited"><a href="#html" title="html :: The html contents"><span class="description">The html contents</span><pre>html()</pre></a></li>
 <li class="method public inherited"><a href="#insertBefore" title="insertBefore :: Inserts an element on the start of the element"><span class="description">Inserts an element on the start of the element</span><pre>insertBefore()</pre></a></li>
 <li class="method public "><a href="#max_page" title="max_page :: Returns the max page of the pagination"><span class="description">Returns the max page of the pagination</span><pre>max_page()</pre></a></li>
+<li class="method public inherited"><a href="#text" title="text :: Returns the text value of the first element (non html)"><span class="description">Returns the text value of the first element (non html)</span><pre>text()</pre></a></li>
+<li class="method public inherited"><a href="#xfind" title="xfind :: Find an element using xfind"><span class="description">Find an element using xfind</span><pre>xfind()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24base_url" title="$base_url :: The base url of the pagination links"><span class="description">The base url of the pagination links</span><pre>$base_url</pre></a></li>
 <li class="property public "><a href="#%24current_page" title="$current_page :: The current page"><span class="description">The current page</span><pre>$current_page</pre></a></li>
-<li class="property public inherited"><a href="#%24document" title="$document :: The dom document that owns this element"><span class="description">The dom document that owns this element</span><pre>$document</pre></a></li>
+<li class="property public inherited"><a href="#%24dummy_document" title="$dummy_document :: The dom document that owns this element"><span class="description">The dom document that owns this element</span><pre>$dummy_document</pre></a></li>
 <li class="property public "><a href="#%24hidden_page_padding" title="$hidden_page_padding :: The maximum number of pages to show from the left and right of the current page"><span class="description">The maximum number of pages to show from the left and right of the current page</span><pre>$hidden_page_padding</pre></a></li>
 <li class="property public "><a href="#%24merge_get" title="$merge_get :: Flag on merging the current $_GET"><span class="description">Flag on merging the current $_GET</span><pre>$merge_get</pre></a></li>
 <li class="property public "><a href="#%24page_get_key" title="$page_get_key :: The index of $_GET that represent the page number"><span class="description">The index of $_GET that represent the page number</span><pre>$page_get_key</pre></a></li>
 <li class="property public "><a href="#%24total_count" title="$total_count :: The total count of the elements"><span class="description">The total count of the elements</span><pre>$total_count</pre></a></li>
 <li class="nav-header protected">» Protected</li>
+<li class="property protected inherited"><a href="#%24dom_xpath" title="$dom_xpath :: The dom xpath cache"><span class="description">The dom xpath cache</span><pre>$dom_xpath</pre></a></li>
 <li class="property protected inherited"><a href="#%24instance" title="$instance :: The $instance of the DOM object"><span class="description">The $instance of the DOM object</span><pre>$instance</pre></a></li>
 <li class="property protected inherited"><a href="#%24tag_name" title="$tag_name :: The tagname of the dom element"><span class="description">The tagname of the dom element</span><pre>$tag_name</pre></a></li>
 </ul>
@@ -340,6 +355,42 @@ Converts CSS3 path to Xpath</h2>
 <code>string</code><p>css selector</p></div>
 </div></div>
 </div>
+<a name="dom_xpath" id="dom_xpath"></a><div class="element clickable method public dom_xpath" data-toggle="collapse" data-target=".dom_xpath .collapse">
+<h2>Returns the DOMXPath object to use</h2>
+<pre>dom_xpath() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4.2</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_element_wrapper::dom_xpath()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="dummy_document" id="dummy_document"></a><div class="element clickable method public dummy_document" data-toggle="collapse" data-target=".dummy_document .collapse">
+<h2>Creates a dummy document</h2>
+<pre>dummy_document() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_element_wrapper::dummy_document()</td>
+</tr>
+</table>
+</div></div>
+</div>
 <a name="factory" id="factory"></a><div class="element clickable method public factory" data-toggle="collapse" data-target=".factory .collapse">
 <h2>factory
 factory function</h2>
@@ -461,6 +512,47 @@ factory function</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="text" id="text"></a><div class="element clickable method public text" data-toggle="collapse" data-target=".text .collapse">
+<h2>Returns the text value of the first element (non html)</h2>
+<pre>text() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4.2</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_element_wrapper::text()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="xfind" id="xfind"></a><div class="element clickable method public xfind" data-toggle="collapse" data-target=".xfind .collapse">
+<h2>Find an element using xfind</h2>
+<pre>xfind($xpath) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4.2</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_element_wrapper::xfind()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$xpath</h4>
+<code></code>
+</div>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24base_url" id="$base_url"> </a><div class="element clickable property public $base_url" data-toggle="collapse" data-target=".$base_url .collapse">
@@ -487,9 +579,9 @@ factory function</h2>
 </tr></table>
 </div></div>
 </div>
-<a name="%24document" id="$document"> </a><div class="element clickable property public $document" data-toggle="collapse" data-target=".$document .collapse">
+<a name="%24dummy_document" id="$dummy_document"> </a><div class="element clickable property public $dummy_document" data-toggle="collapse" data-target=".$dummy_document .collapse">
 <h2>The dom document that owns this element</h2>
-<pre>$document </pre>
+<pre>$dummy_document </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -500,7 +592,7 @@ factory function</h2>
 </tr>
 <tr>
 <th>inherited_from</th>
-<td>\dom_element_wrapper::$$document</td>
+<td>\dom_element_wrapper::$$dummy_document</td>
 </tr>
 </table>
 </div></div>
@@ -553,6 +645,28 @@ factory function</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="%24dom_xpath" id="$dom_xpath"> </a><div class="element clickable property protected $dom_xpath" data-toggle="collapse" data-target=".$dom_xpath .collapse">
+<h2>The dom xpath cache</h2>
+<pre>$dom_xpath </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4.2</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_wrapper::$$dom_xpath</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\dom_element_wrapper::$$dom_xpath</td>
+</tr>
+</table>
+</div></div>
+</div>
 <a name="%24instance" id="$instance"> </a><div class="element clickable property protected $instance" data-toggle="collapse" data-target=".$instance .collapse">
 <h2>The $instance of the DOM object</h2>
 <pre>$instance </pre>
@@ -600,7 +714,7 @@ factory function</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:42:18+04:00.<br></footer></div>
 </div>
 </body>
 </html>

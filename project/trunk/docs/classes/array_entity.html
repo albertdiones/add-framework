@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » \array_entity</title>
+<title>ADD MVC Framework » \array_entity</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -64,6 +74,8 @@ Gets $this-&gt;data[$varname]</span><pre>__get()</pre></a></li>
 <li class="method public "><a href="#__set" title="__set :: Magic function __set
 Sets $this-&gt;data[$varname] = $value"><span class="description">Magic function __set
 Sets $this-&gt;data[$varname] = $value</span><pre>__set()</pre></a></li>
+<li class="method public "><a href="#__unset" title="__unset :: Magic function __unset()"><span class="description">Magic function __unset()</span><pre>__unset()</pre></a></li>
+<li class="method public "><a href="#construct" title="construct :: construct"><span class="description">construct</span><pre>construct()</pre></a></li>
 <li class="method public "><a href="#current" title="current :: Iterator::current() implementation"><span class="description">Iterator::current() implementation</span><pre>current()</pre></a></li>
 <li class="method public "><a href="#key" title="key :: Iterator::key() implementation"><span class="description">Iterator::key() implementation</span><pre>key()</pre></a></li>
 <li class="method public "><a href="#next" title="next :: Iterator::next() implementation"><span class="description">Iterator::next() implementation</span><pre>next()</pre></a></li>
@@ -177,6 +189,46 @@ Sets $this-&gt;data[$varname] = $value</h2>
 <div class="subelement argument">
 <h4>$value</h4>
 <code>mixed</code>
+</div>
+</div></div>
+</div>
+<a name="__unset" id="__unset"></a><div class="element clickable method public __unset" data-toggle="collapse" data-target=".__unset .collapse">
+<h2>Magic function __unset()</h2>
+<pre>__unset(mixed $varname) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>mixed</code><p>(scalar values only)</p>
+</div>
+</div></div>
+</div>
+<a name="construct" id="construct"></a><div class="element clickable method public construct" data-toggle="collapse" data-target=".construct .collapse">
+<h2>construct</h2>
+<pre>construct($array) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.4</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code></code>
 </div>
 </div></div>
 </div>
@@ -332,7 +384,7 @@ Fills $this-&gt;data with the $array contents</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:42:37+04:00.<br></footer></div>
 </div>
 </body>
 </html>
