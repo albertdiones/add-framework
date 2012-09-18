@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » ADD MVC</title>
+<title>ADD MVC Framework » ADD MVC</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -95,9 +105,9 @@
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#config" title="Config singleton class">config</a></li>
 <li><a href="#add" title="Add Framework Class
 Every sitewide features and modules should be based from this class">add</a></li>
-<li><a href="#config" title="Config singleton class">config</a></li>
 </ul>
 </div>
 <div class="span8 package-contents">
@@ -173,6 +183,13 @@ Being considered to be deprecated</p>
 <div class="package-indent">
 <h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="i_ctrl_with_view" id="i_ctrl_with_view"></a><div class="element ajax clickable interface" href="../classes/i_ctrl_with_view.html">
+<h1>i_ctrl_with_view<a href="../classes/i_ctrl_with_view.html">¶</a>
+</h1>
+<p class="short_description">ctrl_tpl_with_view controller interface</p>
+<div class="details collapse"></div>
+<a href="../classes/i_ctrl_with_view.html" class="more">« More »</a>
+</div>
 <a name="ctrl_tpl_ajax" id="ctrl_tpl_ajax"></a><div class="element ajax clickable class" href="../classes/ctrl_tpl_ajax.html">
 <h1>ctrl_tpl_ajax<a href="../classes/ctrl_tpl_ajax.html">¶</a>
 </h1>
@@ -206,6 +223,14 @@ A sample 404 page controller</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_page_404.html" class="more">« More »</a>
 </div>
+<a name="ctrl_page_index" id="ctrl_page_index"></a><div class="element ajax clickable class" href="../classes/ctrl_page_index.html">
+<h1>ctrl_page_index<a href="../classes/ctrl_page_index.html">¶</a>
+</h1>
+<p class="short_description">ctrl_page_index default index page
+A sample index page controller</p>
+<div class="details collapse"></div>
+<a href="../classes/ctrl_page_index.html" class="more">« More »</a>
+</div>
 </div>
 </div>
 <ul class="breadcrumb">
@@ -218,6 +243,14 @@ A sample 404 page controller</p>
 <div class="package-indent">
 <h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="dom_document_wrapper" id="dom_document_wrapper"></a><div class="element ajax clickable class" href="../classes/dom_document_wrapper.html">
+<h1>dom_document_wrapper<a href="../classes/dom_document_wrapper.html">¶</a>
+</h1>
+<p class="short_description">dom_document_wrapper CLASS
+Wrapper of DOMDocument class</p>
+<div class="details collapse"></div>
+<a href="../classes/dom_document_wrapper.html" class="more">« More »</a>
+</div>
 <a name="dom_element_wrapper" id="dom_element_wrapper"></a><div class="element ajax clickable class" href="../classes/dom_element_wrapper.html">
 <h1>dom_element_wrapper<a href="../classes/dom_element_wrapper.html">¶</a>
 </h1>
@@ -344,6 +377,14 @@ Custom Exception Class for spam errors</p>
 <div class="details collapse"></div>
 <a href="../classes/e_spam.html" class="more">« More »</a>
 </div>
+<a name="e_system" id="e_system"></a><div class="element ajax clickable class" href="../classes/e_system.html">
+<h1>e_system<a href="../classes/e_system.html">¶</a>
+</h1>
+<p class="short_description">e_system class
+Custom Exception Class for system errors</p>
+<div class="details collapse"></div>
+<a href="../classes/e_system.html" class="more">« More »</a>
+</div>
 <a name="e_unknown" id="e_unknown"></a><div class="element ajax clickable class" href="../classes/e_unknown.html">
 <h1>e_unknown<a href="../classes/e_unknown.html">¶</a>
 </h1>
@@ -367,6 +408,13 @@ Custom Exception Class for user errors</p>
 <div class="details collapse"></div>
 <a href="../classes/e_user_input.html" class="more">« More »</a>
 </div>
+<a name="e_user_malicious" id="e_user_malicious"></a><div class="element ajax clickable class" href="../classes/e_user_malicious.html">
+<h1>e_user_malicious<a href="../classes/e_user_malicious.html">¶</a>
+</h1>
+<p class="short_description">malicious user error exception</p>
+<div class="details collapse"></div>
+<a href="../classes/e_user_malicious.html" class="more">« More »</a>
+</div>
 </div>
 <ul class="breadcrumb">
 <li>
@@ -378,6 +426,14 @@ Custom Exception Class for user errors</p>
 <div class="package-indent">
 <h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="add_curl" id="add_curl"></a><div class="element ajax clickable class" href="../classes/add_curl.html">
+<h1>add_curl<a href="../classes/add_curl.html">¶</a>
+</h1>
+<p class="short_description">add_curl
+advance cURL library</p>
+<div class="details collapse"></div>
+<a href="../classes/add_curl.html" class="more">« More »</a>
+</div>
 <a name="add_smarty" id="add_smarty"></a><div class="element ajax clickable class" href="../classes/add_smarty.html">
 <h1>add_smarty<a href="../classes/add_smarty.html">¶</a>
 </h1>
@@ -391,6 +447,13 @@ Custom Exception Class for user errors</p>
 <p class="short_description">array_entity class</p>
 <div class="details collapse"></div>
 <a href="../classes/array_entity.html" class="more">« More »</a>
+</div>
+<a name="e_add_smarty" id="e_add_smarty"></a><div class="element ajax clickable class" href="../classes/e_add_smarty.html">
+<h1>e_add_smarty<a href="../classes/e_add_smarty.html">¶</a>
+</h1>
+<p class="short_description">Smarty view for exceptions</p>
+<div class="details collapse"></div>
+<a href="../classes/e_add_smarty.html" class="more">« More »</a>
 </div>
 <ul class="breadcrumb">
 <li>
@@ -486,6 +549,19 @@ Checks if the current user's ip is in the network</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="current_user_ip" id="current_user_ip"></a><div class="element clickable function  current_user_ip" data-toggle="collapse" data-target=".current_user_ip .collapse">
+<h2>string current_user_ip()
+Gets the IP of the user</h2>
+<pre>current_user_ip() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.1</td>
+</tr></table>
+</div></div>
+</div>
 <a name="date_from_gmttimestamp" id="date_from_gmttimestamp"></a><div class="element clickable function  date_from_gmttimestamp" data-toggle="collapse" data-target=".date_from_gmttimestamp .collapse">
 <h2>server date from the gmt timestamp</h2>
 <pre>date_from_gmttimestamp(string $format, int $gmt_timestamp) </pre>
@@ -537,10 +613,16 @@ callback function for handling trigger_error() errors</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>see</th>
 <td>\http://www.php.net/manual/en/function.set-error-handler.php</td>
-</tr></table>
+</tr>
+<tr>
+<th>version</th>
+<td>1.0</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$errno</h4>
@@ -654,6 +736,10 @@ die() included</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>see add::redirect()</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$url</h4>
@@ -675,6 +761,10 @@ redirects to the new query string, die()s in the process</h2>
 <tr>
 <th>uses</th>
 <td>\redirect()</td>
+</tr>
+<tr>
+<th>deprecated</th>
+<td>see add::redirect_query()</td>
 </tr>
 </table>
 <h3>Parameters</h3>
@@ -845,7 +935,7 @@ A class for db entities that are images</p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:58+04:00.<br></footer></div>
+            generated on 2012-09-19T01:40:56+04:00.<br></footer></div>
 </div>
 </body>
 </html>

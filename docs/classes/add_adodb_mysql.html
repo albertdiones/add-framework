@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » \add_adodb_mysql</title>
+<title>ADD MVC Framework » \add_adodb_mysql</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -61,8 +71,6 @@
         </span><pre>Connect()</pre></a></li>
 <li class="method public inherited"><a href="#__call" title="__call :: "><span class="description">__call()
         </span><pre>__call()</pre></a></li>
-<li class="method public inherited"><a href="#__callStatic" title="__callStatic :: "><span class="description">__callStatic()
-        </span><pre>__callStatic()</pre></a></li>
 <li class="method public inherited"><a href="#__clone" title="__clone :: "><span class="description">__clone()
         </span><pre>__clone()</pre></a></li>
 <li class="method public inherited"><a href="#__construct" title="__construct :: "><span class="description">__construct()
@@ -83,6 +91,7 @@
         </span><pre>quote()</pre></a></li>
 <li class="method public inherited"><a href="#singleton" title="singleton :: "><span class="description">singleton()
         </span><pre>singleton()</pre></a></li>
+<li class="method public inherited"><a href="#varname" title="varname :: The variable name of the singleton of this class"><span class="description">The variable name of the singleton of this class</span><pre>varname()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public inherited"><a href="#%24add_last_operation" title="$add_last_operation :: "><span class="description">$add_last_operation</span><pre>$add_last_operation</pre></a></li>
@@ -138,28 +147,6 @@ Being considered to be deprecated</p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\add_adodb::__call()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$method</h4>
-<code></code>
-</div>
-<div class="subelement argument">
-<h4>$args</h4>
-<code></code>
-</div>
-</div></div>
-</div>
-<a name="__callStatic" id="__callStatic"></a><div class="element clickable method public __callStatic" data-toggle="collapse" data-target=".__callStatic .collapse">
-<h2>__callStatic()
-        </h2>
-<pre>__callStatic($method, $args) </pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\add_adodb::__callStatic()</td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -317,6 +304,24 @@ Being considered to be deprecated</p>
 </tr></table>
 </div></div>
 </div>
+<a name="varname" id="varname"></a><div class="element clickable method public varname" data-toggle="collapse" data-target=".varname .collapse">
+<h2>The variable name of the singleton of this class</h2>
+<pre>varname() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\add_adodb::varname()</td>
+</tr>
+</table>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24add_last_operation" id="$add_last_operation"> </a><div class="element clickable property public $add_last_operation" data-toggle="collapse" data-target=".$add_last_operation .collapse">
@@ -406,7 +411,7 @@ Being considered to be deprecated</p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:42:38+04:00.<br></footer></div>
 </div>
 </body>
 </html>

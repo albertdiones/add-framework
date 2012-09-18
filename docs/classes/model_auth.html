@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC » \model_auth</title>
+<title>ADD MVC Framework » \model_auth</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,12 +15,17 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,13 +36,18 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">4152</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">20</span>
-</li></ul></a></li>
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">21</span></a></li>
+                <span class="label label-info">38</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -66,6 +76,7 @@ Gets $this-&gt;data[$varname]</span><pre>__get()</pre></a></li>
 (also updates the db row on the end of the script)"><span class="description">Sets a field
 (also updates the db row on the end of the script)</span><pre>__set()</pre></a></li>
 <li class="method public inherited"><a href="#__toString" title="__toString :: The string equivalent when object instance converted to string"><span class="description">The string equivalent when object instance converted to string</span><pre>__toString()</pre></a></li>
+<li class="method public inherited"><a href="#__unset" title="__unset :: Magic function __unset()"><span class="description">Magic function __unset()</span><pre>__unset()</pre></a></li>
 <li class="method public inherited"><a href="#add_new" title="add_new :: Insert a new row and return the new object instance"><span class="description">Insert a new row and return the new object instance</span><pre>add_new()</pre></a></li>
 <li class="method public inherited"><a href="#cache_array_main_id" title="cache_array_main_id :: Returns the cache_main_key() value
 the scalar index to use when caching an instance using the primary key
@@ -78,11 +89,13 @@ on normal</span><pre>cache_array_main_id()</pre></a></li>
 the scalar index to use when caching $this instance using the primary key"><span class="description">Returns the cache_main_key() value
 the scalar index to use when caching $this instance using the primary key</span><pre>cache_main_id()</pre></a></li>
 <li class="method public inherited"><a href="#cache_main_key" title="cache_main_key :: Returns the scalar index to use caching instances of this class using the primary key"><span class="description">Returns the scalar index to use caching instances of this class using the primary key</span><pre>cache_main_key()</pre></a></li>
+<li class="method public inherited"><a href="#construct" title="construct :: construct"><span class="description">construct</span><pre>construct()</pre></a></li>
 <li class="method public inherited"><a href="#current" title="current :: Iterator::current() implementation"><span class="description">Iterator::current() implementation</span><pre>current()</pre></a></li>
 <li class="method public "><a href="#current_logged_in" title="current_logged_in :: Currently logged in user
 Fetches the object instance of the currently logged in user"><span class="description">Currently logged in user
 Fetches the object instance of the currently logged in user</span><pre>current_logged_in()</pre></a></li>
 <li class="method public inherited"><a href="#data_array" title="data_array :: returns $this-&gt;data array for debugging"><span class="description">returns $this-&gt;data array for debugging</span><pre>data_array()</pre></a></li>
+<li class="method public inherited"><a href="#db" title="db :: db function"><span class="description">db function</span><pre>db()</pre></a></li>
 <li class="method public inherited"><a href="#db_row_array" title="db_row_array :: Deprecated function"><span class="description">Deprecated function</span><pre>db_row_array()</pre></a></li>
 <li class="method public inherited"><a href="#debug_instances" title="debug_instances :: var_dump()s the instance cache"><span class="description">var_dump()s the instance cache</span><pre>debug_instances()</pre></a></li>
 <li class="method public inherited"><a href="#delete" title="delete :: model_rwd-&gt;delete()"><span class="description">model_rwd-&gt;delete()</span><pre>delete()</pre></a></li>
@@ -124,6 +137,7 @@ Take note that, the $row is discarded if the row is already cached"><span class=
 Automatically cache it by the PK of the table
 Take note that, the $row is discarded if the row is already cached</span><pre>get_row_instance()</pre></a></li>
 <li class="method public inherited"><a href="#get_where_order_page" title="get_where_order_page :: Centralized select query"><span class="description">Centralized select query</span><pre>get_where_order_page()</pre></a></li>
+<li class="method public "><a href="#hash_password" title="hash_password :: Hash the password"><span class="description">Hash the password</span><pre>hash_password()</pre></a></li>
 <li class="method public inherited"><a href="#id" title="id :: Returns the ID of the row"><span class="description">Returns the ID of the row</span><pre>id()</pre></a></li>
 <li class="method public inherited"><a href="#instances_from_sql" title="instances_from_sql :: Gets array of instance from the sql"><span class="description">Gets array of instance from the sql</span><pre>instances_from_sql()</pre></a></li>
 <li class="method public inherited"><a href="#key" title="key :: Iterator::key() implementation"><span class="description">Iterator::key() implementation</span><pre>key()</pre></a></li>
@@ -148,6 +162,7 @@ readable name of the entity</span><pre>name()</pre></a></li>
 requires current_logged_in() user, if there is none, redirect and die()"><span class="description">require_logged_in()
 requires current_logged_in() user, if there is none, redirect and die()</span><pre>require_logged_in()</pre></a></li>
 <li class="method public inherited"><a href="#rewind" title="rewind :: Iterator::rewind() implementation"><span class="description">Iterator::rewind() implementation</span><pre>rewind()</pre></a></li>
+<li class="method public "><a href="#set_password" title="set_password :: set_password"><span class="description">set_password</span><pre>set_password()</pre></a></li>
 <li class="method public inherited"><a href="#smart_field_query" title="smart_field_query :: smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
 Queries for $field that looks like $query
 This function has the ability to query for a field value even though it is misspelled
@@ -231,7 +246,7 @@ example: members, admins</p>
 </tr>
 <tr>
 <th>version</th>
-<td>0.0</td>
+<td>0.1.1</td>
 </tr>
 </table>
 <h3>
@@ -374,6 +389,37 @@ Gets $this-&gt;data[$varname]</h2>
 <code>string</code>the string representation of object instances under this class</div>
 </div></div>
 </div>
+<a name="__unset" id="__unset"></a><div class="element clickable method public __unset" data-toggle="collapse" data-target=".__unset .collapse">
+<h2>Magic function __unset()</h2>
+<pre>__unset(mixed $varname) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::__unset()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\model_rwd::__unset()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>mixed</code><p>(scalar values only)</p>
+</div>
+</div></div>
+</div>
 <a name="add_new" id="add_new"></a><div class="element clickable method public add_new" data-toggle="collapse" data-target=".add_new .collapse">
 <h2>Insert a new row and return the new object instance</h2>
 <pre>add_new(array $row_data) : object</pre>
@@ -472,6 +518,33 @@ the scalar index to use when caching $this instance using the primary key</h2>
 </table>
 </div></div>
 </div>
+<a name="construct" id="construct"></a><div class="element clickable method public construct" data-toggle="collapse" data-target=".construct .collapse">
+<h2>construct</h2>
+<pre>construct($array) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::construct()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\model_rwd::construct()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code></code>
+</div>
+</div></div>
+</div>
 <a name="current" id="current"></a><div class="element clickable method public current" data-toggle="collapse" data-target=".current .collapse">
 <h2>Iterator::current() implementation</h2>
 <pre>current() </pre>
@@ -531,6 +604,24 @@ Fetches the object instance of the currently logged in user</h2>
 <tr>
 <th>inherited_from</th>
 <td>\model_rwd::data_array()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="db" id="db"></a><div class="element clickable method public db" data-toggle="collapse" data-target=".db .collapse">
+<h2>db function</h2>
+<pre>db() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.6</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\model_rwd::db()</td>
 </tr>
 </table>
 </div></div>
@@ -890,6 +981,23 @@ Take note that, the $row is discarded if the row is already cached</h2>
 <code>int</code><p>number of items per page for limit clause</p></div>
 </div></div>
 </div>
+<a name="hash_password" id="hash_password"></a><div class="element clickable method public hash_password" data-toggle="collapse" data-target=".hash_password .collapse">
+<h2>Hash the password</h2>
+<pre>hash_password($password) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$password</h4>
+<code></code>
+</div>
+</div></div>
+</div>
 <a name="id" id="id"></a><div class="element clickable method public id" data-toggle="collapse" data-target=".id .collapse">
 <h2>Returns the ID of the row</h2>
 <pre>id() </pre>
@@ -1119,10 +1227,16 @@ readable name of the entity</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
 <td>ADD MVC 0.0</td>
-</tr></table>
+</tr>
+<tr>
+<th>version</th>
+<td>0.1</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$arg1</h4>
@@ -1204,6 +1318,27 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 <td>\model_rwd::rewind()</td>
 </tr>
 </table>
+</div></div>
+</div>
+<a name="set_password" id="set_password"></a><div class="element clickable method public set_password" data-toggle="collapse" data-target=".set_password .collapse">
+<h2>set_password</h2>
+<pre>set_password(string $password, string $confirm_password) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.3</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$confirm_password</h4>
+<code>string</code>
+</div>
 </div></div>
 </div>
 <a name="smart_field_query" id="smart_field_query"></a><div class="element clickable method public smart_field_query" data-toggle="collapse" data-target=".smart_field_query .collapse">
@@ -1397,6 +1532,10 @@ Redeclare this on each class to be able to uniformize values</h2>
 <tr>
 <th>since</th>
 <td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>version</th>
+<td>0.1</td>
 </tr>
 <tr>
 <th>inherited_from</th>
@@ -1700,7 +1839,7 @@ default table pk is 'id'</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T00:50:59+04:00.<br></footer></div>
+            generated on 2012-09-19T01:42:09+04:00.<br></footer></div>
 </div>
 </body>
 </html>
