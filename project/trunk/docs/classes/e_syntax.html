@@ -1,0 +1,807 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>ADD MVC Framework » \e_syntax</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">4150</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">38</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public inherited"><a href="#__construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#__toString" title="__toString :: "><span class="description">__toString()
+        </span><pre>__toString()</pre></a></li>
+<li class="method public inherited"><a href="#assert" title="assert :: Checks $condition, if false, throw the exception class"><span class="description">Checks $condition, if false, throw the exception class</span><pre>assert()</pre></a></li>
+<li class="method public inherited"><a href="#display_view" title="display_view :: Backward support"><span class="description">Backward support</span><pre>display_view()</pre></a></li>
+<li class="method public inherited"><a href="#getCode" title="getCode :: "><span class="description">getCode()
+        </span><pre>getCode()</pre></a></li>
+<li class="method public inherited"><a href="#getFile" title="getFile :: "><span class="description">getFile()
+        </span><pre>getFile()</pre></a></li>
+<li class="method public inherited"><a href="#getLine" title="getLine :: "><span class="description">getLine()
+        </span><pre>getLine()</pre></a></li>
+<li class="method public inherited"><a href="#getMessage" title="getMessage :: "><span class="description">getMessage()
+        </span><pre>getMessage()</pre></a></li>
+<li class="method public inherited"><a href="#getPrevious" title="getPrevious :: "><span class="description">getPrevious()
+        </span><pre>getPrevious()</pre></a></li>
+<li class="method public inherited"><a href="#getTrace" title="getTrace :: "><span class="description">getTrace()
+        </span><pre>getTrace()</pre></a></li>
+<li class="method public inherited"><a href="#getTraceAsString" title="getTraceAsString :: "><span class="description">getTraceAsString()
+        </span><pre>getTraceAsString()</pre></a></li>
+<li class="method public inherited"><a href="#handle_exception" title="handle_exception :: Handle exception
+Mail the error to system managers"><span class="description">Handle exception
+Mail the error to system managers</span><pre>handle_exception()</pre></a></li>
+<li class="method public inherited"><a href="#handle_sensitive_exception" title="handle_sensitive_exception :: Handling Exceptions"><span class="description">Handling Exceptions</span><pre>handle_sensitive_exception()</pre></a></li>
+<li class="method public inherited"><a href="#mail" title="mail :: Send email about the exception"><span class="description">Send email about the exception</span><pre>mail()</pre></a></li>
+<li class="method public inherited"><a href="#mail_body" title="mail_body :: The mail body / message
+Extend this to child classes"><span class="description">The mail body / message
+Extend this to child classes</span><pre>mail_body()</pre></a></li>
+<li class="method public inherited"><a href="#mail_subject" title="mail_subject :: The email subject"><span class="description">The email subject</span><pre>mail_subject()</pre></a></li>
+<li class="method public inherited"><a href="#mail_to" title="mail_to :: The email recipient
+Extend this to child classes"><span class="description">The email recipient
+Extend this to child classes</span><pre>mail_to()</pre></a></li>
+<li class="method public inherited"><a href="#print_exception" title="print_exception :: print_exception()"><span class="description">print_exception()</span><pre>print_exception()</pre></a></li>
+<li class="method public inherited"><a href="#print_response" title="print_response :: Print the exception's response"><span class="description">Print the exception's response</span><pre>print_response()</pre></a></li>
+<li class="method public inherited"><a href="#view" title="view :: The smarty object"><span class="description">The smarty object</span><pre>view()</pre></a></li>
+<li class="method public inherited"><a href="#view_basename" title="view_basename :: The basename of the view of the exception"><span class="description">The basename of the view of the exception</span><pre>view_basename()</pre></a></li>
+<li class="method public inherited"><a href="#view_filepath" title="view_filepath :: The view filepath of $this controller"><span class="description">The view filepath of $this controller</span><pre>view_filepath()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public inherited"><a href="#%24data" title="$data :: exception data"><span class="description">exception data</span><pre>$data</pre></a></li>
+<li class="property public inherited"><a href="#%24email_addresses" title="$email_addresses :: Email adress(es) to send debug email to"><span class="description">Email adress(es) to send debug email to</span><pre>$email_addresses</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5Ce_syntax" id="\e_syntax"></a><div href="../classes/e_syntax.html" class="element class">
+<p class="short_description">e_syntax class
+Custom Exception Class for syntax errors</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">albertdiones@gmail.com</a></td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="..//packages/Default.html">ADD MVC\Exceptions</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>0.0</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct(string $message, mixed $data, int $code, Exception $exception) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::__construct()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::__construct()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::__construct()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$code</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$exception</h4>
+<code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code>
+</div>
+</div></div>
+</div>
+<a name="__toString" id="__toString"></a><div class="element clickable method public __toString" data-toggle="collapse" data-target=".__toString .collapse">
+<h2>__toString()
+        </h2>
+<pre>__toString() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::__toString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::__toString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::__toString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::__toString()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="assert" id="assert"></a><div class="element clickable method public assert" data-toggle="collapse" data-target=".assert .collapse">
+<h2>Checks $condition, if false, throw the exception class</h2>
+<pre>assert(mixed $condition, string $message, mixed $data, int $error_number) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>version</th>
+<td>0.1</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::assert()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::assert()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::assert()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>the error message</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed</code><p>extra data of the error</p></div>
+<div class="subelement argument">
+<h4>$error_number</h4>
+<code>int</code><p>the error code</p></div>
+</div></div>
+</div>
+<a name="display_view" id="display_view"></a><div class="element clickable method public display_view" data-toggle="collapse" data-target=".display_view .collapse">
+<h2>Backward support</h2>
+<pre>display_view() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.8</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::display_view()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::display_view()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::display_view()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getCode" id="getCode"></a><div class="element clickable method public getCode" data-toggle="collapse" data-target=".getCode .collapse">
+<h2>getCode()
+        </h2>
+<pre>getCode() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getCode()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getCode()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getCode()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getCode()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getFile" id="getFile"></a><div class="element clickable method public getFile" data-toggle="collapse" data-target=".getFile .collapse">
+<h2>getFile()
+        </h2>
+<pre>getFile() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getFile()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getFile()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getFile()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getFile()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getLine" id="getLine"></a><div class="element clickable method public getLine" data-toggle="collapse" data-target=".getLine .collapse">
+<h2>getLine()
+        </h2>
+<pre>getLine() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getLine()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getLine()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getLine()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getLine()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getMessage" id="getMessage"></a><div class="element clickable method public getMessage" data-toggle="collapse" data-target=".getMessage .collapse">
+<h2>getMessage()
+        </h2>
+<pre>getMessage() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getMessage()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getMessage()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getMessage()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getMessage()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getPrevious" id="getPrevious"></a><div class="element clickable method public getPrevious" data-toggle="collapse" data-target=".getPrevious .collapse">
+<h2>getPrevious()
+        </h2>
+<pre>getPrevious() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getPrevious()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getPrevious()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getPrevious()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getPrevious()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getTrace" id="getTrace"></a><div class="element clickable method public getTrace" data-toggle="collapse" data-target=".getTrace .collapse">
+<h2>getTrace()
+        </h2>
+<pre>getTrace() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getTrace()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getTrace()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getTrace()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getTrace()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="getTraceAsString" id="getTraceAsString"></a><div class="element clickable method public getTraceAsString" data-toggle="collapse" data-target=".getTraceAsString .collapse">
+<h2>getTraceAsString()
+        </h2>
+<pre>getTraceAsString() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>Exception::getTraceAsString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::getTraceAsString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::getTraceAsString()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::getTraceAsString()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="handle_exception" id="handle_exception"></a><div class="element clickable method public handle_exception" data-toggle="collapse" data-target=".handle_exception .collapse">
+<h2>Handle exception
+Mail the error to system managers</h2>
+<pre>handle_exception() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::handle_exception()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::handle_exception()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="handle_sensitive_exception" id="handle_sensitive_exception"></a><div class="element clickable method public handle_sensitive_exception" data-toggle="collapse" data-target=".handle_sensitive_exception .collapse">
+<h2>Handling Exceptions</h2>
+<pre>handle_sensitive_exception($user_message) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::handle_sensitive_exception()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::handle_sensitive_exception()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::handle_sensitive_exception()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_message</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="mail" id="mail"></a><div class="element clickable method public mail" data-toggle="collapse" data-target=".mail .collapse">
+<h2>Send email about the exception</h2>
+<pre>mail() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::mail()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::mail()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::mail()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="mail_body" id="mail_body"></a><div class="element clickable method public mail_body" data-toggle="collapse" data-target=".mail_body .collapse">
+<h2>The mail body / message
+Extend this to child classes</h2>
+<pre>mail_body() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::mail_body()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::mail_body()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::mail_body()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="mail_subject" id="mail_subject"></a><div class="element clickable method public mail_subject" data-toggle="collapse" data-target=".mail_subject .collapse">
+<h2>The email subject</h2>
+<pre>mail_subject() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::mail_subject()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="mail_to" id="mail_to"></a><div class="element clickable method public mail_to" data-toggle="collapse" data-target=".mail_to .collapse">
+<h2>The email recipient
+Extend this to child classes</h2>
+<pre>mail_to() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::mail_to()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::mail_to()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::mail_to()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="print_exception" id="print_exception"></a><div class="element clickable method public print_exception" data-toggle="collapse" data-target=".print_exception .collapse">
+<h2>print_exception()</h2>
+<pre>print_exception() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::print_exception()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::print_exception()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::print_exception()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="print_response" id="print_response"></a><div class="element clickable method public print_response" data-toggle="collapse" data-target=".print_response .collapse">
+<h2>Print the exception's response</h2>
+<pre>print_response() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.8</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::print_response()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::print_response()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::print_response()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="view" id="view"></a><div class="element clickable method public view" data-toggle="collapse" data-target=".view .collapse">
+<h2>The smarty object</h2>
+<pre>view() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.7</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::view()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::view()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::view()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="view_basename" id="view_basename"></a><div class="element clickable method public view_basename" data-toggle="collapse" data-target=".view_basename .collapse">
+<h2>The basename of the view of the exception</h2>
+<pre>view_basename() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\e_add::view_basename()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::view_basename()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::view_basename()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="view_filepath" id="view_filepath"></a><div class="element clickable method public view_filepath" data-toggle="collapse" data-target=".view_filepath .collapse">
+<h2>The view filepath of $this controller</h2>
+<pre>view_filepath() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\e_add::view_filepath()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::view_filepath()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::view_filepath()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24data" id="$data"> </a><div class="element clickable property public $data" data-toggle="collapse" data-target=".$data .collapse">
+<h2>exception data</h2>
+<pre>$data </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::$$data</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::$$data</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::$$data</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24email_addresses" id="$email_addresses"> </a><div class="element clickable property public $email_addresses" data-toggle="collapse" data-target=".$email_addresses .collapse">
+<h2>Email adress(es) to send debug email to</h2>
+<pre>$email_addresses </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\e_add::mail()</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.3</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_add::$$email_addresses</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_system::$$email_addresses</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\e_developer::$$email_addresses</td>
+</tr>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-09-20T02:11:43+04:00.<br></footer></div>
+</div>
+</body>
+</html>

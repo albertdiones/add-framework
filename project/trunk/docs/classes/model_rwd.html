@@ -1,0 +1,1408 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>ADD MVC Framework » \model_rwd</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">ADD MVC Framework</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/Auth.html"><i class="icon-folder-open"></i> Auth</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/PHPMailer.html"><i class="icon-folder-open"></i> PHPMailer</a></li>
+<li><a href="../packages/Smarty.html"><i class="icon-folder-open"></i> Smarty</a></li>
+<li><a href="../packages/axmls.html"><i class="icon-folder-open"></i> axmls</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">4150</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">41</span>
+</li>
+<li>fixme 
+                <span class="label label-info">7</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">38</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__add_loaded" title="__add_loaded :: Loaded Class Event Handler"><span class="description">Loaded Class Event Handler</span><pre>__add_loaded()</pre></a></li>
+<li class="method public "><a href="#__destruct" title="__destruct :: Destruct method"><span class="description">Destruct method</span><pre>__destruct()</pre></a></li>
+<li class="method public inherited"><a href="#__get" title="__get :: Magic function __get
+Gets $this-&gt;data[$varname]"><span class="description">Magic function __get
+Gets $this-&gt;data[$varname]</span><pre>__get()</pre></a></li>
+<li class="method public inherited"><a href="#__isset" title="__isset :: Magic function __isset()"><span class="description">Magic function __isset()</span><pre>__isset()</pre></a></li>
+<li class="method public "><a href="#__set" title="__set :: Sets a field
+(also updates the db row on the end of the script)"><span class="description">Sets a field
+(also updates the db row on the end of the script)</span><pre>__set()</pre></a></li>
+<li class="method public "><a href="#__toString" title="__toString :: The string equivalent when object instance converted to string"><span class="description">The string equivalent when object instance converted to string</span><pre>__toString()</pre></a></li>
+<li class="method public inherited"><a href="#__unset" title="__unset :: Magic function __unset()"><span class="description">Magic function __unset()</span><pre>__unset()</pre></a></li>
+<li class="method public "><a href="#add_new" title="add_new :: Insert a new row and return the new object instance"><span class="description">Insert a new row and return the new object instance</span><pre>add_new()</pre></a></li>
+<li class="method public "><a href="#cache_array_main_id" title="cache_array_main_id :: Returns the cache_main_key() value
+the scalar index to use when caching an instance using the primary key
+if the instance is __construct()`ed using $row argument
+on normal"><span class="description">Returns the cache_main_key() value
+the scalar index to use when caching an instance using the primary key
+if the instance is __construct()`ed using $row argument
+on normal</span><pre>cache_array_main_id()</pre></a></li>
+<li class="method public "><a href="#cache_main_id" title="cache_main_id :: Returns the cache_main_key() value
+the scalar index to use when caching $this instance using the primary key"><span class="description">Returns the cache_main_key() value
+the scalar index to use when caching $this instance using the primary key</span><pre>cache_main_id()</pre></a></li>
+<li class="method public "><a href="#cache_main_key" title="cache_main_key :: Returns the scalar index to use caching instances of this class using the primary key"><span class="description">Returns the scalar index to use caching instances of this class using the primary key</span><pre>cache_main_key()</pre></a></li>
+<li class="method public inherited"><a href="#construct" title="construct :: construct"><span class="description">construct</span><pre>construct()</pre></a></li>
+<li class="method public inherited"><a href="#current" title="current :: Iterator::current() implementation"><span class="description">Iterator::current() implementation</span><pre>current()</pre></a></li>
+<li class="method public "><a href="#data_array" title="data_array :: returns $this-&gt;data array for debugging"><span class="description">returns $this-&gt;data array for debugging</span><pre>data_array()</pre></a></li>
+<li class="method public "><a href="#db" title="db :: db function"><span class="description">db function</span><pre>db()</pre></a></li>
+<li class="method public "><a href="#db_row_array" title="db_row_array :: Deprecated function"><span class="description">Deprecated function</span><pre>db_row_array()</pre></a></li>
+<li class="method public "><a href="#debug_instances" title="debug_instances :: var_dump()s the instance cache"><span class="description">var_dump()s the instance cache</span><pre>debug_instances()</pre></a></li>
+<li class="method public "><a href="#delete" title="delete :: model_rwd-&gt;delete()"><span class="description">model_rwd-&gt;delete()</span><pre>delete()</pre></a></li>
+<li class="method public "><a href="#get_all" title="get_all :: get all object instances from the static::TABLE
+optional: get all object instance of rows matching ALL $conditions"><span class="description">get all object instances from the static::TABLE
+optional: get all object instance of rows matching ALL $conditions</span><pre>get_all()</pre></a></li>
+<li class="method public "><a href="#get_all_id_query" title="get_all_id_query :: call get instance from the sql"><span class="description">call get instance from the sql</span><pre>get_all_id_query()</pre></a></li>
+<li class="method public "><a href="#get_all_where" title="get_all_where :: get all object instance of rows matching ALL $conditions"><span class="description">get all object instance of rows matching ALL $conditions</span><pre>get_all_where()</pre></a></li>
+<li class="method public "><a href="#get_cached_instance" title="get_cached_instance :: Fetch cached instance with $field = $field_value"><span class="description">Fetch cached instance with $field = $field_value</span><pre>get_cached_instance()</pre></a></li>
+<li class="method public "><a href="#get_column_array" title="get_column_array :: get_column($field)"><span class="description">get_column($field)</span><pre>get_column_array()</pre></a></li>
+<li class="method public "><a href="#get_count" title="get_count :: get the count of rows from static::TABLE"><span class="description">get the count of rows from static::TABLE</span><pre>get_count()</pre></a></li>
+<li class="method public "><a href="#get_instance" title="get_instance :: model_rwd::get_instance($arg)
+Gets an instance that represent the row from the table
+$arg can either be the primary key or
+the field value of the field related to the variable type
+examples:
+   member::get_instance(1); // gets the member::TABLE row with primary key 1
+   admin::get_instance(123);
+   member::get_instance('albert@add.ph');"><span class="description">model_rwd::get_instance($arg)
+Gets an instance that represent the row from the table
+$arg can either be the primary key or
+the field value of the field related to the variable type
+examples:
+   member::get_instance(1); // gets the member::TABLE row with primary key 1
+   admin::get_instance(123);
+   member::get_instance('albert@add.ph');</span><pre>get_instance()</pre></a></li>
+<li class="method public "><a href="#get_one_where" title="get_one_where :: get_one_where function
+get an instance of a row matching the $conditions"><span class="description">get_one_where function
+get an instance of a row matching the $conditions</span><pre>get_one_where()</pre></a></li>
+<li class="method public "><a href="#get_page_instances" title="get_page_instances :: get_page_instances
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page"><span class="description">get_page_instances
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page</span><pre>get_page_instances()</pre></a></li>
+<li class="method public "><a href="#get_page_where" title="get_page_where :: get_page_where
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page"><span class="description">get_page_where
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page</span><pre>get_page_where()</pre></a></li>
+<li class="method public "><a href="#get_row_instance" title="get_row_instance :: Creates a new instance using the array $row
+Automatically cache it by the PK of the table
+Take note that, the $row is discarded if the row is already cached"><span class="description">Creates a new instance using the array $row
+Automatically cache it by the PK of the table
+Take note that, the $row is discarded if the row is already cached</span><pre>get_row_instance()</pre></a></li>
+<li class="method public "><a href="#get_where_order_page" title="get_where_order_page :: Centralized select query"><span class="description">Centralized select query</span><pre>get_where_order_page()</pre></a></li>
+<li class="method public "><a href="#id" title="id :: Returns the ID of the row"><span class="description">Returns the ID of the row</span><pre>id()</pre></a></li>
+<li class="method public "><a href="#instances_from_sql" title="instances_from_sql :: Gets array of instance from the sql"><span class="description">Gets array of instance from the sql</span><pre>instances_from_sql()</pre></a></li>
+<li class="method public inherited"><a href="#key" title="key :: Iterator::key() implementation"><span class="description">Iterator::key() implementation</span><pre>key()</pre></a></li>
+<li class="method public "><a href="#meta_columns" title="meta_columns :: column_names"><span class="description">column_names</span><pre>meta_columns()</pre></a></li>
+<li class="method public inherited"><a href="#next" title="next :: Iterator::next() implementation"><span class="description">Iterator::next() implementation</span><pre>next()</pre></a></li>
+<li class="method public "><a href="#normalize_order_by" title="normalize_order_by :: Centralized creator the order by clause by string $order_by"><span class="description">Centralized creator the order by clause by string $order_by</span><pre>normalize_order_by()</pre></a></li>
+<li class="method public "><a href="#normalize_where" title='normalize_where :: Centralized creator of "WHERE" clause'><span class="description">Centralized creator of "WHERE" clause</span><pre>normalize_where()</pre></a></li>
+<li class="method public "><a href="#pk_where" title='pk_where :: returns the where clause (without "WHERE") to fetch $this instance'><span class="description">returns the where clause (without "WHERE") to fetch $this instance</span><pre>pk_where()</pre></a></li>
+<li class="method public inherited"><a href="#rewind" title="rewind :: Iterator::rewind() implementation"><span class="description">Iterator::rewind() implementation</span><pre>rewind()</pre></a></li>
+<li class="method public "><a href="#row_pk" title="row_pk :: row_pk"><span class="description">row_pk</span><pre>row_pk()</pre></a></li>
+<li class="method public "><a href="#smart_field_query" title="smart_field_query :: smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
+Queries for $field that looks like $query
+This function has the ability to query for a field value even though it is misspelled
+For very big tables, this might cause CPU spikes"><span class="description">smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
+Queries for $field that looks like $query
+This function has the ability to query for a field value even though it is misspelled
+For very big tables, this might cause CPU spikes</span><pre>smart_field_query()</pre></a></li>
+<li class="method public "><a href="#smart_field_query_one" title="smart_field_query_one :: Smart field query one
+Returns the first instance (closest match) on smart_field_query() results"><span class="description">Smart field query one
+Returns the first instance (closest match) on smart_field_query() results</span><pre>smart_field_query_one()</pre></a></li>
+<li class="method public "><a href="#table_pk" title="table_pk :: TABLE pk function
+Returns the table's primary key"><span class="description">TABLE pk function
+Returns the table's primary key</span><pre>table_pk()</pre></a></li>
+<li class="method public "><a href="#update_db_row" title="update_db_row :: model_rwd-&gt;update_db_row()
+Updates the fields of the database table that has been updated since the object has been instantiated"><span class="description">model_rwd-&gt;update_db_row()
+Updates the fields of the database table that has been updated since the object has been instantiated</span><pre>update_db_row()</pre></a></li>
+<li class="method public inherited"><a href="#valid" title="valid :: Iterator::valid() implementation"><span class="description">Iterator::valid() implementation</span><pre>valid()</pre></a></li>
+<li class="method public "><a href="#valid_magic_property" title="valid_magic_property :: validates a magic property"><span class="description">validates a magic property</span><pre>valid_magic_property()</pre></a></li>
+<li class="method public "><a href="#validate_field" title="validate_field :: Validates $field $value
+Redeclare this on each class to be able to uniformize values"><span class="description">Validates $field $value
+Redeclare this on each class to be able to uniformize values</span><pre>validate_field()</pre></a></li>
+<li class="method public "><a href="#validate_row" title="validate_row :: validates associative array for row insertion"><span class="description">validates associative array for row insertion</span><pre>validate_row()</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="method protected inherited"><a href="#__construct" title="__construct :: __construct($array)
+Fills $this-&gt;data with the $array contents"><span class="description">__construct($array)
+Fills $this-&gt;data with the $array contents</span><pre>__construct()</pre></a></li>
+<li class="method protected "><a href="#cache_instance" title="cache_instance :: Cache the model_rwd instance, optionally using the $field"><span class="description">Cache the model_rwd instance, optionally using the $field</span><pre>cache_instance()</pre></a></li>
+<li class="method protected "><a href="#db_get_instance_cache" title="db_get_instance_cache :: db_get_instance_cache()
+This function is ussually called inside get_instance()
+This should be called on descendant classes if you want other $field than the static::table_pk()"><span class="description">db_get_instance_cache()
+This function is ussually called inside get_instance()
+This should be called on descendant classes if you want other $field than the static::table_pk()</span><pre>db_get_instance_cache()</pre></a></li>
+<li class="method protected "><a href="#get_value_index_field" title="get_value_index_field :: get_value_index_field($arg)
+returns the index field to be used on fetching
+redeclare on classes for polymorphic get_instance()"><span class="description">get_value_index_field($arg)
+returns the index field to be used on fetching
+redeclare on classes for polymorphic get_instance()</span><pre>get_value_index_field()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24D" title="$D :: The adodb object (wrapper)"><span class="description">The adodb object (wrapper)</span><pre>$D</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected "><a href="#%24data" title="$data :: $this-&gt;data
+will contain field values of the row"><span class="description">$this-&gt;data
+will contain field values of the row</span><pre>$data</pre></a></li>
+<li class="property protected "><a href="#%24instances" title="$instances :: model_rwd::$instances the instance cache"><span class="description">model_rwd::$instances the instance cache</span><pre>$instances</pre></a></li>
+<li class="property protected "><a href="#%24updated_data" title="$updated_data :: $this-&gt;updated_data
+will contain $updated fields"><span class="description">$this-&gt;updated_data
+will contain $updated fields</span><pre>$updated_data</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#TABLE_PK" title="TABLE_PK :: The table pk
+default table pk is 'id'"><span class="description">The table pk
+default table pk is 'id'</span><pre>TABLE_PK</pre></a></li>
+<li class="constant  "><a href="#VERSION" title="VERSION :: The version of model_rwd"><span class="description">The version of model_rwd</span><pre>VERSION</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5Cmodel_rwd" id="\model_rwd"></a><div href="../classes/model_rwd.html" class="element class">
+<p class="short_description">model_rwd class
+An object class representing a table, then rows are represented by instance of this class
+Aims to be compatible with any databases
+static variable $D should be declared, and the functions are biased to adodb object class</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="..//packages/ADD%20MVC.Models.html">ADD MVC\Models</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>1.4.1</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">albertdiones@gmail.com</a></td>
+</tr>
+<tr>
+<th>todo</th>
+<td>create smarty assign() support function that will return an array with all the variables possibly needed by smarty template</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__add_loaded" id="__add_loaded"></a><div class="element clickable method public __add_loaded" data-toggle="collapse" data-target=".__add_loaded .collapse">
+<h2>Loaded Class Event Handler</h2>
+<pre>__add_loaded() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.8</td>
+</tr></table>
+</div></div>
+</div>
+<a name="__destruct" id="__destruct"></a><div class="element clickable method public __destruct" data-toggle="collapse" data-target=".__destruct .collapse">
+<h2>Destruct method</h2>
+<pre>__destruct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.decon.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="__get" id="__get"></a><div class="element clickable method public __get" data-toggle="collapse" data-target=".__get .collapse">
+<h2>Magic function __get
+Gets $this-&gt;data[$varname]</h2>
+<pre>__get(mixed $varname) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.get</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::__get()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<a name="__isset" id="__isset"></a><div class="element clickable method public __isset" data-toggle="collapse" data-target=".__isset .collapse">
+<h2>Magic function __isset()</h2>
+<pre>__isset(mixed $varname) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.isset</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::__isset()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>mixed</code><p>(scalar values only)</p>
+</div>
+</div></div>
+</div>
+<a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
+<h2>Sets a field
+(also updates the db row on the end of the script)</h2>
+<pre>__set(string $varname, mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.set</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<a name="__toString" id="__toString"></a><div class="element clickable method public __toString" data-toggle="collapse" data-target=".__toString .collapse">
+<h2>The string equivalent when object instance converted to string</h2>
+<pre>__toString() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the string representation of object instances under this class</div>
+</div></div>
+</div>
+<a name="__unset" id="__unset"></a><div class="element clickable method public __unset" data-toggle="collapse" data-target=".__unset .collapse">
+<h2>Magic function __unset()</h2>
+<pre>__unset(mixed $varname) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::__unset()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>mixed</code><p>(scalar values only)</p>
+</div>
+</div></div>
+</div>
+<a name="add_new" id="add_new"></a><div class="element clickable method public add_new" data-toggle="collapse" data-target=".add_new .collapse">
+<h2>Insert a new row and return the new object instance</h2>
+<pre>add_new(array $row_data) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$row_data</h4>
+<code>array</code><p>the array of row to add</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>$instance of that row that has been inserted</div>
+</div></div>
+</div>
+<a name="cache_array_main_id" id="cache_array_main_id"></a><div class="element clickable method public cache_array_main_id" data-toggle="collapse" data-target=".cache_array_main_id .collapse">
+<h2>Returns the cache_main_key() value
+the scalar index to use when caching an instance using the primary key
+if the instance is __construct()`ed using $row argument
+on normal</h2>
+<pre>cache_array_main_id(array $row) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$row</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>primary key value</div>
+</div></div>
+</div>
+<a name="cache_main_id" id="cache_main_id"></a><div class="element clickable method public cache_main_id" data-toggle="collapse" data-target=".cache_main_id .collapse">
+<h2>Returns the cache_main_key() value
+the scalar index to use when caching $this instance using the primary key</h2>
+<pre>cache_main_id() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>primary key value</div>
+</div></div>
+</div>
+<a name="cache_main_key" id="cache_main_key"></a><div class="element clickable method public cache_main_key" data-toggle="collapse" data-target=".cache_main_key .collapse">
+<h2>Returns the scalar index to use caching instances of this class using the primary key</h2>
+<pre>cache_main_key() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\model_rwd::get_row_instance(),</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="construct" id="construct"></a><div class="element clickable method public construct" data-toggle="collapse" data-target=".construct .collapse">
+<h2>construct</h2>
+<pre>construct($array) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.4</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::construct()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="current" id="current"></a><div class="element clickable method public current" data-toggle="collapse" data-target=".current .collapse">
+<h2>Iterator::current() implementation</h2>
+<pre>current() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/iterator.current.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::current()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="data_array" id="data_array"></a><div class="element clickable method public data_array" data-toggle="collapse" data-target=".data_array .collapse">
+<h2>returns $this-&gt;data array for debugging</h2>
+<pre>data_array() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="db" id="db"></a><div class="element clickable method public db" data-toggle="collapse" data-target=".db .collapse">
+<h2>db function</h2>
+<pre>db() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.6</td>
+</tr></table>
+</div></div>
+</div>
+<a name="db_row_array" id="db_row_array"></a><div class="element clickable method public db_row_array" data-toggle="collapse" data-target=".db_row_array .collapse">
+<h2>Deprecated function</h2>
+<pre>db_row_array(string $table, string $field, string $field_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>use get_row_instance()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$table</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$field_value</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="debug_instances" id="debug_instances"></a><div class="element clickable method public debug_instances" data-toggle="collapse" data-target=".debug_instances .collapse">
+<h2>var_dump()s the instance cache</h2>
+<pre>debug_instances() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="delete" id="delete"></a><div class="element clickable method public delete" data-toggle="collapse" data-target=".delete .collapse">
+<h2>model_rwd-&gt;delete()</h2>
+<pre>delete() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>todo</th>
+<td>use adodb abstraction to add the limit</td>
+</tr>
+<tr>
+<th>todo</th>
+<td>make this function support static calling or make a separate static version of this function</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true on success false on failure</div>
+</div></div>
+</div>
+<a name="get_all" id="get_all"></a><div class="element clickable method public get_all" data-toggle="collapse" data-target=".get_all .collapse">
+<h2>get all object instances from the static::TABLE
+optional: get all object instance of rows matching ALL $conditions</h2>
+<pre>get_all(mixed $conditions, string $order_by) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>use model_rwd::get_where_order_page</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="get_all_id_query" id="get_all_id_query"></a><div class="element clickable method public get_all_id_query" data-toggle="collapse" data-target=".get_all_id_query .collapse">
+<h2>call get instance from the sql</h2>
+<pre>get_all_id_query(string $sql) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>use model_rwd::instances_from_sql()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="get_all_where" id="get_all_where"></a><div class="element clickable method public get_all_where" data-toggle="collapse" data-target=".get_all_where .collapse">
+<h2>get all object instance of rows matching ALL $conditions</h2>
+<pre>get_all_where(mixed $conditions, string $order_by) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>static::get_all</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="get_cached_instance" id="get_cached_instance"></a><div class="element clickable method public get_cached_instance" data-toggle="collapse" data-target=".get_cached_instance .collapse">
+<h2>Fetch cached instance with $field = $field_value</h2>
+<pre>get_cached_instance(string $field, string $field_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>string</code><p>name</p></div>
+<div class="subelement argument">
+<h4>$field_value</h4>
+<code>string</code><p>to search</p></div>
+</div></div>
+</div>
+<a name="get_column_array" id="get_column_array"></a><div class="element clickable method public get_column_array" data-toggle="collapse" data-target=".get_column_array .collapse">
+<h2>get_column($field)</h2>
+<pre>get_column_array(array $field, \$where $where) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.1</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>array</code><p>the field to fetch</p></div>
+<div class="subelement argument">
+<h4>$where</h4>
+<code>\$where</code><p>the conditions</p></div>
+</div></div>
+</div>
+<a name="get_count" id="get_count"></a><div class="element clickable method public get_count" data-toggle="collapse" data-target=".get_count .collapse">
+<h2>get the count of rows from static::TABLE</h2>
+<pre>get_count(mixed $conditions) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code><p>to query</p></div>
+</div></div>
+</div>
+<a name="get_instance" id="get_instance"></a><div class="element clickable method public get_instance" data-toggle="collapse" data-target=".get_instance .collapse">
+<h2>model_rwd::get_instance($arg)
+Gets an instance that represent the row from the table
+$arg can either be the primary key or
+the field value of the field related to the variable type
+examples:
+   member::get_instance(1); // gets the member::TABLE row with primary key 1
+   admin::get_instance(123);
+   member::get_instance('albert@add.ph');</h2>
+<pre>get_instance(mixed $arg) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$arg</h4>
+<code>mixed</code><p>the primary key or the field value to search</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>$model the model_rwd class object</div>
+</div></div>
+</div>
+<a name="get_one_where" id="get_one_where"></a><div class="element clickable method public get_one_where" data-toggle="collapse" data-target=".get_one_where .collapse">
+<h2>get_one_where function
+get an instance of a row matching the $conditions</h2>
+<pre>get_one_where(mixed $conditions, string $order_by) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>todo</th>
+<td>create new function model_rwd::get_one($conditions,$order_by)</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code><p>the conditions that should match the row</p></div>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code><p>the order by value</p></div>
+</div></div>
+</div>
+<a name="get_page_instances" id="get_page_instances"></a><div class="element clickable method public get_page_instances" data-toggle="collapse" data-target=".get_page_instances .collapse">
+<h2>get_page_instances
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page</h2>
+<pre>get_page_instances(int $page, string $order_by, array $conditions, array $per_page) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$page</h4>
+<code>int</code><p>to fetch</p></div>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code><p>order by clause</p></div>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>array</code><p>the where clause conditions</p></div>
+<div class="subelement argument">
+<h4>$per_page</h4>
+<code>array</code><p>item count</p></div>
+</div></div>
+</div>
+<a name="get_page_where" id="get_page_where"></a><div class="element clickable method public get_page_where" data-toggle="collapse" data-target=".get_page_where .collapse">
+<h2>get_page_where
+get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page</h2>
+<pre>get_page_where(int $page, mixed $conditions, int $per_page) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>see static::get_page_instances()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$page</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$per_page</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a name="get_row_instance" id="get_row_instance"></a><div class="element clickable method public get_row_instance" data-toggle="collapse" data-target=".get_row_instance .collapse">
+<h2>Creates a new instance using the array $row
+Automatically cache it by the PK of the table
+Take note that, the $row is discarded if the row is already cached</h2>
+<pre>get_row_instance(array $row) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$row</h4>
+<code>array</code><p>complete array of fields and values of the row</p></div>
+</div></div>
+</div>
+<a name="get_where_order_page" id="get_where_order_page"></a><div class="element clickable method public get_where_order_page" data-toggle="collapse" data-target=".get_where_order_page .collapse">
+<h2>Centralized select query</h2>
+<pre>get_where_order_page(mixed $conditions, string $order_by, int $page, int $per_page) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code><p>array or string of conditions</p></div>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code><p>string to use as order by</p></div>
+<div class="subelement argument">
+<h4>$page</h4>
+<code>int</code><p>for limit clause</p></div>
+<div class="subelement argument">
+<h4>$per_page</h4>
+<code>int</code><p>number of items per page for limit clause</p></div>
+</div></div>
+</div>
+<a name="id" id="id"></a><div class="element clickable method public id" data-toggle="collapse" data-target=".id .collapse">
+<h2>Returns the ID of the row</h2>
+<pre>id() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="instances_from_sql" id="instances_from_sql"></a><div class="element clickable method public instances_from_sql" data-toggle="collapse" data-target=".instances_from_sql .collapse">
+<h2>Gets array of instance from the sql</h2>
+<pre>instances_from_sql(string $sql_format, int $page, int $per_page) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql_format</h4>
+<code>string</code><p>must contain 2 %s, the first is for to be replaced with "SELF::TABLE.*" and the "SELF::TABLE"</p>
+</div>
+<div class="subelement argument">
+<h4>$page</h4>
+<code>int</code><p>to fetch</p></div>
+<div class="subelement argument">
+<h4>$per_page</h4>
+<code>int</code><p>items per page</p></div>
+</div></div>
+</div>
+<a name="key" id="key"></a><div class="element clickable method public key" data-toggle="collapse" data-target=".key .collapse">
+<h2>Iterator::key() implementation</h2>
+<pre>key() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/iterator.key.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::key()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="meta_columns" id="meta_columns"></a><div class="element clickable method public meta_columns" data-toggle="collapse" data-target=".meta_columns .collapse">
+<h2>column_names</h2>
+<pre>meta_columns() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.8.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="next" id="next"></a><div class="element clickable method public next" data-toggle="collapse" data-target=".next .collapse">
+<h2>Iterator::next() implementation</h2>
+<pre>next() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/iterator.next.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::next()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="normalize_order_by" id="normalize_order_by"></a><div class="element clickable method public normalize_order_by" data-toggle="collapse" data-target=".normalize_order_by .collapse">
+<h2>Centralized creator the order by clause by string $order_by</h2>
+<pre>normalize_order_by(string $order_by) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$order_by</h4>
+<code>string</code><p>string</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the order by clause string</div>
+</div></div>
+</div>
+<a name="normalize_where" id="normalize_where"></a><div class="element clickable method public normalize_where" data-toggle="collapse" data-target=".normalize_where .collapse">
+<h2>Centralized creator of "WHERE" clause</h2>
+<pre>normalize_where(mixed $conditions, string $prefix) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$conditions</h4>
+<code>mixed</code><p>to serialize/normalize, either array or string</p>
+</div>
+<div class="subelement argument">
+<h4>$prefix</h4>
+<code>string</code><p>to add to the where clause</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the where clause string</div>
+</div></div>
+</div>
+<a name="pk_where" id="pk_where"></a><div class="element clickable method public pk_where" data-toggle="collapse" data-target=".pk_where .collapse">
+<h2>returns the where clause (without "WHERE") to fetch $this instance</h2>
+<pre>pk_where() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>where clause</div>
+</div></div>
+</div>
+<a name="rewind" id="rewind"></a><div class="element clickable method public rewind" data-toggle="collapse" data-target=".rewind .collapse">
+<h2>Iterator::rewind() implementation</h2>
+<pre>rewind() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/iterator.rewind.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::rewind()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="row_pk" id="row_pk"></a><div class="element clickable method public row_pk" data-toggle="collapse" data-target=".row_pk .collapse">
+<h2>row_pk</h2>
+<pre>row_pk(array $row) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Gets the pk from the $row</p></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.8</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$row</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$pk</div>
+</div></div>
+</div>
+<a name="smart_field_query" id="smart_field_query"></a><div class="element clickable method public smart_field_query" data-toggle="collapse" data-target=".smart_field_query .collapse">
+<h2>smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
+Queries for $field that looks like $query
+This function has the ability to query for a field value even though it is misspelled
+For very big tables, this might cause CPU spikes</h2>
+<pre>smart_field_query(string $query, string $field, float $threshold, float $allowed_difference) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>todo</th>
+<td>create another function that supports pagination</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>string</code><p>the keyword to search for</p></div>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>string</code><p>the field to search at</p></div>
+<div class="subelement argument">
+<h4>$threshold</h4>
+<code>float</code><p>of the match</p></div>
+<div class="subelement argument">
+<h4>$allowed_difference</h4>
+<code>float</code><p>from the highest match (adjust to increase or decrease number of results)</p>
+</div>
+</div></div>
+</div>
+<a name="smart_field_query_one" id="smart_field_query_one"></a><div class="element clickable method public smart_field_query_one" data-toggle="collapse" data-target=".smart_field_query_one .collapse">
+<h2>Smart field query one
+Returns the first instance (closest match) on smart_field_query() results</h2>
+<pre>smart_field_query_one() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\model_rwd::smart_field_query()</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>$instance of the closest matched row</div>
+</div></div>
+</div>
+<a name="table_pk" id="table_pk"></a><div class="element clickable method public table_pk" data-toggle="collapse" data-target=".table_pk .collapse">
+<h2>TABLE pk function
+Returns the table's primary key</h2>
+<pre>table_pk() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\model_multi_pk::table_pk()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="update_db_row" id="update_db_row"></a><div class="element clickable method public update_db_row" data-toggle="collapse" data-target=".update_db_row .collapse">
+<h2>model_rwd-&gt;update_db_row()
+Updates the fields of the database table that has been updated since the object has been instantiated</h2>
+<pre>update_db_row() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if success false if failed</div>
+</div></div>
+</div>
+<a name="valid" id="valid"></a><div class="element clickable method public valid" data-toggle="collapse" data-target=".valid .collapse">
+<h2>Iterator::valid() implementation</h2>
+<pre>valid() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\http://www.php.net/manual/en/iterator.valid.php</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::valid()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="valid_magic_property" id="valid_magic_property"></a><div class="element clickable method public valid_magic_property" data-toggle="collapse" data-target=".valid_magic_property .collapse">
+<h2>validates a magic property</h2>
+<pre>valid_magic_property(string $varname) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\array_entity::__set()</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$varname</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="validate_field" id="validate_field"></a><div class="element clickable method public validate_field" data-toggle="collapse" data-target=".validate_field .collapse">
+<h2>Validates $field $value
+Redeclare this on each class to be able to uniformize values</h2>
+<pre>validate_field(string $field, string $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>string</code><p>the database field name</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code><p>the value to validate</p></div>
+</div></div>
+</div>
+<a name="validate_row" id="validate_row"></a><div class="element clickable method public validate_row" data-toggle="collapse" data-target=".validate_row .collapse">
+<h2>validates associative array for row insertion</h2>
+<pre>validate_row(array $row_data) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>version</th>
+<td>0.1</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$row_data</h4>
+<code>array</code><p>associative array of the table row</p></div>
+</div></div>
+</div>
+<a name="__construct" id="__construct"></a><div class="element clickable method protected __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>__construct($array)
+Fills $this-&gt;data with the $array contents</h2>
+<pre>__construct(array $array) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\array_entity::__construct()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a name="cache_instance" id="cache_instance"></a><div class="element clickable method protected cache_instance" data-toggle="collapse" data-target=".cache_instance .collapse">
+<h2>Cache the model_rwd instance, optionally using the $field</h2>
+<pre>cache_instance(model_rwd $instance, mixed $field) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$instance</h4>
+<code><a href="../classes/model_rwd.html">\model_rwd</a></code><p>with class model_rwd to cache</p></div>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>mixed</code><p>to use as key to instance</p></div>
+</div></div>
+</div>
+<a name="db_get_instance_cache" id="db_get_instance_cache"></a><div class="element clickable method protected db_get_instance_cache" data-toggle="collapse" data-target=".db_get_instance_cache .collapse">
+<h2>db_get_instance_cache()
+This function is ussually called inside get_instance()
+This should be called on descendant classes if you want other $field than the static::table_pk()</h2>
+<pre>db_get_instance_cache(string $table, string $field, string $field_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td>use get_row_instance()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$table</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$field</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$field_value</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="get_value_index_field" id="get_value_index_field"></a><div class="element clickable method protected get_value_index_field" data-toggle="collapse" data-target=".get_value_index_field .collapse">
+<h2>get_value_index_field($arg)
+returns the index field to be used on fetching
+redeclare on classes for polymorphic get_instance()</h2>
+<pre>get_value_index_field(mixed $arg) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\model_rwd::get_instance</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$arg</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24D" id="$D"> </a><div class="element clickable property public $D" data-toggle="collapse" data-target=".$D .collapse">
+<h2>The adodb object (wrapper)</h2>
+<pre>$D </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24data" id="$data"> </a><div class="element clickable property protected $data" data-toggle="collapse" data-target=".$data .collapse">
+<h2>$this-&gt;data
+will contain field values of the row</h2>
+<pre>$data </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24instances" id="$instances"> </a><div class="element clickable property protected $instances" data-toggle="collapse" data-target=".$instances .collapse">
+<h2>model_rwd::$instances the instance cache</h2>
+<pre>$instances </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24updated_data" id="$updated_data"> </a><div class="element clickable property protected $updated_data" data-toggle="collapse" data-target=".$updated_data .collapse">
+<h2>$this-&gt;updated_data
+will contain $updated fields</h2>
+<pre>$updated_data </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>todo</th>
+<td>instead of recording field values, record only the "fields to update"</td>
+</tr>
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+</table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a name="TABLE_PK" id="TABLE_PK"> </a><div class="element clickable constant  TABLE_PK" data-toggle="collapse" data-target=".TABLE_PK .collapse">
+<h2>The table pk
+default table pk is 'id'</h2>
+<pre>TABLE_PK </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="VERSION" id="VERSION"> </a><div class="element clickable constant  VERSION" data-toggle="collapse" data-target=".VERSION .collapse">
+<h2>The version of model_rwd</h2>
+<pre>VERSION </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-09-20T02:11:20+04:00.<br></footer></div>
+</div>
+</body>
+</html>
