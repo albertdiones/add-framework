@@ -75,29 +75,6 @@ $C->js_path     = $C->assets_path.'js/';
 $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
-/**
- * No errors if live
- *
- * @since ADD MVC 0.7.2
- */
-if (add::is_live()) {
-   error_reporting(0);
-}
-else {
-   error_reporting(E_ALL);
-
-   /**
-    * When development, record the time spent on script execution
-    *
-    * @since ADD MVC 0.7.2
-    */
-   if (add::is_development()) {
-      add::$handle_shutdown          = true;
-      $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
-      add::config()->root_timer      = $GLOBALS['add_mvc_root_timer'];
-   }
-}
-
 add::load_functions('common');
 
 /**
