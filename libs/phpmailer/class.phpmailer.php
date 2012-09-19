@@ -1643,7 +1643,7 @@ class PHPMailer {
         if (version_compare(PHP_VERSION, '5.3.0', '<')) {
           set_magic_quotes_runtime(0);
         } else {
-		  ini_set('magic_quotes_runtime', 0); 
+		  ini_set('magic_quotes_runtime', 0);
 		}
 	  }
       $file_buffer  = file_get_contents($path);
@@ -1652,7 +1652,7 @@ class PHPMailer {
         if (version_compare(PHP_VERSION, '5.3.0', '<')) {
           set_magic_quotes_runtime($magic_quotes);
         } else {
-		  ini_set('magic_quotes_runtime', $magic_quotes); 
+		  ini_set('magic_quotes_runtime', $magic_quotes);
 	    }
 	  }
       return $file_buffer;
@@ -2220,7 +2220,7 @@ class PHPMailer {
           ($directory == '.') ? $directory='': '';
           $cid = 'cid:' . md5($filename);
           $ext = pathinfo($filename, PATHINFO_EXTENSION);
-          $mimeType  = self::_mime_types($ext);
+          $mimeType  = self::_content_types($ext);
           if ( strlen($basedir) > 1 && substr($basedir, -1) != '/') { $basedir .= '/'; }
           if ( strlen($directory) > 1 && substr($directory, -1) != '/') { $directory .= '/'; }
           if ( $this->AddEmbeddedImage($basedir.$directory.$filename, md5($filename), $filename, 'base64', $mimeType) ) {
@@ -2250,7 +2250,7 @@ class PHPMailer {
    * @return string MIME type of ext
    * @static
    */
-  public static function _mime_types($ext = '') {
+  public static function _content_types($ext = '') {
     $mimes = array(
       'hqx'   =>  'application/mac-binhex40',
       'cpt'   =>  'application/mac-compactpro',

@@ -158,84 +158,54 @@ CLASS add {
       if (class_exists('e_developer',false))
          e_developer::assert($classname,"Blank classname");
 
-      $incs_class_filepath = add::config()->classes_dir."/$classname.class.php";
+      # Iterate it through classes directories
+      foreach (add::config()->classes_dirs as $classes_dir) {
+         # Load it from the application's class dir
 
-      if (file_exists($incs_class_filepath)) {
-         $class_filepath = $incs_class_filepath;
-      }
+         $class_filepath_wildcard = "$classes_dir/{,*/}$classname.class.php";
+         $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
 
-      # Backward support to 0.0
-      if (empty($class_filepath)) {
-         $incs_class_filepath = add::config()->classes_dir."/$classname.php";
-         if (file_exists($incs_class_filepath)) {
-            $class_filepath = $incs_class_filepath;
-            trigger_error("{$class_filepath} format is deprecated",E_USER_NOTICE);
-         }
-      }
-
-      if (empty($class_filepath)) {
-         $class_filepath_wildcard = $C->incs_dir.'/classes/*/'.$classname.'.class.php';
-         $class_filepath_search = glob($class_filepath_wildcard);
-
-         # Backward support to 0.0
+         # Backward support to 0.2 (without .class)
          if (!$class_filepath_search) {
-            $class_filepath_wildcard = $C->incs_dir.'/classes/*/'.$classname.'.php';
-            if ($class_filepath_search = glob($class_filepath_wildcard)) {
-               trigger_error("{$class_filepath_search[0]} format is deprecated",E_USER_NOTICE);
-            }
-         }
-
-         if (!$class_filepath_search) {
-            $class_filepath_wildcard = $C->add_dir.'/classes/*/'.$classname.'.class.php';
-            $class_filepath_search = glob($class_filepath_wildcard);
-         }
-
-         # Backward support to 0.0
-         if (!$class_filepath_search) {
-            $class_filepath_wildcard = $C->add_dir.'/classes/*/'.$classname.'.php';
-            if ($class_filepath_search = glob($class_filepath_wildcard)) {
-               trigger_error("{$class_filepath_search[0]} format is deprecated",E_USER_NOTICE);
-            }
+            $class_filepath_wildcard = "$classes_dir/{,*/}$classname.php";
+            $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
          }
 
          if ($class_filepath_search) {
             $class_filepath = $class_filepath_search[0];
+            break;
          }
+
       }
 
-      # Backward support to 0.2
-      if (empty($class_filepath)) {
-         $class_filepath = $C->add_dir.'/classes/'.$classname.'.php';
-         if (file_exists($class_filepath)) {
-            trigger_error("{$class_filepath} format is deprecated",E_USER_NOTICE);
-         }
-         if (!file_exists($class_filepath))
-            $class_filepath = null;
+      if (!empty($class_filepath)) {
+         $class_loaded = include_once($class_filepath);
+         $class_loaded &= ( class_exists($classname) || interface_exists($classname) );
+      }
+      else {
+         $class_loaded = false;
       }
 
-      /*if (empty($class_filepath)) {
-         $e_class = 'e_developer';
-         if (class_exists($e_class)) {
-            throw new $e_class("$classname not found",array($C->add_dir,add::config()->classes_dir));
-         }
-         else {
-            throw new Exception("$classname not found" . $C->add_dir . " " . add::config()->classes_dir );
-         }
-      }*/
-      if ($class_filepath)
-         include_once($class_filepath);
+      # Check if the class is actually loaded
+      if (!empty($class_filepath) && !$class_loaded) {
 
-      if ($class_filepath && !class_exists($classname) && !interface_exists($classname)) {
          $e_class = 'e_developer';
+
          if (class_exists($e_class)) {
             throw new $e_class("$classname not found from $class_filepath");
          }
          else {
             throw new Exception("$classname not found from $class_filepath");
          }
+
       }
 
-      return class_exists($classname);
+      # ADD MVC Class Loaded Event
+      if ($class_loaded && method_exists($classname,'__add_loaded')) {
+         $classname::__add_loaded();
+      }
+
+      return $class_loaded;
    }
 
    /**
@@ -561,7 +531,12 @@ CLASS add {
       global $C;
       static $current_controller_basename;
       if (!isset($current_controller_basename)) {
-         $relative_path = isset($_GET['add_mvc_path']) ? "$_GET[add_mvc_path]" : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
+
+         $relative_path =
+               isset($_GET['add_mvc_path'])
+               ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
+               : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
+
          $current_controller_basename = $relative_path;
          $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
          $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
@@ -609,8 +584,11 @@ CLASS add {
     * @uses redirect()
     */
    function redirect_query($new_query,$merge_current=true) {
-      if ($merge_current)
-         $query = array_merge($_GET,$new_query);
+      if ($merge_current) {
+         $get = $_GET;
+         unset($get['add_mvc_path']);
+         $query = array_merge($get,$new_query);
+      }
       else
          $query = $new_query;
       return add::redirect("?".http_build_query($query));
@@ -626,6 +604,43 @@ CLASS add {
       $get = $_GET;
       unset($get['add_mvc_path']);
       return $get;
+   }
+
+   /**
+    * Sets and return or return an environment status
+    *
+    * @since ADD MVC 0.8
+    */
+   public static function environment_status($new_status = null) {
+
+      if ($new_status) {
+         add::config()->environment_status = $new_status;
+      }
+
+      /**
+       * No errors if live
+       *
+       * @since ADD MVC 0.7.2
+       */
+      if (add::is_live()) {
+         error_reporting(0);
+      }
+      else {
+         error_reporting(E_ALL);
+
+         /**
+          * When development, record the time spent on script execution
+          *
+          * @since ADD MVC 0.7.2
+          */
+         if (add::is_development()) {
+            add::$handle_shutdown          = true;
+            $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
+            add::config()->root_timer      = $GLOBALS['add_mvc_root_timer'];
+         }
+      }
+
+      return add::config()->environment_status;
    }
 
    /**
@@ -670,5 +685,18 @@ CLASS add {
          return in_array(current_user_ip(),add::config()->developer_ips);
       else
          return add::is_development();
+   }
+
+
+   /**
+    * content_type()
+    *
+    * @since ADD MVC 0.8
+    */
+   public function content_type($new_content_type = null) {
+      if ($new_content_type == 'text/plain') {
+         ini_set('html_errors',0);
+      }
+      return add::current_controller()->content_type($new_content_type);
    }
 }

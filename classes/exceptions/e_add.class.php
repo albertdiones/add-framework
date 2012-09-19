@@ -42,8 +42,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     *
     * @param mixed $condition
     * @param string $message the error message
-    * @param int $error_number the error code
     * @param mixed $data extra data of the error
+    * @param int $error_number the error code
     *
     * @since ADD MVC 0.0
     * @version 0.1
@@ -265,7 +265,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.0
     */
    public function handle_exception() {
-      die("{$this->getFile()}({$this->getLine()}): ({$this->getCode()}){$this->getMessage()}");
+      echo("{$this->getFile()}({$this->getLine()}): ({$this->getCode()}){$this->getMessage()}");
+      add::shutdown();
    }
 
 
@@ -275,16 +276,27 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.7
     */
    public function handle_sensitive_exception($user_message = "An error has occured") {
-      if (add::is_development()) {
-         $this->print_exception();
-         die();
+      if (!add::is_development()) {
+         $this->mail();
+      }
+
+      if (!headers_sent()) {
+         while (ob_get_level()) {
+            ob_end_clean();
+         }
+         if (add::is_development()) {
+            # Prevent misuse on live exceptions
+            $this->view()->assign('exception',$this);
+         }
+         $this->view()->assign('user_message',$user_message);
+         # note, to access config on the view, use add::config()
+         #$this->view()->assign('C',add::config());
+         $this->print_response();
       }
       else {
-         $this->mail();
-         $this->view()->assign('exception',$this);
-         $this->view()->assign('C',add::config());
-         $this->display_view();
+         $this->print_exception();
       }
+
    }
    /**
     * print_exception()
@@ -312,15 +324,51 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    public static function view_filepath() {
-      return "exceptions/".self::view_basename().".tpl";
+      if (add::is_development()) {
+
+         $tpl_filepath = "exceptions/development/".self::view_basename().".tpl";
+
+         if (!static::view()->templateExists($tpl_filepath)) {
+            $tpl_filepath = "exceptions/development/e_add.tpl";
+         }
+
+         if (static::view()->templateExists($tpl_filepath)) {
+            return $tpl_filepath;
+         }
+         else {
+            # Throw a default exception cause we are already on a a custom exception
+            throw new Exception("No development view file found for exception ".print_r($this,true));
+         }
+      }
+      else {
+         return "exceptions/".self::view_basename().".tpl";
+      }
    }
 
+   /**
+    * The basename of the view of the exception
+    *
+    */
    public static function view_basename() {
       return get_called_class();
    }
 
 
+   /**
+    * Backward support
+    *
+    * @since ADD MVC 0.8
+    */
    public function display_view() {
+      return $this->print_response();
+   }
+
+   /**
+    * Print the exception's response
+    *
+    * @since ADD MVC 0.8
+    */
+   public function print_response() {
       return $this->view()->display(self::view_filepath());
    }
 }

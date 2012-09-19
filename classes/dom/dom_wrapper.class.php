@@ -41,7 +41,7 @@ ABSTRACT CLASS dom_wrapper {
             return $this->find($arg);
          }
          else {
-            throw new exception("Unknown Errror");
+            throw new e_developer("Unknown Errror");
          }
       }
       if (is_object($arg)) {

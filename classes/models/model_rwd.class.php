@@ -5,7 +5,7 @@
  * Aims to be compatible with any databases
  * static variable $D should be declared, and the functions are biased to adodb object class
  * @package ADD MVC\Models
- * @version 1.3
+ * @version 1.4.1
  * @since ADD MVC 0.0
  * @author albertdiones@gmail.com
  *
@@ -25,7 +25,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     *
     * @since ADD MVC 0.0
     */
-   const VERSION = '1.3';
+   const VERSION = '1.4.1';
 
    /**
     * $this->data
@@ -135,6 +135,22 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       return get_called_class()."#".$this->id();
    }
 
+
+   /**
+    * Loaded Class Event Handler
+    *
+    * @since ADD MVC 0.8
+    */
+   public static function __add_loaded() {
+      $class_reflection = new ReflectionClass(get_called_class());
+
+      if (!$class_reflection->isAbstract()) {
+         $table_constant = get_called_class().'::TABLE';
+         e_developer::assert(DEFINED($table_constant),"$table_constant is not declared");
+      }
+
+   }
+
    /**
     * model_rwd->update_db_row()
     * Updates the fields of the database table that has been updated since the object has been instantiated
@@ -232,6 +248,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       if (!$row)
          return false;
 
+      if (!static::row_pk($row)) {
+         throw new e_developer("Model ".get_called_class()." PK is not existing",array($row, static::TABLE, static::TABLE_PK));
+      }
+
       $cached_instance = static::get_cached_instance(static::cache_main_key(),static::cache_array_main_id($row));
 
       if ($cached_instance) {
@@ -243,6 +263,22 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       }
 
       return $instance;
+   }
+
+
+   /**
+    * row_pk
+    *
+    * Gets the pk from the $row
+    *
+    * @param array $row
+    *
+    * @return string $pk
+    *
+    * @since ADD MVC 0.8
+    */
+   public static function row_pk($row) {
+      return $row[static::TABLE_PK];
    }
 
    /**
@@ -327,11 +363,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          $offset = $numrows = -1;
       }
 
-      $rows       = static::db()->SelectLimit(
+      $result = static::db()->SelectLimit(
             $sql,
             $numrows,
             $offset
          );
+
+      $rows = $result->getArray();
 
       $instances  = array();
 
