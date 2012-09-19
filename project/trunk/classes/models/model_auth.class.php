@@ -96,7 +96,7 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
          return $instance;
       }
       else {
-         throw new e_user_input("Invalid password");
+         throw new e_user_input("Invalid ".static::TERM_PASSWORD);
       }
    }
 

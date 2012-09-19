@@ -13,6 +13,13 @@ ABSTRACT CLASS ctrl_tpl_aux {
    protected $response;
 
    /**
+    * Mime type of this resource
+    *
+    * @since ADD MVC 0.8
+    */
+   protected $content_type = 'text/plain';
+
+   /**
     * run the page
     *
     * @since ADD MVC 0.6.2
@@ -20,6 +27,9 @@ ABSTRACT CLASS ctrl_tpl_aux {
    public function execute() {
       header("Content-type: text/plain");
       e_hack::assert($this->can_run(),"Invalid aux script authentication key");
+
+      # Set Content Type
+      $this->content_type($this->content_type);
 
       ob_start();
       try {
@@ -29,6 +39,7 @@ ABSTRACT CLASS ctrl_tpl_aux {
          add::handle_exception($e);
       }
       $this->response = ob_get_clean();
+
       $this->handle_response();
    }
 
@@ -101,5 +112,20 @@ ABSTRACT CLASS ctrl_tpl_aux {
     */
    public function log_filepath() {
       return $C->incs_dir."/logs/".get_called_class().".log.txt";
+   }
+
+   /**
+    * sets the content_type or get the current one
+    *
+    * @param string $new_content_type
+    *
+    * @since ADD MVC 0.8
+    */
+   public function content_type($new_content_type = null) {
+      if ($new_content_type) {
+         $this->content_type = $new_content_type;
+         header("Content-type: ".$this->content_type);
+      }
+      return $this->content_type;
    }
 }

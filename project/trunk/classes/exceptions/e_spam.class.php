@@ -13,7 +13,7 @@ CLASS e_spam EXTENDS e_user_malicious {
 
 
    public function handle_exception() {
-
+      return add::shutdown(false);
    }
 
 }

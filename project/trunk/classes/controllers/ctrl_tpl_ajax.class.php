@@ -12,6 +12,12 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl {
 
    public $mode;
 
+   /**
+    * Mime type of this resource
+    *
+    * @since ADD MVC 0.8
+    */
+   protected $content_type = 'text/html';
 
    /**
     * The view data
@@ -52,9 +58,13 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl {
          return $this->page();
       }
 
+      # Set Content Type
+      $this->content_type($this->content_type);
+
       $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
       add::$handle_shutdown = false;
       $this->process_data();
+
       $this->print_response($this->data);
    }
 
@@ -120,5 +130,20 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl {
     */
    public function print_response($data) {
       echo json_encode($data);
+   }
+
+   /**
+    * sets the content_type or get the current one
+    *
+    * @param string $new_content_type
+    *
+    * @since ADD MVC 0.8
+    */
+   public function content_type($new_content_type = null) {
+      if ($new_content_type) {
+         $this->content_type = $new_content_type;
+         header("Content-type: ".$this->content_type);
+      }
+      return $this->content_type;
    }
 }

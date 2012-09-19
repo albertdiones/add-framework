@@ -35,11 +35,18 @@ register_shutdown_function('add::handle_shutdown');
 
 $C->incs_dir            = $C->root_dir.'/includes';
 
-$C->classes_dir         = $C->incs_dir.'/classes';
+$C->classes_dirs        = array_merge(
+      array( $C->incs_dir.'/classes' , $C->add_dir.'/classes'),
+      isset($C->classes_dirs) && is_array($C->classes_dirs)
+         ? $C->classes_dirs
+         : array()
+   );
 
 $C->configs_dir         = $C->incs_dir.'/configs';
 $C->views_dir           = $C->incs_dir.'/views';
 $C->caches_dir          = $C->incs_dir.'/caches';
+
+add::environment_status(add::config()->environment_status);
 
 if (add::is_development() && !is_writeable($C->caches_dir)) {
    $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches';
@@ -52,7 +59,7 @@ $C->images_dir          = $C->assets_dir.'/images';
 $C->css_dir             = $C->assets_dir.'/css';
 $C->js_dir              = $C->assets_dir.'/js';
 
-$C->domain              = $C->sub_domain.".".$C->super_domain;
+$C->domain              = ( $C->sub_domain ? "$C->sub_domain." : "" ).$C->super_domain;
 $C->base_url            = "http://$C->domain".$C->path;
 
 set_include_path($C->incs_dir);

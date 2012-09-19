@@ -92,10 +92,7 @@ ABSTRACT CLASS model_multi_pk EXTENDS model_rwd {
     */
    public function id() {
       if (!isset($this->id_array)) {
-         $this->id_array = array();
-         foreach (static::table_pk() as $table_pk) {
-            $this->id_array[$table_pk] = $this->$table_pk;
-         }
+         $this->id_array = static::row_pk($this->data);
       }
       return $this->id_array;
    }
@@ -126,11 +123,7 @@ ABSTRACT CLASS model_multi_pk EXTENDS model_rwd {
     * @since ADD MVC 0.0
     */
    static function cache_array_main_id($row) {
-      $pk_array = array();
-      foreach (static::table_pk() as $table_pk) {
-         $pk_array[$table_pk] = $row[$table_pk];
-      }
-      return static::serialize_pk_array($pk_array);
+      return static::serialize_pk_array(static::row_pk($row));
    }
 
    /**
@@ -172,6 +165,26 @@ ABSTRACT CLASS model_multi_pk EXTENDS model_rwd {
     */
    public function __toString() {
       return get_called_class()."#".$this->cache_main_id();
+   }
+
+
+   /**
+    * row_pk
+    *
+    * Gets the pk from the $row
+    *
+    * @param array $row
+    *
+    * @return array $pk_array
+    *
+    * @since ADD MVC 0.8
+    */
+   public static function row_pk($row) {
+      $pk_array = array();
+      foreach (static::table_pk() as $table_pk) {
+         $pk_array[$table_pk] = $row[$table_pk];
+      }
+      return $pk_array;
    }
 
 }

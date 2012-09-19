@@ -35,4 +35,14 @@ INTERFACE i_ctrl {
     * @since ADD MVC 0.6
     */
    public function assign(/* Polymorphic */);
+
+
+   /**
+    * sets the content_type or get the current one
+    *
+    * @param string $new_content_type
+    *
+    * @since ADD MVC 0.8
+    */
+   public function content_type($new_content_type = null);
 }

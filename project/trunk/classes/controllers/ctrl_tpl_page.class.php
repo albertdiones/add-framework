@@ -17,6 +17,13 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
    protected $mode;
 
    /**
+    * Mime type of this resource
+    *
+    * @since ADD MVC 0.8
+    */
+   protected $content_type = 'text/html';
+
+   /**
     * The views cache
     * @since ADD MVC 0.0
     */
@@ -64,6 +71,9 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       if (method_exists($this,'page')) {
          return $this->page();
       }
+
+      # Set Content Type
+      $this->content_type($this->content_type);
 
       try {
          $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
@@ -169,7 +179,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
          foreach ($array_keys as $array_key) {
             e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
-            $compact_array[$array_key] = $gpc_array[$array_key]!=="" ? $gpc_array[$array_key] : null;
+            $compact_array[$array_key] = empty($gpc_array[$array_key]) ? null : $gpc_array[$array_key];
          }
 
       }
@@ -340,5 +350,21 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
     */
    public function meta_keywords() {
       return isset(add::config()->default_meta_keywords) ? add::config()->default_meta_keywords : null;
+   }
+
+
+   /**
+    * sets the content_type or get the current one
+    *
+    * @param string $new_content_type
+    *
+    * @since ADD MVC 0.8
+    */
+   public function content_type($new_content_type = null) {
+      if ($new_content_type) {
+         $this->content_type = $new_content_type;
+         header("Content-type: ".$this->content_type);
+      }
+      return $this->content_type;
    }
 }

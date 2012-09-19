@@ -1,11 +1,21 @@
+{block name="response"}
+{if add::content_type() == "text/plain"}{*
+* Plain text layout
+*}
+{block name=header}{block name=meta_title}{/block}{/block}
+
+{block name=main}{/block}
+{block name=footer}{/block}
+
+{else}
 <!DOCTYPE html>
 <html>
    <head>
 
 {block name=metas}
-      <title>{$meta_title|escape}</title>
-      <meta name="description" content="{$meta_description|escape}" />
-      <meta name="keywords" content="{$meta_keywords|escape}" />
+      <title>{block name=meta_title}{/block}</title>
+      <meta name="description" content="{block name=meta_description}{/block}" />
+      <meta name="keywords" content="{block name=meta_keywords}{/block}" />
 {/block}
 
 {block name=styles}
@@ -41,16 +51,10 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
       {block name=post_body_scripts}
-
-      <script type="text/javascript">
-         $('*[data-href]').click(
-               function() {
-                  location.href = $(this).attr('data-href');
-               }
-            );
-      </script>
-
+      <script src="https://add-usability.googlecode.com/svn/project/trunk/js/all.js"></script>
       {/block}
 
    </body>
 </html>
+{/if}
+{/block}

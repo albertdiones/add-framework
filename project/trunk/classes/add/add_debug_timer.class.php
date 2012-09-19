@@ -153,6 +153,11 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     * @since ADD MVC 0.4
     */
    public function us_diff_html($string, $second_difference) {
+
+      if (add::content_type() == 'text/plain') {
+         return "$string";
+      }
+
       $styles_array = array();
 
       if ($second_difference > 1) {
