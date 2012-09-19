@@ -20,7 +20,7 @@ CLASS session_entity EXTENDS array_entity {
 
 
    protected function __construct(&$session_var) {
-      parent::construct($session_var);
+      parent::__construct($session_var);
       $this->data = &$session_var;
       $this->session_var = &$this->data;
    }
