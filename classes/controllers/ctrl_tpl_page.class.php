@@ -105,6 +105,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       if (add::is_development())
          add::config()->root_timer->lap("Before Printing");
 
+      header("Content-type: ".$this->mime_type);
       $this->print_response($this->data);
    }
 

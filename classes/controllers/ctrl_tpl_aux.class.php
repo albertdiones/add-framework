@@ -25,7 +25,6 @@ ABSTRACT CLASS ctrl_tpl_aux {
     * @since ADD MVC 0.6.2
     */
    public function execute() {
-      header("Content-type: text/plain");
       e_hack::assert($this->can_run(),"Invalid aux script authentication key");
 
       # Set Content Type
