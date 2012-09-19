@@ -883,4 +883,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       return $rows ? array_shift($rows) : false;
    }
 
+   /**
+    * column_names
+    *
+    * @since ADD MVC 0.8.0
+    */
+   public static function meta_columns() {
+      return static::db()->MetaColumns(static::TABLE);
+   }
 }
