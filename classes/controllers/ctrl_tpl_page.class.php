@@ -76,7 +76,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       $this->content_type($this->content_type);
 
       try {
-         $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
+         $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : 'default';
          $this->process_data();
       }
       catch(e_user $e) {
@@ -138,10 +138,6 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
    public function process_mode() {
       $mode = $this->mode;
 
-      if (!$mode) {
-         $mode = "default";
-      }
-
       $method_name = "process_mode_$mode";
 
       if (method_exists($this,$method_name)) {
@@ -155,11 +151,14 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
             throw new e_developer(get_called_class()."->$gpc_key_var not declared");
          }
 
-         $this->view()->assign($compact_array);
-         $this->view()->assign('mode',$mode);
+         $this->assign($compact_array);
+         $this->assign('mode',$mode);
 
          return $this->$method_name($compact_array);
 
+      }
+      else if ($mode == "default") {
+         $this->assign('mode',$mode);
       }
 
       return false;
