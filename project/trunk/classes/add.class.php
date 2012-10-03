@@ -515,8 +515,7 @@ CLASS add {
                   ( $class_name = rtrim($class_name,'_') )
                   && class_exists($class_name)
                ) {
-               $current_controller = new $class_name();
-               add::redirect(add::config()->path().$current_controller->path());
+               $class_name::redirect();
             }
             else {
                $current_controller = new ctrl_page_404();
