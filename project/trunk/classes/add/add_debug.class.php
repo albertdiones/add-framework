@@ -143,7 +143,7 @@ ABSTRACT CLASS add_debug {
    static function var_dump() {
       $args = func_get_args();
       if (!$args) {
-         $args[0] = debug::get_declared_globals();
+         $args[0] = static::get_declared_globals();
       }
       $var = self::return_var_dump($args);
       if (add::current_controller()->content_type() == 'text/plain') {

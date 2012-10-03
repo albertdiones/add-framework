@@ -7,8 +7,11 @@
  * @package ADD MVC\Controllers
  * @since ADD MVC 0.0
  * @version 1.0
+ *
+ * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
+ *
  */
-ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
+ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
    /**
     * The mode of the process
@@ -60,7 +63,8 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
    /**
     * Process the page response (former $this->page())
-    * @todo use a better term that is applicable to all response
+    *
+    * @todo remove the automatic assigning of {$C}
     *
     * @since ADD MVC 0.0
     * @version 0.2
@@ -77,7 +81,13 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
       try {
          $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : 'default';
-         $this->process_data();
+
+         $this->process_data(
+               isset($this->common_gpc)
+               ? $this->recursive_compact( $this->common_gpc )
+               : array()
+            );
+
       }
       catch(e_user $e) {
 
@@ -97,7 +107,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       $this->assign('ctrl_basename',$this->basename());
       $this->assign('C',add::config());
 
-      $error_messages = $this->view()->getTemplateVars('error_messages');
+      $error_messages = $this->data['error_messages'];
 
       if (is_array($error_messages))
          $this->assign('error_message',$error_messages[0]);
@@ -114,28 +124,31 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
     *
     * @since ADD MVC 0.0
     * @version 0.1
-    *
-    * @todo remove version 0.5 support on ADD MVC 1.0
+    * @param array $gpc
+    * @todo ADD MVC 1.0: remove version 0.5 and version 0.8 support
     */
-   public function process_data() {
-
+   public function process_data( $common_gpc = array()/* ADD MVC 0.8 support */) {
+      $this->pre_mode_process( $common_gpc );
       # ADD MVC 0.5 backward support
       if (method_exists($this,'process')) {
          return $this->process();
       }
 
-      return $this->process_mode();
+      $process_mode_result = $this->process_mode( $common_gpc );
+
+      $this->post_mode_process( $common_gpc );
+
    }
 
 
    /**
     * process_mode function
     * Processes any GPC requests
-    *
+    * @param array $gpc
     * @since ADD MVC 0.1
     * @version 0.2
     */
-   public function process_mode() {
+   public function process_mode( $common_gpc = array() ) {
       $mode = $this->mode;
 
       $method_name = "process_mode_$mode";
@@ -144,6 +157,8 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
 
          $gpc_key_var = "mode_gpc_$mode";
 
+         $compact_array = array();
+
          if (isset($this->$gpc_key_var)) {
             $compact_array = $this->recursive_compact( $this->$gpc_key_var );
          }
@@ -151,10 +166,12 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
             throw new e_developer(get_called_class()."->$gpc_key_var not declared");
          }
 
-         $this->assign($compact_array);
+         $merge_compact_array = array_merge($common_gpc, $compact_array);
+
+         $this->assign($merge_compact_array);
          $this->assign('mode',$mode);
 
-         return $this->$method_name($compact_array);
+         return $this->$method_name($merge_compact_array);
 
       }
       else if ($mode == "default") {
@@ -267,7 +284,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
       else {
          $template_vars = $data;
          unset($template_vars['C']);
-         $this->view()->assign('template_vars',$template_vars);
+         $this->assign('template_vars',$template_vars);
          $this->view()->display('debug/list_array_page.tpl');
       }
    }
@@ -296,7 +313,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
          $error_messages[$label] = $e->getMessage();
       }
 
-      $this->view()->assign('error_messages',$error_messages);
+      $this->assign('error_messages',$error_messages);
    }
 
    /**
@@ -365,5 +382,23 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl, i_ctrl_with_view {
          header("Content-type: ".$this->content_type);
       }
       return $this->content_type;
+   }
+
+   /**
+    * Process before the main mode process
+    *
+    * @param array $common_gpc
+    * @since ADD MVC 0.9
+    */
+   public function pre_mode_process($common_gpc) {
+   }
+
+   /**
+    * Process after the main mode process
+    *
+    * @param array $common_gpc
+    * @since ADD MVC 0.9
+    */
+   public function post_mode_process($common_gpc) {
    }
 }
