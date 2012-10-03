@@ -388,7 +388,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @param int $per_page number of items per page for limit clause
     * @since ADD MVC 0.0
     */
-   public static function get_where_order_page($conditions,$order_by=NULL,$page=NULL,$per_page=NULL) {
+   public static function get_where_order_page($conditions,$order_by=NULL,$page=NULL,$per_page=10) {
       return static::instances_from_sql(
                   "SELECT %s FROM %s "
                   .str_replace(
