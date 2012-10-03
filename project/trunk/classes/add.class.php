@@ -516,7 +516,7 @@ CLASS add {
                   && class_exists($class_name)
                ) {
                $current_controller = new $class_name();
-               add::redirect($current_controller->href());
+               add::redirect($current_controller->path());
             }
             else {
                $current_controller = new ctrl_page_404();
