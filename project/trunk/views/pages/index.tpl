@@ -1,9 +1,9 @@
 {*SMARTY*}
-{extends file='common_layout.tpl'}
+{add_layout file='common_layout'}
 {block name='main'}
    <h1>New Website</h1>
    Hello, this website is very new, please comeback again later to see contents.
-   {if isset($log.warnings)}
+   {if $log.warnings}
       <h5>Warnings</h5>
       <ul>
       {foreach $log.warnings as $warning}
@@ -11,7 +11,7 @@
       {/foreach}
       </ul>
    {/if}
-   {if isset($log.dirs)}
+   {if $log.dirs}
       <h2>Directories Created</h2>
       <ul>
       {foreach $log.dirs as $dir}

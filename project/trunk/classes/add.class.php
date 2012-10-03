@@ -508,7 +508,12 @@ CLASS add {
             $current_controller = new $class_name();
          }
          else {
-            $current_controller = new ctrl_page_404();
+            if (file_exists(self::current_view_filepath())) {
+               $current_controller = new ctrl_default_page();
+            }
+            else {
+               $current_controller = new ctrl_page_404();
+            }
          }
       }
 
@@ -560,6 +565,10 @@ CLASS add {
             $current_controller_basename = self::$HOME_CONTROLLER;
       }
       return $current_controller_basename;
+   }
+
+   public static function current_view_filepath() {
+      return self::config()->views_dir.'/pages/'.self::current_controller_basename().'.tpl';
    }
 
 
