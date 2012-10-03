@@ -214,7 +214,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
    public static function view_filepath() {
       $view_filepath = 'pages/'.static::view_basename().'.tpl';
 
-      if (!static::view()->TemplateExists($view_filepath) && ! $this instanceof ctrl_default_page ) {
+      if (!static::view()->TemplateExists($view_filepath) && (isset($this) && ! $this instanceof ctrl_default_page) ) {
          $view_filepath = self::view_filepath_009();
       }
 
