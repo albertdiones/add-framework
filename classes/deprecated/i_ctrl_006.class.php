@@ -5,7 +5,7 @@
  *
  * @since ADD MVC 0.6
  */
-INTERFACE i_ctrl {
+INTERFACE i_ctrl_006 {
 
    /**
     * execute() the execute function
@@ -25,16 +25,9 @@ INTERFACE i_ctrl {
    /**
     * process_data() - process the data
     *
-    * @param array $gpc the common gpc
-    *
     * @since ADD MVC 0.6
-    *
-    * This is commented because of backwards compatibility reasons
-    *
-    * @todo overwrite this with i_ctrl_0_9
-    *
     */
-   /* public function process_data($gpc);*/
+   public function process_data();
 
    /**
     * assign data
