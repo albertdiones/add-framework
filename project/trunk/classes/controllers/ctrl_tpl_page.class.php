@@ -107,7 +107,10 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
       $this->assign('ctrl_basename',$this->basename());
       $this->assign('C',add::config());
 
-      $error_messages = $this->data['error_messages'];
+      $error_messages =
+            $this->data['error_messages'] && is_array($this->data['error_messages'])
+            ? $this->data['error_messages']
+            : array();
 
       if (is_array($error_messages))
          $this->assign('error_message',$error_messages[0]);
