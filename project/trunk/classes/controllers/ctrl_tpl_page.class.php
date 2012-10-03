@@ -270,7 +270,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
     * @since ADD MVC 0.5
     */
    public function redirect() {
-      add::redirect(self::path());
+      add::redirect(add::config()->path.self::path());
    }
 
    /**
