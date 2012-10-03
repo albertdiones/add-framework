@@ -512,7 +512,7 @@ CLASS add {
                $current_controller = new ctrl_default_page();
             }
             else if (
-                  $class_name = rtrim($class_name,'_')
+                  ( $class_name = rtrim($class_name,'_') )
                   && class_exists($class_name)
                ) {
                $current_controller = new $class_name();
