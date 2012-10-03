@@ -205,9 +205,20 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
    /**
     * The view filepath of $this controller
+    * @todo ADD MVC version 1.0: remove backward compatibility
     * @since ADD MVC 0.0
     */
    public static function view_filepath() {
+      $view_filepath = 'pages/'.static::view_basename().'.tpl';
+
+      if (!static::view()->TemplateExists($view_filepath) && ! $this instanceof ctrl_default_page ) {
+         $view_filepath = self::view_filepath_009();
+      }
+
+      return $view_filepath;
+   }
+
+   public static function view_filepath_009() {
       return static::view_basename().'.tpl';
    }
    /**
