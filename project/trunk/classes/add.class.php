@@ -511,6 +511,13 @@ CLASS add {
             if (file_exists(self::current_view_filepath())) {
                $current_controller = new ctrl_default_page();
             }
+            else if (
+                  $class_name = ltrim($class_name,'_')
+                  && class_exists($class_name)
+               ) {
+               $current_controller = new $class_name();
+               add::redirect($current_controller->href());
+            }
             else {
                $current_controller = new ctrl_page_404();
             }
@@ -588,7 +595,7 @@ CLASS add {
     * Redirect function
     * die() included
     * @param string $url the href to redirect into
-    * todo do not die when failed to rediredct
+    * @todo do not die when failed to redirect
     */
    function redirect($url) {
       header("Location: $url");
