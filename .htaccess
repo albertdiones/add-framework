@@ -1,3 +1,4 @@
 # Disallow browser access
+# Copy this also on your application's includes/ folder
 Order Deny,Allow
 Deny From All
