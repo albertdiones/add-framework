@@ -112,7 +112,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
             ? $this->data['error_messages']
             : array();
 
-      if (is_array($error_messages))
+      if (is_array($error_messages) && isset($error_messages[0]))
          $this->assign('error_message',$error_messages[0]);
 
       if (add::is_development())
