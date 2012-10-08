@@ -650,6 +650,7 @@ CLASS add {
        */
       if (add::is_live()) {
          error_reporting(0);
+         add::$handle_shutdown = false;
       }
       else {
          error_reporting(E_ALL);
