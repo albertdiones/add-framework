@@ -221,7 +221,7 @@ CLASS add {
          while (ob_get_level()) {
             ob_end_clean();
          }
-         die("<div style='color:red'>".$e->getMessage()."</div>");
+         die("<div style='color:red'>".$e->getMessage()." ".$e->getFile().":".$e->getLine()." </div>");
       }
    }
 
