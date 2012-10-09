@@ -374,6 +374,7 @@ CLASS add {
                add_debug::print_config('add_dir');
                add_debug::print_config('path');
                add_debug::print_config('developer_ips',true);
+               add_debug::print_data('current_user_ip',current_user_ip());
             }
             $add_mvc_root_timer->lap("Shutdown");
             $add_mvc_root_timer->print_all_laps();
