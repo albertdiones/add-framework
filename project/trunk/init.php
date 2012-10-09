@@ -21,8 +21,15 @@ if (version_compare(phpversion(),ADD_MIN_PHP_VERSION) === -1) {
 }
 
 
-if (!isset($C))
-   die("No config found");
+if (!isset($C)) {
+   $C = new STDClass();
+}
+
+# Sets the add_dir if not set. And it may be smart not to let the user(developer) set this on the first place
+if (empty($C->add_dir)) {
+   $C->add_dir = realpath(dirname(__FILE__));
+}
+
 require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
