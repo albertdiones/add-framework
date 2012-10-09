@@ -726,7 +726,7 @@ CLASS add {
     *
     * @since ADD MVC 0.8
     */
-   public function content_type($new_content_type = null) {
+   public static function content_type($new_content_type = null) {
       if ($new_content_type == 'text/plain') {
          ini_set('html_errors',0);
       }
