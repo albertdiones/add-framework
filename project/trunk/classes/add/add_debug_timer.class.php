@@ -141,7 +141,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     * @param int $microseconds the microseconds
     * @since ADD MVC 0.0
     */
-   public function us_diff_readable_format($microseconds) {
+   public static function us_diff_readable_format($microseconds) {
       $difference_ms = $microseconds*1000;
       return "$difference_ms milliseconds";
    }
@@ -152,7 +152,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     *
     * @since ADD MVC 0.4
     */
-   public function us_diff_html($string, $second_difference) {
+   public static function us_diff_html($string, $second_difference) {
 
       if (add::content_type() == 'text/plain') {
          return "$string";
