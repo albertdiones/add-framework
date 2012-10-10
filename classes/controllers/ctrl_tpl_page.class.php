@@ -178,6 +178,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
       }
       else if ($mode == "default") {
+         $this->assign($common_gpc);
          $this->assign('mode',$mode);
       }
 
