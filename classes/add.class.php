@@ -338,7 +338,7 @@ CLASS add {
 
             $error['file'] = basename($error['file']);
 
-            $compiled_tpl_preg = '[\da-f]{40}\.file\.(.*\.tpl)\.php';
+            $compiled_tpl_preg = '/[\da-f]{40}\.file\.(.*\.tpl)\.php/';
 
             if (preg_match($compiled_tpl_preg,$error['file'])) {
                $error['file'] = "*".preg_replace($compiled_tpl_preg,'$1',$error['file']);
