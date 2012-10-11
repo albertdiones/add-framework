@@ -12,7 +12,7 @@
    <div style='float:left;width:40%;'>
       <small>{$error.type}</small>
       <p>{$error.message}</p>
-      <small>
+      <small style="font-size:8px;">
          {$error.file}:{$error.line}
          {foreach $error['file_lines'] as $error_file_line}
             &lt; {$error_file_line.file}:{$error_file_line.line}
