@@ -279,17 +279,18 @@ CLASS add {
       if (!isset(static::$errors[$error_index]))
          static::$errors[$error_index] = array();
 
-//      $backtrace = debug_backtrace();
-//
-//      array_shift($backtrace);
-//
-//      while (
-//            isset($backtrace[0]['file'])
-//            && $backtrace[0]['file'] == $errfile
-//            && $backtrace[0]['line'] == $errline
-//         ) {
-//         array_shift($backtrace);
-//      }
+      $backtrace = array_slice(debug_backtrace(),1,20);
+
+      array_shift($backtrace);
+
+      # Throw away same backtrace as $errfile and $errline
+      while (
+            isset($backtrace[0]['file'])
+            && $backtrace[0]['file'] == $errfile
+            && $backtrace[0]['line'] == $errline
+         ) {
+         array_shift($backtrace);
+      }
 
       static::$errors[$error_index][] = array(
             'type' => isset($error_code_readable_strings [$errno]) ? $error_code_readable_strings [$errno] : $errno,
