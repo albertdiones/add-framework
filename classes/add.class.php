@@ -298,7 +298,7 @@ CLASS add {
             'message' => $errstr,
             'file'    => $errfile,
             'line'       => $errline,
-            'backtrace'  => array(),
+            'backtrace'  => $backtrace,
          );
    }
 
