@@ -64,7 +64,8 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl_0_9 {
       # Set Content Type
       $this->content_type($this->content_type);
 
-      $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : '';
+      ctrl_tpl_page::set_mode();
+
       add::$handle_shutdown = false;
 
       $this->process_data(
