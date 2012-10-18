@@ -13,14 +13,10 @@ ABSTRACT CLASS abstract_ctrl {
     * @since ADD MVC 0.10
     */
    public function set_mode() {
-      if (isset($_REQUEST['mode'])) {
-         if (preg_match('/^\w+$/',$_REQUEST['mode'])) {
-            $this->mode = $_REQUEST['mode'];
-            if (preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
-               $this->sub_mode = $_REQUEST['sub_mode'];
-            }
-         }
-         else {
+      if (isset($_REQUEST['mode']) && preg_match('/^\w+$/',$_REQUEST['mode'])) {
+         $this->mode = $_REQUEST['mode'];
+         if (isset($_REQUEST['sub_mode']) && preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
+            $this->sub_mode = $_REQUEST['sub_mode'];
          }
       }
 
