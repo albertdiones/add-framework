@@ -247,7 +247,7 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_with_view {
       else {
          $template_vars = $data;
          unset($template_vars['C']);
-         $this->assign('template_vars',$template_vars);
+         $this->view()->assign('template_vars',$template_vars);
          $this->view()->display('debug/list_array_page.tpl');
       }
    }
