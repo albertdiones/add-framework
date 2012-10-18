@@ -11,7 +11,7 @@
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
  */
-ABSTRACT CLASS ctrl_tpl_ajax EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_0_9 {
+ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
 
    public $mode;
 
