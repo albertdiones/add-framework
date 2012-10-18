@@ -11,7 +11,7 @@
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
  */
-ABSTRACT CLASS ctrl_tpl_page EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_with_view {
+ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
 
    /**
     * The mode of the process
