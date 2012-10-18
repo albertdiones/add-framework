@@ -87,19 +87,7 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
       try {
 
-         if (isset($_REQUEST['mode'])) {
-            if (preg_match('/^\w+$/',$_REQUEST['mode'])) {
-               $this->mode = $_REQUEST['mode'];
-               if (preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
-                  $this->sub_mode = $_REQUEST['sub_mode'];
-               }
-            }
-            else {
-            }
-         }
-
-         if (!isset($this->mode))
-            $this->mode = 'default';
+         $this->set_mode();
 
          $this->process_data(
                isset($this->common_gpc)
@@ -138,6 +126,28 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
          add::config()->root_timer->lap("Before Printing");
 
       $this->print_response($this->data);
+   }
+
+
+   /**
+    * Set mode function
+    *
+    * @since ADD MVC 0.10
+    */
+   public function set_mode() {
+      if (isset($_REQUEST['mode'])) {
+         if (preg_match('/^\w+$/',$_REQUEST['mode'])) {
+            $this->mode = $_REQUEST['mode'];
+            if (preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
+               $this->sub_mode = $_REQUEST['sub_mode'];
+            }
+         }
+         else {
+         }
+      }
+
+      if (!isset($this->mode))
+         $this->mode = 'default';
    }
 
    /**
