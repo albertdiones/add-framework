@@ -5,8 +5,8 @@
 </style>
 {/block}
 {block name='main'}
-   <div style="overflow:scroll">
-   <h1>Contents</h1>
+   <div>
+   <h1>{$ctrl_basename|replace:'_',' '}</h1>
    {include file='debug/list_array.tpl' array=$template_vars}
    </div>
 {/block}
