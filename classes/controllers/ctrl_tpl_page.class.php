@@ -20,6 +20,12 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
    protected $mode;
 
    /**
+    * The sub mode of the mode
+    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
+    */
+   protected $sub_mode;
+
+   /**
     * Mime type of this resource
     *
     * @since ADD MVC 0.8
@@ -80,7 +86,20 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
       $this->content_type($this->content_type);
 
       try {
-         $this->mode = isset($_REQUEST['mode']) ? "$_REQUEST[mode]" : 'default';
+
+         if (isset($_REQUEST['mode'])) {
+            if (preg_match('/^\w+$/',$_REQUEST['mode'])) {
+               $this->mode = $_REQUEST['mode'];
+               if (preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
+                  $this->sub_mode = $_REQUEST['sub_mode'];
+               }
+            }
+            else {
+            }
+         }
+
+         if (!isset($this->mode))
+            $this->mode = 'default';
 
          $this->process_data(
                isset($this->common_gpc)
@@ -147,9 +166,11 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
    /**
     * process_mode function
     * Processes any GPC requests
+    *
     * @param array $gpc
     * @since ADD MVC 0.1
-    * @version 0.2
+    *
+    * @version 1.0
     */
    public function process_mode( $common_gpc = array() ) {
       $mode = $this->mode;
@@ -173,13 +194,14 @@ ABSTRACT CLASS ctrl_tpl_page IMPLEMENTS i_ctrl_with_view {
 
          $this->assign($merge_compact_array);
          $this->assign('mode',$mode);
+         $this->assign('sub_mode',$this->sub_mode);
 
          return $this->$method_name($merge_compact_array);
 
       }
-      else if ($mode == "default") {
+      else if ($mode == 'default') {
          $this->assign($common_gpc);
-         $this->assign('mode',$mode);
+         $this->assign('mode','default');
       }
 
       return false;
