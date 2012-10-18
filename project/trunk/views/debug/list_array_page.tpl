@@ -7,6 +7,10 @@
 {block name='main'}
    <div>
    <h1>{$ctrl_basename|replace:'_',' '}</h1>
-   {include file='debug/list_array.tpl' array=$template_vars}
+   {if $template_vars}
+      {include file='debug/list_array.tpl' array=$template_vars}
+   {else}
+      No contents found
+   {/if}
    </div>
 {/block}
