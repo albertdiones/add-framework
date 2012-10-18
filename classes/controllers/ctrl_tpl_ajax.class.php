@@ -84,27 +84,7 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl_0_9 {
     *
     */
    public function process_mode( $common_gpc = array() ) {
-      $mode = $this->mode;
-      if ($mode) {
-
-         $method_name = "process_mode_$mode";
-
-         if (method_exists($this,$method_name)) {
-
-            $gpc_key_var = "mode_gpc_$mode";
-
-            $compact_array = array();
-
-            if (isset($this->$gpc_key_var)) {
-               $compact_array = ctrl_tpl_page::recursive_compact( $this->$gpc_key_var );
-            }
-
-            $merge_compact_array = array_merge($common_gpc, $compact_array);
-
-            return $this->$method_name($merge_compact_array);
-         }
-      }
-      return false;
+      return ctrl_tpl_page::process_mode( $common_gpc );
    }
 
     /**
