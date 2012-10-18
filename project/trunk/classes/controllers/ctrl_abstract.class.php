@@ -5,7 +5,7 @@
  *
  * @since ADD MVC 0.10
  */
-ABSTRACT CLASS abstract_ctrl {
+ABSTRACT CLASS ctrl_abstract {
 
    /**
     * Set mode function
