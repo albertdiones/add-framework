@@ -77,7 +77,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_0_9 {
       $this->print_response($this->data);
    }
 
-    /**
+   /**
     * The pre-display process of the controller
     * (former $this->process())
     * @param array $common_gpc
