@@ -154,27 +154,6 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_with_view {
 
 
 
-   /**
-    * recursive compact($array_keys)
-    * Returns an array of GPC from the $array_keys
-    *
-    * @since ADD MVC 0.1, ctrl_tpl_page 0.1
-    */
-   public static function recursive_compact($gpc_array_keys) {
-      $compact_array = array();
-      foreach ($gpc_array_keys as $gpc_key => $array_keys) {
-         e_developer::assert(isset($GLOBALS[$gpc_key]),"Invalid GPC key $gpc_key");
-         $gpc_array = $GLOBALS[$gpc_key];
-
-         foreach ($array_keys as $array_key) {
-            e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
-            $compact_array[$array_key] = empty($gpc_array[$array_key]) ? null : $gpc_array[$array_key];
-         }
-
-      }
-      return $compact_array;
-   }
-
 
    /**
     * The view filepath of $this controller
