@@ -1,5 +1,5 @@
 {*SMARTY*}
-{extends file='common_layout.tpl'}
+{add_layout file='common_layout'}
 {block name='head.post'}
 <style>
 </style>
