@@ -11,7 +11,7 @@
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
  */
-ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl_0_9 {
+ABSTRACT CLASS ctrl_tpl_ajax EXTENDS abstract_ctrl IMPLEMENTS i_ctrl_0_9 {
 
    public $mode;
 
@@ -64,7 +64,7 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl_0_9 {
       # Set Content Type
       $this->content_type($this->content_type);
 
-      ctrl_tpl_page::set_mode();
+      $this->set_mode();
 
       add::$handle_shutdown = false;
 
@@ -75,17 +75,6 @@ ABSTRACT CLASS ctrl_tpl_ajax IMPLEMENTS i_ctrl_0_9 {
          );
 
       $this->print_response($this->data);
-   }
-
-   /**
-    * process_mode function
-    * Processes any GPC requests
-    * @param array $common_gpc
-    * @since ADD MVC 0.6
-    *
-    */
-   public function process_mode( $common_gpc = array() ) {
-      return ctrl_tpl_page::process_mode( $common_gpc );
    }
 
     /**
