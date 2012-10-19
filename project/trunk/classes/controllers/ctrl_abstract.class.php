@@ -51,9 +51,9 @@ ABSTRACT CLASS ctrl_abstract {
             throw new e_developer(get_called_class()."->$gpc_key_var not declared");
          }
 
-         $reserved_gpc = array('mode' = > $this->mode);
+         $reserved_gpc = array('mode' => $this->mode);
 
-         if (isset($this->sub_mode)) {
+         if (!empty($this->sub_mode)) {
             $reserved_gpc['sub_mode'] = $this->sub_mode;
          }
 
