@@ -42,22 +42,28 @@ ABSTRACT CLASS ctrl_abstract {
 
          $gpc_key_var = "mode_gpc_$mode";
 
-         $compact_array = array();
+         $mode_gpc = array();
 
          if ( isset( $this->$gpc_key_var ) ) {
-            $compact_array = $this->recursive_compact( $this->$gpc_key_var );
+            $mode_gpc = $this->recursive_compact( $this->$gpc_key_var );
          }
          else if ($mode != 'default') {
             throw new e_developer(get_called_class()."->$gpc_key_var not declared");
          }
 
-         $merge_compact_array = array_merge($common_gpc, $compact_array);
+         $reserved_gpc = array('mode' = > $this->mode);
 
-         $this->assign($merge_compact_array);
+         if (isset($this->sub_mode)) {
+            $reserved_gpc['sub_mode'] = $this->sub_mode;
+         }
+
+         $merged_gpc = array_merge($reserved_gpc, $common_gpc, $mode_gpc);
+
+         $this->assign($merged_gpc);
          $this->assign('mode',$mode);
          $this->assign('sub_mode',$this->sub_mode);
 
-         return $this->$method_name($merge_compact_array);
+         return $this->$method_name($merged_gpc);
 
       }
       else if ($mode == 'default') {
