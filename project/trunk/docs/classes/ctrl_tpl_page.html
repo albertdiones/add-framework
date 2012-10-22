@@ -32,10 +32,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">140</span></a></li>
+                <span class="label label-info">151</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">28</span>
+                <span class="label label-info">34</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">30</span></a></li>
@@ -68,26 +68,32 @@
 <li class="method public "><a href="#meta_keywords" title="meta_keywords :: meta keywords"><span class="description">meta keywords</span><pre>meta_keywords()</pre></a></li>
 <li class="method public "><a href="#meta_title" title="meta_title :: The default page title"><span class="description">The default page title</span><pre>meta_title()</pre></a></li>
 <li class="method public "><a href="#path" title="path :: The canonical url path of this controller"><span class="description">The canonical url path of this controller</span><pre>path()</pre></a></li>
+<li class="method public "><a href="#post_mode_process" title="post_mode_process :: Process after the main mode process"><span class="description">Process after the main mode process</span><pre>post_mode_process()</pre></a></li>
+<li class="method public "><a href="#pre_mode_process" title="pre_mode_process :: Process before the main mode process"><span class="description">Process before the main mode process</span><pre>pre_mode_process()</pre></a></li>
 <li class="method public "><a href="#print_response" title="print_response :: display() the Smarty template of $this controller"><span class="description">display() the Smarty template of $this controller</span><pre>print_response()</pre></a></li>
 <li class="method public "><a href="#process_data" title="process_data :: The pre-display process of the controller
 (former $this-&gt;process())"><span class="description">The pre-display process of the controller
 (former $this-&gt;process())</span><pre>process_data()</pre></a></li>
-<li class="method public "><a href="#process_mode" title="process_mode :: process_mode function
+<li class="method public inherited"><a href="#process_mode" title="process_mode :: process_mode function
 Processes any GPC requests"><span class="description">process_mode function
 Processes any GPC requests</span><pre>process_mode()</pre></a></li>
-<li class="method public "><a href="#recursive_compact" title="recursive_compact :: recursive compact($array_keys)
+<li class="method public inherited"><a href="#recursive_compact" title="recursive_compact :: recursive compact($array_keys)
 Returns an array of GPC from the $array_keys"><span class="description">recursive compact($array_keys)
 Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre></a></li>
 <li class="method public "><a href="#redirect" title="redirect :: Redirect"><span class="description">Redirect</span><pre>redirect()</pre></a></li>
+<li class="method public inherited"><a href="#set_mode" title="set_mode :: Set mode function"><span class="description">Set mode function</span><pre>set_mode()</pre></a></li>
 <li class="method public "><a href="#view" title="view :: The Smarty view object of $this controller"><span class="description">The Smarty view object of $this controller</span><pre>view()</pre></a></li>
 <li class="method public "><a href="#view_basename" title="view_basename :: The view base file name of $this controller"><span class="description">The view base file name of $this controller</span><pre>view_basename()</pre></a></li>
 <li class="method public "><a href="#view_filepath" title="view_filepath :: The view filepath of $this controller"><span class="description">The view filepath of $this controller</span><pre>view_filepath()</pre></a></li>
+<li class="method public "><a href="#view_filepath_009" title="view_filepath_009 :: "><span class="description">view_filepath_009()
+        </span><pre>view_filepath_009()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected "><a href="#%24content_type" title="$content_type :: Mime type of this resource"><span class="description">Mime type of this resource</span><pre>$content_type</pre></a></li>
 <li class="property protected "><a href="#%24data" title="$data :: The view data"><span class="description">The view data</span><pre>$data</pre></a></li>
 <li class="property protected "><a href="#%24mode" title="$mode :: The mode of the process"><span class="description">The mode of the process</span><pre>$mode</pre></a></li>
+<li class="property protected "><a href="#%24sub_mode" title="$sub_mode :: The sub mode of the mode"><span class="description">The sub mode of the mode</span><pre>$sub_mode</pre></a></li>
 <li class="property protected "><a href="#%24views" title="$views :: The views cache"><span class="description">The views cache</span><pre>$views</pre></a></li>
 </ul>
 </div>
@@ -112,6 +118,10 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 <tr>
 <th>version</th>
 <td>1.0</td>
+</tr>
+<tr>
+<th>todo</th>
+<td>ADD MVC version 1.0: implement i_ctrl (version 0.9) for this</td>
 </tr>
 </table>
 <h3>
@@ -207,7 +217,7 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 <table class="table table-bordered">
 <tr>
 <th>todo</th>
-<td>use a better term that is applicable to all response</td>
+<td>remove the automatic assigning of {$C}</td>
 </tr>
 <tr>
 <th>since</th>
@@ -290,6 +300,40 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 </tr></table>
 </div></div>
 </div>
+<a name="post_mode_process" id="post_mode_process"></a><div class="element clickable method public post_mode_process" data-toggle="collapse" data-target=".post_mode_process .collapse">
+<h2>Process after the main mode process</h2>
+<pre>post_mode_process(array $common_gpc) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.9</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a name="pre_mode_process" id="pre_mode_process"></a><div class="element clickable method public pre_mode_process" data-toggle="collapse" data-target=".pre_mode_process .collapse">
+<h2>Process before the main mode process</h2>
+<pre>pre_mode_process(array $common_gpc) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.9</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
 <a name="print_response" id="print_response"></a><div class="element clickable method public print_response" data-toggle="collapse" data-target=".print_response .collapse">
 <h2>display() the Smarty template of $this controller</h2>
 <pre>print_response($data) </pre>
@@ -320,7 +364,7 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 <a name="process_data" id="process_data"></a><div class="element clickable method public process_data" data-toggle="collapse" data-target=".process_data .collapse">
 <h2>The pre-display process of the controller
 (former $this-&gt;process())</h2>
-<pre>process_data() </pre>
+<pre>process_data($common_gpc) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -335,16 +379,21 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 </tr>
 <tr>
 <th>todo</th>
-<td>remove version 0.5 support on ADD MVC 1.0</td>
+<td>ADD MVC 1.0: remove version 0.5 and version 0.8 support</td>
 </tr>
 </table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code></code>
+</div>
 </div></div>
 </div>
 <a name="process_mode" id="process_mode"></a><div class="element clickable method public process_mode" data-toggle="collapse" data-target=".process_mode .collapse">
 <h2>process_mode function
 Processes any GPC requests</h2>
-<pre>process_mode() </pre>
-<div class="labels"></div>
+<pre>process_mode($common_gpc) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
@@ -354,22 +403,37 @@ Processes any GPC requests</h2>
 </tr>
 <tr>
 <th>version</th>
-<td>0.2</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::process_mode()</td>
 </tr>
 </table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code></code>
+</div>
 </div></div>
 </div>
 <a name="recursive_compact" id="recursive_compact"></a><div class="element clickable method public recursive_compact" data-toggle="collapse" data-target=".recursive_compact .collapse">
 <h2>recursive compact($array_keys)
 Returns an array of GPC from the $array_keys</h2>
 <pre>recursive_compact($gpc_array_keys) </pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
 <td>ADD MVC 0.1, ctrl_tpl_page 0.1</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::recursive_compact()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$gpc_array_keys</h4>
@@ -387,6 +451,24 @@ Returns an array of GPC from the $array_keys</h2>
 <th>since</th>
 <td>ADD MVC 0.5</td>
 </tr></table>
+</div></div>
+</div>
+<a name="set_mode" id="set_mode"></a><div class="element clickable method public set_mode" data-toggle="collapse" data-target=".set_mode .collapse">
+<h2>Set mode function</h2>
+<pre>set_mode() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.10</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::set_mode()</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a name="view" id="view"></a><div class="element clickable method public view" data-toggle="collapse" data-target=".view .collapse">
@@ -425,11 +507,24 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
+<th>todo</th>
+<td>ADD MVC version 1.0: remove backward compatibility</td>
+</tr>
+<tr>
 <th>since</th>
 <td>ADD MVC 0.0</td>
-</tr></table>
+</tr>
+</table>
 </div></div>
+</div>
+<a name="view_filepath_009" id="view_filepath_009"></a><div class="element clickable method public view_filepath_009" data-toggle="collapse" data-target=".view_filepath_009 .collapse">
+<h2>view_filepath_009()
+        </h2>
+<pre>view_filepath_009() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
@@ -469,6 +564,18 @@ Returns an array of GPC from the $array_keys</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="%24sub_mode" id="$sub_mode"> </a><div class="element clickable property protected $sub_mode" data-toggle="collapse" data-target=".$sub_mode .collapse">
+<h2>The sub mode of the mode</h2>
+<pre>$sub_mode </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.3, ctrl_tpl_page 0.2.3</td>
+</tr></table>
+</div></div>
+</div>
 <a name="%24views" id="$views"> </a><div class="element clickable property protected $views" data-toggle="collapse" data-target=".$views .collapse">
 <h2>The views cache</h2>
 <pre>$views </pre>
@@ -488,7 +595,7 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-09-20T02:41:43+04:00.<br></footer></div>
+            generated on 2012-10-22T22:29:32+04:00.<br></footer></div>
 </div>
 </body>
 </html>

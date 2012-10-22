@@ -32,10 +32,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">140</span></a></li>
+                <span class="label label-info">151</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">28</span>
+                <span class="label label-info">34</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">30</span></a></li>
@@ -62,13 +62,19 @@
 <li class="method public "><a href="#assign" title="assign :: assign $variable to pass in ajax"><span class="description">assign $variable to pass in ajax</span><pre>assign()</pre></a></li>
 <li class="method public "><a href="#content_type" title="content_type :: sets the content_type or get the current one"><span class="description">sets the content_type or get the current one</span><pre>content_type()</pre></a></li>
 <li class="method public "><a href="#execute" title="execute :: Must echo the page response"><span class="description">Must echo the page response</span><pre>execute()</pre></a></li>
+<li class="method public "><a href="#post_mode_process" title="post_mode_process :: Process after the main mode process"><span class="description">Process after the main mode process</span><pre>post_mode_process()</pre></a></li>
+<li class="method public "><a href="#pre_mode_process" title="pre_mode_process :: Process before the main mode process"><span class="description">Process before the main mode process</span><pre>pre_mode_process()</pre></a></li>
 <li class="method public "><a href="#print_response" title="print_response :: convert $data to json"><span class="description">convert $data to json</span><pre>print_response()</pre></a></li>
 <li class="method public "><a href="#process_data" title="process_data :: The pre-display process of the controller
 (former $this-&gt;process())"><span class="description">The pre-display process of the controller
 (former $this-&gt;process())</span><pre>process_data()</pre></a></li>
-<li class="method public "><a href="#process_mode" title="process_mode :: process_mode function
+<li class="method public inherited"><a href="#process_mode" title="process_mode :: process_mode function
 Processes any GPC requests"><span class="description">process_mode function
 Processes any GPC requests</span><pre>process_mode()</pre></a></li>
+<li class="method public inherited"><a href="#recursive_compact" title="recursive_compact :: recursive compact($array_keys)
+Returns an array of GPC from the $array_keys"><span class="description">recursive compact($array_keys)
+Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre></a></li>
+<li class="method public inherited"><a href="#set_mode" title="set_mode :: Set mode function"><span class="description">Set mode function</span><pre>set_mode()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24mode" title="$mode :: "><span class="description">$mode</span><pre>$mode</pre></a></li>
@@ -98,6 +104,10 @@ Processes any GPC requests</span><pre>process_mode()</pre></a></li>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
+</tr>
+<tr>
+<th>todo</th>
+<td>ADD MVC version 1.0: implement i_ctrl (version 0.9) for this</td>
 </tr>
 </table>
 <h3>
@@ -164,6 +174,40 @@ Processes any GPC requests</span><pre>process_mode()</pre></a></li>
 </tr></table>
 </div></div>
 </div>
+<a name="post_mode_process" id="post_mode_process"></a><div class="element clickable method public post_mode_process" data-toggle="collapse" data-target=".post_mode_process .collapse">
+<h2>Process after the main mode process</h2>
+<pre>post_mode_process(array $common_gpc) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.9</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a name="pre_mode_process" id="pre_mode_process"></a><div class="element clickable method public pre_mode_process" data-toggle="collapse" data-target=".pre_mode_process .collapse">
+<h2>Process before the main mode process</h2>
+<pre>pre_mode_process(array $common_gpc) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.9</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
 <a name="print_response" id="print_response"></a><div class="element clickable method public print_response" data-toggle="collapse" data-target=".print_response .collapse">
 <h2>convert $data to json</h2>
 <pre>print_response($data) </pre>
@@ -184,7 +228,7 @@ Processes any GPC requests</span><pre>process_mode()</pre></a></li>
 <a name="process_data" id="process_data"></a><div class="element clickable method public process_data" data-toggle="collapse" data-target=".process_data .collapse">
 <h2>The pre-display process of the controller
 (former $this-&gt;process())</h2>
-<pre>process_data() </pre>
+<pre>process_data(array $common_gpc) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -192,19 +236,81 @@ Processes any GPC requests</span><pre>process_mode()</pre></a></li>
 <th>since</th>
 <td>ADD MVC 0.6</td>
 </tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code>array</code>
+</div>
 </div></div>
 </div>
 <a name="process_mode" id="process_mode"></a><div class="element clickable method public process_mode" data-toggle="collapse" data-target=".process_mode .collapse">
 <h2>process_mode function
 Processes any GPC requests</h2>
-<pre>process_mode() </pre>
-<div class="labels"></div>
+<pre>process_mode($common_gpc) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
-<td>ADD MVC 0.6</td>
-</tr></table>
+<td>ADD MVC 0.1</td>
+</tr>
+<tr>
+<th>version</th>
+<td>1.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::process_mode()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$common_gpc</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="recursive_compact" id="recursive_compact"></a><div class="element clickable method public recursive_compact" data-toggle="collapse" data-target=".recursive_compact .collapse">
+<h2>recursive compact($array_keys)
+Returns an array of GPC from the $array_keys</h2>
+<pre>recursive_compact($gpc_array_keys) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.1, ctrl_tpl_page 0.1</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::recursive_compact()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$gpc_array_keys</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="set_mode" id="set_mode"></a><div class="element clickable method public set_mode" data-toggle="collapse" data-target=".set_mode .collapse">
+<h2>Set mode function</h2>
+<pre>set_mode() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.10</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::set_mode()</td>
+</tr>
+</table>
 </div></div>
 </div>
 <h3>
@@ -246,7 +352,7 @@ Processes any GPC requests</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-09-20T02:41:43+04:00.<br></footer></div>
+            generated on 2012-10-22T22:29:32+04:00.<br></footer></div>
 </div>
 </body>
 </html>
