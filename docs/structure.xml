@@ -1,5 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a2" title="ADD MVC Framework">
+  <file path="classes/deprecated/i_ctrl_006.class.php" hash="c2c8f40a9eea6c454010984562110ab5" package="Default">
+    <parse_markers>
+      <error line="17" code="50015">Argument $data is missing from the Docblock of print_response()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file classes/deprecated/i_ctrl_006.class.php</error>
+    </parse_markers>
+    <interface namespace="default" line="8" package="Default">
+      <name>i_ctrl_006</name>
+      <full_name>\i_ctrl_006</full_name>
+      <extends/>
+      <docblock line="3">
+        <description><![CDATA[i_ctrl controller interface]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="since" description="ADD MVC 0.6"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="15" package="">
+        <name>execute</name>
+        <type>function</type>
+        <docblock line="10">
+          <description><![CDATA[execute() the execute function]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="10" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="22" package="">
+        <name>print_response</name>
+        <type>function</type>
+        <docblock line="17">
+          <description><![CDATA[print_response() - print the response according to data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="17" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+        <argument line="22">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="30" package="">
+        <name>process_data</name>
+        <type>function</type>
+        <docblock line="25">
+          <description><![CDATA[process_data() - process the data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="25" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="37" package="">
+        <name>assign</name>
+        <type>function</type>
+        <docblock line="32">
+          <description><![CDATA[assign data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="32" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="47" package="">
+        <name>content_type</name>
+        <type>function</type>
+        <docblock line="40">
+          <description><![CDATA[sets the content_type or get the current one]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="40" name="param" description="" type="string" variable="$new_content_type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="40" name="since" description="ADD MVC 0.8"/>
+        </docblock>
+        <argument line="47">
+          <name>$new_content_type</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+    <source>eJytUs9LwzAUvhf6P7zDDrWg7WkIKjq2CR4UEfFaYvbWBrIkvKToEP93m6bVshY9uFxCvvfy/XjJ5bWpTBzFUZamcQQpiII7ksC1cqSlRAKhHNKWcfT1tufGCsURFqsV3L8sIT+beziLo7uH5/XT7WK57miKPJ/Dh6cHgKDQrBTwHXntMDkBV2F/gm2tuBNadV1986Sar2TtbupXKfj35R/ui7GuoSZMQWiNVtbLnwaotdHDwDjXtBGqBKdhwxz7n6ED0ZlnDObG9jRHawvf0ZlrgdbeMYwM6SfGw6wVpTqCUiBKshQetdzvNJmqKafZdGyLLkT0nw6bWbm9QdAEJYaX4TVRg4NWeOjLMGI7sI78c80UvhVDkr9SnP+aYsiUjLjhClQtpY/0+QU/6+K7</source>
+  </file>
+  <file path="classes/deprecated/ctrl_tpl_mailer.class.php" hash="d55698db2925123d072c6a05799ce076" package="Default">
+    <parse_markers>
+      <error line="11" code="50018">No DocBlock was found for property $WordWrap</error>
+      <error line="13" code="50018">No DocBlock was found for property $views</error>
+      <error line="15" code="50018">No DocBlock was found for property $data</error>
+      <error line="38" code="50010">No DocBlock was found for method print_response()</error>
+      <error line="92" code="50010">No DocBlock was found for method fetch_view()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file classes/deprecated/ctrl_tpl_mailer.class.php</error>
+    </parse_markers>
+    <class final="false" abstract="true" namespace="default" line="9" package="Default">
+      <name>ctrl_tpl_mailer</name>
+      <full_name>\ctrl_tpl_mailer</full_name>
+      <extends>\phpMailer</extends>
+      <implements>\i_ctrl</implements>
+      <implements>\i_ctrl_with_view</implements>
+      <docblock line="3">
+        <description><![CDATA[ctrl_tpl_mailer
+Abstract controller class for emails]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="since" description="ADD MVC 0.2"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="11" package="Default">
+        <name>$WordWrap</name>
+        <default><![CDATA[70]]></default>
+      </property>
+      <property final="false" static="true" visibility="protected" line="13" package="Default">
+        <name>$views</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="15" package="Default">
+        <name>$data</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="22" package="">
+        <name>execute</name>
+        <type>function</type>
+        <docblock line="17">
+          <description><![CDATA[Execute]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="17" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="32" package="">
+        <name>process_data</name>
+        <type>function</type>
+        <docblock line="27">
+          <description><![CDATA[Process the data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="27" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="38" package="">
+        <name>print_response</name>
+        <type>function</type>
+        <argument line="38">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="47" package="">
+        <name>Send</name>
+        <type>function</type>
+        <docblock line="43">
+          <description><![CDATA[Before sending]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="43" name="since" description="ADD MVC 0.2"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="58" package="">
+        <name>view_basename</name>
+        <type>function</type>
+        <docblock line="53">
+          <description><![CDATA[The view base file name of $this controller]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="53" name="since" description="ADD MVC 0.3"/>
+          <tag line="53" name="version" description="0.1"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="66" package="">
+        <name>basename</name>
+        <type>function</type>
+        <docblock line="62">
+          <description><![CDATA[The controller's basename]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="62" name="since" description="ADD MVC 0.3"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="74" package="">
+        <name>view_filepath</name>
+        <type>function</type>
+        <docblock line="70">
+          <description><![CDATA[The view file path]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="70" name="since" description="ADD MVC 0.2"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="82" package="">
+        <name>view</name>
+        <type>function</type>
+        <docblock line="78">
+          <description><![CDATA[The Smarty view object of $this controller]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="78" name="since" description="ADD MVC 0.2"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="92" package="">
+        <name>fetch_view</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="105" package="">
+        <name>assign</name>
+        <type>function</type>
+        <docblock line="100">
+          <description><![CDATA[Assign a variable to the view]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="100" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="124" package="">
+        <name>content_type</name>
+        <type>function</type>
+        <docblock line="117">
+          <description><![CDATA[sets the content_type or get the current one]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="117" name="param" description="" type="string" variable="$new_content_type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="117" name="since" description="ADD MVC 0.8"/>
+        </docblock>
+        <argument line="124">
+          <name>$new_content_type</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <source>eJytVu9v2jAQ/Y7E/3CrkBIQ40cnbVO6bqOUD5NKVQ20Tqo6yyQmeApJZJt2aOV/39kOEAiknbZ8aXs+n9/5Pb/rh0/pLK1WaBB4XpTQgER84joYm1MeMeHUz6qVdqNRrUADfCUiotKI2DUT602kEtRX4CexEkmEcfAjKiVMEwFMZ0qdaJI/Sx77DHqXlzD81odO61SH29VK72I0/trrj6F/1RuN9g+Cwffx4PpyBAhraCNfhjdXg+HgejwCTnR6M/tJHrmakQfOHuF3tYLlAdLFJOI+1G4TEdwKmsLmO4d3nbN1lkgU8xULQCqqdL4uIovLtYAqilupEHTp1tcJ9pLwa8DgF/MXimV/rqOF5t9mK+08yuki9hVPYmC2iFvXfVi4NTXj8vVHhOIzKYnGYc63q4KphYghpYLFyvNGLA7Wq6sixhtbBNSMgS70b2B3IRUQoxx4GLtO32kaoaFWpjx061vwWaK+cre+2ZBFddVC6kUSLJGFvY1TpvyZaxn0PB0lUxRMStVsc9xqVxe5JnisiGAyTWLJXMNzsZd9iLvgMhL2cgMu0wjF8jJcOZYuGL4iBhK55HF4lJzTUnKsEv6XjPYhjlFA5rlNqGSgm4KYzhkkU3tQzhiO4n+zWXlgQmrMnVb3UE/Z09y0Zi5SH6yPzPeYdSFZNPW8bcLRi9ZdbIE6EtZ7nsVciq8EWipYiGJDXfjMddo/jHlZvyNtp+k4zZAp4lPEExDjqGVC2bBgCNCy+juxHLzYrUIL6E+ss7dPWjua3vbbclpo4E4p4NGcCrW0uJPJT7TXv1JNuert28up3k6lcyhe69rC8eNTcF9xKZnaPFY7B+7s/vt6riR+h5PwlBh7Qq8j0vSYe1+r7WFrkR6sUe5VxufItsdykzpovOWW9WIj3Se2Z44ECg9UcDpBNarETBld49kp09zO/pSGDLqtTinLWYN5nqkIu0iATiGaa/zb7exzzCWx89uk1+HpCTBkRZjFdonOjaL17CdzJkKWH1JN1yzULYgdzu0vLEKPPFL2zmy634feLUrnwHNCwdpZrt8NGjdRyxQ9WGi12/hCaEOHJC78X4JWT+eoQhx/IdRQuCRf5DnK3pfyk6/kFmrrd7KIotxNa24KaQeZ6NuEsS1T2FO8+12d57ZvxLz6A547Gc4=</source>
+  </file>
   <file path="classes/deprecated/config.class.php" hash="4066db4fba76689bcc0cc20cdf3ff285" package="ADD MVC">
     <docblock line="2">
       <description><![CDATA[Config singleton class]]></description>
@@ -150,146 +364,40 @@
     </class>
     <source>eJylVV1P2zAUfedX3HURpIgWngt0VKESk/gS7XiZJsuNb1JvbhzZTjtp4r/v5qtJIENI60PVxueec+6Xc/ElXacHp8fHB3AMgU4iGYOVSazQ6QRCxa3NT65SHv7iMcLs+hrunoPiGc/cWhvgaoXGCakTtFfxhks1DvWmQAhMDYbcoQCLCFyIySQsRPxhASCpEOFsfEb/Tg+C29liASUAvt493s7v5vfLBUiW6ITpLZqdkY6vFMKfA4AcaR08z57uZ3dzuISj4Oi8eX49XyyfvgVLNg9uHvLTi0+jUc0u0DqThQ5GoykF5VGpkVuyCtZxJ0Pw9mU4b596gjveDYiyJHSUPjBWKOe8/mJ5HeTVAy8Ylm7p47m1tKNpTkGGvKBgfinJspUi1TaXoor6TbBbG72DBHeATOAWlU7R+IOAYOQUImrFYByjYyFXCgUrmucPxwOQFhLtqFFK71AMhi3Zlh6F+t6Wm4RvsFGVEfjS2vysMT+a7oHDCkcfgy4zCfTizisYKotNhDMyjtEwNEZTKrMwRKqY05AlAiOZ0NxU/SIaWTS+JoTI6A0lLHCVxZNJnUeZvPGH/0jStpI8oR8qwzft6cGcRJyM7zlfkdbD1GrWZyHRt6iiyaQzh722+gQ96meIl8T7qhmfyhM4PIR3+7IP6oyO0rEMGf4OMc2lqebO4SZ1edENCqShMfuqN3TVzBTW34xyA8uHurDfyrJapybZeq1a1aomp3M/vEOhNBdMyZXv0RfrzmubqgdXbm4/Ld1FKhO0XJousYTVRjrVL1vaQVA1pXW0aZ2SV2S9ASl369xNPaV1Wftt9Yu9TjiSCuvDj2h+RKuJaVYkoB6X/K1Gnne9DLxgNC05LBPSnJa09tRji/nT8/zp+81y+chuHhbLH+Mwisf0Dhq840pa6uIWWWr0T+ysWSX4xtBoWmFZzpVZuLykF0BOcvS+TnGdxET032J7pr3iy1/G2lQz</source>
   </file>
-  <file path="classes/controllers/ctrl_tpl_mailer.class.php" hash="d55698db2925123d072c6a05799ce076" package="Default">
-    <parse_markers>
-      <error line="11" code="50018">No DocBlock was found for property $WordWrap</error>
-      <error line="13" code="50018">No DocBlock was found for property $views</error>
-      <error line="15" code="50018">No DocBlock was found for property $data</error>
-      <error line="38" code="50010">No DocBlock was found for method print_response()</error>
-      <error line="92" code="50010">No DocBlock was found for method fetch_view()</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file classes/controllers/ctrl_tpl_mailer.class.php</error>
-    </parse_markers>
-    <class final="false" abstract="true" namespace="default" line="9" package="Default">
-      <name>ctrl_tpl_mailer</name>
-      <full_name>\ctrl_tpl_mailer</full_name>
-      <extends>\phpMailer</extends>
-      <implements>\i_ctrl</implements>
-      <implements>\i_ctrl_with_view</implements>
-      <docblock line="3">
-        <description><![CDATA[ctrl_tpl_mailer
-Abstract controller class for emails]]></description>
-        <long-description><![CDATA[]]></long-description>
-        <tag line="3" name="since" description="ADD MVC 0.2"/>
+  <file path="classes/controllers/ctrl_default_page.class.php" hash="3465c47933552fd36cd6124ea5b9c373" package="ADD MVC\Controllers">
+    <docblock line="2">
+      <description><![CDATA[ctrl_default_page default page for views with no controllers]]></description>
+      <long-description><![CDATA[<p>Prints the view without any process</p>]]></long-description>
+      <tag line="2" name="author" description="albertdiones@gmail.com"/>
+      <tag line="2" name="package" description="ADD MVC\Controllers"/>
+      <tag line="2" name="since" description="ADD MVC 0.10"/>
+      <tag line="2" name="version" description="0.0"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="default" line="13" package="ADD MVC\Controllers">
+      <name>ctrl_default_page</name>
+      <full_name>\ctrl_default_page</full_name>
+      <extends>\ctrl_tpl_page</extends>
+      <docblock line="2">
+        <description><![CDATA[ctrl_default_page default page for views with no controllers]]></description>
+        <long-description><![CDATA[<p>Prints the view without any process</p>]]></long-description>
+        <tag line="2" name="author" description="albertdiones@gmail.com"/>
+        <tag line="2" name="package" description="ADD MVC\Controllers"/>
+        <tag line="2" name="since" description="ADD MVC 0.10"/>
+        <tag line="2" name="version" description="0.0"/>
       </docblock>
-      <property final="false" static="false" visibility="public" line="11" package="Default">
-        <name>$WordWrap</name>
-        <default><![CDATA[70]]></default>
-      </property>
-      <property final="false" static="true" visibility="protected" line="13" package="Default">
-        <name>$views</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <property final="false" static="false" visibility="protected" line="15" package="Default">
-        <name>$data</name>
-        <default><![CDATA[array()]]></default>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="22" package="">
-        <name>execute</name>
-        <type>function</type>
-        <docblock line="17">
-          <description><![CDATA[Execute]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="17" name="since" description="ADD MVC 0.6"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="32" package="">
-        <name>process_data</name>
-        <type>function</type>
-        <docblock line="27">
-          <description><![CDATA[Process the data]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="27" name="since" description="ADD MVC 0.6"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="38" package="">
-        <name>print_response</name>
-        <type>function</type>
-        <argument line="38">
-          <name>$data</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="47" package="">
-        <name>Send</name>
-        <type>function</type>
-        <docblock line="43">
-          <description><![CDATA[Before sending]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="43" name="since" description="ADD MVC 0.2"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="58" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="20" package="">
         <name>view_basename</name>
         <type>function</type>
-        <docblock line="53">
-          <description><![CDATA[The view base file name of $this controller]]></description>
+        <docblock line="15">
+          <description><![CDATA[Gets the original controller basename]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="53" name="since" description="ADD MVC 0.3"/>
-          <tag line="53" name="version" description="0.1"/>
+          <tag line="15" name="since" description="ADD MVC 0.10"/>
         </docblock>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="66" package="">
-        <name>basename</name>
-        <type>function</type>
-        <docblock line="62">
-          <description><![CDATA[The controller's basename]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="62" name="since" description="ADD MVC 0.3"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="74" package="">
-        <name>view_filepath</name>
-        <type>function</type>
-        <docblock line="70">
-          <description><![CDATA[The view file path]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="70" name="since" description="ADD MVC 0.2"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="82" package="">
-        <name>view</name>
-        <type>function</type>
-        <docblock line="78">
-          <description><![CDATA[The Smarty view object of $this controller]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="78" name="since" description="ADD MVC 0.2"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="92" package="">
-        <name>fetch_view</name>
-        <type>function</type>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="105" package="">
-        <name>assign</name>
-        <type>function</type>
-        <docblock line="100">
-          <description><![CDATA[Assign a variable to the view]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="100" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="124" package="">
-        <name>content_type</name>
-        <type>function</type>
-        <docblock line="117">
-          <description><![CDATA[sets the content_type or get the current one]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="117" name="param" description="" type="string" variable="$new_content_type">
-            <type by_reference="false">string</type>
-          </tag>
-          <tag line="117" name="since" description="ADD MVC 0.8"/>
-        </docblock>
-        <argument line="124">
-          <name>$new_content_type</name>
-          <default><![CDATA[null]]></default>
-          <type/>
-        </argument>
       </method>
     </class>
-    <source>eJytVu9v2jAQ/Y7E/3CrkBIQ40cnbVO6bqOUD5NKVQ20Tqo6yyQmeApJZJt2aOV/39kOEAiknbZ8aXs+n9/5Pb/rh0/pLK1WaBB4XpTQgER84joYm1MeMeHUz6qVdqNRrUADfCUiotKI2DUT602kEtRX4CexEkmEcfAjKiVMEwFMZ0qdaJI/Sx77DHqXlzD81odO61SH29VK72I0/trrj6F/1RuN9g+Cwffx4PpyBAhraCNfhjdXg+HgejwCTnR6M/tJHrmakQfOHuF3tYLlAdLFJOI+1G4TEdwKmsLmO4d3nbN1lkgU8xULQCqqdL4uIovLtYAqilupEHTp1tcJ9pLwa8DgF/MXimV/rqOF5t9mK+08yuki9hVPYmC2iFvXfVi4NTXj8vVHhOIzKYnGYc63q4KphYghpYLFyvNGLA7Wq6sixhtbBNSMgS70b2B3IRUQoxx4GLtO32kaoaFWpjx061vwWaK+cre+2ZBFddVC6kUSLJGFvY1TpvyZaxn0PB0lUxRMStVsc9xqVxe5JnisiGAyTWLJXMNzsZd9iLvgMhL2cgMu0wjF8jJcOZYuGL4iBhK55HF4lJzTUnKsEv6XjPYhjlFA5rlNqGSgm4KYzhkkU3tQzhiO4n+zWXlgQmrMnVb3UE/Z09y0Zi5SH6yPzPeYdSFZNPW8bcLRi9ZdbIE6EtZ7nsVciq8EWipYiGJDXfjMddo/jHlZvyNtp+k4zZAp4lPEExDjqGVC2bBgCNCy+juxHLzYrUIL6E+ss7dPWjua3vbbclpo4E4p4NGcCrW0uJPJT7TXv1JNuert28up3k6lcyhe69rC8eNTcF9xKZnaPFY7B+7s/vt6riR+h5PwlBh7Qq8j0vSYe1+r7WFrkR6sUe5VxufItsdykzpovOWW9WIj3Se2Z44ECg9UcDpBNarETBld49kp09zO/pSGDLqtTinLWYN5nqkIu0iATiGaa/zb7exzzCWx89uk1+HpCTBkRZjFdonOjaL17CdzJkKWH1JN1yzULYgdzu0vLEKPPFL2zmy634feLUrnwHNCwdpZrt8NGjdRyxQ9WGi12/hCaEOHJC78X4JWT+eoQhx/IdRQuCRf5DnK3pfyk6/kFmrrd7KIotxNa24KaQeZ6NuEsS1T2FO8+12d57ZvxLz6A547Gc4=</source>
+    <source>eJxtUMFqAjEQvS/sP8yx3YPaqy1UUemlLQVL6aGwxOzsGhqTMJkopfjvTeJaFZzLkPfevLyZh0e3dmUxrKqygAokk64bbEXQXDvRIfQPyI/WEmwV7jzsFK/BWJDWMFmtkXwyyCZvpAx74DVmcdbawCDMDziyEv1JOxEhkgRCr5C4Udagn3QbofRA2s1J5oT8Tgmm8zm8fMy+Zpf/wsQrI/9pGA3uRgd8GxXRNSIZGJbF7Hm6XF7ZdPH5vnid9ww7fUB/yyLOARwuFKuCJ+y3s6Q6ZYQ+uwKshEcjNtiLjzPX8yVqmLsLK60keBYcWxuM5JQ63a8+Wt7cpjSQi5ADGRBNMx7LQISG61OKs5H7PLFPW+z/AMm2lT0=</source>
   </file>
-  <file path="classes/controllers/ctrl_tpl_page.class.php" hash="938815b4b86a3f24fbb0ee612088dd44" package="ADD MVC\Controllers">
+  <file path="classes/controllers/ctrl_tpl_page.class.php" hash="3286ff8c466418a6af158bad4e4feaa6" package="ADD MVC\Controllers">
     <docblock line="2">
       <description><![CDATA[ctrl_tpl_page abstract model class]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -297,18 +405,20 @@ Abstract controller class for emails]]></description>
       <tag line="2" name="package" description="ADD MVC\Controllers"/>
       <tag line="2" name="since" description="ADD MVC 0.0"/>
       <tag line="2" name="version" description="1.0"/>
+      <tag line="2" name="todo" description="ADD MVC version 1.0: implement i_ctrl (version 0.9) for this"/>
     </docblock>
     <parse_markers>
-      <error line="40" code="50015">Argument $function_name is missing from the Docblock of __call()</error>
-      <error line="40" code="50015">Argument $arguments is missing from the Docblock of __call()</error>
-      <error line="168" code="50015">Argument $gpc_array_keys is missing from the Docblock of recursive_compact()</error>
-      <error line="246" code="50015">Argument $data is missing from the Docblock of print_response()</error>
+      <error line="49" code="50015">Argument $function_name is missing from the Docblock of __call()</error>
+      <error line="49" code="50015">Argument $arguments is missing from the Docblock of __call()</error>
+      <error line="133" code="50014">Name of argument $common_gpc does not match with the DocBlock's name $gpc in process_data()</error>
+      <notice line="133" code="50013">Parameter $gpc could not be found in process_data()</notice>
+      <error line="173" code="50010">No DocBlock was found for method view_filepath_009()</error>
+      <error line="225" code="50015">Argument $data is missing from the Docblock of print_response()</error>
     </parse_markers>
-    <class final="false" abstract="true" namespace="default" line="11" package="ADD MVC\Controllers">
+    <class final="false" abstract="true" namespace="default" line="14" package="ADD MVC\Controllers">
       <name>ctrl_tpl_page</name>
       <full_name>\ctrl_tpl_page</full_name>
-      <extends/>
-      <implements>\i_ctrl</implements>
+      <extends>\ctrl_abstract</extends>
       <implements>\i_ctrl_with_view</implements>
       <docblock line="2">
         <description><![CDATA[ctrl_tpl_page abstract model class]]></description>
@@ -317,268 +427,299 @@ Abstract controller class for emails]]></description>
         <tag line="2" name="package" description="ADD MVC\Controllers"/>
         <tag line="2" name="since" description="ADD MVC 0.0"/>
         <tag line="2" name="version" description="1.0"/>
+        <tag line="2" name="todo" description="ADD MVC version 1.0: implement i_ctrl (version 0.9) for this"/>
       </docblock>
-      <property final="false" static="false" visibility="protected" line="17" package="Default">
+      <property final="false" static="false" visibility="protected" line="20" package="Default">
         <name>$mode</name>
         <default><![CDATA[]]></default>
-        <docblock line="13">
+        <docblock line="16">
           <description><![CDATA[The mode of the process]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="13" name="since" description="ADD MVC 0.3, ctrl_tpl_page 0.2.3"/>
+          <tag line="16" name="since" description="ADD MVC 0.3, ctrl_tpl_page 0.2.3"/>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="protected" line="24" package="Default">
+      <property final="false" static="false" visibility="protected" line="26" package="Default">
+        <name>$sub_mode</name>
+        <default><![CDATA[]]></default>
+        <docblock line="22">
+          <description><![CDATA[The sub mode of the mode]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="22" name="since" description="ADD MVC 0.3, ctrl_tpl_page 0.2.3"/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="33" package="Default">
         <name>$content_type</name>
         <default><![CDATA['text/html']]></default>
-        <docblock line="19">
+        <docblock line="28">
           <description><![CDATA[Mime type of this resource]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="19" name="since" description="ADD MVC 0.8"/>
+          <tag line="28" name="since" description="ADD MVC 0.8"/>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="protected" line="30" package="Default">
+      <property final="false" static="true" visibility="protected" line="39" package="Default">
         <name>$views</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="26">
+        <docblock line="35">
           <description><![CDATA[The views cache]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="26" name="since" description="ADD MVC 0.0"/>
+          <tag line="35" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="protected" line="38" package="Default">
+      <property final="false" static="false" visibility="protected" line="47" package="Default">
         <name>$data</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="33">
+        <docblock line="42">
           <description><![CDATA[The view data]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="33" name="since" description="ADD MVC 0.6"/>
+          <tag line="42" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="45" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="54" package="">
         <name>__call</name>
         <type>function</type>
-        <docblock line="40">
+        <docblock line="49">
           <description><![CDATA[__call() magic function]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="40" name="since" description="ADD MVC 0.6"/>
+          <tag line="49" name="since" description="ADD MVC 0.6"/>
         </docblock>
-        <argument line="45">
+        <argument line="54">
           <name>$function_name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="45">
+        <argument line="54">
           <name>$arguments</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="68" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="78" package="">
         <name>execute</name>
         <type>function</type>
-        <docblock line="61">
+        <docblock line="70">
           <description><![CDATA[Process the page response (former $this->page())]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="61" name="todo" description="use a better term that is applicable to all response"/>
-          <tag line="61" name="since" description="ADD MVC 0.0"/>
-          <tag line="61" name="version" description="0.2"/>
+          <tag line="70" name="todo" description="remove the automatic assigning of {$C}"/>
+          <tag line="70" name="since" description="ADD MVC 0.0"/>
+          <tag line="70" name="version" description="0.2"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="120" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="142" package="">
         <name>process_data</name>
         <type>function</type>
-        <docblock line="111">
+        <docblock line="133">
           <description><![CDATA[The pre-display process of the controller
 (former $this->process())]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="111" name="since" description="ADD MVC 0.0"/>
-          <tag line="111" name="version" description="0.1"/>
-          <tag line="111" name="todo" description="remove version 0.5 support on ADD MVC 1.0"/>
+          <tag line="133" name="since" description="ADD MVC 0.0"/>
+          <tag line="133" name="version" description="0.1"/>
+          <tag line="133" name="param" description="" type="array" variable="$gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="133" name="todo" description="ADD MVC 1.0: remove version 0.5 and version 0.8 support"/>
         </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="138" package="">
-        <name>process_mode</name>
-        <type>function</type>
-        <docblock line="131">
-          <description><![CDATA[process_mode function
-Processes any GPC requests]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="131" name="since" description="ADD MVC 0.1"/>
-          <tag line="131" name="version" description="0.2"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="174" package="">
-        <name>recursive_compact</name>
-        <type>function</type>
-        <docblock line="168">
-          <description><![CDATA[recursive compact($array_keys)
-Returns an array of GPC from the $array_keys]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="168" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
-        </docblock>
-        <argument line="174">
-          <name>$gpc_array_keys</name>
-          <default><![CDATA[]]></default>
+        <argument line="142">
+          <name>$common_gpc</name>
+          <default><![CDATA[array()/* ADD MVC 0.8 support */]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="194" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="163" package="">
         <name>view_filepath</name>
         <type>function</type>
-        <docblock line="190">
+        <docblock line="158">
           <description><![CDATA[The view filepath of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="190" name="since" description="ADD MVC 0.0"/>
+          <tag line="158" name="todo" description="ADD MVC version 1.0: remove backward compatibility"/>
+          <tag line="158" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="202" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="173" package="">
+        <name>view_filepath_009</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="181" package="">
         <name>view_basename</name>
         <type>function</type>
-        <docblock line="197">
+        <docblock line="176">
           <description><![CDATA[The view base file name of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="197" name="since" description="ADD MVC 0.0"/>
-          <tag line="197" name="version" description="0.1"/>
+          <tag line="176" name="since" description="ADD MVC 0.0"/>
+          <tag line="176" name="version" description="0.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="210" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="189" package="">
         <name>basename</name>
         <type>function</type>
-        <docblock line="206">
+        <docblock line="185">
           <description><![CDATA[The controller's basename]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="206" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1.1"/>
+          <tag line="185" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="218" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="197" package="">
         <name>view</name>
         <type>function</type>
-        <docblock line="214">
+        <docblock line="193">
           <description><![CDATA[The Smarty view object of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="214" name="since" description="ADD MVC 0.0"/>
+          <tag line="193" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="233" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="212" package="">
         <name>path</name>
         <type>function</type>
-        <docblock line="228">
+        <docblock line="207">
           <description><![CDATA[The canonical url path of this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="228" name="since" description="ADD MVC 0.5, ctrl_tpl_page 0.3"/>
+          <tag line="207" name="since" description="ADD MVC 0.5, ctrl_tpl_page 0.3"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="242" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="221" package="">
         <name>redirect</name>
         <type>function</type>
-        <docblock line="237">
+        <docblock line="216">
           <description><![CDATA[Redirect]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="237" name="since" description="ADD MVC 0.5"/>
+          <tag line="216" name="since" description="ADD MVC 0.5"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="255" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="234" package="">
         <name>print_response</name>
         <type>function</type>
-        <docblock line="246">
+        <docblock line="225">
           <description><![CDATA[display() the Smarty template of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="246" name="since" description="ADD MVC 0.0, ctrl_tpl_page 0.1"/>
-          <tag line="246" name="version" description="0.2"/>
-          <tag line="246" name="todo" description="remove ADD MVC 0.5 version support"/>
+          <tag line="225" name="since" description="ADD MVC 0.0, ctrl_tpl_page 0.1"/>
+          <tag line="225" name="version" description="0.2"/>
+          <tag line="225" name="todo" description="remove ADD MVC 0.5 version support"/>
         </docblock>
-        <argument line="255">
+        <argument line="234">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="288" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="267" package="">
         <name>add_exception</name>
         <type>function</type>
-        <docblock line="277">
+        <docblock line="256">
           <description><![CDATA[Register an exception to the view]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="277" name="param" description="the exception object" type="\Exception" variable="$e">
+          <tag line="256" name="param" description="the exception object" type="\Exception" variable="$e">
             <type by_reference="false">\Exception</type>
           </tag>
-          <tag line="277" name="param" description="the label for the exception In smarty: &lt;code&gt;{$error_messages.label}&lt;/code&gt; Latest Error Message: &lt;code&gt;{$error_message}&lt;/code&gt;" type="string" variable="$label">
+          <tag line="256" name="param" description="the label for the exception In smarty: &lt;code&gt;{$error_messages.label}&lt;/code&gt; Latest Error Message: &lt;code&gt;{$error_message}&lt;/code&gt;" type="string" variable="$label">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="277" name="since" description="ADD MVC 0.3, ctrl_tpl_page 0.2.2"/>
+          <tag line="256" name="since" description="ADD MVC 0.3, ctrl_tpl_page 0.2.2"/>
         </docblock>
-        <argument line="288">
+        <argument line="267">
           <name>$e</name>
           <default><![CDATA[]]></default>
           <type>Exception</type>
         </argument>
-        <argument line="288">
+        <argument line="267">
           <name>$label</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="308" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="287" package="">
         <name>assign</name>
         <type>function</type>
-        <docblock line="303">
+        <docblock line="282">
           <description><![CDATA[Assign a variable to the view]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="303" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
+          <tag line="282" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="331" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="310" package="">
         <name>meta_title</name>
         <type>function</type>
-        <docblock line="324">
+        <docblock line="303">
           <description><![CDATA[The default page title]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="303" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
+          <tag line="303" name="deprecated" description="use the view instead"/>
+          <tag line="303" name="version" description="0.1"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="320" package="">
+        <name>meta_description</name>
+        <type>function</type>
+        <docblock line="314">
+          <description><![CDATA[meta description]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="314" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
+          <tag line="314" name="deprecated" description="use the view instead"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="330" package="">
+        <name>meta_keywords</name>
+        <type>function</type>
+        <docblock line="324">
+          <description><![CDATA[meta keywords]]></description>
           <long-description><![CDATA[]]></long-description>
           <tag line="324" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
           <tag line="324" name="deprecated" description="use the view instead"/>
-          <tag line="324" name="version" description="0.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="341" package="">
-        <name>meta_description</name>
-        <type>function</type>
-        <docblock line="335">
-          <description><![CDATA[meta description]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="335" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
-          <tag line="335" name="deprecated" description="use the view instead"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="351" package="">
-        <name>meta_keywords</name>
-        <type>function</type>
-        <docblock line="345">
-          <description><![CDATA[meta keywords]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="345" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
-          <tag line="345" name="deprecated" description="use the view instead"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="363" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="342" package="">
         <name>content_type</name>
         <type>function</type>
-        <docblock line="356">
+        <docblock line="335">
           <description><![CDATA[sets the content_type or get the current one]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="356" name="param" description="" type="string" variable="$new_content_type">
+          <tag line="335" name="param" description="" type="string" variable="$new_content_type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="356" name="since" description="ADD MVC 0.8"/>
+          <tag line="335" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="363">
+        <argument line="342">
           <name>$new_content_type</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="356" package="">
+        <name>pre_mode_process</name>
+        <type>function</type>
+        <docblock line="350">
+          <description><![CDATA[Process before the main mode process]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="350" name="param" description="" type="array" variable="$common_gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="350" name="since" description="ADD MVC 0.9"/>
+        </docblock>
+        <argument line="356">
+          <name>$common_gpc</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="365" package="">
+        <name>post_mode_process</name>
+        <type>function</type>
+        <docblock line="359">
+          <description><![CDATA[Process after the main mode process]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="359" name="param" description="" type="array" variable="$common_gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="359" name="since" description="ADD MVC 0.9"/>
+        </docblock>
+        <argument line="365">
+          <name>$common_gpc</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
-  <file path="classes/controllers/ctrl_tpl_ajax.class.php" hash="669ebbf8751271c3c19a5ef3829c97ab" package="ADD MVC\Controllers">
+  <file path="classes/controllers/ctrl_tpl_ajax.class.php" hash="e668ead9ad04b17e2c730a05a463f043" package="ADD MVC\Controllers">
     <docblock line="3">
       <description><![CDATA[The controller template class for ajaxed urls]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -586,18 +727,19 @@ Returns an array of GPC from the $array_keys]]></description>
       <tag line="3" name="since" description="ADD MVC 0.0"/>
       <tag line="3" name="version" description="0.1"/>
       <tag line="3" name="author" description="albertdiones@gmail.com"/>
+      <tag line="3" name="todo" description="ADD MVC version 1.0: implement i_ctrl (version 0.9) for this"/>
     </docblock>
     <parse_markers>
-      <error line="13" code="50018">No DocBlock was found for property $mode</error>
-      <error line="30" code="50015">Argument $function_name is missing from the Docblock of __call()</error>
-      <error line="30" code="50015">Argument $arguments is missing from the Docblock of __call()</error>
-      <error line="126" code="50015">Argument $data is missing from the Docblock of print_response()</error>
+      <error line="16" code="50018">No DocBlock was found for property $mode</error>
+      <error line="33" code="50015">Argument $function_name is missing from the Docblock of __call()</error>
+      <error line="33" code="50015">Argument $arguments is missing from the Docblock of __call()</error>
+      <error line="112" code="50015">Argument $data is missing from the Docblock of print_response()</error>
     </parse_markers>
-    <class final="false" abstract="true" namespace="default" line="11" package="ADD MVC\Controllers">
+    <class final="false" abstract="true" namespace="default" line="14" package="ADD MVC\Controllers">
       <name>ctrl_tpl_ajax</name>
       <full_name>\ctrl_tpl_ajax</full_name>
-      <extends/>
-      <implements>\i_ctrl</implements>
+      <extends>\ctrl_abstract</extends>
+      <implements>\i_ctrl_0_9</implements>
       <docblock line="3">
         <description><![CDATA[The controller template class for ajaxed urls]]></description>
         <long-description><![CDATA[]]></long-description>
@@ -605,119 +747,152 @@ Returns an array of GPC from the $array_keys]]></description>
         <tag line="3" name="since" description="ADD MVC 0.0"/>
         <tag line="3" name="version" description="0.1"/>
         <tag line="3" name="author" description="albertdiones@gmail.com"/>
+        <tag line="3" name="todo" description="ADD MVC version 1.0: implement i_ctrl (version 0.9) for this"/>
       </docblock>
-      <property final="false" static="false" visibility="public" line="13" package="Default">
+      <property final="false" static="false" visibility="public" line="16" package="Default">
         <name>$mode</name>
         <default><![CDATA[]]></default>
       </property>
-      <property final="false" static="false" visibility="protected" line="20" package="Default">
+      <property final="false" static="false" visibility="protected" line="23" package="Default">
         <name>$content_type</name>
         <default><![CDATA['text/html']]></default>
-        <docblock line="15">
+        <docblock line="18">
           <description><![CDATA[Mime type of this resource]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="15" name="since" description="ADD MVC 0.8"/>
+          <tag line="18" name="since" description="ADD MVC 0.8"/>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="protected" line="27" package="Default">
+      <property final="false" static="false" visibility="protected" line="30" package="Default">
         <name>$data</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="22">
+        <docblock line="25">
           <description><![CDATA[The view data]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="22" name="since" description="ADD MVC 0.6"/>
+          <tag line="25" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="35" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="38" package="">
         <name>__call</name>
         <type>function</type>
-        <docblock line="30">
+        <docblock line="33">
           <description><![CDATA[__call() magic function]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="30" name="since" description="ADD MVC 0.6"/>
+          <tag line="33" name="since" description="ADD MVC 0.6"/>
         </docblock>
-        <argument line="35">
+        <argument line="38">
           <name>$function_name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="35">
+        <argument line="38">
           <name>$arguments</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="55" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="58" package="">
         <name>execute</name>
         <type>function</type>
-        <docblock line="50">
+        <docblock line="53">
           <description><![CDATA[Must echo the page response]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="50" name="since" description="ADD MVC 0.6"/>
+          <tag line="53" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="78" package="">
-        <name>process_mode</name>
-        <type>function</type>
-        <docblock line="71">
-          <description><![CDATA[process_mode function
-Processes any GPC requests]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="71" name="since" description="ADD MVC 0.6"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="105" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="87" package="">
         <name>process_data</name>
         <type>function</type>
-        <docblock line="98">
+        <docblock line="80">
           <description><![CDATA[The pre-display process of the controller
 (former $this->process())]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="98" name="since" description="ADD MVC 0.6"/>
+          <tag line="80" name="param" description="" type="array" variable="$common_gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="80" name="since" description="ADD MVC 0.6"/>
         </docblock>
+        <argument line="87">
+          <name>$common_gpc</name>
+          <default><![CDATA[array()]]></default>
+          <type/>
+        </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="115" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="101" package="">
         <name>assign</name>
         <type>function</type>
-        <docblock line="110">
+        <docblock line="96">
           <description><![CDATA[assign $variable to pass in ajax]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="110" name="since" description="ADD MVC 0.6"/>
+          <tag line="96" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="131" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="117" package="">
         <name>print_response</name>
         <type>function</type>
-        <docblock line="126">
+        <docblock line="112">
           <description><![CDATA[convert $data to json]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="126" name="since" description="ADD MVC 0.6"/>
+          <tag line="112" name="since" description="ADD MVC 0.6"/>
         </docblock>
-        <argument line="131">
+        <argument line="117">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="142" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="128" package="">
         <name>content_type</name>
         <type>function</type>
-        <docblock line="135">
+        <docblock line="121">
           <description><![CDATA[sets the content_type or get the current one]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="135" name="param" description="" type="string" variable="$new_content_type">
+          <tag line="121" name="param" description="" type="string" variable="$new_content_type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="135" name="since" description="ADD MVC 0.8"/>
+          <tag line="121" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="142">
+        <argument line="128">
           <name>$new_content_type</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="142" package="">
+        <name>pre_mode_process</name>
+        <type>function</type>
+        <docblock line="136">
+          <description><![CDATA[Process before the main mode process]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="136" name="param" description="" type="array" variable="$common_gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="136" name="since" description="ADD MVC 0.9"/>
+        </docblock>
+        <argument line="142">
+          <name>$common_gpc</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="151" package="">
+        <name>post_mode_process</name>
+        <type>function</type>
+        <docblock line="145">
+          <description><![CDATA[Process after the main mode process]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="145" name="param" description="" type="array" variable="$common_gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="145" name="since" description="ADD MVC 0.9"/>
+        </docblock>
+        <argument line="151">
+          <name>$common_gpc</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
     </class>
-    <source>eJytVllv20YQfjfg/zBQBZA05CMPLQqpOVzFKArEhRspfXGNxZociXR4dXcpW2j83zu7S1JLinactnww5Nm555vjp7dlXB4eHB6cHh0dHsARLGOEsMiVKNIUBSjMypQroqVcSlgVAvgdf8AIKpFKLWGk3pU8/MzXCOfv38PlH/M/560KaRlkkoftM5ydnFnyhhiSIifCK0vglYq1kfQWhYroCeW7dcaT9CQsMs1yenhw/vNi+fF8voT5h/PFAkIlUqbKlGnP4NfLqw8Xlxe/LReQMP0Ef+v4AKCsbtMkhHFWRDiraTZs+o7gMskQ1LZEKFag4kSCQFlUIsSao2Hci+XH+uXUmhGFwlBRisY6kZgrZrS+Bk/hgzqNVZZ6A/Z15jcJ3kPEFf+ayR+eMqmFyRQXgm/9wJjpG2Is5GnqB5DxNeVjVeWhokR/o0mbzEa4UTpuCCznGU7GXKyrjFIgA10GMJ9UXOk6CNQ8EWtEZOt3w2k/ryRkee2/r9+Ahw8YVgq9SZ9TFCFK6e04awrTeemwB00J6EtW4CdSovL3nbruhnQTOJHQp6NmlURhJJj13/4daxBNXqDRTdOs0f3Y/MBUYsekikVxDzkhBVmEG0yLEoU/+pRHuEpyAkGjfgqjkzUqUxlywLSwH5yMoOvAaGJc15zkB3F0nDA/HwfapZIKMIwL8gdBl0j3S0nxfbVfnkdSXVvfyfN3jvD3cEuz5p6LCGRVloVQbhUzpPERMXxIpJJ1BSx+enUTqCqRg+E4fqM5/P2wjekFKpjbRoYlNXLzUou6Pe4P0Fyc1c96ABHWa8Sxjxe/f7pYLK89TfduAngLox1VE29GMAXPa/3jUTSdjmOeRykyGVcqKu5z0rjihJVZz5rbAf6AN6VIyNWmdk0ImrtOyEDxG50mkt4AgSv7iBJ4voVfruaU7L8qpIK8FBjP4sO17YJkXKfVSfLMhYZ5D9pt0AhZwOg+INmRq5wZidGsI/AUyFxFQd+KNrQuQ/YZt2zDhTZkDGjakBHojCQbj6ugh+XaAi1IWsPKziCy0e5Fje7pVFBb0bLdIKsZfRhQDbsu2OuFoc5x4/a7LnQ0PTq91dHjYLY11duKpcDjKJF0iGyb6tsd7Z4qjYBPN0pGl0sX/TTU/lfw2WZyy9wbKB2QPtlHNJCTNQlR4hN+m9L9UdAopfCS3NxZ/22SWu2dHqEB/0oPCmfg+2f7q7DeY4Y9gC9faFax4vaOboya1gWgMzOaHc6oBuvONJnYtRhYJ16y6BzhayN003d9T81AjgkidGWq+jSiBN/J3az6tyjojkwzLHeum62orTDMQw2A8fPTlLpctmhu70W6gilMS6+E0OuHruE+IkoueEYnFXm0hjEdBcxV8o2Xay/M7mrr66Za5FWaOnGbKdtnG0RKT8+ekDs5YuSRvm/qHXys3/Vl88SuHZ4yA8xtOR7/AakEmdE=</source>
+    <source>eJzFV1lv4zYQfg+Q/zBIDVgKHMd5aNE43SN18lBgs1jUblFguyBoaWwppQ6QlJOgm//eISXKunJs+1A9BAk593zzDfPTuzzKDw8OD06Pjw8P4BhWEUKQpVpmQqAEjUkuuKYzwZWCTSaB3/J7DKGQQhkNq/U+58FffItweXUFN78v/lzUJlQpoOI0qK9hNp2VxzsSiLOUDs7KA17oyDgRa5Q6pCtU77cJj8U0yJK9P52FWW3NGTmbzuYQU8CYYKohZoGWAry9j3PfZqCjuA799PDg8ufl6tfLxQoWHy6XSzBKTOeCmUTh+o/V9cer6pSvlZY80PDLzacP1zfXH1fLygubsXP42xQSAPJiLeIARkkW4kV1VtaXvmO4iRME/ZAjZBsbC0hUWSEDrCScYK9oP1Y3p6UbmWkMNPViZDpGKTNr9Q2MNd7r00gnYjzg37R4F+MdhFzzl1z+8JRLo0yuuJT8wfOtm64jxgIuhOdDwrdUj02RBpoa8Y0uy2I6ZWd05A5YyhOcjLjcFqbryjdtAPspzbXpg0QjEzKnouq4nWT5jXOC8Lj+881bGOM9BoXG8aQrKbMAlRrvJasTZurSEvddC+iLN+DFSqH2+kF9bqf0xW9kQp/JmhUKpdVgZfzlz5EB0eQVFptlunC2H90vKBS2XOpIZneQElKQhbhDkeUovaPf0hA3cUogcObncDTdoradoQAsV3j+9AjaARxNbOhGkuIgiVYQ9tfHgXEplAYMooziQTAtMvOSU34vzsvzSKp66zXq/F1D+XtYE6ndcRmCKvI8k7rZxQSJp0KG97HSqupAiZ9O3yTqQqZgJU7eGgmvn7Z1vUQNi3KQYUWD7G4q1eaMewNnTZxV1wQ0ZkjIa97xMJzPRxFPQ4FMRYUOs7uUJmLDqf99G01cd+alQrILJUmoz9s88NtS7/aMarKfzyWVnRh5h4x0aHFoD3o2oGNk7ojmicGqg42pGg4eLjQTelXzAXwZOswlnoSxolX3AFXCJTk3l6FT8GiHJLQb2wUiNNc4zLnkSRmx4WaX1Is4fRaurUY0ze5ZGPx6BzVrghYEzAXaUG2V0DmwwlTDQmgy3YGBhVPL+1AbMqXbPnsaw70g3oi3NCw7LmO+FrQmM5p4akac2nfHfxv40npz3g0fnhnsN3jJm/UZu6JbK+7D168EfZatb2kVVmftmW/gzjWHEWK2LUROSvb2yyBew8cN5c9W6Us39J6ZgRoToOlFpKsNTgW+VfVO/tfQbI+dHbh96Ja8jReGaWDwM3p+IolVVD179bOGHm6UZnleSGlYkl6HXUSUo0fPtDjdwoh2F2sa+cYHVifNNgN3bVMv0kKIRt4GOz2xQaR07PSULhoqEfLQrOFqVZyYe7OAn1gJHVC111Hfx0A7PlWEuEYiPrQNoAd5CmbAHSsNt+H1DHj+Ar6eobCqns8Ezjfa/CvzP8Td48HhwB//Ad+AzYA=</source>
   </file>
   <file path="classes/controllers/ctrl_tpl_aux.class.php" hash="ffd68495a6cdc6a4847a6291bcdd1b50" package="Default">
     <parse_markers>
@@ -852,6 +1027,68 @@ Auxiliary Script Controller]]></description>
     </class>
     <source>eJylVlFv2zYQfg+Q/0BoBiQFjtwO3TC4S1bP8YAC6dDV7l7agmCos0WEpgSSSh0M+e87SqIsWU6yIXoIYvLj8bu77+74629FVpyenJ5Mzs5OT8gZ4VZLagtJWbmrFmblTkjB9D1Zci0KS+a5sjqXErTbrzDvjFAcyOzqinz4e05eJW/qZVbaLNeEyRvQNhW5AvNus2VCJjzf1pA70AY3yOvklTc3OT2Z/b5cfZrNV2R+PVsue6TIP4ghpNC5BW4hJSMNpsiVgbfOD9yqXcHvjHwQWyD2vgCSr4nNhCEIzkvNoUF44MCDX5qdyeFtHN0HZWll9YKEFnZ2UkgmVHiEgC4V3gukYJtnr/w5+bF/aXkjBSfrUnHrQgQ74KWFKG5CgB/QjPHb6ZQZgxGORs7F80vOFMWLo3gcvFd3TIqUuMCZOn8uKeiA4Kyyegv3QeyZ4/cDWUKdZASRFXrpd7z1TgCiI2tdY/kNNZYhM7dYL1lUUst/bxUjzMEYmjLLOugH/w+y5Vm02HEoKtojiHtmWJpOpxlTqQQKHhWN4Iip5kYvG0wi0tyApVwCU1GXfwNt7PoTnt/DMN+UciYlpmjLNp3cvTT1jdmRX6CKbWE8YnpTbjHuphMLjDfm1lWFw6TUHzHoJ9Oa3UedqOEXOmmG7c+LSxI2QgvHh8g6R+Ee2c1aD94NoliTSKBAUZ8DUl/6Ln2L+1l1XtMStV2doDX/+m+VmvF/sNgN01AMIFEB3SttpvPvRMF3LK4U7kDmBego+KxSWAuFHcCbn5IgqVSDHJEAl1iEUZwEpE8gGFfUHRJ5IKJH4jEd1YqrWodX3XMaevOkggYS7jQRnuWHRfGowOcZ8NvnqPz0JJW2Pe0paLClxqKmnxZ/fV4sV19CbFjUdarwG7m48OzcIvarJ+pvhQFj7cRC7Mui1l44oKpKKTsshkyu843BYtRCbYjNq0zKfEPWQg4yWTDNth478mfwwP44Hn1Z0NFA1JjuzY9W4u0Q2QIO7RSbqDDWNGUW4nHqqBcMUxKPKa0GM6Uod+8Vwemqckuw0IO9xt0OLUosk3pEGD8yuhZxUjXckuCr/qqC8R/vrxd09vHj4s+ruBfmYbr9/c7Qi2PUoTRU5/z8Eu1htxM6CSaINpPjLSDBvcTubPCoTjFIpkpx7zmBbyU0V6+XWrsBjG+mp+WCnYp2jfzPh81hbfaG+6FtHCFO953QuN4+gMXHBvyBncGht50jGbDUNd3mFXLu9l27feS10XbTfrqG4DYdD/8C+l8QoQ==</source>
   </file>
+  <file path="classes/controllers/ctrl_abstract.class.php" hash="b8055cb521ca0d7724af3a0a635383eb" package="Default">
+    <parse_markers>
+      <error line="27" code="50014">Name of argument $common_gpc does not match with the DocBlock's name $gpc in process_mode()</error>
+      <notice line="27" code="50013">Parameter $gpc could not be found in process_mode()</notice>
+      <error line="77" code="50015">Argument $gpc_array_keys is missing from the Docblock of recursive_compact()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file classes/controllers/ctrl_abstract.class.php</error>
+    </parse_markers>
+    <class final="false" abstract="true" namespace="default" line="8" package="Default">
+      <name>ctrl_abstract</name>
+      <full_name>\ctrl_abstract</full_name>
+      <extends/>
+      <docblock line="3">
+        <description><![CDATA[Abstract Controller]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="since" description="ADD MVC 0.10"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="15" package="">
+        <name>set_mode</name>
+        <type>function</type>
+        <docblock line="10">
+          <description><![CDATA[Set mode function]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="10" name="since" description="ADD MVC 0.10"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="36" package="">
+        <name>process_mode</name>
+        <type>function</type>
+        <docblock line="27">
+          <description><![CDATA[process_mode function
+Processes any GPC requests]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="27" name="param" description="" type="array" variable="$gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="27" name="since" description="ADD MVC 0.1"/>
+          <tag line="27" name="version" description="1.0"/>
+        </docblock>
+        <argument line="36">
+          <name>$common_gpc</name>
+          <default><![CDATA[array()]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="83" package="">
+        <name>recursive_compact</name>
+        <type>function</type>
+        <docblock line="77">
+          <description><![CDATA[recursive compact($array_keys)
+Returns an array of GPC from the $array_keys]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="77" name="since" description="ADD MVC 0.1, ctrl_tpl_page 0.1"/>
+        </docblock>
+        <argument line="83">
+          <name>$gpc_array_keys</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <source>eJyVVdtO20AQfY+Ufxgii9hpSuCVFGgICFWiKiW0L5SuFnuSWPWtu+vQqMq/d9fXXdsB1S9xdmbPnDlz8YeLZJ30e/3eZDTq92AEs2cuGHUFzONIsDgIkKnzzPaR+5GLMLu6gs/f53B8dHKszif93uxy8XA/mz/A/Ha2WIArWEBoifRX4QNAHkI+I1iggDD2EJZp5Ao/jgpDae+OpEyT7DdJnwPfrW4DR0EUnu2oaJA9/hJsn0uLbZH766/frhcPj0PlNHxy4PAQEoYrElLhru3h5OePl3fWZDhuu2qI8rHE2ufvzzPuZ9DynmqunfF5+kz+g4PmbvKoqZQuJp36ok5pV77vipIUNA8KnnVyjrM36aGHS5oGYpgj79rVTVjsIuekq8JwlxuRA422cHM3B4a/U+SCN3sgoYyGQBmjW7BWibu/OZo3N8i4aouTo9fbRidqg+XGYRhHRIaSaWZxZT9pululzrUe01pIK0Sxjj0S0VA5DXRwkl0dTE3Ziwv4x5fZ5+qPdZS85nohJDXyC7dkQ5kKkUGrsxZ8ydZMxnRQFCCvfJmSEcDIvY1ZXGHoplLtDRIpXyLnfQ9YZx/KBwOOGZVc3QOtwVrhxZrFLxDhCyDxcINBnCCzV3L4XSo3lUfcgHJuO0eDRvQoFuChtDL0Bk0qumYMObKNRNJ1y4cbzs71yneIeYBhIrZ2YzA7JlePos9qrWp59grVENnKJEqyI9uAH+ttPa4L2KBfhJXq+avI1rANsUyvXJaxVaqxz63Kb9xUxuTAUKQsqrpHG4QmIW2NdTbR2d4mauRZS/N2njXiVItfvhbkl1Qy2bsYq1mBclasvHCyT7lTet1nUGo/FssvXmZ7csniUI4Agnbpze/mOP8YiyQgCV2hti2NlcgFFfpmbE91Nk8aW20tFi651dg2ucMyZkjdNTQxgPJqpWXT1QmvyltP++mprAoyUX5ab26/XM5uF48lzpMzHnyKNjTwvUw0BV3azMmvyaixa+GYvVmn0KBf/W1NeTdpwuWqokzDaRDOGWW0KxeTeEvyx9pTrZBiC1Xp6WYHLiBKgwBOodthz8LZNfrcJFA1/O4f2EDk0Q==</source>
+  </file>
   <file path="classes/controllers/ctrl_page_index.class.php" hash="98932dc7a585b46174ad90b738fedb12" package="ADD MVC\Controllers\Extras">
     <docblock line="2">
       <description><![CDATA[ctrl_page_index default index page
@@ -976,7 +1213,7 @@ A sample 404 page controller]]></description>
     </class>
     <source>eJxtkMFrgzAUxu9C/odHT60wddDbBlPUssNWBsrYoVBifKvSaEISu8Ho/74kru1l75Lw3i/f+748PslOkiAOQxJACMwovjeS79fJGmijjaLMwCBa5MA41dpTGWg6SI7gKEkPCEyMRgnOUTnAQymdTCcUUN6gMm0vRtTpYaA9j5gYbpik7OgksqKA1/d8l1+l9K78tgbmnanuR3alIImSuX2ynNW+NGIS5C9ZVc1JnDcfpfyoy21R3fJ51z8ksG8A5vS2Qqg7BKnw7tTjl70Ihj6zm12Qf524SexPOTW8Z/A5jcw4Y38iy5VbB746pC2q5eK5rt/i+yjx/7gVBjZiGtvF6sGDZxKcfwEwiXPh</source>
   </file>
-  <file path="classes/add.class.php" hash="fddb8efdae65dfa3430f7a8318baff8f" package="ADD MVC">
+  <file path="classes/add.class.php" hash="7498e7b28538c1346463cdb11d3e78bd" package="ADD MVC">
     <docblock line="2">
       <description><![CDATA[Add Framework Class
 Every sitewide features and modules should be based from this class]]></description>
@@ -986,9 +1223,10 @@ Every sitewide features and modules should be based from this class]]></descript
       <tag line="2" name="version" description="0.7.3"/>
     </docblock>
     <parse_markers>
-      <error line="386" code="50015">Argument $handle_shutdown is missing from the Docblock of shutdown()</error>
-      <error line="620" code="50015">Argument $new_status is missing from the Docblock of environment_status()</error>
-      <error line="707" code="50015">Argument $new_content_type is missing from the Docblock of content_type()</error>
+      <error line="394" code="50015">Argument $handle_shutdown is missing from the Docblock of shutdown()</error>
+      <error line="584" code="50010">No DocBlock was found for method current_view_filepath()</error>
+      <error line="643" code="50015">Argument $new_status is missing from the Docblock of environment_status()</error>
+      <error line="731" code="50015">Argument $new_content_type is missing from the Docblock of content_type()</error>
     </parse_markers>
     <class final="false" abstract="false" namespace="default" line="12" package="ADD MVC">
       <name>add</name>
@@ -1183,297 +1421,302 @@ callback function for handling trigger_error() errors]]></description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="307" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="308" package="">
         <name>print_errors</name>
         <type>function</type>
-        <docblock line="304">
+        <docblock line="305">
           <description><![CDATA[Print errors]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="364" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="371" package="">
         <name>handle_shutdown</name>
         <type>function</type>
-        <docblock line="358">
+        <docblock line="365">
           <description><![CDATA[Handle shutdown
 When development, record the time spent on script execution (since 0.7.2)]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="358" name="since" description="ADD MVC 0.5.1"/>
+          <tag line="365" name="since" description="ADD MVC 0.5.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="391" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="399" package="">
         <name>shutdown</name>
         <type>function</type>
-        <docblock line="386">
+        <docblock line="394">
           <description><![CDATA[Custom die() function]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="386" name="since" description="ADD MVC 0.7.2"/>
+          <tag line="394" name="since" description="ADD MVC 0.7.2"/>
         </docblock>
-        <argument line="391">
+        <argument line="399">
           <name>$handle_shutdown</name>
           <default><![CDATA[true]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="protected" namespace="default" line="405" package="">
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="default" line="413" package="">
         <name>include_include_file</name>
         <type>function</type>
-        <docblock line="396">
+        <docblock line="404">
           <description><![CDATA[include() include file path
 example add::include_include_file('functions/date.functions.php')]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="396" name="param" description="the include path" type="string" variable="$include_path">
+          <tag line="404" name="param" description="the include path" type="string" variable="$include_path">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="396" name="param" description="weather to include it only once" type="boolean" variable="$include_once">
+          <tag line="404" name="param" description="weather to include it only once" type="boolean" variable="$include_once">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="396" name="since" description="ADD MVC 1.0"/>
+          <tag line="404" name="since" description="ADD MVC 1.0"/>
         </docblock>
-        <argument line="405">
+        <argument line="413">
           <name>$include_path</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="405">
+        <argument line="413">
           <name>$include_once</name>
           <default><![CDATA[true]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="427" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="435" package="">
         <name>php_check_syntax</name>
         <type>function</type>
-        <docblock line="420">
+        <docblock line="428">
           <description><![CDATA[Check php syntax(this still needs to be tested and fixed)]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="420" name="param" description="to the file" type="string" variable="$filepath">
+          <tag line="428" name="param" description="to the file" type="string" variable="$filepath">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="420" name="since" description="ADD MVC 0.7"/>
+          <tag line="428" name="since" description="ADD MVC 0.7"/>
         </docblock>
-        <argument line="427">
+        <argument line="435">
           <name>$filepath</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="449" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="457" package="">
         <name>load_functions</name>
         <type>function</type>
-        <docblock line="441">
+        <docblock line="449">
           <description><![CDATA[load_functions($functions_group_name)]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="441" name="param" description="the base name of the function file to include example: add::load_functions('date');" type="string" variable="$functions_group_name">
+          <tag line="449" name="param" description="the base name of the function file to include example: add::load_functions('date');" type="string" variable="$functions_group_name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="441" name="since" description="ADD MVC 0.1"/>
+          <tag line="449" name="since" description="ADD MVC 0.1"/>
         </docblock>
-        <argument line="449">
+        <argument line="457">
           <name>$functions_group_name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="458" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="466" package="">
         <name>load_lib</name>
         <type>function</type>
-        <docblock line="453">
+        <docblock line="461">
           <description><![CDATA[Load library from $C config]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="453" name="param" description="the $C-&gt;libs index" type="string" variable="$lib_name">
+          <tag line="461" name="param" description="the $C-&gt;libs index" type="string" variable="$lib_name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="453" name="since" description="ADD MVC 0.1"/>
+          <tag line="461" name="since" description="ADD MVC 0.1"/>
         </docblock>
-        <argument line="458">
+        <argument line="466">
           <name>$lib_name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="476" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="484" package="">
         <name>lib_init_path</name>
         <type>function</type>
-        <docblock line="471">
+        <docblock line="479">
           <description><![CDATA[library init path from the config]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="471" name="param" description="the $C-&gt;libs index" type="string" variable="$lib_name">
+          <tag line="479" name="param" description="the $C-&gt;libs index" type="string" variable="$lib_name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="471" name="since" description="ADD MVC 0.8.0"/>
+          <tag line="479" name="since" description="ADD MVC 0.8.0"/>
         </docblock>
-        <argument line="476">
+        <argument line="484">
           <name>$lib_name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="502" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="510" package="">
         <name>current_controller</name>
         <type>function</type>
-        <docblock line="496">
+        <docblock line="504">
           <description><![CDATA[current_controller()
 Returns the current controller object instance]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="496" name="since" description="ADD MVC 0.0"/>
+          <tag line="504" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="526" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="545" package="">
         <name>current_controller_class</name>
         <type>function</type>
-        <docblock line="519">
+        <docblock line="538">
           <description><![CDATA[add::current_controller_class()
 The controller class according to the current url
 take note that all controllers start with the prefix ctrl_page_]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="519" name="return" description="the controller class name" type="string">
+          <tag line="538" name="return" description="the controller class name" type="string">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="519" name="since" description="ADD MVC 0.0"/>
+          <tag line="538" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="540" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="559" package="">
         <name>current_controller_basename</name>
         <type>function</type>
-        <docblock line="534">
+        <docblock line="553">
           <description><![CDATA[add::current_controller_basename()
 Returns the basename (minus the prefix) of the current controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="534" name="return" description="the controller's basename" type="string">
+          <tag line="553" name="return" description="the controller's basename" type="string">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="534" name="since" description="ADD MVC 0.0"/>
+          <tag line="553" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="571" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="584" package="">
+        <name>current_view_filepath</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="594" package="">
         <name>canonicalize_path</name>
         <type>function</type>
-        <docblock line="566">
+        <docblock line="589">
           <description><![CDATA[canonicalize URL to the current controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="566" name="since" description="ADD MVC 0.5"/>
+          <tag line="589" name="since" description="ADD MVC 0.5"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="584" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="607" package="">
         <name>redirect</name>
         <type>function</type>
-        <docblock line="578">
+        <docblock line="601">
           <description><![CDATA[Redirect function
 die() included]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="578" name="param" description="the href to redirect into todo do not die when failed to rediredct" type="string" variable="$url">
+          <tag line="601" name="param" description="the href to redirect into" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
+          <tag line="601" name="todo" description="do not die when failed to redirect"/>
         </docblock>
-        <argument line="584">
+        <argument line="607">
           <name>$url</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="597" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="620" package="">
         <name>redirect_query</name>
         <type>function</type>
-        <docblock line="589">
+        <docblock line="612">
           <description><![CDATA[void redirect_query(array $new_query,bool $merge_current=true)
 redirects to the new query string, die()s in the process]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="589" name="param" description="" type="array" variable="$new_query">
+          <tag line="612" name="param" description="" type="array" variable="$new_query">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="589" name="param" description="true to include current $_GET with $new_query" type="boolean" variable="$merge_current">
+          <tag line="612" name="param" description="true to include current $_GET with $new_query" type="boolean" variable="$merge_current">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="589" name="todo" description="support string on $new_query"/>
-          <tag line="589" name="uses" description="\redirect()" refers="\redirect()"/>
+          <tag line="612" name="todo" description="support string on $new_query"/>
+          <tag line="612" name="uses" description="\redirect()" refers="\redirect()"/>
         </docblock>
-        <argument line="597">
+        <argument line="620">
           <name>$new_query</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="597">
+        <argument line="620">
           <name>$merge_current</name>
           <default><![CDATA[true]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="614" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="637" package="">
         <name>gpc_get</name>
         <type>function</type>
-        <docblock line="609">
+        <docblock line="632">
           <description><![CDATA[Get the $_GET without the additional add-mvc $_GET parameters like add_mvc_path]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="609" name="since" description="add 0.6.1"/>
+          <tag line="632" name="since" description="add 0.6.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="625" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="648" package="">
         <name>environment_status</name>
         <type>function</type>
-        <docblock line="620">
+        <docblock line="643">
           <description><![CDATA[Sets and return or return an environment status]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="620" name="since" description="ADD MVC 0.8"/>
+          <tag line="643" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="625">
+        <argument line="648">
           <name>$new_status</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="662" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="686" package="">
         <name>is_live</name>
         <type>function</type>
-        <docblock line="657">
+        <docblock line="681">
           <description><![CDATA[environment check: is live?]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="657" name="since" description="ADD MVC 0.7"/>
+          <tag line="681" name="since" description="ADD MVC 0.7"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="672" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="696" package="">
         <name>is_debugging</name>
         <type>function</type>
-        <docblock line="667">
+        <docblock line="691">
           <description><![CDATA[environment check: is debugging]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="667" name="since" description="ADD MVC 0.7"/>
+          <tag line="691" name="since" description="ADD MVC 0.7"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="682" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="706" package="">
         <name>is_development</name>
         <type>function</type>
-        <docblock line="677">
+        <docblock line="701">
           <description><![CDATA[environment check: is_development()]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="677" name="since" description="ADD MVC 0.7"/>
+          <tag line="701" name="since" description="ADD MVC 0.7"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="694" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="718" package="">
         <name>is_developer</name>
         <type>function</type>
-        <docblock line="687">
+        <docblock line="711">
           <description><![CDATA[is_developer()]]></description>
           <long-description><![CDATA[<p>Checks if the user is developer according to his/her IP</p>]]></long-description>
-          <tag line="687" name="since" description="ADD MVC 0.7.2"/>
+          <tag line="711" name="since" description="ADD MVC 0.7.2"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="712" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="736" package="">
         <name>content_type</name>
         <type>function</type>
-        <docblock line="707">
+        <docblock line="731">
           <description><![CDATA[content_type()]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="707" name="since" description="ADD MVC 0.8"/>
+          <tag line="731" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="712">
+        <argument line="736">
           <name>$new_content_type</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
     </class>
-    <source>eJy1PGtz27ay3zvT/4CqnlBKZCk5Pa9xYqeu6ya+4ya5dtp+cFwOJUISTyiShw8rPqf573d38SAAgpKS9Ho8tggudhe7i8VisdCz58Wq+Pqr6cOHX3/FHrLTOGY/ldGab/LyPTtLo6qi9vM7Xt6zKqn5Jok5W/CobkpesSiL2TqPmxQ+V6u8SWM242wWVTxmizJfs3qVVGyu8BCut9gEv+t7VpTRPS/ZIi8FYFHm/+Lz+oj9yKOSXeZlzF7kMbzj7EUJNNkFi9Zj+IsdWZPVObvPG5ZkBJIB3yxfYFPJqjxj/8OrphqzlNeibZWnMIgiKZOaLRsciKRKXEQVIOYfVnlZMwCoV2XeLFeEeZ7HMMA4z2Bs9wLXJqliGN8yueNAPWdrPoGRRdl74kiMiBOVKJtzbAzuuARHpvCtwCE+F1GdcIREkWLDXVIleVZhTx9m4D6qbLTEhcX3BoZX8LLSUnmJErgmCfiQ5kUBo2+ypL73ooa/0Xtu6cpFg1Tm+bqIsvsxPczyqpKWgo81j9aApVZNi0UCg24bFiWIIa58aP+VzwTKIgdLBOFQhyhNifcZ2GCVZEsSCrGN/DaVFggJYL5K0rjk2YT9lJcEBBCKQFGCVMf6kS/z9mGWR1UN6AWTsrHi6eKw5GmCOu6gzHK0IhgFdpN2ymkiLfMoBYHWoPqoek/yAiOFOYPIZw2MYZF84HGLsV7lFf6FKbCJsrrCocU0ulVUrqXNaJAohckS37M4ART4DrDDlGSKORRXVYMUlvUKMS00FQ4zNs8nnRkG/1TndV6CA4gS6KrHAwYBQ9xw4GnMokUNs0m+gOFVdhP8QcOesBc0AwHjBnG55inGxKP5ikaZb+SQiVTFlugOJuxST20Ar9D3tA+IQE/9dZLF6jV+BvJyPGoSWhNw1ayTFGeBGqIxwolwTFKm8zwDs2jI2MgEcaIgCvNFA4DYDEzhvFGzkX9IqhppCh/VugR78kFP4DxNlqsakYFrTuMxWRciBAY/zJEA0slmYIx8IQRjTlPEsCibpF40KbEHPfAj2inOoM1KcJnUqi8HNcvOJFj4XMNn5dixk7a9GVf46lx2nQMfYKgCm9B8DP/SHPwRUdskgAGFVCazpuaip80wyVPNCpTGAsnPlJRaHZIDBVuBNSBn6KXnIJYmi8HUaug8RgYyeEGANXoDXtVICSisUauLCOdvyyriQCZxpcru8vQO6FL3fgZT1VmYiphBXPgKAI2KAiQSSwGtUXUbnqYTdir8F8heTjrfanadZ2OxnE30Ovp91MCcR/XNeFnHMKd49f1yHSXpBByKACmi+ftoydnpjz+yn389E41yBrLHk39MvsOm6ddfnV2eXl+zCJb//379FbQxJkIC+MEVm+x8kSzZXVQmEQxbvfoeXO5c4weUj+WbKf1vjQYUUSdzdnD2dC/8NHz5XtOqc3AAJV/noPWqobWKxHtwhspRPDzRPOzJJJAGazh7/eqnixfhr6dXr05/PmfHLDgLenhd5aiaEjQV8w/ChvM05WVQUehjsA5zM0LffsTmdZmGBegipF57sqak9vL1z+chcPj26vXl5fkVckdoBIcuj+dlmcOif1qCOe0SxT+89LjAcMwixDEceQTxGzhgmOlo0OhvQWXVqqnjfJMxsfbtpDz5i5e2wBZqbMcwO9OKe1h4wWu5mEFgKi3IpVpEEM6y67c/UjCLplL3WrPuVHIIb7PKBM1nOOk/TW2LJptTnCJwDE0ujlnWpOlITzf4SRZseHBGTUz9HIiuIekBOg3pw0jMoxYKXG8axnwRNWkd9nTBYOXoyAZqNSsR9eCg/2GcLBbhe34/7Kc3tjkeWVyueQn270WdZBAhVCBhgd9C2U/N5d6LmqgOe4bm8MscjOBdKAQZ+ngHF34A3LLjE3ZwF6UNt1UnNZpUobCdoQQa2TDIN70wtUsNT73IxIzsx2WyeIP83TqSsImMW6K9YhZoRg4/HCblnuSd8Xy0ZCzskqbEwYvL1z+cXl7fiDbbJSOioRDlyKZj6+xbdpZnsMZRsGROW1ujmiyo8QEwWPZpTwu8HHVAhPJKizN4diT10Xg0xq6bhbvRglDD+ehffaSGevzddv9eNLMUHJPrn1yn0A6zKPkyhN3ZfDUMpr8Ph8/fPKuaWQjRV5RkJ+82j0bvJqPnohkiO/ViOIRX8OYRvqnTmCBHf+Dfg2kwPgivz69+Pb+6CV6+ffsmfPn6+m1wOz4QnWGVLOuqtTYpHS1goQ9bwoFJPZCNOC9NlDc21O24g2PmYPDjmPVigD3EKmD2D2AgIZa8SCHKBDG+m978/m56+/A5iiKwxHF1/r+/nF+/DX+5ughuRy562DnU4ITLwEYPBp0i5WEwmQadTjy7S8o8W0M0HqLemyrATkEKsXPgAusQvQqTItAUZBQwtuaZaZn65yG7TGZlVGIYC5u4RQIRsgsydYimyayypAYUt2pb9oviPJ4Fqod4nNLfCUyCSbEq3PHJjtUaVHkfqI7icXpN/yaUrNrSGd5gjA3RHnXWj1PdUTz3oLD0I428Z6LDINIGs22ADrenK/VSZmswWtfvhuCtaD8Jm48R7htkUkl30pGoRBtiV2E2yg9UU9g4rGFvrhtoECMnmKpgywY7nAPsLHJRklGT3CdGSB2mCLvhiJZpPotSM+45QLsPiYljwUz7CtBV1iv4Pzg4OzyhFzCFptQ6eGpHX0g9JClWkgHb40tXZBPTbhwXRDt4A8sOTeqgMUFcsz4wl4oOC6q/u84rPtT7Li8KQgvCsDTX1k6bOk/zKBZ5Wq0TfyStlE+wvZs00Chsw8aMtmpkIosKlhXcJ8cc3OE8qoVd0y4XE0B5UzM59zSqXRvc7YbWbnSf7DA+HHxItIftuGRo7rM/02QIXiks4KH2oMGYti2W6ozXR0fQD4ZlUBwPfkgx56kbBmY0+i27gBAZ5WYkpwkUU9MJyLTOy6T1tjrQAaM7OlIr++GJ7IJ2WFEIazTY1v4tu0SrQDcuUvkyiwHKA6kFMq+PtJ0onESiZnK4SdJ4HpUxTQKD2PS/44fTj+3wW89rTQoXXcWjco4zCjUy7CM2xkgy/OHq9Ox85IaHP0Tz9xtkSOUQIE58PPkLG9p2OHJm5jd+Tjox4WeP3x35nzV4jc2Ou2m7+VlDQqfq7Xjz+NYZwAyM8H0PDx/tmfQNXxf1vcvSyN0P01ucsRwlqtaNHHxAp6vHjGTHBxCwM2vqmhP/jz8Y7UcxK+h7P9rH9zuMqhxGZ+iwXVnx+XsUAaUbaE4lMDXndROl6T0TKPaQFHvwgH1j0bXSC8gUF24O80emq3raMQxbNrJbd/+DfmjDMr7RqIeDVlKUo17kTSZzxg7DA9c49eeONC1S5x/mvEAX9CW0vJpQi4jI0lwK3Z3fQehs5WhsU3qAJzmrPO5ayjgIQ1zyBWTgNWWEOzoy4YYjn5moBd2k3Rs9yhQa14LSIRzGlZTckzDi8FUDVs5qr0UN+iXz1JBt3u8zI74OjyYtQ1IocUfAIFi3d2Cts0pY/PCkK4qnvXN2s8JoGrYe4ZLXYYrTY9i1eXjNM4wXeGRic0w4Tvhw8CxO7mDg9yk/DuYQY5VHJdjByWCCnAGNn3lVRUs+HE0Gz6YAezJwXcsW5aIWW8XOwVfMYGFrBbxQSsZ4DaK25RL2vrKXsAGlbUfp4PsYpYCznJLbsNUVqVCSiNpbCCsqo6Ti8VieRKHXBCoTB6GKGaELfLRxCjRrIQiBR8JvwUK7HguNjiXpALRFvAGEgkdgbit6HDXiBnE5uKkla9YzXvoxR/UOAYh8IWJHxPwDnm7KRuK3yBN5qEtBFugPTzju17M8ZTUdh8hBEaDBRD6fN2WJJ8UXGcspH7/Jy7gaM4OWPmmDEbWEQY3yQFYduRAr4kwyVqdQ1RwWCGfU0pYIaMJ+qfBo13Ip66aqyR+v8zhZ3Mu3kp2Ja3QV52xV18XRdLrZbDAKmmS8nq6jDNa/Kc+myqInFa8PCdehpDSh4hXDyfTkt6wpIy17rO1x3NrUMXv1y+XluDUE0SBBlEBFo7W4WgcnIdaLhMLM2kMU24uch+dXV6+vjBbMJshWN29wHv52evXq4tULB1i2dsHfnF5dn3dwU2sX+NXrtxdn5y6waO1CX7+9ujh760KL1i702esra6QCum3t6WEM1+jRO9yz1z+/ubhsCak+Rmt/J0XL7tRL65fr86vuiNrWnh6dEZmtPX0MxRh9pGKcNNIWQ8RiEJzgn2WRP0U1bHvpRHE/q/wtKjOgsp9NvolKWIN7sPvs8lUOo+vkLf1W+eblG3YNQ57X8A88AOyMqv0s9AxrXHq48tknwW/6Bu6zzrN8XaDD6SXStU3VpVfAPsv8UddcXFRVg9Gsn6DPRjt9t1N2rLXTW6quY7fWzmYo7LbkuDEHWhCqPJCxiDcX5wuVpe2L03nYIsKGux56PPONwHs7Ys99jlu9ZkeSASfz841ALCbc0ZE8M78xqd9aUelWyO5ZO44EI7q6xMKWYxbzWbMMdYsFKM73qlWygJFqEBNCxra25qRodAfYv98EuBAGt07GEXY5XjB2fKxXz109cEFte+CTaQuWcvvH09H2Vqne3PY4u6C+Lzhl8Lvm0fGXfYbSC6hNpnMYg43tuYofSAbDgYIA7C4ICd9Ags8uDImbWbSwyQXT0g0EmH7e76DiTYkRqbWd8O/3CgQUIVhlnjDqc3kh2LpIMVEm4Kby3QRa29TYgTiwwRIKvsFTkFA0GJux9pTXtg5KeFru4UQVuzibcx83gwmoAnPlG14OTTSwf7NZZCplKDg7PKn5ukijmp+rLaxC391fWqS70ulP6LXFCu5g3TwQw2QHVV2tmuw9bgXQnlWBXJqLDK+103McBw6OEstJFeJJomefzKgagHJzgnuUpJvgRCA68hAl1se0kZMD0K7oqct8B3VYADO4Ozxm3+0BDVZRYhi/jj5oWtI7HbLvxk/8FJUuo6pKltkw8OAMxl5SXny4Px860B8otdpF8NRt/cCeHTOX90c9Uhl1uz965NNXV2WTY1M/Ny6awye3/fa4j9iC8SpZrqi2VXpRRyTjusQ6F4/ZbFcHz+Jg7LJr6qHDq210oAhVy7fTHM33IeqiCuz13FG7OUtvDAd8SzNWP4cxxN7eaeWhZ6x0ankA39YOwcaqxzJW64Tl+iWMNCvT+XfdwOe4OI/6hI8djKXD2qLvOKmAzr1JYEu9DfNnk7F5vsoZpehOpEAxJlBrNzyiiG7lynGDssB3z2YKWi7Tt8+msxOZvfuUuh/PWvrSrqNUzb+teKaKp7GMYwyx7xxL0KmaOVlDjwKa0X1X8zIpMInD5w258KFIylK1pcoV9iZs/zZ5sk/KVvE3dLK0eq114Gz1q4NUXLfXd/OQilpwFKVTzLd7lfdZRUBh8tRhAVfnwJm4oryLgr8uL3SY4mlnSYYl5XMOayOd5lNQLrt46sf2WCQ1mqMjESPJs1pf5Y5nXvR2l8UGn9SHCpg+pYM+QwqTAjbX5Ky3z0aPUA9P0qgYDq6lsgYuBm8XwUeUpiF0rjqJ+M5OUW8U7EB0d779rKnqfE0J/VFvccSexc16Kuk55Cl3JiG2hiLLArtwbpMeCrHaG7HLI1MYTG+BkawVYsJ45RGrWaJj1gzBWsF7Koa0eOwMvsK0vYBI9JnlOR60tJ3wpJdt2uJz1TdBB5ji1Y15pybF1o5bDtK5pNCpSrKGbrE/dhjraO/AODRXFtgtdjJRmm5qquvrdjoTbd6rIpzjiXJY3Wc1Brjd83A9JVECJgVrMJ4TNfu4vYvYqQm2e3U6+CYbnYXDGJjknq7cVDUeYWScx3RIMoNlj1fqvhxdldthcVoJ8oilTVd8YeXsFmm32mm1eDBfx6E8WMDSQXaYscOUBRNezaOCVyueplG59In2IG/qosFdC0GFuMYPNT7TaEiRAto2EXxhF/RiilTkYMkfYi2q7LjlqJ/rsUpY7xmoZWPMDB8NdVPllfYdeK9AfgyXZd4UIdVb7FCtp4u4EIrX89QtKlK6PhlFf9e6Dge/LpSk2eZwGKC30yukx2q2R1B7jbeVvFUY7nVGg9YPe5HZjnnQP/Go1CuVtbuiguLMLjF3BY/Fh1rYWN2Idbxs++2mPaQDWIYat7kMyoMNUfoQEjFfzpTCukxV7StEY7Ofv6qzt0Kn5P9ukpJrD4s4sbo5FL5b82ombg1qtDPTUFuK+1Ozcpq8la67+9MV8c9dJZE9YzQTSdiKKrDrC5H44UlnvExlxOCFubCYbkUHk8OBqiJvB6frewYdbVc6dYDInUSeUYOLn3tKt5ybOogHdwByfwCPWDosxbGDggG5R51Yz/gvsrsoTej2KDhrcctRicIuEnF9RV+MQWX202DSFhX3+gKqKRBBvrzZ2NaZXJlX4wSccQNS3rfRu6Rda+yOa3MeProOoQvlP6jxAPqLC8ncjqXX7XaSdW7WqmeUhVFvMB1PdaGYQp7qyg4Nues1uvVXGvnSG/0o23uof3381x6kvrKzXiF77Ed4hF7BKTB57VfxJyoTozmmNqhkKbeMrClT1bHGL6EAf6C/7iA18GC0iNld+lYBqpkpOYSIxsC1NeopQ3609rFj3uX9YutVAtjHhgXs0/3s2Fue2QuHsWcrjWDSa+g6e+jZOfQbhsn5JxhHS8znatRbNlwnmbrxT4rVl1263mgvRXsubX+5otvBbLvBskX7CsG+BqDgR52S35KnEdaTySXK9hNMnwGHL87f3gQq0UJ5IPcMGH6eu3fZfg8m1PLvBqaje9WANsjBNBhN8JZbgBfd9qJy1KEyefhuOpw8ej4avns+eTgSN+cOnvRfnXNyiVskhqu2JaOn+3d0L/YdPkK+Qjx42KKiLyCAQfyBlOX/E4kpDWGPMWzbWL77DSWx21BNrctJitfi+3N58iLGFrw7F0Jz8DK35ny9wid5O3umene58yjLs2QOAd1/OPvl6tJd2joeq9cR/W27IzLoiMDdydD3+F41VwH8G7ykQrPUnKS3A6c8ox9PycVdJH9m1ZXMlYR286oy2yqD2Lhn4wMhAclxBQsBylTRxjLcXAcLeB8NfnH/AFjZBk9TFnhFM277xPqrHYRktUj1cJCYIYQVh/0d7lPkWfkRcWNE5ttzsHc5xPYKNzhPXt4PZZEwBGmiYYypT/2lCULYx5RdVFgUAl05jAEe9ZUiGgs2KlXNW5T5nFdukb9L2HmtM7AWJ5TnNPOvqp2sR0RfHpSkDXXvSuoRK/67kA3ea2utabt6pAgN4fnkZk8GG8KJnZYcM200FtMZNRktlvC2s4pZLlcowf7eBew1bjnsuUTkw9J20n2kQ6KJqIU0eD6YYCV1OGuSNFYyEdQ6h7j296iI3IFWHd6Ck1eM6ZvWIG6Bj4cwXAlEpsHxOztYmrwnQC0MvxPD28qPJ3/fkQJaFnO8fGEVCPl0sY8ilNMGoN6JeI1fIYNZZAmMVxqkaDNmHMAxcQC3yz//0xpcT864e64nDFd87v1mmBbE54x10NXFrixIPPlyB+Y9/ofsVS7ruZAuHjW07wyo/iOvVgDMWHZ6ji3ces/H+1yuczudh6eXl05M4nw3wRcdo1uIbKxbxWBJwhGGwYnnXJigOmd++kccM7nHpOrbU4LueakoSKFTXE1WvDk6ov3ycGB87ycZU1PSytY5jXXszTgbl6xt52PPjMNOq+6d0uaspaOZI7xOibb3fNf03evIRxtyJ0+/x0w8PpbfvLHFHfsHQMfvS7D2P2sQGuHnj0Sj+OTh2Ob/5w3JQPr5g9JItg2rJWekR9VLOsas1J3eBq9IkQpVSbyV5Vol1RQPsy/e7JSDU1WwUxIqY6ok8S37KflA2eQEi/LZt383/bSK6JMiTLIw4zV6g6HvZqX0PmZnkUdwZGyVh8iMujya2QrpPXqWHRWXKFUAHo7GW1HtOJv2uuNtezm8A4a+877guw3XGw+YXwvX4qIl2mwxA4FWzB4wsFm8ljaFLXySBc6Rb5aEqJdgVa9TWfQSjH2LrDVJvFu77ey2Qvv4f5nuJu0=</source>
+    <source>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</source>
   </file>
   <file path="classes/models/model_image_r.class.php" hash="0541d4e156ee81b571db434aa5790821" package="ADD MVC\Models\Extras">
     <docblock line="3">
@@ -1561,7 +1804,7 @@ readonly version of model_image_rwd]]></description>
     </class>
     <source>eJy1kkGP0zAQhe/5FaMVh7ZC7YorSGxoe2M50LLisJI1iaeJhWNH9qRhhfa/M3bYFUUslVjIJYn95nm+eX7ztm/7olgtFgUsoPOarDIdNqRCWgiE2jt7B0cK0XgH/nAqGnWSXeHArQ+AtqLAWoQUr5oOjV3WvhNFFvVYf5EiKDcbuL5Z314no3i7/coBY1ZE4+rHfbhcXubVh7On/1VRvtvtP5brPazfl7vdaT+w/bzfftjsfu0SvhUFAGROeRZQMlPXM7AHjNE0DhCOaAfKK3AwZDUcgu+AWwI/cDSaptofDsITsIPIwbgGXhy90U/vvDot/Q1o2lilVz9U1tRwGFzNCVupSDzLLi8nr7nQQH64DX4ERyOQ0nQk63sKs4sbDAYrSzAGw6kHE8F5lnysH0mDuKZkIUebJwUXy4ZY1aIgrWorM5nN56/TMfdPT27oNTLlCckHVhgJpKG/Z50Mla6U2MzOcn5K8sT3P+CMi3KZ5S6kYx+pHsLFEPDuNPU/gUaWRn8CRa2V+E6xnuUstc6UUyMR+uBbUxn+h7RSSDlKuSrPinAyOp/dJukS1TOJ7r8D7Yt0Zw==</source>
   </file>
-  <file path="classes/models/model_rwd.class.php" hash="d7b6704f2bb30cdcaa48cabacc5eb6a1" package="ADD MVC\Models">
+  <file path="classes/models/model_rwd.class.php" hash="b24141e4626eee58e5554acb5dbb1916" package="ADD MVC\Models">
     <docblock line="2">
       <description><![CDATA[model_rwd class
 An object class representing a table, then rows are represented by instance of this class
@@ -1952,7 +2195,7 @@ Take note that, the $row is discarded if the row is already cached]]></descripti
         </argument>
         <argument line="391">
           <name>$per_page</name>
-          <default><![CDATA[NULL]]></default>
+          <default><![CDATA[10]]></default>
           <type/>
         </argument>
       </method>
@@ -2527,7 +2770,7 @@ get an instance of a row matching the $conditions]]></description>
         </docblock>
       </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="classes/models/model_auth.class.php" hash="d93a12873cd7c4d5dd949f022477dc66" package="ADD MVC\Models\Extras">
     <docblock line="2">
@@ -5420,7 +5663,7 @@ advance cURL library]]></description>
     </class>
     <source>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</source>
   </file>
-  <file path="classes/add/add_debug.class.php" hash="ed6a9eb20c00d38079e223b0b9fbae24" package="ADD MVC\Debuggers">
+  <file path="classes/add/add_debug.class.php" hash="b1aa9e8ba28dbe5ce0c1bb7dfb7950ed" package="ADD MVC\Debuggers">
     <docblock line="2">
       <description><![CDATA[For debugging purposes only
 Not intended to appear permanently on any code]]></description>
@@ -5678,7 +5921,7 @@ get var dump function]]></description>
         </argument>
       </method>
     </class>
-    <source>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</source>
+    <source>eJytGmtz27jxu38FjtGFZCJLTqady8iSEp+tXDxVEtdy0s7YLociIYlnkmBI0I7n4v/eXQAkwYeUOC01YwnAYrHY9y49fp1skr3hs2d75Bl5y1Li02W+XgfxmiR5mrCMZoTF4T0uf2CcBDGnsU99whlxk4S6KUloGrkxjXl4D6DEje+Jx3wKO3DTGzfnG8Drhkuacj9gMc3erCM3CAceiwqgxPVu3DUlRycn5P3n46sTQQVNM7GaBbFXrpGDwYGYvYVlQAfjFzAe7h39vrg4Pzq+IMfzo8WCuL7viMuQv/YIETcksI16GyZuRIIVOT0jkcu9DfXFooQAYlI3IhlPkQs9N10TvqHFGO6NKHT479yQbLkCQaLhb8ZdHnhklccex/ukFI/yOPUdPMlCCmy4BMLCA2Rbcsto5OVpCox38oymjhuG7I76lm2LG6tH3BdRHKq5B4FI/lVcAQJPqBe6KYWbBihwQr+CnJG9Gd44o1zwQB0BfAOgtBzi8QqOCjjJ9wQYxjN1wJuU8jyNyZKxkLox4WlO8S4FjpUbZmIiZrzY0sm0LVzrZkXJCXU6KMVoFGSgGLc0ZKC5ln2o2LG3p6vJmaAdtn3JQRzk1k0DdxmCMbixD9fMJGvK6cdLWTDHUfgtTb694swJcdPUvbcqWcJj5GlokMkUaAhXmgKkoWX365BrygVkz/ljdtFYA8MuFs8+LpqrHmM3AVXrxx8//uN01oBQNCqQ89k/P81aWBSXFMxitlicfvxQgQDj1UBeZcOj0BFcsQoW9I1zdU4ppZrSnguhZkLlFCcIcEKu/k9KhOxs6o6x4TwZDYd4l/PPs/PLdxcXZ847YN91OaU44Xw6P702OmmWijUsSA+Z54qjl+ABeep6tE699EWF0fQUKcJ4wN7UMIgzTl2fsFXpm37u/mEAvsspSbHUeRNhnBVDemI1Aw0Vhq5tsAsv01sFIXUEvlKRK4mvWEpdb0OsApObKaQ131Uh6TYGeEwEMSdTufsSR9f9FhCiqIBwdF2DKcmuU355TeDgakKDQi/ssRyUVdDl3ND7zNK29qvftj19eVC7Fzx+QC3jjIGFgPsAAa6COOAU1IElwFRO0f0bOlkPe/VvJECJx66glEJohBQoKLpXjYZKBJqkQAxPNcIbNNfEEURJCFHeMkaGftcOikmXhWucMubKBqr7PpSWUzpk3dZxs3DEgpY4jyDwovILPwC+vxoVmv14/yzxOCWdmj/olfoOfChDsYSvmYImql+qTTW2Fr7lU3wTs7uYlLyoh+sm9ytsl9ICrgfmyBzo00Lnrw87tmvPBOIQXUMYSkKk2Rz+xxyImS8549QS4dJjoJ1ry96fpoxxxw/Svjk07YF5NRyafdOsi7/uM3Xb2S1TmTKAIbC6JLdI7rfvSk6TRIfktjivln/SNqCP6hZiDzIKMetAEpVlKu0EG8kgcbJ0oYh189omT5+SrgUymRDHEQms45Bv3wCFk+VLiZaturb0S3jbbjgoGiX8vvt8QP1LJ9lNo18CJ266rbrX5HRNMVsKXKhEc9dhZ0L67/dn5DNUFyd5lKgpyLYcH4bkLuAbMv4aJdMiyH03BX9sJCzO0pUHkmhUG4RxILlycFxFPGnlOFfXDZy5PLjWXAXu9WW+7TvrkC0hulp134cbgQTcJFyn5J1TUiXP0Y+WpqryFzBZnjJkM5otjnCW3ydoDKBiJof8fgg2H8RmnVqW8yTnE+MqvYrfopudg+2OjIFKN1tOcSAgjQFSq343L9KMPOUZYz+4Babch3QCigml5GjJ+MacjpfTXQeOh8upEH5x6niIo/EQ0E1bpxf8a9RUkoaSg4VuKmFVmVvpqyL3BmIORBzIzGEzOimEbteNUfAVypmybPRd7mKqJuJeZ4EZu5GsmnjAgeHC+0ERhifp2B8Ru/RAC3T0xRGVnNnSgR0pr+suOAOZYsl6U/oetvwTUhE51SorLWOch0T4jolZnenAZDUCcYbBtJ6RjZdQYnph4N1MzJ6Ft7UHwBPQ0cy6MsJgRL9YB/aVYQ8gLfJhKg9xkIWBTy/Yeh2CHpil5uRpxtJRwrA1kR6iZu+DdbFUxNFRHvs0FQHInAo+oPqQcRaBZk0tYwDGKOxCXHFg/GUMZFqnxg/2eChhjSo8ED1CoKAxNASQX966Yd5Km9rJjwDr9wLdX8OTxyJcSCQ1l/sdi5LC0HF1CwbcogNZZrRTPGB9P8CnGlsahIxInVeoXWDBIB10YFIl357OL2bnzuej+enJ0cUMCqa53WSc0jGXbFK6mpjGAMnOEuoFbuht3DQriDEJqDMQODGdZejGNyapk6VoEImN6PdAomO9DuyrgfVnsv62DlbfknhtQzYjFb1ZPyhCgmhNstTbTcmSpaBwkwPQ8IjlGWW3MCq13MtQwzc0WG/4ldG/MkCvzRIUnOI2SKggSo2Xk6OXB8nXQ4+FoPxPXr16dWgOW7dGRem+DNLbgpbXHLrTzsqjC18XslJLFTrQr/Ew1zVFeV+IbuCKMBqi948rd/QDPrvunCnajMshSRNRE0sD2XyqxuhghWWRgCt3n7Wdd+GTcZfIQVkUid1MnPFj/ri71YP70bhTLaOA0aSRgF/1rKu756iLZu+P+cffj+aLy96La1BN3Hqo8ZYYIlC2VREBZZgkRq0IgdslTAL0jaLysCcTVd9rIVrmHoLkAhDnDisZ1lVB36AIrYcWyVi51tGflHF8mZJhO4J3eTu4u8wAtqRHBQtEYtBE25Vuqn6fiIDY5GYQ699dvJ+DZ4ECXQIVeaRUFQnak1+iOSp/MVCaGIye1zc9JvmUCiMbC+J8Sx5TMU5U/405Ioo8Gvplx0V1JcRvyGqanhqYKLAXfiUK4v27wOeb0YuDg18PpScbvUi+koxB6CVPPM87xLR9nUKI9EdP6Cv8mMSjIaig64GEwfHhKIF0FEd/JxXjtVPT2qzeihDkYzgVP7siAu73C5JXkNru30l/uGShr5NHD/CDYV/gGg+5Xzv2oUXXsEFYT6QCwM2DTmqlwEXsh6DapFWISCL4lbzErLvVBCKqIpUEwznGE0m0UXfMD3UmNOyhG5H/Cj+7EXVK41EC6ZJJW2+UJDTZaNSamMcjAy/lEddotw1RbSO9KTBSyOz58+8IGvW+4WqaLsGn4Jo9F+MP1h9QOendJAA4hvynfGFSQYv2VPYjdp/ky1C3+/aJZaQo+sRZWRIWM1rPtSyQt5aNJZpyExbJloSevT86nTtA6vlssegbJ7Oz89kxJGcnBLK1GVlcnM7n5PQD+bSYke0FWr8ko7tp36TJVvOQB2DVTcQFGpxulVY/xd7uInpHWYSXky+URM0vyyOz2C+zxazG/q0pjR5Eu7hStMLcWMURKAOLHgFRPYKfuXN3r6H1WkxECz9YrTBk1JvsRRZS76rLHaswSFot+WK1a0E+Jr6RMlttem0dX0rtBJBvpXaCqHcxO2Hka5udIKj7i50Qsw+fd60nm8ShacrSKFvvghOvk86P/iUu70BVdLQLGl9GQdqYJWDM1NlQF3zuLnhQVe8767e71pUWbANp1UzaRPWKlXSkXDLNxhazzM93p02/Df7W1vbu/En1rWVU6UOAVC/RJqT5OkvWBUW/ttH0LgLfa9K5QEYkzsOw6rOH7pKGGILVpfZV6Kyn4gU19fStIMTCVVsO9XxE4h4A8tI5tF8UFG1GyQXsP1lyY19vLWwThys7VqLFKnb93+TRQUklgiwCz3sPV4/pnfjXDTmhBTcFsT+FbCQL1rFlClTghcX3LkBxmNlvdFYKPrXqTIlgf7qiolUg2uLD6g4DnoSmXXDx4b/U2MPj</source>
   </file>
   <file path="classes/add/array_entity.class.php" hash="8a830a138509ab7bcc77c27705991be7" package="ADD MVC\Extras">
     <docblock line="2">
@@ -6110,7 +6353,7 @@ Being considered to be deprecated]]></description>
     </class>
     <source>eJydVttu2zgQffdXTILAkYIk7tsCTpOtY7u7D0mzqI0FFm0hUNJY1lYmBZKKW2zz7zskdZfdFuWDLZEzZ25nOHr9e77NR5OLixFcAItFHMJesjxHCSxUWrJIm5MZRBlTCrSAEKFQGANTtaTgTtVI3mPKE4gEV2mMkuScSoy5xIhpjI3Qm5xFn1mCMFss4PHv+cfZ4mlxX+EpK/JMDykhv7p+Re+T0ex+tX4/m69h/jBbrchgHDh//xuNAMCGQOsC1ltjbsOKTJcRbVBHW9iJGEuRNyrlETposzExf8ZnDW+X6/mfwePTYgm3YN0K3BYZfZrfHLDlbIjwX4w0PDOZsjD7rqG8CLM0gjOr6BDLLaWZNicxhkVC9jcsU3jT1YkDqoQOBCWKhAV3AJVmmnAhMUAphQx4sQspiwTEpGRfPb8juyl4ZACAfEwy1IJ7PiUT7HLOuRS8w/1ccI5W2nPa0yklZv3PX0v/ptJIMhGyLKAMcLZDUq0ky53KPK10A175SOskVQq1d/bHw9P97GH1oYf0yW9Ev31rnml5nbefh6E1HndeT46qQUq0YFRFsQGF2aaj1sJsclenL6ga5BaOw98Cx32ZK8/p1TkdIl3dQVkL7/tSduPqboX6rWH/I5G/Ll3D8RrjpSqNRF1Iftxfq+CkawIFge0dWZBXZQQNkfQ2VVd3FZ0q0juQFrPbYJng2OKi3kqxt1lafokwtyw8nxshKjlwQW2eZWKP8fW5f8Q9EvDOdqi3Ir4kH2SiCH4yMftl/7pD1fe63211L7nfdnQE7ED8S2fh5kdgH84lKrqmzg0LjC8B3awyMI4Hv2ol2mL02fV/w5CqqD925HD+EtNXuTTy+mtTmDZszTnzUMsehlNtOAromWUF9igDFWfacIZAVvgQbifyBmxQv/HRNFTpMtfTydnRWo3H4A1O3Y27Q6VortmCtqt2dbc0548q8XzfAJykPBgWtxR7Jzz/smrWg1e6371tHMSW8TjDfu1fDqSqK9k0mkyThAjo9k/dULYeTcE7vT7i6fWp3zobUquXmXaL9ieRnXvegGB2ezr94tnOIDIGhvmUyRZU9bUyuE9a1+VwdlfjGuzIohte02Y9D90GcdF+/Di17mAvv19owP82HPD96Oo52I/PRGTaH+PAWvLqwF7+B9jv6Vg=</source>
   </file>
-  <file path="classes/add/add_debug_timer.class.php" hash="3696b322874e4a7f94420c2b0471e8bb" package="ADD MVC\Debuggers">
+  <file path="classes/add/add_debug_timer.class.php" hash="d064a2232ec9ed8cc70a1a59dde30f31" package="ADD MVC\Debuggers">
     <docblock line="2">
       <description><![CDATA[Debug timer class]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -6282,7 +6525,7 @@ Being considered to be deprecated]]></description>
           <tag line="121" name="since" description="ADD MVC 0.7.2"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="144" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="144" package="">
         <name>us_diff_readable_format</name>
         <type>function</type>
         <docblock line="139">
@@ -6299,7 +6542,7 @@ Being considered to be deprecated]]></description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="155" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="155" package="">
         <name>us_diff_html</name>
         <type>function</type>
         <docblock line="150">
@@ -6319,7 +6562,7 @@ Being considered to be deprecated]]></description>
         </argument>
       </method>
     </class>
-    <source>eJytV21v2zYQ/h4g/+FmGLBsOIkdDBjgxlmzpP2UFkWTDQO6QqAlyiZGvZSkkwVD/nuPL5IoWbK9of5imbq35+65O/rq12JTnJ5cTCanJzCBO7rarkGxlAqIOJHSnL5VeZyDoGn+REFtKNB/lCCQskjkRljiKVHmVbLNIsXyTAIRFLaSZWtrg2zVJhdA+IoKFaMElW/XKWH8PMpTLWLFChL9TdYUbu7u4MMft3+ZiNZUuEjQXlS9hNn5zB4/oQCaLA8uTk9ufnt4/Hxz+wi39zcPD0DiOIy1qdCCe/fn47uPd945/Ht6gqoANhX4mcAj4pGKCGVBKpIWkCcGprHi5ErxzuD0mwvzXYhc0UjRGIbGaFgZfdPtescpJ4X83z5RufYoYYn1EeQlGHc4v8XyKbGNVA0VSBa7XDDVjqEggqTaw4pyF6h+clEXOct2VI4Nu6QThGFURhVYT+OqZPgZqg2TZ9etxCJKQ1J9EKAurdDWKpiX0mD58nVfSupE9PLgB+bDp/a8maPtirNIh6Lwq8qTCc0BWmZbbtNkEQuqtiKDjD47NQ94N+ybOAaieQfPTG0cpBZOzAs2uQ83pjISrDDxIOjnDRW0MRyASYgI51jggK7PYbCiSY4y6Yv8xuHbloqXAYx/WI4qt3Wtlx9/v7/3UjM8jjMsgeAnl7TyTGtb7EuX1sXCgBNhwjgNOcto0E08ryG/fK1a0jOMn5GxPYLltXMzbb2vbFiZ6qcv57t3LPAQn/W0j0cL/VTyoocWpjMK5IJyJFA43KXTOJYrplswYY40TGmqFJxEFVVIonAcdTDliB1TsqmXTB1c6qGSARp2Eaoqsy5wzJIEgWhfyz0Tx4nPSw6EcsMSFbhndEyDTtZMZ9P52LWvs3H5n22czZ2RHYYY6QqpByYw0U6tw3GLJ/4A+WT4oJni+ACJyFMwWFWuvy8Ptfkv55d7m/pwfAeqomW+eG30VTeE1m8cevmRlCeLhfUbE0WCwSPKAdX7mVbKpsJo68x5sL8H01YEza3Tzl/tRF+6aBbTuHvbJDzHG9hwK01lTR+ZMSYp7s3Y7KmmxuG0/3zMvvGy4MZTG189ZNEvzVQjc06nnJsYvtYMNyrlQftQUBKTFU5U3BUpMUuu4WjHc/9es7TEIX3Uneo4BqI1zUIZ7PBNNnrfaz2//QtBn1iOWHWzNFvY2PAbVC9LEm3AvgEijRsv05qkLnvd7eF7s21ST5GOaLRA9f61/5r0oaachDv0B59d0eC9KVqLtboKw9RXahFX9hZltrckvZzxbfv7v05OmJp6+YKT+Ww2q/C78Tho6aSMc+YUBntGYiNH2gRotmO9Xjg9xMTOltwBbbpnaHctFtf6arekf6XBf0F4Z8kzHDC4/l8KvK/AcolXC5w5F7h9WTZqkqtKgXUy2OGGTqlBJEPD5N3/G871bnRwDfOmt4Ylc1EaRTnPxULQeOTTtt/grGmx22iCGTh7pmy9UYtVzpu2Xz2I9oFynPY9Lq+OxrAWlGajPQlEUZYWPI9pMHozmjYMjXdIeSULklkyLUdOdnTt6nR1od9e1+x8/Q7k9I9x</source>
+    <source>eJytV1tv2zYUfg+Q/3BmGLBsOIkdDBjgxlmzpH1Ki6LJhgFdIdASZROjLiXpZMaQ/97DiyRKlmJvqF4kk+f6ne8c0le/Fpvi9ORiMjk9gQnc0dV2DYqlVEDEiZRm9a3K4xwETfMnCmpDgf6jBIGURSI3whJXiTJbyTaLFMszCURQ2EqWra0NslWbXADhKypUjBJUvl2nhPHzKE+1iBUrSPQ3WVO4ubuDD3/c/mUiWlPhIkF7UbUJs/OZXX5CATRZLlycntz89vD4+eb2EW7vbx4egMRxGGtToU3u3Z+P7z7eeevw7+kJqgJYKPCZwCPmIxURyiapSFpAnpg0jRUnV4p3Bqd3Lsy7ELmikaIxDI3RsDL6ptv1nlNOCvm/faJy7VHCEusjyC4Ydzi/xfIpsY1UnSqQLHZYMNWOoSCCpNrDinIXqP5yURc5y/ZUjg27pBOEYVRGFVhP46pk+AzVhsmz6xawmKUhqV4IUJdW2dYqiEtpsNx8eQ2SGoheHvxAPHxqz5sYbVecRToUha8KJxOaS2iZbbmFyWYsqNqKDDL67NS8xLvTvoljIJp38MzUxqXUyhNxwSb3042pjAQrTDyY9POGCtoYDsAkRIRzLHBA1+cwWNEkR5l0J79x+LalYjeA8Q/DqHJb13r58ff7ew+a4XGcYQkEPznQyjWtbXNfOlgXC5OcCBPGachZRoNu4nkN+eVr1ZKeYXxGxvYIltfOzbS1X9mwMtVPX85371jgZXzW0z4eLfRXyYseWpjOKJALypFA4XCXTuNYrphuQcAcaZjSVCk4iSqqkEThOOpgyhFnTMmmXjJ1cKmHSibRsItQVZl1gWOWJJiI9rV8ZeI48XnJgVBuWKIC942OadDJmulsOh+79nU2Lv+zjbO5M7LHECNdZeolE5hop9bhuMUTf4B8MnzQTHF8gETkKZhcVa7fl4fa/Jfzy1eb+nB8B6qiZb54bfRVN4TWbyx6+EjKk8XC+o2JIsHgEeWA6vOZVsqmwmjrzHmwvwfTVgTNU6eNX+1EX7poFtO4+7RJeI43sOFWmsqaPjJjTFI8N2NzTjU1DsP+8zHnjYeCG0/t/Oohi35pphrIOZ1ybmL4WjPcqJQH7UVBSUxWOFHxrEiJOeQajvY8959rlpY4pI+6Ux3HQLSmWSiDPb7JRu97ree3fyHoE8sxV90szRY2NvwG1YcliTZgd4BI48ZDWpPUodfdHr432yb1FOmIRgtU+y/916QPNeUk3KE/+OyKBu9N0Vqs1VUYpr5Si7iytyizY9jZSx3fhX8NqDEKU1M2X3Ayn81mFQxuSg5aOinjnDmFwSuTsQGVNgGa9JjBjtNDhDyqMxu9NLQnL5baumw3qH/Bwf9EeIPJMxw3eBnYFXh7geUSLxo4gS7wLGbZqEm1CgnrZLDHFI2sSUyGhtf7/z6c6/3o4BrmTW8NS+baNIpynouFoPHIJ3G/wVnTYrfRBBE4e6ZsvVGLVc6btl+8FO0H5Tj7e1xeHZ3DWlCajV4BEEVZWvA8psHozWjaMDTe4+aVLEhmObUcOdnRtavT1YXeva5J+vIdhxGUwQ==</source>
   </file>
   <file path="classes/add/add_encryptor.class.php" hash="fb0903cfb616f9454a27c75c5e72f1a3" package="Default">
     <parse_markers>
@@ -6958,6 +7201,32 @@ login using $username and $password, and optional addinational $options]]></desc
     </class>
     <source>eJxtj7EOgjAURfcm/MNzAwYwLiZoogTY1AVj3Bpon9qkFFJaHAz/LiW4eZeXvJNzk7s/dK/OIx6Jw9AjEELFOeU4oGy7BpWhRjSoHZnpsReKIaR5DudbButoG20ciD2SndKy/K9Dcb8Wl/xHa/tc/p/JBehsLQWD3lRmOg+rmBGtAma1dhW2R00rKds3cj9YnCkajdUKVlNpkoieSjGgH+xmPLpJ4xdaoULJ</source>
   </file>
+  <file path="classes/debug/debug.class.php" hash="e5d88e0c50df744ef30f38e756d4474e" package="ADD MVC\Debuggers">
+    <docblock line="2">
+      <description><![CDATA[Debugger class
+Override this on application for customized debugging]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="author" description="albertdiones@gmail.com"/>
+      <tag line="2" name="package" description="ADD MVC\Debuggers"/>
+      <tag line="2" name="since" description="ADD MVC 0.0"/>
+      <tag line="2" name="version" description="0.1"/>
+    </docblock>
+    <class final="false" abstract="true" namespace="default" line="12" package="ADD MVC\Debuggers">
+      <name>debug</name>
+      <full_name>\debug</full_name>
+      <extends>\add_debug</extends>
+      <docblock line="2">
+        <description><![CDATA[Debugger class
+Override this on application for customized debugging]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="2" name="author" description="albertdiones@gmail.com"/>
+        <tag line="2" name="package" description="ADD MVC\Debuggers"/>
+        <tag line="2" name="since" description="ADD MVC 0.0"/>
+        <tag line="2" name="version" description="0.1"/>
+      </docblock>
+    </class>
+    <source>eJw9jj0PgjAQhvf+ipsZAHcTQXDzI7HEOJiYo62lsdCGFgeN/90Cwe3uvffJPeuNbSxJoohABKWoBylFD0yjc2Nyeom+V1yAb5QD0wFaqxVDr8L8MKE5OG9a9RYc+ESrTgZwZDMcfBMqqGvRex4I4TLZotIxM+1SssieKAXkZQmHS3FbHKb3mVMd+98gjdMpDVJuFEjjVdgTkm9pdc6LCop9TuksArtrtTuWFJDz+5x8CPn+ADz7Spw=</source>
+  </file>
   <file path="classes/interfaces/i_singleton.class.php" hash="e79727ee189e496b42120b3bb4a45594" package="ADD MVC\Extras\Interfaces">
     <docblock line="2">
       <description><![CDATA[i_singleton interface class]]></description>
@@ -7036,6 +7305,89 @@ So the body of this function must throw new exception() or die() or trigger_erro
       </method>
     </interface>
     <source>eJxlkDFrwzAQhXeD/sNtbT3YCR1baILtQIZmaE3pUDCyfIlFZUlI52Qo/e9V7DoO5JaDe9897t3zi20ti9I4ZhHEIMipiqyqTpLa6ijxBMJockYpdCA1odtzgWd24Fe8p9Y44KpGR400Gv3q0HGpEmG6GbNcfPMDwjrP4fUj+8oupn4EvNTiIsMieRzHxwAEU1gmi9msQetQcMIGeo8g52MnJmXRdlcWb5t1VgR9SDUnKj7LYpe/Xy/CT1gDGN8QKoayxavodx5q7lHzDifg5uTlv5IO3fa1kgI8cQpt32tB5yCTy/3DE4tY9PsHHytxGQ==</source>
+  </file>
+  <file path="classes/interfaces/i_ctrl_0_9.class.php" hash="97ef3a31cacfabc7e61473b2347efc2f" package="Default">
+    <parse_markers>
+      <error line="17" code="50015">Argument $data is missing from the Docblock of print_response()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file classes/interfaces/i_ctrl_0_9.class.php</error>
+    </parse_markers>
+    <interface namespace="default" line="8" package="Default">
+      <name>i_ctrl_0_9</name>
+      <full_name>\i_ctrl_0_9</full_name>
+      <extends/>
+      <docblock line="3">
+        <description><![CDATA[i_ctrl controller interface]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="since" description="ADD MVC 0.6"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="15" package="">
+        <name>execute</name>
+        <type>function</type>
+        <docblock line="10">
+          <description><![CDATA[execute() the execute function]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="10" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="22" package="">
+        <name>print_response</name>
+        <type>function</type>
+        <docblock line="17">
+          <description><![CDATA[print_response() - print the response according to data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="17" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+        <argument line="22">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="35" package="">
+        <name>process_data</name>
+        <type>function</type>
+        <docblock line="25">
+          <description><![CDATA[process_data() - process the data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="25" name="param" description="the common gpc" type="array" variable="$gpc">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="25" name="since" description="ADD MVC 0.6&#10;This is commented because of backwards compatibility reasons"/>
+        </docblock>
+        <argument line="35">
+          <name>$gpc</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="42" package="">
+        <name>assign</name>
+        <type>function</type>
+        <docblock line="37">
+          <description><![CDATA[assign data]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="37" name="since" description="ADD MVC 0.6"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="52" package="">
+        <name>content_type</name>
+        <type>function</type>
+        <docblock line="45">
+          <description><![CDATA[sets the content_type or get the current one]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="45" name="param" description="" type="string" variable="$new_content_type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="45" name="since" description="ADD MVC 0.8"/>
+        </docblock>
+        <argument line="52">
+          <name>$new_content_type</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+    <source>eJytUk1LxDAQvRf6H+awh7Wg3ZMoKrrsruBBERGvJU1n22CbhEnKWsT/btIPXd36AVoKJTOvb957k9NzXegwCIM4isIAIhAJt1QCV9KSKkskENIirRlH328xF0ZIjjBfLuH6YQGzg0NfjsPg6uZ+dXc5X6x6mmSWHMOzpweAboJ7IsAn5LXF6R7YAocTrGvJrVCyRw3g0Wm+E7dfXael4G8/v3Of7M7V5MwkhEYrafz4/a7UyhjKwDhXlAmZg1WQMcv+JujT0Iln7MTtylMcjUk8ohfXFlp5Y0I0I1YBI2INTHLNWyBXVeXGuuNvdQ+A+0IYcK9nQLf1DFLkrHaRqDWkjD9uGGVtWzMrUlEK27jYmHHGPlJ9lcSWP693bEfMGJHLf8i9I5rGEdyqsqkU6cK1o3g8e4PW9PE5525httHON0GO3fXgNZGrg5I4vgZjyd+ZicRNsk3yk4ujb11sM013uOEMZF2W3tLLK/ikCrU=</source>
   </file>
   <file path="classes/interfaces/i_auth_entity.class.php" hash="011220c5bb7a074f3c2a291cdde53f37" package="ADD MVC\Extras\Interfaces">
     <docblock line="2">
@@ -7209,7 +7561,7 @@ an interface for non overwritable class]]></description>
     </interface>
     <source>eJy1jjFvwjAQhfdI+Q9vYKAZSDeGVqIRUIkBBoq6Ro51VoyMHdkHCCH+O7EpAxKdqno5yffufd/7pGu7PMuzsijyDAUWlskrIQnKeUgjQqCAo+YWB03HEEMp+BG07VPVbIbl9xSvo3H8LvNssdrM15/VdA5dx7s63uEcIQBunP4V2LSUOqG0oU70BKcw4FYHSGfZO2PI38NPcXFTptntG6MlAgvuh9pbydrZVF/f64cvb78qNCJQ8oAVO/onkQiJ9UnkmcrXTng+3YxcsyXJfzd5UPghX65k1oxh</source>
   </file>
-  <file path="classes/interfaces/i_ctrl.class.php" hash="64071b50da937aa6e6681ddb6fd37043" package="Default">
+  <file path="classes/interfaces/i_ctrl.class.php" hash="434167f7e2ccd98685c9addf5e554fa8" package="Default">
     <parse_markers>
       <error line="17" code="50015">Argument $data is missing from the Docblock of print_response()</error>
       <error line="1" code="50007">No page-level DocBlock was found in file classes/interfaces/i_ctrl.class.php</error>
@@ -7246,43 +7598,34 @@ an interface for non overwritable class]]></description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="30" package="">
-        <name>process_data</name>
-        <type>function</type>
-        <docblock line="25">
-          <description><![CDATA[process_data() - process the data]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="25" name="since" description="ADD MVC 0.6"/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="37" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="44" package="">
         <name>assign</name>
         <type>function</type>
-        <docblock line="32">
+        <docblock line="39">
           <description><![CDATA[assign data]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="32" name="since" description="ADD MVC 0.6"/>
+          <tag line="39" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="47" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="54" package="">
         <name>content_type</name>
         <type>function</type>
-        <docblock line="40">
+        <docblock line="47">
           <description><![CDATA[sets the content_type or get the current one]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="40" name="param" description="" type="string" variable="$new_content_type">
+          <tag line="47" name="param" description="" type="string" variable="$new_content_type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="40" name="since" description="ADD MVC 0.8"/>
+          <tag line="47" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="47">
+        <argument line="54">
           <name>$new_content_type</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
     </interface>
-    <source>eJytksFLwzAUxu+F/g/vsEMNzHoSQWWObYIHRUS8lpi9tYEsCS8pOsT/3aZZtaxFD66XkO+9/N73Jb2a2cqmSZrkjKUJMJCF8KRAGO3JKIUEUnukDRcY6m3PjZNaIMyXS7h/WcDZ6XmQ8zS5e3hePd3OF6sO8xHQABDpzccA31HUHrMT8BV2O9jUWnhp9L6rax6dFCp5u9r6VUnxffiHfTmca6kJUhA6a7QL46dRam10MnAhDK2lLsEbWHPP/2foYOgkEKO5oT0j0LkidOzNtUJr7xhG+viR6+HOyVIfYVIEZTmDR6N2W0O2asosH4/t0MeI4YfD5q78ziIYghLjy4iaqNHBaDz0ZTnxLThP4bkmGt+KPuSvFBe/puiTsgEbrkHXSoVIn18TmOHG</source>
+    <source>eJytUk1LAzEQvRf6H+bQQ7ug25MoVbS0FTwoIsXrks1Od4NpEiZZaxH/u8l+aG0XFXQJLJl5efPmzZxfmsL0e/1eHEX9HkQgEu5IAtfKkZYSCYRySCvGMeQrzJUViiNM53O4fZzB+PgkhON+7+ZuuXi4ns4WLc1roAaAmt1/EeAL8tLhcASuwPYGq1JxJ7RqUC24s1LIxNXflKkU/OPxJ/fksK4h30hCaI1WNpQ/qkOVjDYMjHNNmVA5OA0Zc+xvgvaKDgJjLe5QnuZobRIQjbgqUMnrEmIYsTUwIraFQW54BeR6vfZl/fW3ulvAshAW/AkM6CeeQYqcld4SvYKU8acNo6xKG+ZEKqRwW28bs76x/VpOZxr0M9KGhJ+tC9Qb4YpmK5Jxcvb1Sdy40eHfjiuhy9EkgPfNY9aKXP3DvGqioVdyr+V2rckUPh3F3TOz6Gxju3fMD9ptjfeLIMd6rXhJ5OOgFXaPzzoKuzZQuEl2SX7q4vTbLnaZhgfccAGqlDK09PYOIuwZdw==</source>
   </file>
   <file path="functions/common.functions.php" hash="a6942a9f4455bcf2f8567c73b1790003" package="ADD MVC\Functions">
     <docblock line="2">
@@ -7698,7 +8041,7 @@ Gets the IP of the user]]></description>
     </function>
     <source>eJx9U01v2zAMvedXEEaxOFkauzns0M5pihYrBqxAsQG7bEOgWoztxZFcfTQohv73Ubbl2FnXXByRj+89kdTHyyqvRtF0OoIp3KKELzJlppACPlmRuj+aMi65YtbkUgErH1AZThnUq2zHinKeyp0HVSzdsgzh6uYG7r5f/+yzwEoXIu1yEM/jOvqESjvF5hyNvJ1rKShlNDDOFWoNhTASUikVLwQzqMESYQa3UmYlwh2rNFzdf259KLYDbZQDnHgCk2NHRlSllFtb/ddZNNq07n3RohbXoSecwJ8RAJxkKFPJcV2h4E4wAaMsXtS5B6ZxbVVJwSA3pjqPoh05nWe1a9e7+hwRx6W0prIm+a2lCJpqhY8WtWkJDmRzCN49JgF96YTCqR9c1aX7vKCmhMfeWssNt65oMkjETnHNsabZUN06Q7NOpTAoDF2352IyAVoCXmAYOB9CGmojc8wB6XpqbZix2jn2IqfLb3XsdOlELlpgsSGHHpzAIo4P/l5rLDFuWKm7eofpL0T9G6jelyzFHVPbH/EvOknaIWehK+kzlVJkhbEcfSQZsBPDAE3vpA8+Rp8N0Kx8G73o0C/tF+mexw36sBg2KIpA04ig7ZPbakkd0qanzLFkz/A+gbPY/V6VGVJu6FFbhe6JtMRvjOTfiZhcyT0I3APtqtgKuRdhcNU+O7ey3XukLa7FkPe0+By+YorFE0Wbm583Vc1hcnwBq0vEKmzuWWddRqGxih6uUuw57GY1O8x41o1kNvbpcbI8QMcdtA53dWNf58L+P+m+/AWURZtZ</source>
   </file>
-  <file path="init.php" hash="daf9e1a44f534f8f8c350936d457b0ae" package="ADD MVC\Functions">
+  <file path="init.php" hash="d9724951c08d069397fd4622958e3805" package="ADD MVC\Functions">
     <docblock line="2">
       <description><![CDATA[ADD MVC Framework Initialization
 requires $C config variable]]></description>
@@ -7708,10 +8051,10 @@ requires $C config variable]]></description>
       <tag line="2" name="since" description="ADD MVC 0.0"/>
       <tag line="2" name="version" description="0.2"/>
     </docblock>
-    <include line="26" type="Require" package="Default">
+    <include line="33" type="Require" package="Default">
       <name>/classes/add.class.php</name>
     </include>
-    <source>eJyNVm1v2zYQ/q5fcRWCSgocye0wbHDrpmnidAYSp2iLfFkLgpZoi4kkqiTlLBv233ekKPlNBZZP9j3PvT13R+fteZ3XXnJ66sEpXFxdwe39JVxLWrInIR9hXnHNacH/ppqLynAk+9FwyRScXEIqqhVfw4ZKTpcFQ9gw3tNG50ICLZZM6gz9mHq/Likv4lSUHamm6SNdsy7nt+umSk0OZVHFq7THYByPrXXDpEIKfn+N3xOvq/uWV7xsSuhwV2PJKm3grwKWDBrFMtAC0pylj8BX8OmPT3DvPLjCZqRkqR5M/8qmu5pdzxezMEA7uZ0vCAYg97PPX+Z3i2AU/Br/Ev8eRG88DB26Sgg2XFPJQhTZmcJoNOAfwXQ6hbNXEfzjAUDGWeh36WdSCjmx5XYNlo3SpieqoWAUP/vxQNDYBxxDztc5ky98rOxfz7PVveBKMR2eXEZRn20hunGuRFNlhu5kxEmfvaNZRjIu4yBJC4reKkFLbD/H2FzwxvNOPt7cfbi4+fInIpPJ5d3iev6R3F98Xlzczr7DFKy5zWFSo4eqC4LLIgpBMyLZmivNZBhYorXZ+EZTLJewv1JWmxUhOa2yome237Zwzze6/YRroMC22CYlKm90Jp4qsnJ7uO/QwcYHO0VBcEOUUQR2/qZWKimEdlohqWgypqw8CDntDKq2TlRK+kxKJtcs9FqjNYWwm2grfQCj4ZkE0cj5dwPeTxnBy5cIkTb6Eer1jZzDIbjFJq44S4+6xuxY9wWZHpXfklAMA2w4ezpU8MjFkpxDSvF0DzyOc1iS0duOj1UbLkVlXgKiNNWNCnfXMDp7d8wwPZkrsURUK2MbVojaMEKrIJ4PeZJcM/PohfulRe6CDwqegnpWZI1bqVlZG1MYYbVmguUmJX3VZnTmQFfcbjTupjpK4EZRPpoo++Bo/Nt43B66XRCzBYOK7exoS3Ia8xLf5EGPbSyz15bWzUUdHcKQD9Kcw8Mxf8jhoT+bTOCvR3Xo0J6HapbE4efg71vwAZyA70MUt/YaD71F2kKWVDHSyGI/rp9rXU+SZJvZt/411bl5tHCI7q6JMYW7G2ifB/er1Dbzv34Rk91xmaBOj67AOGixZEdySztUzhjjAOFkq3VHHGI+9EQ3+Z3ke8QW7sgOKviyDz/gY+CkP0X7oHevqwoD7LxsH+tOsBu+lPivBFNWka0TxjGvsciWhn1gVyWV+tkA/wFbtauO</source>
+    <source>eJyNVm1v2zYQ/q5fcfWCSgocyd0wbHDnpp5jdwYSp2iKfNkGgpZoi4neRlL2vGH/fUeKkmVbA5ZP1j3P8e6eOx7z022ZlE54fe3ANUzv7uDheQYLQTO2L8QrLHOuOE35X1TxItccwf6ouGASrmYQFfmGb2FHBafrlCGsGR9ppZJCAE3XTKgY/Zj8uM0oT4OoyBpSSaNXumVNzN8WVR7pGNKgkudRi8EoGBnrjgmJFPz+Fr9Dp8n7gec8qzJocJtjxnKl4a8FrBlUksWgCogSFr0C38DnXz7Ds/XgEosRgkWqN/w7E+5uvliu5p6LdvKwXBE8gDzPvzwtH1fu0P0++C740fXfO3i0ZzMhWHBJBfNQZGvy/GGPvw+TyQRu3vnwtwMAMWfeoAk/F6IQY5NuU2BWSaVrogpSRvH3IOg5NBgAtiHh24SJNwPM7B/HMdm94VIy5V3NfBsPezmBnO3h6evdLKVSejX7G3hiSoJKMFQck5gLLVxeKED/AKZ5DFxBRg86GZlRoQyIKqdMGTdUXXgx27G0KJnwtR/aUW6sQuMbLjD9MqURM6mxrFQHzOzmgw14TLE1Ya6C0bSkKvHwM8dh9QhZLO/nhPh14nYCul6BG0a6NCZDtATmd4B9cd87ztWn+8efp/dPvyIyHs8eV4vlJ/I8/bKaPsx/x3DGXE+7Vg09ZJkSnPMiLWhMBNtyqbBQ1xCNzZyvxwErJuzPiJV6uklC8zhtmfXXEW75uuX/wdWQ5jVBiUwqFRf7nGzsFTp1aGDtg5WiIDjc0ujY+ZsYqURRKKsVktIqZtLIg5DVTqPy6ESFoAeSMbFlnlMbjcmDbqCj9C4M+3vi+kPr38zmaUgf3r5FiNSnX6BOW8gtnINHbGyTM3S/Kcy09VSQyUX6NQnF0MCOs/25ghcuhmQdIopb58zjMoYhab1N+1i+46LI9RIjUlFVSa87hv7Nh0uGrknfIkNEtezF0wzPKIg3n+wFV0zva+80te5N6yQ8AXmQZItTqfByapPnY7a6g9kuIm3WunV6t2y4mWicTXkRwLYie9WnnILD0Q+jUX15zYDoKehVrDOjNclqzDN8Tno9jmfpuTa0pi/y4iL0+SDNOrxc8vscXtprExf48OXnDvX1kNWaWPwWBqcW3N1jGAzAD2o7Lk+L1ImsqWSkEunpuYNEqXIchsfIA+OvV6VeWthEe6+J2Z7dCTTrwT6odTH/6zEPu+3Sh1o9mgQDt8bCjuSGdq6cNgYuwuFR64bYx3xpibbzneAnxBpuyBZK+bo9vsdHw2F7Fc1Cb7ar9FysPKuXdSPYPV8L/C+ISaPI0QnP0du4iNeafWY3D+ZBA/8CZtXnzw==</source>
   </file>
   <package name="" full_name=""/>
   <package name="ADD MVC" full_name="ADD MVC">
@@ -7734,7 +8077,7 @@ requires $C config variable]]></description>
   </package>
   <package name="Default" full_name="Default"/>
   <namespace name="default" full_name="default"/>
-  <marker count="28">todo</marker>
+  <marker count="34">todo</marker>
   <marker count="0">fixme</marker>
   <deprecated count="30"/>
 </project>
