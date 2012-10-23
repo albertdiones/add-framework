@@ -25,6 +25,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public $data;
 
    /**
+    * Exception constructor
+    *
     * @param string $message
     * @param mixed $data
     * @param int $code
@@ -49,6 +51,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @version 0.1
     */
    static function assert($condition, $message = null, $data=NULL, $error_number=NULL) {
+
       if (!$condition) {
          if (!$message) {
             $caller_backtrace = debug::caller_backtrace();
@@ -197,8 +200,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
                $message = "Failed to validate condition ".$assert_argument_string;
             }
          }
-         $e = new static($message,$error_number);
-         $e->data = $data;
+         $e = new static($message,$data, $error_number);
          throw $e;
       }
    }
@@ -273,6 +275,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    /**
     * Handling Exceptions
     *
+    * @param string $user_message
+    *
     * @since ADD MVC 0.7
     */
    public function handle_sensitive_exception($user_message = "An error has occured") {
@@ -323,6 +327,10 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
 
    }
 
+   /**
+    * Exception page view
+    *
+    */
    public static function view_filepath() {
       if (add::is_development()) {
 
