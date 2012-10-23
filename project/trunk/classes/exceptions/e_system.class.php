@@ -27,6 +27,6 @@ CLASS e_system EXTENDS e_add {
     * @since ADD MVC 0.0
     */
    public function mail_subject() {
-      return "Developer Error: ".$this->message;
+      return "System Error: ".$this->message;
    }
 }
