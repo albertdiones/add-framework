@@ -3,6 +3,7 @@
 {if add::current_controller()->content_type() == 'text/plain'}
    Uncaught Exception {if $exception->getCode()}({$exception->getCode()}){/if} {$exception->getMessage()}
    {print_r($exception->data,true)}
+   {print_r($exception->getTrace())}
 {else}
    {block name='main'}
    <h1>Uncaught Exception</h1>
