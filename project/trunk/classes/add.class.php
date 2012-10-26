@@ -382,7 +382,11 @@ CLASS add {
                add_debug::print_config('path');
                add_debug::print_config('developer_ips',true);
                add_debug::print_data('current_user_ip',current_user_ip());
-               debug::print_request();
+               add_debug::print_data('POST variable', $_POST);
+               add_debug::print_data('GET variable', $_GET);
+               add_debug::print_data('COOKIE variable', $_COOKIE);
+               add_debug::print_data('REQUEST variable', $_COOKIE);
+               add_debug::print_data('SESSION variable', $_SESSION);
             }
             $add_mvc_root_timer->lap("Shutdown");
             $add_mvc_root_timer->print_all_laps();
