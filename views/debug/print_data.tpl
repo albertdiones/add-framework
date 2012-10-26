@@ -10,7 +10,7 @@
             {foreach $value as $item_label => $item_value}
                {include file='debug/print_data.tpl' label=$item_label value=$item_value}
             {foreachelse}
-               None
+               Blank Array
             {/foreach}
          {else}
             {$value}
