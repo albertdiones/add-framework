@@ -6,7 +6,7 @@
       &#x25BA; <b>{$label}</b>:
          {if is_bool($value)}
             <i>{if $value}Yes{else}No{/if}</i>
-         {elseif is_array($values)}
+         {elseif is_array($values) or is_object($values)}
             {foreach $values as $item_label => $item_value}
                {include file='debug/print_data.tpl' label=$item_label value=$item_value}
             {/foreach}
