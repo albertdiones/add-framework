@@ -9,6 +9,8 @@
          {elseif is_array($value) or is_object($value)}
             {foreach $value as $item_label => $item_value}
                {include file='debug/print_data.tpl' label=$item_label value=$item_value}
+            {foreachelse}
+               None
             {/foreach}
          {else}
             {$value}
