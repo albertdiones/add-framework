@@ -171,7 +171,7 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     * @since ADD MVC 0.0
     */
    static function login_redirect() {
-      redirect(static::LOGIN_PAGE."?redirect=".urlencode($_SERVER['REQUEST_URI']));
+      add::redirect(static::LOGIN_PAGE."?redirect=".urlencode($_SERVER['REQUEST_URI']));
    }
 
    /**
