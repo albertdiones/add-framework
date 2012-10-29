@@ -729,7 +729,7 @@ CLASS add {
       if (isset(add::config()->developer_ips) && is_array(add::config()->developer_ips))
          return in_array(current_user_ip(),add::config()->developer_ips);
       else
-         return add::is_development();
+         return false;
    }
 
 
