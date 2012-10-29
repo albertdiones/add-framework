@@ -726,8 +726,8 @@ CLASS add {
       if (current_ip_in_network())
          return true;
 
-      if (isset(add::config()->developer_ips) && is_array(add::config()->developer_ips))
-         return in_array(current_user_ip(),add::config()->developer_ips);
+      if (isset(add::config()->developer_ips))
+         return in_array(current_user_ip(), (array) add::config()->developer_ips);
       else
          return false;
    }
