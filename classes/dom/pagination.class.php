@@ -139,7 +139,10 @@ CLASS pagination EXTENDS dom_element_wrapper {
             unset($query_array['add_mvc_path']);
 
             $query_string = http_build_query($query_array);
-            $this->append("<a href='".htmlentities("$this->base_url?$query_string")."'>$pagex</a>");
+
+            $url = strpos($this->base_url,"?") === false ? "$this->base_url?$query_string" : "$this->base_url&$query_string";
+
+            $this->append("<a href='".htmlentities("")."'>$pagex</a>");
          }
          else {
             $this->append("<b>$pagex</b>");
