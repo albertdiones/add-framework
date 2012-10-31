@@ -8,6 +8,39 @@
 ABSTRACT CLASS ctrl_abstract {
 
    /**
+    * The mode of the process
+    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
+    */
+   protected $mode;
+
+   /**
+    * The sub mode of the mode
+    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
+    */
+   protected $sub_mode;
+
+   /**
+    * Mime type of this resource
+    *
+    * @since ADD MVC 0.8
+    */
+   protected $content_type = 'text/html';
+
+   /**
+    * The views cache
+    * @since ADD MVC 0.0
+    */
+   protected static $views = array();
+
+
+   /**
+    * The view data
+    *
+    * @since ADD MVC 0.6
+    */
+   protected $data = array();
+
+   /**
     * Set mode function
     *
     * @since ADD MVC 0.10
@@ -93,5 +126,34 @@ ABSTRACT CLASS ctrl_abstract {
 
       }
       return $compact_array;
+   }
+
+
+   /**
+    * Assign a variable to the view
+    *
+    * @since ADD MVC 0.6, ctrl_tpl_page 1.0
+    */
+   public function assign() {
+      $arg1 = func_get_arg(0);
+
+      if (is_array($arg1) || is_object($arg1)) {
+         $this->data = array_merge($this->data,(array) $arg1);
+      }
+      else {
+         $this->data[$arg1] = func_get_arg(1);
+      }
+
+   }
+
+
+
+   /**
+    * Returns the data
+    *
+    * @since ADD MVC 0.10
+    */
+   public function data() {
+      return $this->data;
    }
 }
