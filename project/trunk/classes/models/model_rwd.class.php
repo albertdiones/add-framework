@@ -187,6 +187,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       if ( $arg === null )
          return false;
 
+      if (!is_scalar($field_value)) {
+         throw new e_developer(get_called_class()."::get_instance() passed with array instead of scalar PK/index value");
+      }
+
       $field = static::get_value_index_field($arg);
       $field_value = $arg; # alias for readability
 
@@ -248,6 +252,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       if (!$row)
          return false;
 
+
+      # Fix for issue #3
       if (!static::row_pk($row)) {
          throw new e_developer("Model ".get_called_class()." PK is not existing",array($row, static::TABLE, static::TABLE_PK));
       }
