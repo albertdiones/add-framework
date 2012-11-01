@@ -61,7 +61,7 @@ if (!isset($C->caches_dir))
 
 add::load_functions('common');
 
-add::environment_status(add::config()->environment_status);
+add::environment_status(true);
 
 if (add::is_development() && !is_writeable($C->caches_dir)) {
    $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches';

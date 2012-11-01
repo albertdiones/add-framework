@@ -49,6 +49,13 @@ CLASS add {
    static $handle_shutdown = false;
 
    /**
+    * Environment status
+    *
+    * @since ADD MVC 0.10
+    */
+   protected static $environment_status = 'live';
+
+   /**
     * Gets the site config
     *
     * @param STDClass $C the config variable
@@ -74,9 +81,10 @@ CLASS add {
                $config_array[$key] = array_merge((array) $value, (array) $full_default_config_array[$key]);
             else
                $config_array[$key] = $value;
-      }
+         }
 
          self::$C = $GLOBALS[self::CONFIG_VARNAME] = (object) $config_array;
+         self::$environment_status = self::$C->environment_status;
 
          # Convert to object
          foreach (self::$C as &$var) {
@@ -369,7 +377,7 @@ CLASS add {
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
-      if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
+      if (static::$handle_shutdown && !add::is_live()) {
          global $add_mvc_root_timer;
 
          $smarty = new add_smarty();
@@ -654,9 +662,20 @@ CLASS add {
 
       if ($new_status) {
 
-         if (is_string($new_status) && in_array($new_status,array('live','development'))) {
-            if ($new_status == 'development' && add::is_developer()) {
-               add::config()->environment_status = $new_status;
+         if (is_string($new_status)) {
+            if ($new_status === 'development') {
+               if (add::is_developer()) {
+                  add::$environment_status = $new_status;
+               }
+               else {
+                  add::$environment_status = "live";
+               }
+            }
+            else if ($new_status === 'live') {
+               add::$environment_status = 'live';
+            }
+            else {
+               throw new e_developer("Invalid environment_status: $new_status");
             }
          }
 
@@ -690,7 +709,7 @@ CLASS add {
          }
       }
 
-      return add::config()->environment_status;
+      return add::$environment_status;
    }
 
    /**
@@ -699,17 +718,7 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function is_live() {
-      return add::config()->environment_status === 'live';
-   }
-
-
-   /**
-    * environment check: is debugging
-    *
-    * @since ADD MVC 0.7
-    */
-   public static function is_debugging() {
-      return add::config()->environment_status === 'debugging';
+      return add::$environment_status === 'live';
    }
 
 
@@ -719,7 +728,7 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function is_development() {
-      return add::config()->environment_status === 'development';
+      return add::$environment_status === 'development';
    }
 
 
