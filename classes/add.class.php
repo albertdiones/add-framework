@@ -369,7 +369,7 @@ CLASS add {
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
-      if (static::$handle_shutdown && !add::is_live()) {
+      if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
          global $add_mvc_root_timer;
 
          $smarty = new add_smarty();
