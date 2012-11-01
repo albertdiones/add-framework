@@ -18,7 +18,7 @@ CLASS e_system EXTENDS e_add {
     * @since ADD MVC 0.0
     */
    public function handle_exception() {
-      return $this->handle_sensitive_exception("An error on our system, our developers has been notified about this and we will fix it as soon as we can.");
+      return $this->handle_sensitive_exception("An error occurred on our system, our developers has been notified about this and we will fix it as soon as we can.");
    }
 
    /**
