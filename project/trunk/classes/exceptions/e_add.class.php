@@ -240,23 +240,22 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.0
     */
    public function mail_body() {
+
       return
-         "Path: $_SERVER[REQUEST_URI]\r\n".
-         "Referrer: $_SERVER[HTTP_REFERRER]\r\n".
-         "IP: $_SERVER[REMOTE_ADDR]\r\n".
-         "Data:\r\n".
-         print_r($this->data,true)."\r\n".
-         "Trace:\r\n".
+         "*Path*: $_SERVER[REQUEST_URI] *IP*: $_SERVER[REMOTE_ADDR]\r\n".
+         "== Data ==\r\n".
+         $this->data ? print_r($this->data,true) : "_null_ \r\n".
+         "== Trace ==\r\n".
          print_r($this->getTrace(),true)."\r\n".
-         "Request:\r\n".
+         "== Request ==\r\n".
          print_r($_REQUEST,true).
-         "Get:\r\n".
+         "== Get ==\r\n".
          print_r($_GET,true).
-         "Post:\r\n".
+         "== Post ==\r\n".
          print_r($_POST,true).
-         "Cookie:\r\n".
+         "== Cookie ==\r\n".
          print_r($_COOKIE,true).
-         "Server:\r\n".
+         "== Server == \r\n".
          print_r($_SERVER,true);
    }
 

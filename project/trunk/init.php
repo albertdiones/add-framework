@@ -40,7 +40,8 @@ set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
 
-$C->incs_dir            = $C->root_dir.'/includes';
+if (!isset($C->incs_dir))
+   $C->incs_dir            = $C->root_dir.'/includes';
 
 $C->classes_dirs        = array_merge(
       array( $C->incs_dir.'/classes' , $C->add_dir.'/classes'),
@@ -49,9 +50,14 @@ $C->classes_dirs        = array_merge(
          : array()
    );
 
-$C->configs_dir         = $C->incs_dir.'/configs';
-$C->views_dir           = $C->incs_dir.'/views';
-$C->caches_dir          = $C->incs_dir.'/caches';
+if (!isset($C->configs_dir))
+   $C->configs_dir         = $C->incs_dir.'/configs';
+
+if (!isset($C->views_dir))
+   $C->views_dir           = $C->incs_dir.'/views';
+
+if (!isset($C->caches_dir))
+   $C->caches_dir          = $C->incs_dir.'/caches';
 
 add::environment_status(add::config()->environment_status);
 
@@ -61,9 +67,14 @@ if (add::is_development() && !is_writeable($C->caches_dir)) {
       mkdir($C->caches_dir,0700);
 }
 
-$C->assets_dir          = $C->root_dir.'/assets';
-$C->images_dir          = $C->assets_dir.'/images';
-$C->css_dir             = $C->assets_dir.'/css';
+if (!isset($C->assets_dir))
+   $C->assets_dir          = $C->root_dir.'/assets';
+
+if (!isset($C->images_dir))
+   $C->images_dir          = $C->assets_dir.'/images';
+
+if (!isset($C->css_dir))
+   $C->css_dir             = $C->assets_dir.'/css';
 $C->js_dir              = $C->assets_dir.'/js';
 
 $C->domain              = ( $C->sub_domain ? "$C->sub_domain." : "" ).$C->super_domain;
