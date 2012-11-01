@@ -653,8 +653,13 @@ CLASS add {
    public static function environment_status($new_status = null) {
 
       if ($new_status) {
-         if (is_string($new_status))
-            add::config()->environment_status = $new_status;
+
+         if (is_string($new_status) && in_array($new_status,array('live','development'))) {
+            if ($new_status == 'development' && add::is_developer()) {
+               add::config()->environment_status = $new_status;
+            }
+         }
+
          /**
           * No errors if live
           *
@@ -674,8 +679,13 @@ CLASS add {
              */
             if (add::is_development()) {
                add::$handle_shutdown          = true;
-               $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
+
+               if (!isset($GLOBALS['add_mvc_root_timer'])) {
+                  $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
+               }
+
                add::config()->root_timer      = $GLOBALS['add_mvc_root_timer'];
+
             }
          }
       }

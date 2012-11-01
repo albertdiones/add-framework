@@ -11,9 +11,8 @@
    <h2>{$exception->getMessage()}</h2>
    <small>{$exception->getCode()}</small>
    <h3>Debug Data</h3>
-   <xmp>
-   {add_debug::return_var_dump(array($exception->data))}
-   </xmp>
-   {nl2br($exception->getTraceAsString())}
+      <xmp>{add_debug::return_var_dump(array($exception->data))}</xmp>
+   <h3>Trace</h3>
+      <div>{nl2br($exception->getTraceAsString())}</div>
 {/if}
 {/block}

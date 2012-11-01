@@ -59,6 +59,8 @@ if (!isset($C->views_dir))
 if (!isset($C->caches_dir))
    $C->caches_dir          = $C->incs_dir.'/caches';
 
+add::load_functions('common');
+
 add::environment_status(add::config()->environment_status);
 
 if (add::is_development() && !is_writeable($C->caches_dir)) {
@@ -92,8 +94,6 @@ $C->css_path    = $C->assets_path.'css/';
 $C->js_path     = $C->assets_path.'js/';
 $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
-
-add::load_functions('common');
 
 /**
  * Libraries
