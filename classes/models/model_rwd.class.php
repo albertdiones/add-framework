@@ -25,7 +25,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     *
     * @since ADD MVC 0.0
     */
-   const VERSION = '1.4.1';
+   const VERSION = '1.4.2';
 
    /**
     * $this->data
@@ -187,7 +187,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       if ( $arg === null )
          return false;
 
-      if (!is_scalar($field_value)) {
+
+      # http://code.google.com/p/add-mvc-framework/issues/detail?id=3&can=1
+      if (!is_scalar($arg)) {
          throw new e_developer(get_called_class()."::get_instance() passed with array instead of scalar PK/index value");
       }
 
