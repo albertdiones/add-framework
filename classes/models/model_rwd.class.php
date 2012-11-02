@@ -231,8 +231,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
       else {
          $data_type = gettype($arg);
 
-         if (ctype_digit("$arg"))
+         if (ctype_digit("$arg")) {
             $data_type = "int";
+         }
 
          if (isset(static::$type_index_fields[$data_type])) {
             return static::$type_index_fields[$data_type];
