@@ -37,11 +37,26 @@ ABSTRACT CLASS dom_wrapper {
          return false;
 
       if (is_string($arg)) {
-         if (isset($this)) {
+         if (isset($this) && $this instanceof self) {
             return $this->find($arg);
          }
          else {
-            throw new e_developer("Unknown Errror");
+            if (file_exists($arg) || filter_var($arg, FILTER_VALIDATE_URL)) {
+               $file_contents = file_get_contents($arg);
+
+               $dom_document  = @DOMDocument::loadHTML(iconv("UTF-8", "ASCII//IGNORE//TRANSLIT",$file_contents));
+
+               $document = self::factory($dom_document);
+               return $document;
+            }
+            else if ($arg && strlen($arg) > 200) {
+               $dom_document  = @DOMDocument::loadHTML(iconv("UTF-8", "ASCII//IGNORE//TRANSLIT",$arg));
+               $document = self::factory($dom_document);
+               return $document;
+            }
+            else {
+               throw new e_developer("Unknown parameter");
+            }
          }
       }
       if (is_object($arg)) {
