@@ -128,11 +128,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     */
    public function content_type($new_content_type = null) {
       new e_developer("Use of deprecated function ".get_called_class()."::content_type()")->mail();
-      if ($new_content_type) {
-         $this->content_type = $new_content_type;
-         header("Content-type: ".$this->content_type);
-      }
-      return $this->content_type;
+      return add::content_type($new_content_type);
    }
 
    /**
