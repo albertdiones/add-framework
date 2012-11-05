@@ -244,7 +244,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       return
          "*Path*: $_SERVER[REQUEST_URI] *IP*: $_SERVER[REMOTE_ADDR]\r\n".
          "== Data ==\r\n".
-         $this->data ? print_r($this->data,true) : "_null_ \r\n".
+         ($this->data ? print_r($this->data,true) : "_null_ \r\n").
          "== Trace ==\r\n".
          print_r($this->getTrace(),true)."\r\n".
          "== Request ==\r\n".
