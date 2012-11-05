@@ -62,7 +62,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
       }
 
       # Set Content Type
-      $this->content_type($this->content_type);
+      add::content_type($this->content_type);
 
       $this->set_mode();
 
@@ -122,10 +122,12 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     * sets the content_type or get the current one
     *
     * @param string $new_content_type
+    * @deprecated use add::content_type()
     *
     * @since ADD MVC 0.8
     */
    public function content_type($new_content_type = null) {
+      new e_developer("Use of deprecated function ".get_called_class()."::content_type()")->mail();
       if ($new_content_type) {
          $this->content_type = $new_content_type;
          header("Content-type: ".$this->content_type);
