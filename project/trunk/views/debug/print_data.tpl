@@ -1,6 +1,11 @@
 {if add::current_controller()->content_type() == 'text/plain'}
-   {$label}: {if is_bool($value)}{if $value}Yes{else}No{/if}{else}{$value}{/if}
+{if is_bool($value)}*{$label}*: _{if $value}Yes{else}No{/if}_{elseif is_array($value) or is_object($value)}
+*{$label}* {foreach $value as $item_label => $item_value}
 
+   {'   '|str_repeat:$indentations}* {include file='debug/print_data.tpl' label=$item_label value=$item_value indentations=$indentations+1}
+{foreachelse}_Blank Array_
+{/foreach}
+{else}{$label}: {$value}{/if}
 {else}
    <div style="{block name='error.style'}margin:2px auto; padding:2px 10px;width:720px{/block};font-size:8px; font-family:verdana;">
       &#x25BA; <b>{$label}</b>:
