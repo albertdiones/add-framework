@@ -20,7 +20,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     *
     * @since ADD MVC 0.8
     */
-   protected $content_type = 'text/html';
+   protected $content_type = 'text/plain';
 
    /**
     * The view data
@@ -62,7 +62,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
       }
 
       # Set Content Type
-      add::content_type($this->content_type);
+      $this->content_type($this->content_type);
 
       $this->set_mode();
 
@@ -127,9 +127,11 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     * @since ADD MVC 0.8
     */
    public function content_type($new_content_type = null) {
-      $error = new e_developer("Use of deprecated function ".get_called_class()."::content_type()");
-      $error->mail();
-      return add::content_type($new_content_type);
+      if ($new_content_type) {
+         $this->content_type = $new_content_type;
+         header("Content-type: ".$this->content_type);
+      }
+      return $this->content_type;
    }
 
    /**
