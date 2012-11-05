@@ -188,7 +188,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
          return false;
 
 
-       http://code.google.com/p/add-mvc-framework/issues/detail?id=3&can=1
+      #http://code.google.com/p/add-mvc-framework/issues/detail?id=3&can=1
       if (!is_scalar($arg)) {
          throw new e_developer(get_called_class()."::get_instance() passed with array instead of scalar PK/index value");
       }
