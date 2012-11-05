@@ -4,10 +4,7 @@
 {block name='main'}
 {if add::current_controller()->content_type() == 'text/plain'}
 = Uncaught {get_class($exception)}: {if $exception->getCode()}({$exception->getCode()}){/if} *{$exception->getMessage()}* =
-
-== Data ==
 {include file='debug/print_data.tpl' label="Data" value=$exception->data}
-
 {include file='debug/print_data.tpl' label="BackTrace" value=$exception->getTrace()}
 {else}
    <h1>Uncaught Exception</h1>
