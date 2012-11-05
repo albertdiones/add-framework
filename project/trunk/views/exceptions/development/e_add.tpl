@@ -6,7 +6,7 @@
 = Uncaught {get_class($exception)}: {if $exception->getCode()}({$exception->getCode()}){/if} *{$exception->getMessage()}* =
 
 == Data ==
-{print_r($exception->data,true)|default:"_null_"}
+{include file='debug/print_data.tpl' label="Data" value=$exception->data}
 
 {include file='debug/print_data.tpl' label="BackTrace" value=$exception->getTrace()}
 {else}
