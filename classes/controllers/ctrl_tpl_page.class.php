@@ -251,7 +251,7 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
       $tpl = static::view_filepath();
 
       if ($this->view()->templateExists($tpl)) {
-      $this->view()->assign($data);
+         $this->view()->assign($data);
          $this->view()->display($tpl);
       }
       else {
