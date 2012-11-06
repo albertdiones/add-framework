@@ -510,8 +510,10 @@ CLASS add {
       else {
          throw new e_developer("Invalid format for $lib_name");
       }
-
-      return static::include_filepath('libs/'.$lib_path);
+      if ($lib_path[0] === '/')
+         return $lib_path;
+      else
+         return static::include_filepath('libs/'.$lib_path);
    }
 
    /**
