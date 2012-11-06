@@ -22,19 +22,13 @@
    </div>
    {if !empty($code_on_error)}
    <div style='float:right;font-size:8px;width:40%;background:#eee;padding:5px 10px;border:1px solid #333;overflow:hidden;'>
-      <div style="float:left;width:5%;color:#000;text-align:center;">
+      <div style="float:left;width:10%;color:#000;text-align:center;">
          {for $x = $code_on_error_start to $code_on_error_end}
-            <code>
-            {if $error.line == $x}
-               <span style='color:red'>&#x25BA;</span>
-            {else}
-               {$x}
-            {/if}<br />
-            </code>
+            <code>{if $error.line == $x}<span style='color:red'>&#x25BA;</span>{else}{$x}{/if}<br /></code>
          {/for}
       </div>
-      <div style="float:right;width:95%">
-         {$code_on_error}
+      <div style="float:right;width:90%">
+         <code>{$code_on_error}</code>
       </div>
    </div>
    {/if}
