@@ -13,9 +13,9 @@
    *}{elseif is_null($value)}{*
          *}{$label}: _null_{*
    *}{else}{*
-         *}{$label}: {$value}
+         *}{$label}: {$value}{*
+   *}{/if}
 
-{*   *}{/if}
 {else}
    <div style="{block name='error.style'}margin:2px auto; padding:2px 10px;width:720px{/block};font-size:8px; font-family:verdana;">
       &#x25BA; <b>{$label}</b>:
