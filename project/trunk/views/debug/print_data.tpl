@@ -5,7 +5,6 @@
    *}{elseif is_array($value) or is_object($value)}{*
          *}{$label}:{*
          *}{foreach $value as $item_label => $item_value}
-
 {*          *}{'  '|str_repeat:($indentations+1)}{*
             *}{if is_int($item_label)}#{else}*{/if} {include file='debug/print_data.tpl' label=$item_label value=$item_value indentations=$indentations+1}{*
          *}{foreachelse}{*
@@ -14,8 +13,8 @@
    *}{elseif is_null($value)}{*
          *}{$label}: _null_{*
    *}{else}{*
-         *}{$label}: {$value}{*
-   *}{/if}
+         *}{$label}: {$value}
+{*   *}{/if}
 {else}
    <div style="{block name='error.style'}margin:2px auto; padding:2px 10px;width:720px{/block};font-size:8px; font-family:verdana;">
       &#x25BA; <b>{$label}</b>:
