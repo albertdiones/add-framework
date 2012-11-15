@@ -78,8 +78,8 @@ ABSTRACT CLASS add_debug {
 
       foreach ($traces as $trace) {
          $file_line = array(
-               'file'=>$trace[file],
-               'line'=>$trace[line]
+               'file' => $trace['file'],
+               'line' => $trace['line']
             );
          $file_lines[]  = $file_line;
          if (count(array_keys($file_lines,$file_line))>20) {
@@ -218,7 +218,7 @@ ABSTRACT CLASS add_debug {
          echo $var."<br />";
       }
       else {
-         echo "<xmp>".self::return_var_dump($var)."</xmp><br />";
+         echo "<xmp>".self::return_var_dump(array($var))."</xmp><br />";
       }
 
    }
