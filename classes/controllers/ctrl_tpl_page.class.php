@@ -275,7 +275,7 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
     * @since ADD MVC 0.3, ctrl_tpl_page 0.2.2
     */
    public function add_exception(Exception $e,$label=null) {
-      $error_messages = $this->view()->getTemplateVars('error_messages');
+      $error_messages = $this->data['error_messages'];
 
       if (!$error_messages)
          $error_messages = array();
