@@ -888,7 +888,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
     * @todo create new function model_rwd::get_one($conditions,$order_by)
     */
    static function get_one_where($conditions=array(),$order_by="") {
-      $rows = static::get_where_order_page($conditions,$order_by);
+      $rows = static::get_where_order_page($conditions,$order_by,1,1);
       return $rows ? array_shift($rows) : false;
    }
 
