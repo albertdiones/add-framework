@@ -117,6 +117,15 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
             $exception_label = "user_".$this->mode;
          else
             $exception_label = "user";
+         /**
+          *
+          *
+          * // what if $e is unrelated to $this->gpc_filter_exception
+          * if ($this->gpc_filter_exception instanceof e_user_input) {
+          *    $e = $this->gpc_filter_exception;
+          * }
+          *
+          */
 
          $this->add_exception($e,$exception_label);
       }
