@@ -99,7 +99,8 @@ ABSTRACT CLASS ctrl_abstract {
          return $this->$method_name($merged_gpc);
 
       }
-      else if ($mode == 'default') {
+      else {
+         $this->mode = 'default';
          $this->assign($common_gpc);
          $this->assign('mode','default');
       }
