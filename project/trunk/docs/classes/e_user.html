@@ -38,7 +38,7 @@
                 <span class="label label-info">34</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">30</span></a></li>
+                <span class="label label-info">36</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -58,8 +58,7 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public inherited"><a href="#__construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#__construct" title="__construct :: Exception constructor"><span class="description">Exception constructor</span><pre>__construct()</pre></a></li>
 <li class="method public inherited"><a href="#__toString" title="__toString :: "><span class="description">__toString()
         </span><pre>__toString()</pre></a></li>
 <li class="method public "><a href="#assert" title="assert :: Do not auto generate $message on e_user"><span class="description">Do not auto generate $message on e_user</span><pre>assert()</pre></a></li>
@@ -94,7 +93,7 @@ Extend this to child classes</span><pre>mail_to()</pre></a></li>
 <li class="method public inherited"><a href="#print_response" title="print_response :: Print the exception's response"><span class="description">Print the exception's response</span><pre>print_response()</pre></a></li>
 <li class="method public inherited"><a href="#view" title="view :: The smarty object"><span class="description">The smarty object</span><pre>view()</pre></a></li>
 <li class="method public inherited"><a href="#view_basename" title="view_basename :: The basename of the view of the exception"><span class="description">The basename of the view of the exception</span><pre>view_basename()</pre></a></li>
-<li class="method public inherited"><a href="#view_filepath" title="view_filepath :: The view filepath of $this controller"><span class="description">The view filepath of $this controller</span><pre>view_filepath()</pre></a></li>
+<li class="method public inherited"><a href="#view_filepath" title="view_filepath :: Exception page view"><span class="description">Exception page view</span><pre>view_filepath()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public inherited"><a href="#%24data" title="$data :: exception data"><span class="description">exception data</span><pre>$data</pre></a></li>
@@ -128,8 +127,7 @@ Custom Exception Class for user errors</p>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Exception constructor</h2>
 <pre>__construct(string $message, mixed $data, int $code, Exception $exception) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -386,7 +384,7 @@ Extend this to child classes</h2>
 </div>
 <a name="handle_sensitive_exception" id="handle_sensitive_exception"></a><div class="element clickable method public handle_sensitive_exception" data-toggle="collapse" data-target=".handle_sensitive_exception .collapse">
 <h2>Handling Exceptions</h2>
-<pre>handle_sensitive_exception($user_message) </pre>
+<pre>handle_sensitive_exception(string $user_message) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -403,7 +401,7 @@ Extend this to child classes</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_message</h4>
-<code></code>
+<code>string</code>
 </div>
 </div></div>
 </div>
@@ -548,7 +546,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="view_filepath" id="view_filepath"></a><div class="element clickable method public view_filepath" data-toggle="collapse" data-target=".view_filepath .collapse">
-<h2>The view filepath of $this controller</h2>
+<h2>Exception page view</h2>
 <pre>view_filepath() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -608,7 +606,7 @@ Extend this to child classes</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-10-22T22:29:33+04:00.<br></footer></div>
+            generated on 2012-11-27T23:32:36+04:00.<br></footer></div>
 </div>
 </body>
 </html>

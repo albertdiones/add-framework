@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC Framework » \i_singleton</title>
+<title>ADD MVC Framework » \add_config</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -58,64 +58,58 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public "><a href="#__clone" title="__clone :: __clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()"><span class="description">__clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()</span><pre>__clone()</pre></a></li>
-<li class="method public "><a href="#singleton" title="singleton :: singleton() function"><span class="description">singleton() function</span><pre>singleton()</pre></a></li>
+<li class="method public "><a href="#construct" title="construct :: Create config from array $C"><span class="description">Create config from array $C</span><pre>construct()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected "><a href="#%24environment_status" title="$environment_status :: "><span class="description">$environment_status</span><pre>$environment_status</pre></a></li>
 </ul>
 </div>
 <div class="span8">
-<a name="%5Ci_singleton" id="\i_singleton"></a><div href="../classes/i_singleton.html" class="element interface">
-<p class="short_description">i_singleton interface class</p>
+<a name="%5Cadd_config" id="\add_config"></a><div href="../classes/add_config.html" class="element class">
+<p class="short_description">Config singleton class</p>
 <div class="details">
-<p class="long_description"><p>An interface for singleton type objects</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="..//packages/ADD%20MVC.html">ADD MVC</a></td>
+</tr>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
 </tr>
 <tr>
-<th>package</th>
-<td><a href="..//packages/ADD%20MVC.Extras.Interfaces.html">ADD MVC\Extras\Interfaces</a></td>
-</tr>
-<tr>
-<th>version</th>
-<td>0.0</td>
-</tr>
-<tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
+<td>0.10</td>
 </tr>
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a name="__clone" id="__clone"></a><div class="element clickable method public __clone" data-toggle="collapse" data-target=".__clone .collapse">
-<h2>__clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()</h2>
-<pre>__clone() </pre>
+<a name="construct" id="construct"></a><div class="element clickable method public construct" data-toggle="collapse" data-target=".construct .collapse">
+<h2>Create config from array $C</h2>
+<pre>construct($config_array) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
+<td>since</td>
 </tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$config_array</h4>
+<code></code>
+</div>
 </div></div>
 </div>
-<a name="singleton" id="singleton"></a><div class="element clickable method public singleton" data-toggle="collapse" data-target=".singleton .collapse">
-<h2>singleton() function</h2>
-<pre>singleton() </pre>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24environment_status" id="$environment_status"> </a><div class="element clickable property protected $environment_status" data-toggle="collapse" data-target=".$environment_status .collapse">
+<h2>$environment_status</h2>
+<pre>$environment_status </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"><p>Must return the one and only instance of the class</p></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr></table>
-</div></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 </div>
 </div>

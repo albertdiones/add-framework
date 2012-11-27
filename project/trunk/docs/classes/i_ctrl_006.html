@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC Framework » \i_singleton</title>
+<title>ADD MVC Framework » \i_ctrl_006</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -58,62 +58,91 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public "><a href="#__clone" title="__clone :: __clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()"><span class="description">__clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()</span><pre>__clone()</pre></a></li>
-<li class="method public "><a href="#singleton" title="singleton :: singleton() function"><span class="description">singleton() function</span><pre>singleton()</pre></a></li>
+<li class="method public "><a href="#assign" title="assign :: assign data"><span class="description">assign data</span><pre>assign()</pre></a></li>
+<li class="method public "><a href="#content_type" title="content_type :: sets the content_type or get the current one"><span class="description">sets the content_type or get the current one</span><pre>content_type()</pre></a></li>
+<li class="method public "><a href="#execute" title="execute :: execute() the execute function"><span class="description">execute() the execute function</span><pre>execute()</pre></a></li>
+<li class="method public "><a href="#print_response" title="print_response :: print_response() - print the response according to data"><span class="description">print_response() - print the response according to data</span><pre>print_response()</pre></a></li>
+<li class="method public "><a href="#process_data" title="process_data :: process_data() - process the data"><span class="description">process_data() - process the data</span><pre>process_data()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
-<a name="%5Ci_singleton" id="\i_singleton"></a><div href="../classes/i_singleton.html" class="element interface">
-<p class="short_description">i_singleton interface class</p>
+<a name="%5Ci_ctrl_006" id="\i_ctrl_006"></a><div href="../classes/i_ctrl_006.html" class="element interface">
+<p class="short_description">i_ctrl controller interface</p>
 <div class="details">
-<p class="long_description"><p>An interface for singleton type objects</p></p>
-<table class="table table-bordered">
-<tr>
-<th>author</th>
-<td><a href="">albertdiones@gmail.com</a></td>
-</tr>
-<tr>
-<th>package</th>
-<td><a href="..//packages/ADD%20MVC.Extras.Interfaces.html">ADD MVC\Extras\Interfaces</a></td>
-</tr>
-<tr>
-<th>version</th>
-<td>0.0</td>
-</tr>
-<tr>
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
-</tr>
-</table>
+<td>ADD MVC 0.6</td>
+</tr></table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a name="__clone" id="__clone"></a><div class="element clickable method public __clone" data-toggle="collapse" data-target=".__clone .collapse">
-<h2>__clone() magic function
-Calling this function must be treated as an error
-So the body of this function must throw new exception() or die() or trigger_error()</h2>
-<pre>__clone() </pre>
+<a name="assign" id="assign"></a><div class="element clickable method public assign" data-toggle="collapse" data-target=".assign .collapse">
+<h2>assign data</h2>
+<pre>assign() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
+<td>ADD MVC 0.6</td>
 </tr></table>
 </div></div>
 </div>
-<a name="singleton" id="singleton"></a><div class="element clickable method public singleton" data-toggle="collapse" data-target=".singleton .collapse">
-<h2>singleton() function</h2>
-<pre>singleton() </pre>
+<a name="content_type" id="content_type"></a><div class="element clickable method public content_type" data-toggle="collapse" data-target=".content_type .collapse">
+<h2>sets the content_type or get the current one</h2>
+<pre>content_type(string $new_content_type) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"><p>Must return the one and only instance of the class</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>since</th>
-<td>ADD MVC 0.0</td>
+<td>ADD MVC 0.8</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$new_content_type</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="execute" id="execute"></a><div class="element clickable method public execute" data-toggle="collapse" data-target=".execute .collapse">
+<h2>execute() the execute function</h2>
+<pre>execute() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.6</td>
+</tr></table>
+</div></div>
+</div>
+<a name="print_response" id="print_response"></a><div class="element clickable method public print_response" data-toggle="collapse" data-target=".print_response .collapse">
+<h2>print_response() - print the response according to data</h2>
+<pre>print_response($data) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.6</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="process_data" id="process_data"></a><div class="element clickable method public process_data" data-toggle="collapse" data-target=".process_data .collapse">
+<h2>process_data() - process the data</h2>
+<pre>process_data() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.6</td>
 </tr></table>
 </div></div>
 </div>
@@ -124,7 +153,7 @@ So the body of this function must throw new exception() or die() or trigger_erro
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-11-27T23:32:37+04:00.<br></footer></div>
+            generated on 2012-11-27T23:32:33+04:00.<br></footer></div>
 </div>
 </body>
 </html>

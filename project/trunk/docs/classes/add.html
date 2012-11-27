@@ -38,7 +38,7 @@
                 <span class="label label-info">34</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">30</span></a></li>
+                <span class="label label-info">36</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -91,7 +91,6 @@ or the add file path(if existing) of the path
 example: include_filepath('functions/common.functions.php')"><span class="description">The include file path
 or the add file path(if existing) of the path
 example: include_filepath('functions/common.functions.php')</span><pre>include_filepath()</pre></a></li>
-<li class="method public "><a href="#is_debugging" title="is_debugging :: environment check: is debugging"><span class="description">environment check: is debugging</span><pre>is_debugging()</pre></a></li>
 <li class="method public "><a href="#is_developer" title="is_developer :: is_developer()"><span class="description">is_developer()</span><pre>is_developer()</pre></a></li>
 <li class="method public "><a href="#is_development" title="is_development :: environment check: is_development()"><span class="description">environment check: is_development()</span><pre>is_development()</pre></a></li>
 <li class="method public "><a href="#is_live" title="is_live :: environment check: is live?"><span class="description">environment check: is live?</span><pre>is_live()</pre></a></li>
@@ -121,6 +120,7 @@ example: ctrl_page_index</span><pre>$HOME_CONTROLLER</pre></a></li>
 <li class="property public "><a href="#%24handle_shutdown" title="$handle_shutdown :: Weather to handle shutdown or not"><span class="description">Weather to handle shutdown or not</span><pre>$handle_shutdown</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected "><a href="#%24C" title="$C :: The config variable"><span class="description">The config variable</span><pre>$C</pre></a></li>
+<li class="property protected "><a href="#%24environment_status" title="$environment_status :: Environment status"><span class="description">Environment status</span><pre>$environment_status</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants</li>
 <li class="constant  "><a href="#CONFIG_VARNAME" title="CONFIG_VARNAME :: The config variable name"><span class="description">The config variable name</span><pre>CONFIG_VARNAME</pre></a></li>
@@ -143,7 +143,7 @@ Every sitewide features and modules should be based from this class</p>
 </tr>
 <tr>
 <th>version</th>
-<td>0.7.3</td>
+<td>0.10</td>
 </tr>
 </table>
 <h3>
@@ -368,18 +368,6 @@ example: include_filepath('functions/common.functions.php')</h2>
 <div class="subelement argument">
 <h4>$path</h4>
 <code>string</code><p>the include path</p></div>
-</div></div>
-</div>
-<a name="is_debugging" id="is_debugging"></a><div class="element clickable method public is_debugging" data-toggle="collapse" data-target=".is_debugging .collapse">
-<h2>environment check: is debugging</h2>
-<pre>is_debugging() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.7</td>
-</tr></table>
 </div></div>
 </div>
 <a name="is_developer" id="is_developer"></a><div class="element clickable method public is_developer" data-toggle="collapse" data-target=".is_developer .collapse">
@@ -655,6 +643,18 @@ example: ctrl_page_index</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="%24environment_status" id="$environment_status"> </a><div class="element clickable property protected $environment_status" data-toggle="collapse" data-target=".$environment_status .collapse">
+<h2>Environment status</h2>
+<pre>$environment_status </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.10</td>
+</tr></table>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
 <a name="CONFIG_VARNAME" id="CONFIG_VARNAME"> </a><div class="element clickable constant  CONFIG_VARNAME" data-toggle="collapse" data-target=".CONFIG_VARNAME .collapse">
@@ -682,7 +682,7 @@ example: ctrl_page_index</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-10-22T22:29:32+04:00.<br></footer></div>
+            generated on 2012-11-27T23:32:34+04:00.<br></footer></div>
 </div>
 </body>
 </html>

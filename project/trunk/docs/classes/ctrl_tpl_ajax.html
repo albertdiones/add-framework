@@ -38,7 +38,7 @@
                 <span class="label label-info">34</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">30</span></a></li>
+                <span class="label label-info">36</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -61,6 +61,7 @@
 <li class="method public "><a href="#__call" title="__call :: __call() magic function"><span class="description">__call() magic function</span><pre>__call()</pre></a></li>
 <li class="method public "><a href="#assign" title="assign :: assign $variable to pass in ajax"><span class="description">assign $variable to pass in ajax</span><pre>assign()</pre></a></li>
 <li class="method public "><a href="#content_type" title="content_type :: sets the content_type or get the current one"><span class="description">sets the content_type or get the current one</span><pre>content_type()</pre></a></li>
+<li class="method public inherited"><a href="#data" title="data :: Returns the data"><span class="description">Returns the data</span><pre>data()</pre></a></li>
 <li class="method public "><a href="#execute" title="execute :: Must echo the page response"><span class="description">Must echo the page response</span><pre>execute()</pre></a></li>
 <li class="method public "><a href="#post_mode_process" title="post_mode_process :: Process after the main mode process"><span class="description">Process after the main mode process</span><pre>post_mode_process()</pre></a></li>
 <li class="method public "><a href="#pre_mode_process" title="pre_mode_process :: Process before the main mode process"><span class="description">Process before the main mode process</span><pre>pre_mode_process()</pre></a></li>
@@ -77,10 +78,12 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 <li class="method public inherited"><a href="#set_mode" title="set_mode :: Set mode function"><span class="description">Set mode function</span><pre>set_mode()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
-<li class="property public "><a href="#%24mode" title="$mode :: "><span class="description">$mode</span><pre>$mode</pre></a></li>
+<li class="property public "><a href="#%24mode" title="$mode :: The mode of the process"><span class="description">The mode of the process</span><pre>$mode</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected "><a href="#%24content_type" title="$content_type :: Mime type of this resource"><span class="description">Mime type of this resource</span><pre>$content_type</pre></a></li>
 <li class="property protected "><a href="#%24data" title="$data :: The view data"><span class="description">The view data</span><pre>$data</pre></a></li>
+<li class="property protected inherited"><a href="#%24sub_mode" title="$sub_mode :: The sub mode of the mode"><span class="description">The sub mode of the mode</span><pre>$sub_mode</pre></a></li>
+<li class="property protected inherited"><a href="#%24views" title="$views :: The views cache"><span class="description">The views cache</span><pre>$views</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -151,15 +154,39 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td>use add::content_type()</td>
+</tr>
+<tr>
 <th>since</th>
 <td>ADD MVC 0.8</td>
-</tr></table>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$new_content_type</h4>
 <code>string</code>
 </div>
+</div></div>
+</div>
+<a name="data" id="data"></a><div class="element clickable method public data" data-toggle="collapse" data-target=".data .collapse">
+<h2>Returns the data</h2>
+<pre>data() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.10</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::data()</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a name="execute" id="execute"></a><div class="element clickable method public execute" data-toggle="collapse" data-target=".execute .collapse">
@@ -316,7 +343,7 @@ Returns an array of GPC from the $array_keys</h2>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24mode" id="$mode"> </a><div class="element clickable property public $mode" data-toggle="collapse" data-target=".$mode .collapse">
-<h2>$mode</h2>
+<h2>The mode of the process</h2>
 <pre>$mode </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -345,6 +372,42 @@ Returns an array of GPC from the $array_keys</h2>
 </tr></table>
 </div></div>
 </div>
+<a name="%24sub_mode" id="$sub_mode"> </a><div class="element clickable property protected $sub_mode" data-toggle="collapse" data-target=".$sub_mode .collapse">
+<h2>The sub mode of the mode</h2>
+<pre>$sub_mode </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.3, ctrl_tpl_page 0.2.3</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::$$sub_mode</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24views" id="$views"> </a><div class="element clickable property protected $views" data-toggle="collapse" data-target=".$views .collapse">
+<h2>The views cache</h2>
+<pre>$views </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ctrl_abstract::$$views</td>
+</tr>
+</table>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -352,7 +415,7 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-10-22T22:29:32+04:00.<br></footer></div>
+            generated on 2012-11-27T23:32:34+04:00.<br></footer></div>
 </div>
 </body>
 </html>
