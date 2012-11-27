@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>ADD MVC Framework » \add_debug_timer</title>
+<title>ADD MVC Framework » \debug</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -67,45 +67,28 @@ Call this on deprecated files"><span class="description">deprecated_file() funct
 Call this on deprecated files</span><pre>deprecated_file()</pre></a></li>
 <li class="method public inherited"><a href="#get_declared_globals" title="get_declared_globals :: Returns an array of declared globals"><span class="description">Returns an array of declared globals</span><pre>get_declared_globals()</pre></a></li>
 <li class="method public inherited"><a href="#html_print" title="html_print :: make a list out of $arg"><span class="description">make a list out of $arg</span><pre>html_print()</pre></a></li>
-<li class="method public "><a href="#lap" title="lap :: Add a lap with $label"><span class="description">Add a lap with $label</span><pre>lap()</pre></a></li>
 <li class="method public inherited"><a href="#lines_backtrace" title="lines_backtrace :: Prints/Returns location backtrace"><span class="description">Prints/Returns location backtrace</span><pre>lines_backtrace()</pre></a></li>
-<li class="method public "><a href="#print_all_laps" title="print_all_laps :: Print all laps"><span class="description">Print all laps</span><pre>print_all_laps()</pre></a></li>
 <li class="method public inherited"><a href="#print_array_table" title="print_array_table :: Prints array into a HTML table"><span class="description">Prints array into a HTML table</span><pre>print_array_table()</pre></a></li>
 <li class="method public inherited"><a href="#print_config" title="print_config :: Prints the config value"><span class="description">Prints the config value</span><pre>print_config()</pre></a></li>
-<li class="method public "><a href="#print_data" title="print_data :: print_data extended"><span class="description">print_data extended</span><pre>print_data()</pre></a></li>
+<li class="method public inherited"><a href="#print_data" title="print_data :: Prints a data with label"><span class="description">Prints a data with label</span><pre>print_data()</pre></a></li>
 <li class="method public inherited"><a href="#print_eval" title="print_eval :: evaluates $var and prints $var and the value it returns"><span class="description">evaluates $var and prints $var and the value it returns</span><pre>print_eval()</pre></a></li>
-<li class="method public "><a href="#print_lap" title="print_lap :: Add a lap with $label and print the details"><span class="description">Add a lap with $label and print the details</span><pre>print_lap()</pre></a></li>
-<li class="method public "><a href="#print_lap_difference" title="print_lap_difference :: Print lap details from lap1 to lap2"><span class="description">Print lap details from lap1 to lap2</span><pre>print_lap_difference()</pre></a></li>
 <li class="method public inherited"><a href="#print_request" title="print_request :: Prints request variables and sessions variables"><span class="description">Prints request variables and sessions variables</span><pre>print_request()</pre></a></li>
 <li class="method public inherited"><a href="#restricted_echo" title="restricted_echo :: echo only if IP matched"><span class="description">echo only if IP matched</span><pre>restricted_echo()</pre></a></li>
 <li class="method public inherited"><a href="#return_var_dump" title="return_var_dump :: return_var_dump()
 get var dump function"><span class="description">return_var_dump()
 get var dump function</span><pre>return_var_dump()</pre></a></li>
-<li class="method public "><a href="#start" title="start :: Construct and start the timer"><span class="description">Construct and start the timer</span><pre>start()</pre></a></li>
-<li class="method public "><a href="#us_diff_html" title="us_diff_html :: Microseconds diff html style"><span class="description">Microseconds diff html style</span><pre>us_diff_html()</pre></a></li>
-<li class="method public "><a href="#us_diff_readable_format" title="us_diff_readable_format :: Microseconds Diff Readable Format"><span class="description">Microseconds Diff Readable Format</span><pre>us_diff_readable_format()</pre></a></li>
 <li class="method public inherited"><a href="#var_dump" title="var_dump :: XMP Var Dump
 var_dump with &lt;xmp&gt;"><span class="description">XMP Var Dump
 var_dump with &lt;xmp&gt;</span><pre>var_dump()</pre></a></li>
-<li class="nav-header protected">» Protected</li>
-<li class="method protected "><a href="#__construct" title="__construct :: Construct the timer and start it"><span class="description">Construct the timer and start it</span><pre>__construct()</pre></a></li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties</li>
-<li class="nav-header protected">» Protected</li>
-<li class="property protected "><a href="#%24lap_timestamps" title="$lap_timestamps :: The timestamp of the laps"><span class="description">The timestamp of the laps</span><pre>$lap_timestamps</pre></a></li>
-<li class="property protected "><a href="#%24start_timestamp" title="$start_timestamp :: The start timestamp of the timer"><span class="description">The start timestamp of the timer</span><pre>$start_timestamp</pre></a></li>
 </ul>
 </div>
 <div class="span8">
-<a name="%5Cadd_debug_timer" id="\add_debug_timer"></a><div href="../classes/add_debug_timer.html" class="element class">
-<p class="short_description">Debug timer class</p>
+<a name="%5Cdebug" id="\debug"></a><div href="../classes/debug.html" class="element class">
+<p class="short_description">Debugger class
+Override this on application for customized debugging</p>
 <div class="details">
 <p class="long_description"></p>
 <table class="table table-bordered">
-<tr>
-<th>todo</th>
-<td>remove the extra micro times that the functions are using</td>
-</tr>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
@@ -120,7 +103,7 @@ var_dump with &lt;xmp&gt;</span><pre>var_dump()</pre></a></li>
 </tr>
 <tr>
 <th>version</th>
-<td>0.0</td>
+<td>0.1</td>
 </tr>
 </table>
 <h3>
@@ -262,29 +245,6 @@ Call this on deprecated files</h2>
 <code>string</code><p>the title of this list</p></div>
 </div></div>
 </div>
-<a name="lap" id="lap"></a><div class="element clickable method public lap" data-toggle="collapse" data-target=".lap .collapse">
-<h2>Add a lap with $label</h2>
-<pre>lap(string $label) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered">
-<tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr>
-<tr>
-<th>version</th>
-<td>0.1</td>
-</tr>
-</table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$label</h4>
-<code>string</code><p>the description of where the function is called (eg. "before mysql query" )</p>
-</div>
-</div></div>
-</div>
 <a name="lines_backtrace" id="lines_backtrace"></a><div class="element clickable method public lines_backtrace" data-toggle="collapse" data-target=".lines_backtrace .collapse">
 <h2>Prints/Returns location backtrace</h2>
 <pre>lines_backtrace(boolean $return) </pre>
@@ -305,18 +265,6 @@ Call this on deprecated files</h2>
 <div class="subelement argument">
 <h4>$return</h4>
 <code>boolean</code><p>true to return instead of echo</p></div>
-</div></div>
-</div>
-<a name="print_all_laps" id="print_all_laps"></a><div class="element clickable method public print_all_laps" data-toggle="collapse" data-target=".print_all_laps .collapse">
-<h2>Print all laps</h2>
-<pre>print_all_laps() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.7.2</td>
-</tr></table>
 </div></div>
 </div>
 <a name="print_array_table" id="print_array_table"></a><div class="element clickable method public print_array_table" data-toggle="collapse" data-target=".print_array_table .collapse">
@@ -369,22 +317,28 @@ Call this on deprecated files</h2>
 </div></div>
 </div>
 <a name="print_data" id="print_data"></a><div class="element clickable method public print_data" data-toggle="collapse" data-target=".print_data .collapse">
-<h2>print_data extended</h2>
-<pre>print_data($label, $lap_difference) </pre>
-<div class="labels"></div>
+<h2>Prints a data with label</h2>
+<pre>print_data($label, $value) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
 <td>ADD MVC 0.7.4</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\add_debug::print_data()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$label</h4>
 <code></code>
 </div>
 <div class="subelement argument">
-<h4>$lap_difference</h4>
+<h4>$value</h4>
 <code></code>
 </div>
 </div></div>
@@ -409,54 +363,6 @@ Call this on deprecated files</h2>
 <div class="subelement argument">
 <h4>$var</h4>
 <code>string</code><p>the command to eval</p></div>
-</div></div>
-</div>
-<a name="print_lap" id="print_lap"></a><div class="element clickable method public print_lap" data-toggle="collapse" data-target=".print_lap .collapse">
-<h2>Add a lap with $label and print the details</h2>
-<pre>print_lap(string $label) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered">
-<tr>
-<th>author</th>
-<td><a href="">albertdiones@gmail.com</a></td>
-</tr>
-<tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr>
-<tr>
-<th>version</th>
-<td>0.1</td>
-</tr>
-</table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$label</h4>
-<code>string</code><p>the description of the line where it is placed (eg. "after mysql query" )</p>
-</div>
-</div></div>
-</div>
-<a name="print_lap_difference" id="print_lap_difference"></a><div class="element clickable method public print_lap_difference" data-toggle="collapse" data-target=".print_lap_difference .collapse">
-<h2>Print lap details from lap1 to lap2</h2>
-<pre>print_lap_difference($lap1, $lap2) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.7.2</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$lap1</h4>
-<code></code>
-</div>
-<div class="subelement argument">
-<h4>$lap2</h4>
-<code></code>
-</div>
 </div></div>
 </div>
 <a name="print_request" id="print_request"></a><div class="element clickable method public print_request" data-toggle="collapse" data-target=".print_request .collapse">
@@ -527,65 +433,6 @@ get var dump function</h2>
 </div>
 </div></div>
 </div>
-<a name="start" id="start"></a><div class="element clickable method public start" data-toggle="collapse" data-target=".start .collapse">
-<h2>Construct and start the timer</h2>
-<pre>start(\$label $label) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered">
-<tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr>
-<tr>
-<th>version</th>
-<td>0.1</td>
-</tr>
-</table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$label</h4>
-<code>\$label</code><p>the label of the point</p></div>
-</div></div>
-</div>
-<a name="us_diff_html" id="us_diff_html"></a><div class="element clickable method public us_diff_html" data-toggle="collapse" data-target=".us_diff_html .collapse">
-<h2>Microseconds diff html style</h2>
-<pre>us_diff_html($string, $second_difference) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.4</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$string</h4>
-<code></code>
-</div>
-<div class="subelement argument">
-<h4>$second_difference</h4>
-<code></code>
-</div>
-</div></div>
-</div>
-<a name="us_diff_readable_format" id="us_diff_readable_format"></a><div class="element clickable method public us_diff_readable_format" data-toggle="collapse" data-target=".us_diff_readable_format .collapse">
-<h2>Microseconds Diff Readable Format</h2>
-<pre>us_diff_readable_format(int $microseconds) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$microseconds</h4>
-<code>int</code><p>the microseconds</p></div>
-</div></div>
-</div>
 <a name="var_dump" id="var_dump"></a><div class="element clickable method public var_dump" data-toggle="collapse" data-target=".var_dump .collapse">
 <h2>XMP Var Dump
 var_dump with &lt;xmp&gt;</h2>
@@ -607,48 +454,6 @@ var_dump with &lt;xmp&gt;</h2>
 <td>\add_debug::var_dump()</td>
 </tr>
 </table>
-</div></div>
-</div>
-<a name="__construct" id="__construct"></a><div class="element clickable method protected __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>Construct the timer and start it</h2>
-<pre>__construct(\$label $label) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$label</h4>
-<code>\$label</code><p>the label of the point</p></div>
-</div></div>
-</div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a name="%24lap_timestamps" id="$lap_timestamps"> </a><div class="element clickable property protected $lap_timestamps" data-toggle="collapse" data-target=".$lap_timestamps .collapse">
-<h2>The timestamp of the laps</h2>
-<pre>$lap_timestamps </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr></table>
-</div></div>
-</div>
-<a name="%24start_timestamp" id="$start_timestamp"> </a><div class="element clickable property protected $start_timestamp" data-toggle="collapse" data-target=".$start_timestamp .collapse">
-<h2>The start timestamp of the timer</h2>
-<pre>$start_timestamp </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.0</td>
-</tr></table>
 </div></div>
 </div>
 </div>
