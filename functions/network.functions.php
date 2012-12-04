@@ -15,7 +15,7 @@
  * @param string $ip the IP to check
  */
 function ip_in_network($ip) {
-   if (preg_match('/^((10\.\d+|192\.168)\.\d+\.\d+|\:\:1)$/',$ip)) {
+   if (preg_match('/^((10\.\d+|192\.168)\.\d+\.\d+|\:\:1|127\.0\.0\.1)$/',$ip)) {
       return true;
    }
    else {
