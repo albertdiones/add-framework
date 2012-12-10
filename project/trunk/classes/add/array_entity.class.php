@@ -57,8 +57,7 @@ CLASS array_entity {
       if (!static::valid_magic_property($varname)) {
          throw new e_developer("Invalid ".get_called_class()." variable $varname");
       }
-      $ref = &$this->data[$varname];
-      return $ref;
+      return $this->data[$varname];
    }
 
    /**
