@@ -344,7 +344,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
 
    /**
     * Gets array of instance from the sql
-    * @param string $sql_format must contain 2 %s, the first is for to be replaced with "SELF::TABLE.*" and the "SELF::TABLE". For literal "%", escape them with "%%" (two percent signs)
+    * @param string $sql_format must contain 2 %s, the first is for to be replaced with "SELF::TABLE.*" and the "SELF::TABLE". For literal "%", escape them with "%%" (two percent signs) or else it will cause (very) unexpected behavior
     * @param int $page to fetch
     * @param int $per_page items per page
     * @since ADD MVC 0.0
