@@ -23,10 +23,12 @@ CLASS add_smarty EXTENDS Smarty {
 
       parent::__construct();
 
-      if (is_array($C->views_dir))
+      if (is_array($C->views_dir)) {
          $this -> setTemplateDir(array_merge($C->views_dir,$C->add_dir.'/views/'));
-      else
+      }
+      else {
          $this -> setTemplateDir(array($C->views_dir,$C->add_dir.'/views/'));
+      }
 
       $this -> compile_dir  = $C->caches_dir.'/smarty_compile/';
       $this -> config_dir   = $C->configs_dir.'/smarty/';
