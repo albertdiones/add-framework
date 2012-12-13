@@ -19,7 +19,7 @@ CLASS add_smarty EXTENDS Smarty {
     * @since ADD MVC 0.0
     */
    public function __construct() {
-      global $C;
+      $C = add::config();
 
       parent::__construct();
 
