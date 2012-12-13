@@ -11,7 +11,7 @@
  *
  * @todo create smarty assign() support function that will return an array with all the variables possibly needed by smarty template
  */
-ABSTRACT CLASS model_rwd EXTENDS array_entity IMPLEMENTS Iterator {
+ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * The table pk
