@@ -8,7 +8,7 @@
  * @since ADD MVC 0.0
  * @version 0.0
  */
-CLASS array_entity {
+CLASS array_entity IMPLEMENTS Iterator {
 
    /**
     * $this->data contains the $array contents
