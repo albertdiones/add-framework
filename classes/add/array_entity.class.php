@@ -26,7 +26,7 @@ CLASS array_entity IMPLEMENTS Iterator {
    protected function __construct($array) {
       if (isset($array)) {
          foreach ($array as $index=>$value) {
-            if (is_array($value) || is_object($value)) {
+            if (is_array($value)) {
                $this->data[$index] = new static($array[$index]);
             }
             else {
