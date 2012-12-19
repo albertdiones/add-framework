@@ -586,8 +586,6 @@ CLASS add {
          $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
          $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
 
-         debug::var_dump($current_controller_basename);
-
          if (preg_match('/\W+/',$current_controller_basename)) {
             $current_controller_basename = null;
             return $current_controller_basename;
@@ -596,6 +594,9 @@ CLASS add {
          if (!$current_controller_basename)
             $current_controller_basename = self::$HOME_CONTROLLER;
       }
+
+      debug::var_dump($current_controller_basename);
+
       return $current_controller_basename;
    }
 
