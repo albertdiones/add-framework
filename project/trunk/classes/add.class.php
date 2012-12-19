@@ -582,9 +582,9 @@ CLASS add {
                : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
 
          $current_controller_basename = $relative_path;
-         $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
          $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
          $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
+         $current_controller_basename = preg_replace('/\W+/','_',$current_controller_basename);
 
          if (preg_match('/\W+/',$current_controller_basename)) {
             return null;
