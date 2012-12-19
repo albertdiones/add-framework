@@ -16,7 +16,7 @@ CLASS ctrl_page_404 EXTENDS ctrl_tpl_page {
     *
     * @since ADD MVC 0.0
     */
-   public function process() {
+   public function process_data() {
       header("HTTP/1.0 404 Not Found");
    }
 }
