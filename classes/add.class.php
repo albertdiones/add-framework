@@ -560,7 +560,8 @@ CLASS add {
    static function current_controller_class() {
       static $current_controller_class;
       if (!isset($current_controller_class)) {
-         $current_controller_class = 'ctrl_page_'.self::current_controller_basename();
+         $current_controller_basename = self::current_controller_basename();
+         $current_controller_class    =  $current_controller_basename ? 'ctrl_page_'.$current_controller_basename : false;;
       }
       return $current_controller_class;
    }
@@ -587,15 +588,13 @@ CLASS add {
          $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
 
          if (preg_match('/\W+/',$current_controller_basename)) {
-            $current_controller_basename = null;
+            $current_controller_basename = false;
             return $current_controller_basename;
          }
 
          if (!$current_controller_basename)
             $current_controller_basename = self::$HOME_CONTROLLER;
       }
-
-      debug::var_dump($current_controller_basename);
 
       return $current_controller_basename;
    }
