@@ -581,21 +581,18 @@ CLASS add {
                ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
                : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
 
-         $basename = $relative_path;
-         $basename = preg_replace('/\-+/','_',$basename);
-         $basename = preg_replace('/\.php$/','',$basename);
-         $basename = preg_replace('/\//','__',$basename);
-         #$basename = preg_replace('/\W+/','_',$basename);
+         $current_controller_basename = $relative_path;
+         $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
+         $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
+         $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
 
-         if (preg_match('/\W+/',$basename)) {
-            return null;
+         if (preg_match('/\W+/',$current_controller_basename)) {
+            $current_controller_basename = null;
+            return $current_controller_basename;
          }
 
-         if (!$basename)
-            $basename = self::$HOME_CONTROLLER;
-
-         $current_controller_basename = $basename;
-
+         if (!$current_controller_basename)
+            $current_controller_basename = self::$HOME_CONTROLLER;
       }
       return $current_controller_basename;
    }
