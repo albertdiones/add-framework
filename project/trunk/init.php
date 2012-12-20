@@ -89,7 +89,7 @@ set_include_path($C->incs_dir);
  * assets
  * @author albertdiones@gmail.com
  */
-$C->assets_path = $C->base_url.'assets/';
+$C->assets_path = $C->path.'assets/';
 $C->css_path    = $C->assets_path.'css/';
 $C->js_path     = $C->assets_path.'js/';
 $C->images_path = $C->assets_path.'images/';
