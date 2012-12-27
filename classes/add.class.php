@@ -599,6 +599,10 @@ CLASS add {
       return $current_controller_basename;
    }
 
+   /**
+    * The view filepath of the  current request
+    *
+    */
    public static function current_view_filepath() {
       static $cache;
       if (!isset($cache)) {
