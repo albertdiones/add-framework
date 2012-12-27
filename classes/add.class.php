@@ -601,8 +601,25 @@ CLASS add {
 
    public static function current_view_filepath() {
       static $cache;
-      if (empty($cache)) {
-         $cache = (is_array(self::config()->views_dir) ? array_shift(self::config()->views_dir) : self::config()->views_dir).'/pages/'.self::current_controller_basename().'.tpl';
+      if (!isset($cache)) {
+         $basename = self::current_controller_basename();
+         if (is_array(self::config()->views_dir)) {
+            foreach (self::config()->views_dir as $views_dir) {
+               $view_filepath = "$view_dir/pages/$basename.tpl";
+               if (file_exists($view_filepath)) {
+                  $cache = $view_filepath;
+                  break;
+               }
+            }
+
+            if (!isset($cache)) {
+               $cache = false;
+            }
+
+         }
+         else {
+            $cache = self::config()->views_dir.'/pages/'.self::current_controller_basename().'.tpl';
+         }
       }
       return $cache;
    }
