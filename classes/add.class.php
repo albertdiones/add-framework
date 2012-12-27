@@ -600,7 +600,11 @@ CLASS add {
    }
 
    public static function current_view_filepath() {
-      return self::config()->views_dir.'/pages/'.self::current_controller_basename().'.tpl';
+      static $cache;
+      if (empty($cache)) {
+         $cache = (is_array(self::config()->views_dir) ? array_shift(self::config()->views_dir) : self::config()->views_dir).'/pages/'.self::current_controller_basename().'.tpl';
+      }
+      return $cache;
    }
 
 
