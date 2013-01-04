@@ -115,7 +115,7 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
             $image_create_func = "imagecreatefrompng";
          break;
          default:
-            throw new Exception("Unrecognized file extension: $extension");
+            throw new e_unknown("Unrecognized file extension: $extension");
          break;
       }
 
