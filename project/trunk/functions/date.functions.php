@@ -2,6 +2,8 @@
 /**
  * Date functions
  *
+ * @deprecated ... not sure why is this even here and existing
+ *
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC\Functions
