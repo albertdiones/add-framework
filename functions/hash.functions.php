@@ -2,6 +2,8 @@
 /**
  * Hash functions
  *
+ * This should be deprecated along with date.functions.php but this can be useful for others anyway so...
+ *
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC\Functions
