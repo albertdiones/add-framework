@@ -603,14 +603,18 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
+    *
     * Queries for $field that looks like $query
     * This function has the ability to query for a field value even though it is misspelled
     * For very big tables, this might cause CPU spikes
+    *
     * @param string $query the keyword to search for
     * @param string $field the field to search at
-    * @param float $threshold of the match
-    * @param float $allowed_difference from the highest match (adjust to increase or decrease number of results)
+    * @param float $threshold of the match, i.e. the required similarity between the $query and the $field value
+    * @param float $allowed_difference from the highest match to allow (adjust to increase or decrease number of results)
+    *
     * @since ADD MVC 0.0
+    *
     * @todo create another function that supports pagination
     */
    static function smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25) {
