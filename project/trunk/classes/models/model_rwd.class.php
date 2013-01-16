@@ -602,79 +602,6 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
-    *
-    * Queries for $field that looks like $query
-    * This function has the ability to query for a field value even though it is misspelled
-    * For very big tables, this might cause CPU spikes
-    *
-    * @param string $query the keyword to search for
-    * @param string $field the field to search at
-    * @param float $threshold of the match, i.e. the required similarity between the $query and the $field value
-    * @param float $allowed_difference from the highest match to allow (adjust to increase or decrease number of results)
-    *
-    * @since ADD MVC 0.0
-    *
-    * @todo create another function that supports pagination
-    */
-   static function smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25) {
-      $instances = array();
-
-      if (!$query || !$field) {
-         return array();
-      }
-
-      $Q_like_query = static::db()->quote("%$query%");
-      $Q_field      = static::db()->meta_quote($field);
-      $query_length = strlen($query);
-
-      $instances = static::get_all($Q_field." LIKE $Q_like_query");
-
-      if (!$instances) {
-         $Q_like_query0_start = static::db()->quote("% ".$query{0}."%");
-         $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
-
-         $probable_instances = static::get_all("$Q_field = $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
-         $instance_scores = array();
-
-         foreach ($probable_instances as $probable_instance) {
-            $similar_chars = similar_text($probable_instance->$field,$query);
-            $instance_scores[$probable_instance->id()] = $similar_chars/$query_length;
-         }
-
-         if ($instance_scores) {
-            $highest_score = max($instance_scores);
-
-            if ($highest_score>=$threshold) {
-               krsort($instance_scores);
-
-               foreach ($instance_scores as $id=>$instance_score) {
-                  if ( ($highest_score-$instance_score) < $allowed_difference ) {
-                     $instances[] = static::get_instance($id);
-                  }
-               }
-
-            }
-
-         }
-
-      }
-      return $instances;
-   }
-
-   /**
-    * Smart field query one
-    * Returns the first instance (closest match) on smart_field_query() results
-    * @see model_rwd::smart_field_query()
-    * @return object $instance of the closest matched row
-    * @since ADD MVC 0.0
-    */
-   static function smart_field_query_one(/* same as smart_field_query() arguments*/) {
-      $instances = call_user_func_array(array(get_called_class(),'smart_field_query'),func_get_args());
-      return array_shift($instances);
-   }
-
-   /**
     * get_one_where function
     * get an instance of a row matching the $conditions
     * @param mixed $conditions the conditions that should match the row
@@ -812,6 +739,85 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    public static function meta_columns() {
       return static::db()->MetaColumns(static::TABLE);
    }
+
+/**
+ * -----------------
+ * Complex special functions
+ * -----------------
+ */
+   /**
+    * smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
+    *
+    * Queries for $field that looks like $query
+    * This function has the ability to query for a field value even though it is misspelled
+    * For very big tables, this might cause CPU spikes
+    *
+    * @param string $query the keyword to search for
+    * @param string $field the field to search at
+    * @param float $threshold of the match, i.e. the required similarity between the $query and the $field value
+    * @param float $allowed_difference from the highest match to allow (adjust to increase or decrease number of results)
+    *
+    * @since ADD MVC 0.0
+    *
+    * @todo create another function that supports pagination
+    */
+   static function smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25) {
+      $instances = array();
+
+      if (!$query || !$field) {
+         return array();
+      }
+
+      $Q_like_query = static::db()->quote("%$query%");
+      $Q_field      = static::db()->meta_quote($field);
+      $query_length = strlen($query);
+
+      $instances = static::get_all($Q_field." LIKE $Q_like_query");
+
+      if (!$instances) {
+         $Q_like_query0_start = static::db()->quote("% ".$query{0}."%");
+         $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
+
+         $probable_instances = static::get_all("$Q_field = $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
+         $instance_scores = array();
+
+         foreach ($probable_instances as $probable_instance) {
+            $similar_chars = similar_text($probable_instance->$field,$query);
+            $instance_scores[$probable_instance->id()] = $similar_chars/$query_length;
+         }
+
+         if ($instance_scores) {
+            $highest_score = max($instance_scores);
+
+            if ($highest_score>=$threshold) {
+               krsort($instance_scores);
+
+               foreach ($instance_scores as $id=>$instance_score) {
+                  if ( ($highest_score-$instance_score) < $allowed_difference ) {
+                     $instances[] = static::get_instance($id);
+                  }
+               }
+
+            }
+
+         }
+
+      }
+      return $instances;
+   }
+
+   /**
+    * Smart field query one
+    * Returns the first instance (closest match) on smart_field_query() results
+    * @see model_rwd::smart_field_query()
+    * @return object $instance of the closest matched row
+    * @since ADD MVC 0.0
+    */
+   static function smart_field_query_one(/* same as smart_field_query() arguments*/) {
+      $instances = call_user_func_array(array(get_called_class(),'smart_field_query'),func_get_args());
+      return array_shift($instances);
+   }
+
 
 
 /**
