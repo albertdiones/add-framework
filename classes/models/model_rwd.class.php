@@ -587,8 +587,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
             "
             DELETE
             FROM ".static::TABLE."
-            WHERE ".$this->pk_where()."
-            LIMIT 1"
+            WHERE ".$this->pk_where().
+            static::db()->hasLimit ? "LIMIT 1" : ""
          );
 
       if ($delete_query_successful) {
