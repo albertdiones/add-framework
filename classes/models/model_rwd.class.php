@@ -4,6 +4,7 @@
  * An object class representing a table, then rows are represented by instance of this class
  * Aims to be compatible with any databases
  * static variable $D should be declared, and the functions are biased to adodb object class
+ *
  * @package ADD MVC\Models
  * @version 1.4.1
  * @since ADD MVC 0.0
@@ -58,12 +59,16 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    /**
     * The adodb object (wrapper)
     *
+    * @deprecated use static::db() instead
+    *
     * @since ADD MVC 0.0
     */
    static $D;
 
    /**
     * db function
+    *
+    * @return an adodb object or a compatbile one
     *
     * @since ADD MVC 0.6
     */
@@ -75,7 +80,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Sets a field
-    * (also updates the db row on the end of the script)
+    * (also updates the db row on the end of the script or after a call of $this->update_db_row())
     *
     * @param string $varname
     * @param mixed $value
@@ -99,7 +104,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * validates a magic property
+    * validates if the property is a valid field of the table
     *
     * @param string $varname
     *
@@ -116,7 +121,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Destruct method
+    * Script to run when the object instance is destructed
     * @see http://www.php.net/manual/en/language.oop5.decon.php
     * @since ADD MVC 0.0
     */
@@ -137,7 +142,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * Loaded Class Event Handler
+    * Script to run when this class is loaded
     *
     * @since ADD MVC 0.8
     */
@@ -154,6 +159,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    /**
     * model_rwd->update_db_row()
     * Updates the fields of the database table that has been updated since the object has been instantiated
+    *
+    * @todo experiment with the second parameter of autoExecute(), see if there's error on special keyword fields
+    *
     * @return boolean true if success false if failed
     * @since ADD MVC 0.0
     */
@@ -174,10 +182,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * Gets an instance that represent the row from the table
     * $arg can either be the primary key or
     * the field value of the field related to the variable type
+    *
     * examples:
     *    member::get_instance(1); // gets the member::TABLE row with primary key 1
     *    admin::get_instance(123);
     *    member::get_instance('albert@add.ph');
+    *
     * @return object $model the model_rwd class object
     * @param mixed $arg the primary key or the field value to search
     * @since ADD MVC 0.0
@@ -220,6 +230,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * get_value_index_field($arg)
     * returns the index field to be used on fetching
     * redeclare on classes for polymorphic get_instance()
+    *
     * @see model_rwd::get_instance
     * @param mixed $arg
     * @since ADD MVC 0.0
@@ -249,7 +260,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * Creates a new instance using the array $row
     * Automatically cache it by the PK of the table
     * Take note that, the $row is discarded if the row is already cached
+    *
     * @param array $row complete array of fields and values of the row
+    *
     */
    static function get_row_instance($row) {
       if (!$row)
@@ -292,6 +305,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Cache the model_rwd instance, optionally using the $field
+    *
     * @param model_rwd $instance with class model_rwd to cache
     * @param mixed $field to use as key to instance
     * @since ADD MVC 0.0
@@ -324,6 +338,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Fetch cached instance with $field = $field_value
+    *
     * @param string $field name
     * @param string $field_value to search
     * @since ADD MVC 0.0
@@ -655,6 +670,19 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       return array_shift($instances);
    }
 
+   /**
+    * get_one_where function
+    * get an instance of a row matching the $conditions
+    * @param mixed $conditions the conditions that should match the row
+    * @param string $order_by the order by value
+    * @deprecated
+    * @todo create new function model_rwd::get_one($conditions,$order_by)
+    */
+   static function get_one_where($conditions=array(),$order_by="") {
+      $rows = static::get_where_order_page($conditions,$order_by,1,1);
+      return $rows ? array_shift($rows) : false;
+   }
+
 
 /**
  * -----------------
@@ -772,6 +800,16 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
 
+   /**
+    * column_names
+    *
+    * @since ADD MVC 0.8.0
+    */
+   public static function meta_columns() {
+      return static::db()->MetaColumns(static::TABLE);
+   }
+
+
 /**
  * -----------------
  * DEPRECATED functions
@@ -881,25 +919,4 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       return $instances;
    }
 
-   /**
-    * get_one_where function
-    * get an instance of a row matching the $conditions
-    * @param mixed $conditions the conditions that should match the row
-    * @param string $order_by the order by value
-    * @deprecated
-    * @todo create new function model_rwd::get_one($conditions,$order_by)
-    */
-   static function get_one_where($conditions=array(),$order_by="") {
-      $rows = static::get_where_order_page($conditions,$order_by,1,1);
-      return $rows ? array_shift($rows) : false;
-   }
-
-   /**
-    * column_names
-    *
-    * @since ADD MVC 0.8.0
-    */
-   public static function meta_columns() {
-      return static::db()->MetaColumns(static::TABLE);
-   }
 }
