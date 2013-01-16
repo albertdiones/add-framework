@@ -159,7 +159,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public function update_db_row() {
       if ($this->updated_data) {
-         $result = static::db()->autoExecute(static::TABLE,$this->updated_data,"UPDATE",$this->pk_where());
+         $result = static::db()->autoExecute(static::db()->meta_quote(static::TABLE),$this->updated_data,"UPDATE",$this->pk_where());
          $this->updated_data = array();
          return true;
       }
