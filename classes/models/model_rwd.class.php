@@ -782,8 +782,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
          $instance_scores = array();
 
          foreach ($probable_instances as $probable_instance) {
-            $similar_chars = similar_text($probable_instance->$field,$query);
-            $instance_scores[$probable_instance->id()] = $similar_chars/$query_length;
+            similar_text($probable_instance->$field,$query, $similarity_percent);
+            $instance_scores[$probable_instance->id()] = $similarity_percent;
          }
 
          if ($instance_scores) {
