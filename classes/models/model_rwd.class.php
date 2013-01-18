@@ -772,13 +772,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $Q_field      = static::db()->meta_quote($field);
       $query_length = strlen($query);
 
-      $instances = static::get_all($Q_field." LIKE $Q_like_query");
+      $instances = static::get_where_order_page($Q_field." LIKE $Q_like_query");
 
       if (!$instances) {
          $Q_like_query0_start = static::db()->quote("% ".$query{0}."%");
          $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
 
-         $probable_instances = static::get_all("$Q_field = $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
+         $probable_instances = static::get_where_order_page("$Q_field = $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
          $instance_scores = array();
 
          foreach ($probable_instances as $probable_instance) {
@@ -888,10 +888,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @param mixed $conditions
     * @param string $order_by
     *
-    * @deprecated static::get_all
+    * @deprecated static::get_where_order_page
     */
    static function get_all_where($conditions=array(),$order_by="") {
-      return static::get_all($conditions,$order_by);
+      return static::get_where_order_page($conditions,$order_by);
    }
 
    /**
