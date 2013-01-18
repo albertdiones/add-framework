@@ -775,7 +775,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $instances = static::get_where_order_page($Q_field." LIKE $Q_like_query");
 
       if (!$instances) {
-         $Q_like_query0_start = static::db()->quote("% ".$query{0}."%");
+         $Q_like_query0_start = static::db()->quote("%".$query{0}."%");
          $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
 
          $probable_instances = static::get_where_order_page("$Q_field LIKE $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
