@@ -762,7 +762,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @todo create another function that supports pagination
     */
    static function smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25) {
+
       $instances = array();
+
+      # backward support
+      $allowed_difference *= 100;
+      $threshold *= 100;
 
       if (!$query || !$field) {
          return array();
@@ -778,23 +783,38 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
          $Q_like_query0_start = static::db()->quote("%".$query{0}."%");
          $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
 
-         $probable_instances = static::get_where_order_page("$Q_field LIKE $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0");
-         $instance_scores = array();
+         $probable_rows = static::db()->getArray(
+               "
+               SELECT ".static::table_pk().", $Q_field
+               FROM ".static::TABLE."
+               WHERE $Q_field LIKE $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0
+               "
+            );
 
-         foreach ($probable_instances as $probable_instance) {
-            similar_text($probable_instance->$field,$query, $similarity_percent);
-            $instance_scores[$probable_instance->id()] = $similarity_percent;
+         $instance_scores = array();
+         foreach ($probable_rows as $index => $probable_row) {
+            similar_text($probable_row[$field],$query, $similarity_percent);
+            $instance_scores[$index] = $similarity_percent;
+            unset($similarity_percent, $probable_row);
          }
 
          if ($instance_scores) {
             $highest_score = max($instance_scores);
 
-            if ($highest_score>=$threshold) {
-               krsort($instance_scores);
+            if ( $highest_score >= $threshold ) {
+               arsort($instance_scores);
 
-               foreach ($instance_scores as $id=>$instance_score) {
+               foreach ($instance_scores as $index=>$instance_score) {
                   if ( ($highest_score-$instance_score) < $allowed_difference ) {
-                     $instances[] = static::get_instance($id);
+                     if (count($probable_rows[$index]) == 2) {
+                        $pk = $probable_rows[$index][static::table_pk()];
+                     }
+                     else {
+                        $multi_pk = $probable_rows[$index];
+                        array_pop($multi_pk);
+                        $pk = $multi_pk;
+                     }
+                     $instances[] = static::get_instance($pk);
                   }
                }
 
