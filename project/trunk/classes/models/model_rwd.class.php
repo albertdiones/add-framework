@@ -577,9 +577,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * model_rwd->delete()
+    *
     * @return boolean true on success false on failure
-    * @todo use adodb abstraction to add the limit
+    *
     * @todo make this function support static calling or make a separate static version of this function
+    * @todo add "top" support
+    *
     * @since ADD MVC 0.0
     */
    public function delete() {
