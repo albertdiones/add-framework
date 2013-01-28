@@ -338,6 +338,7 @@ ABSTRACT CLASS add_debug {
       $smarty = new add_smarty();
       $smarty -> assign('label',$label);
       $smarty -> assign('value',$value);
+      $smarty -> assign('indentations',0);
       static::restricted_echo($smarty->fetch('debug/print_data.tpl'));
    }
 }
