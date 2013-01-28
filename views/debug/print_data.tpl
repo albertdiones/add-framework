@@ -1,4 +1,4 @@
-{if add::current_controller()->content_type() == 'text/plain'}{*
+{if add::content_type() == 'text/plain'}{*
    *}{if is_bool($value)}{*
       *}{$label}: {*
       *}_{if $value}Yes{else}No{/if}_{*
