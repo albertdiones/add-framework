@@ -716,10 +716,12 @@ CLASS add {
           */
          if (add::is_live()) {
             error_reporting(0);
+            ini_set('display_errors',0);
             add::$handle_shutdown = false;
          }
          else {
             error_reporting(E_ALL);
+            ini_set('display_errors',1);
 
             /**
              * When development, record the time spent on script execution
