@@ -223,13 +223,29 @@ CLASS add {
     * @since ADD MVC 0.0
     */
    static function handle_exception(Exception $e) {
-      if (method_exists($e,'handle_exception'))
-         return $e->handle_exception();
-      else {
-         while (ob_get_level()) {
-            ob_end_clean();
+      try {
+         if (method_exists($e,'handle_exception'))
+            return $e->handle_exception();
+         else {
+            while (ob_get_level()) {
+               ob_end_clean();
+            }
+            if (add::content_type() == 'text/plain') {
+               die($e->getMessage()."\r\n".$e->getFile().":".$e->getLine());
+            }
+            else {
+               DEFINE('add\terminal_error\error_message',$e->getMessage());
+               DEFINE('add\terminal_error\error_header',get_class($e));
+               DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
+               if (!add::include_include_file('terminal_error.php')) {
+                  throw new $e;
+               }
+               add::shutdown(false);
+            }
          }
-         die("<div style='color:red'>".$e->getMessage()." ".$e->getFile().":".$e->getLine()." </div>");
+      }
+      catch (Exception $e) {
+         die("<div style='color:red'>".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>");
       }
    }
 
@@ -276,7 +292,6 @@ CLASS add {
             E_USER_WARNING    => 'Developer Issued Warning',
             E_USER_NOTICE     => 'Developer Issued Notice'
          );
-
 
       if (!(error_reporting() & $errno)) {
          return;
