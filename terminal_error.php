@@ -21,7 +21,7 @@ $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_m
             border-radius:5px;
             margin:20% auto;
             width:600px;
-            box-shadow:0 0 4px 2px red;
+            box-shadow:0 0 6px 3px #f33;
          }
          header {
             padding:5px 10px;
@@ -61,7 +61,7 @@ $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_m
          <header><?php echo error_header ?></header>
          <article>
             <h1><?php echo $error_message ?></h1>
-            <p>Contact the system administrator with the error printed below</p>
+            <p>Contact the system administrator with the error printed above</p>
          </article>
          <footer><?php echo error_footer ?></footer>
       </section>
