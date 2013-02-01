@@ -19,7 +19,7 @@ $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_m
             background:#fff;
             border:1px solid #000;
             border-radius:5px;
-            margin:50px auto;
+            margin:20% auto;
             width:600px;
          }
          header {
@@ -31,10 +31,11 @@ $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_m
             border-radius:5px 5px 0 0;
          }
          h1 {
-            padding:5px 10px;
-            font-weight:normal;
-            font:12px verdana;
+            padding:10px 20px;
+            font-size:10px;
+            font-weight:bold;
             text-align:center;
+            line-height:20px;
          }
          footer {
             padding:5px 10px;
