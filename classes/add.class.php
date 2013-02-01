@@ -237,7 +237,7 @@ CLASS add {
                DEFINE('add\terminal_error\error_message',$e->getMessage());
                DEFINE('add\terminal_error\error_header',get_class($e));
                DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
-               if (!add::include_include_file('terminal_error.php')) {
+               if (!headers_sent() && !add::include_include_file('terminal_error.php')) {
                   throw new $e;
                }
                add::shutdown(false);
