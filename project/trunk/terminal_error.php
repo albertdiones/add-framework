@@ -2,6 +2,8 @@
 namespace add\terminal_error;
 #var_dump($GLOBALS);
 
+header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+
 $error_message = error_message;
 
 $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_message);
@@ -45,12 +47,12 @@ foreach (explode("\n",$backtraces) as $backtrace) {
          article {
             color:#333;
             background:#fff;
+            text-align:center;
          }
          h1 {
             padding:10px 20px;
             font-size:10px;
             font-weight:bold;
-            text-align:center;
             line-height:20px;
             color:#a00;
          }
@@ -64,6 +66,16 @@ foreach (explode("\n",$backtraces) as $backtrace) {
             margin:0 auto;
             display:block;
          }
+         ul {
+            cursor:pointer;
+            display:none;
+            text-align:left;
+         }
+         a {
+            color:#933;
+            font-size:8px;
+            text-decoration:none;
+         }
          footer {
             padding:5px 10px;
             background:#333;
@@ -73,13 +85,33 @@ foreach (explode("\n",$backtraces) as $backtrace) {
             border-radius:0 0 5px 5px;
          }
       </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+      <script>
+         $().ready(
+            function() {
+               $('a[href="#backtrace"]').click(
+                  function() {
+                     var $ul = $('ul#backtrace');
+                     if ($ul.not(':visible').length) {
+                        $ul.slideDown();
+                     }
+                     else {
+                        $ul.slideUp();
+                     }
+                     return false;
+                  }
+               );
+            }
+            );
+      </script>
    </head>
    <body>
       <section class="page">
          <header><?php echo error_header ?></header>
          <article>
             <h1><?php echo $error_message ?></h1>
-            <ul>
+            <a href="#backtrace">&uarr;&darr; Toggle Backtrace</a>
+            <ul id="backtrace">
                <?php foreach ($file_lines as $file_line): ?>
                <li><xmp><?php echo $file_line ?></xmp></li>
                <?php endforeach ?>
