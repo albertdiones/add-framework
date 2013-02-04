@@ -231,7 +231,10 @@ CLASS add {
                ob_end_clean();
             }
             if (add::content_type() == 'text/plain') {
-               die($e->getMessage()."\r\n".$e->getFile().":".$e->getLine());
+               die(
+                     get_class($e)."(#".$e->getCode().")\r\n\r\n".
+                     $e->getMessage()."\r\n\r\n".$e->getFile().":".$e->getLine()."\r\n\r\n\r\n\r\n"
+                  );
             }
             else {
                DEFINE('add\terminal_error\error_message',$e->getMessage());
