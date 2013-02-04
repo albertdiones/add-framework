@@ -452,10 +452,12 @@ CLASS add {
       }
       */
 
-      if ($include_once)
+      if ($include_once) {
          return include_once($filepath);
-      else
+      }
+      else {
          return include($filepath);
+      }
    }
 
    /**
