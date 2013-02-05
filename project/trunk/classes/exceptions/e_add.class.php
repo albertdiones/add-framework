@@ -287,6 +287,9 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          while (ob_get_level()) {
             ob_end_clean();
          }
+         if (!$this->view()) {
+            die($user_message);
+         }
          if (add::is_development()) {
             # Prevent misuse on live exceptions
             $this->view()->assign('exception',$this);
@@ -317,6 +320,10 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     */
    public function view() {
       static $view;
+
+      if (!class_exists('smarty')) {
+         return false;
+      }
 
       if (!isset($view)) {
          $view = new add_smarty();
