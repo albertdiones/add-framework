@@ -64,7 +64,7 @@ add::load_functions('common');
 add::environment_status(true);
 
 if (add::is_development() && !is_writeable($C->caches_dir)) {
-   $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches';
+   $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches_'.sha1($C->root_dir);
    if (!file_exists($C->caches_dir)) {
       mkdir($C->caches_dir,0777);
    }
