@@ -288,7 +288,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
             ob_end_clean();
          }
          if (!$this->view()) {
-            die($user_message);
+            echo $user_message;
          }
          if (add::is_development()) {
             # Prevent misuse on live exceptions
