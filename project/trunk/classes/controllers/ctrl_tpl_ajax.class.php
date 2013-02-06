@@ -115,7 +115,28 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     *
     */
    public function print_response($data) {
-      echo json_encode($data);
+      echo json_encode(static::recursive_utf_encode($data));
+   }
+
+
+   /**
+    * UTF Encode all strings
+    *
+    * @param mixed $var
+    *
+    */
+   public function compatible_encode($var) {
+      if (is_string($var)) {
+         return utf_encode($var);
+      }
+      if (is_array($var)) {
+         $new_array = array();
+         foreach ($var as $index => $value) {
+            $new_array[static::compatible_encode($index)] = static::compatible_encode($value);
+         }
+         return $new_array;
+      }
+      return $var;
    }
 
    /**
