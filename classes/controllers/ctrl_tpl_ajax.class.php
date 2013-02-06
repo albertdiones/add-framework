@@ -115,7 +115,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     *
     */
    public function print_response($data) {
-      echo json_encode(static::recursive_utf_encode($data));
+      echo json_encode(static::compatible_encode($data));
    }
 
 
