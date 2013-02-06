@@ -127,7 +127,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     */
    public function compatible_encode($var) {
       if (is_string($var)) {
-         return utf_encode($var);
+         return utf8_encode($var);
       }
       if (is_array($var)) {
          $new_array = array();
