@@ -55,11 +55,11 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
     *
     * @since ADD MVC 0.5
     */
-   public static function require_dir_exists($dir,$writable=null) {
+   public static function require_dir_exists($dir,$writable=false) {
       if (!file_exists($dir)) {
          throw new e_system("Directory $dir is not existing",add::config());
       }
-      if (!is_writable($dir)) {
+      if ($writable && !is_writable($dir)) {
          throw new e_system("Directory $dir is not writable",add::config());
       }
    }
