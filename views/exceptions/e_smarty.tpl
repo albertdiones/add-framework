@@ -2,7 +2,7 @@
 {extends file='exceptions/e_add.tpl'}
 {block name='main'}
 {if add::content_type() == 'text/plain'}
-= System Error =
+= Smarty Error =
 
    {$user_message|default:'Non-existing template path.'}
 {else}
