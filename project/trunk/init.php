@@ -34,12 +34,26 @@ require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
 
+/**
+ * Register handlers
+ *
+ */
 spl_autoload_register('add::load_class');
 set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
+/**
+ * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=33
+ */
+if (!add::is_live() && !add::is_developer()) {
+   add::environment_status('live');
+}
 
+/**
+ * Complete the config variables
+ *
+ */
 if (!isset($C->incs_dir))
    $C->incs_dir            = $C->root_dir.'/includes';
 
