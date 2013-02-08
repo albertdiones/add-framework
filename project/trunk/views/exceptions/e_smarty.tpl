@@ -6,7 +6,7 @@
 
    {$user_message|default:'Non-existing template path.'}
 {else}
-<h1>System Error</h1>
+<h1>Smarty Error</h1>
    {if $user_message}
       {$user_message}
    {else}
