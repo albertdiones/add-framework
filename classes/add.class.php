@@ -718,6 +718,10 @@ CLASS add {
     */
    public static function environment_status($new_status = null) {
 
+      /**
+       *
+       * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=33
+       */
       if (!add::is_developer()) {
          if (
                add::$environment_status != 'live'
