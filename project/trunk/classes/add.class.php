@@ -224,12 +224,18 @@ CLASS add {
     */
    static function handle_exception(Exception $e) {
       try {
-         if (method_exists($e,'handle_exception'))
+         if (method_exists($e,'handle_exception')) {
             return $e->handle_exception();
+         }
          else {
             while (ob_get_level()) {
                ob_end_clean();
             }
+
+            if ($e instanceof SmartyException) {
+               static::handle_exception(new e_smarty($e->getMessage(),$e));
+            }
+
             if (add::content_type() == 'text/plain') {
                die(
                      get_class($e)."(#".$e->getCode().")\r\n\r\n".
