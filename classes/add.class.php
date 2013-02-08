@@ -718,9 +718,20 @@ CLASS add {
     */
    public static function environment_status($new_status = null) {
 
+      if (!add::is_developer()) {
+         if (
+               add::$environment_status != 'live'
+               ||
+               (isset($new_status) && $new_status != 'live')
+            ) {
+            $new_status = 'live';
+         }
+      }
+
       if ($new_status) {
 
          if (is_string($new_status)) {
+
             if ($new_status === 'development') {
                if (add::is_developer()) {
                   add::$environment_status = $new_status;
@@ -735,6 +746,9 @@ CLASS add {
             else {
                throw new e_developer("Invalid environment_status: $new_status");
             }
+         }
+         else if ($new_status !== true) {
+            throw new e_developer("Invalid new environment status",$new_status);
          }
 
          /**
