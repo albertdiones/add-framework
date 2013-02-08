@@ -18,5 +18,6 @@ CLASS ctrl_page_404 EXTENDS ctrl_tpl_page {
     */
    public function process_data($common_gpc = array()) {
       header("HTTP/1.0 404 Not Found");
+      $this->assign('is_development', add::is_development());
    }
 }
