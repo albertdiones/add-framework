@@ -88,7 +88,7 @@ if (!is_writeable($C->caches_dir)) {
       }
 
       if (!is_writable($cache_file->getPathname())) {
-         die("Cache path is not writeable and one (or more) of it's files are not writeable",array($C->caches_dir,$cache_file->getPathname()));
+         die("Cache path is not writeable and one (or more) of it's files are not writeable".print_r(array($C->caches_dir,$cache_file->getPathname()),true));
       }
 
    }
