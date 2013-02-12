@@ -87,7 +87,7 @@ if (!is_writeable($C->caches_dir)) {
          continue;
       }
 
-      print_r(is_writable($cache_file->getPathname()),array($C->caches_dir,$cache_file->getPathname()));die();
+      print_r(array(is_writable($cache_file->getPathname()),array($C->caches_dir,$cache_file->getPathname())));die();
 
       if (!is_writable($cache_file->getPathname())) {
          print_r(array($C->caches_dir,$cache_file->getPathname()));die();
