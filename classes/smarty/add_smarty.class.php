@@ -36,6 +36,18 @@ CLASS add_smarty EXTENDS Smarty {
       $this -> config_dir   = $C->configs_dir.'/smarty/';
       $this -> cache_dir    = $C->caches_dir.'/smarty_cache/';
 
+      if (add::is_development()) {
+         foreach (array($this->compile_dir, $this->cache_dir) as $dir) {
+            if (!is_dir($dir)) {
+               $this->_dir_perms = 0777;
+            }
+            else if (!is_writable($dir)) {
+               # Do something
+            }
+         }
+
+      }
+
    }
 
     /**
