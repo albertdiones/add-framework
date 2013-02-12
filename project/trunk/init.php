@@ -82,6 +82,11 @@ if (!is_writeable($C->caches_dir)) {
    $cache_files = new DirectoryIterator($C->caches_dir);
 
    foreach ($cache_files as $cache_file) {
+
+      if (!$cache_file->isDir() || $cache_file->isDot()) {
+         continue;
+      }
+
       if (!is_writable($cache_file->getFilePathName())) {
          throw new e_system("Cache path is not writeable");
       }
