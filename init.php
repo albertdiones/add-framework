@@ -127,7 +127,12 @@ $C->assets_libs_path   = $C->assets_path.'libs/';
 
 
 if (isset($C->developer_emails)) {
-   e_add::$email_addresses = $C->developer_emails;
+   if (is_string($C->developer_emails)) {
+      e_add::$email_addresses = $C->developer_emails;
+   }
+   else if (is_array($C->developer_emails)) {
+      e_add::$email_addresses = implode(", ",$C->developer_emails);
+   }
 }
 
 /**
