@@ -125,6 +125,11 @@ $C->js_path     = $C->assets_path.'js/';
 $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
+
+if (isset($C->developer_emails)) {
+   e_add::$email_addresses = $C->developer_emails;
+}
+
 /**
  * Libraries
  */
