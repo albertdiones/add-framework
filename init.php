@@ -67,6 +67,7 @@ if (add::is_development() && !is_writeable($C->caches_dir)) {
    $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches_'.sha1($C->root_dir);
    if (!file_exists($C->caches_dir)) {
       mkdir($C->caches_dir);
+      chmod($C->caches_dir,0777);
    }
    else if (!is_dir($C->caches_dir)) {
       throw new e_system("Cache path is not a directory", $C->caches_dir);
