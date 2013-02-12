@@ -11,8 +11,7 @@ INTERFACE i_with_view {
     * The view filepath of $this controller
     * @since ADD MVC 0.7
     */
-   /*public /*static* function view_filepath();*/
-
+   public static function view_filepath();
    /**
     * The view base file name of $this controller
     * @since ADD MVC 0.7
