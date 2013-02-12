@@ -39,6 +39,14 @@ set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
+if (isset($C->developer_emails)) {
+   if (is_string($C->developer_emails)) {
+      e_add::$email_addresses = $C->developer_emails;
+   }
+   else if (is_array($C->developer_emails)) {
+      e_add::$email_addresses = implode(", ",$C->developer_emails);
+   }
+}
 
 if (!isset($C->incs_dir))
    $C->incs_dir            = $C->root_dir.'/includes';
@@ -126,15 +134,6 @@ $C->js_path     = $C->assets_path.'js/';
 $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
-
-if (isset($C->developer_emails)) {
-   if (is_string($C->developer_emails)) {
-      e_add::$email_addresses = $C->developer_emails;
-   }
-   else if (is_array($C->developer_emails)) {
-      e_add::$email_addresses = implode(", ",$C->developer_emails);
-   }
-}
 
 /**
  * Libraries
