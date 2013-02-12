@@ -83,13 +83,14 @@ if (!is_writeable($C->caches_dir)) {
 
    foreach ($cache_files as $cache_file) {
 
-      if (!$cache_file->isDir() || $cache_file->isDot()) {
+      if ($cache_file->isDot()) {
          continue;
       }
 
       if (!is_writable($cache_file->getPathname())) {
-         throw new e_system("Cache path is not writeable");
+         throw new e_system("Cache path is not writeable and one (or more) of it's files are not writeable",array($C->caches_dir,$cache_file->getPathname()));
       }
+
    }
 
    trigger_error("Cache path is not writeable",E_WARNING);
