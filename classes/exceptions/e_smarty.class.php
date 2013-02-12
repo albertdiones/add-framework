@@ -11,6 +11,6 @@ CLASS e_smarty EXTENDS e_system {
     */
    public function handle_exception() {
       $this->message = str_replace(add::config()->root_dir, '< mvc-path >', $this->data->message);
-      parent::handle_exception();
+      return parent::handle_exception();
    }
 }
