@@ -12,7 +12,7 @@ CLASS e_smarty EXTENDS e_system {
     */
    public function getMessage() {
       $error_message = parent::getMessage();
-      $error_message = str_replace(add::config()->root_dir, 'add-mvc-path', $error_message);
+      $error_message = str_replace(add::config()->root_dir, 'mvc-path', $error_message);
       return $error_message;
    }
 }
