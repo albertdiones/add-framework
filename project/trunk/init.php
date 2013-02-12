@@ -93,7 +93,7 @@ if (!is_writeable($C->caches_dir)) {
 
    }
 
-   trigger_error("Cache path is not writeable",E_WARNING);
+   trigger_error("Cache path is not writeable",E_USER_WARNING);
 
    unset($cache_file,$cache_files);
 
