@@ -819,6 +819,13 @@ CLASS add {
     */
    public static function is_developer() {
 
+      /**
+       * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=39
+       */
+      if (php_sapi_name() == "cli") {
+
+      }
+
       # Fix for issue #6
       if (current_ip_in_network())
          return true;
