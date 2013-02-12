@@ -90,7 +90,7 @@ if (!is_writeable($C->caches_dir)) {
          continue;
       }
 
-      if (!is_writable($cache_file->getFilePathName())) {
+      if (!is_writable($cache_file->getPathname())) {
          throw new e_system("Cache path is not writeable");
       }
    }
