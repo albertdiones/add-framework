@@ -39,15 +39,6 @@ set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
-if (isset($C->developer_emails)) {
-   if (is_string($C->developer_emails)) {
-      e_add::$email_addresses = $C->developer_emails;
-   }
-   else if (is_array($C->developer_emails)) {
-      e_add::$email_addresses = implode(", ",$C->developer_emails);
-   }
-}
-
 if (!isset($C->incs_dir))
    $C->incs_dir            = $C->root_dir.'/includes';
 
@@ -70,6 +61,22 @@ if (!isset($C->caches_dir))
 add::load_functions('common');
 
 add::environment_status(true);
+
+/**
+ * Set the exception emails
+ *
+ * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=38
+ *
+ *
+ */
+if (isset($C->developer_emails)) {
+   if (is_string($C->developer_emails)) {
+      e_add::$email_addresses = $C->developer_emails;
+   }
+   else if (is_array($C->developer_emails)) {
+      e_add::$email_addresses = implode(", ",$C->developer_emails);
+   }
+}
 
 if (add::is_development() && !is_writeable($C->caches_dir)) {
    $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches_'.sha1($C->root_dir);
