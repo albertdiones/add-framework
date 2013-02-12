@@ -74,7 +74,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public static function db() {
       if (!static::$D)
-         throw new e_developer('< class >::db() function is not declared and model_rwd::$D is not declared');
+         throw new e_developer(get_called_class().'::db() function is not declared and model_rwd::$D is not declared');
       return static::$D;
    }
 
