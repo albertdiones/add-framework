@@ -81,6 +81,9 @@ if (!is_writeable($C->caches_dir)) {
 
    $cache_files = new DirectoryIterator($C->caches_dir);
 
+   var_dump($cache_files);
+   die();
+
    foreach ($cache_files as $cache_file) {
 
       if (!$cache_file->isDir() || $cache_file->isDot()) {
