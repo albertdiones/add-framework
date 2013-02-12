@@ -401,32 +401,38 @@ CLASS add {
     * @since ADD MVC 0.5.1
     */
    static function handle_shutdown() {
-      if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
-         global $add_mvc_root_timer;
+      try {
+         if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
+            global $add_mvc_root_timer;
 
-         $smarty = new add_smarty();
-         $smarty->display('debug/handle_shutdown.tpl');
+            $smarty = new add_smarty();
+            $smarty->display('debug/handle_shutdown.tpl');
 
-         if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
+            if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
 
-            add_debug::print_config('environment_status');
-            add_debug::print_config('add_dir');
-            add_debug::print_config('path');
-            add_debug::print_config('developer_ips',true);
-            add_debug::print_data('current_user_ip',current_user_ip());
-            add_debug::print_data('POST variable', $_POST);
-            add_debug::print_data('GET variable', $_GET);
-            add_debug::print_data('COOKIE variable', $_COOKIE);
-            add_debug::print_data('REQUEST variable', $_COOKIE);
-            if (isset($_SESSION)) {
-               add_debug::print_data('SESSION variable', $_SESSION);
+               add_debug::print_config('environment_status');
+               add_debug::print_config('add_dir');
+               add_debug::print_config('path');
+               add_debug::print_config('developer_ips',true);
+               add_debug::print_data('current_user_ip',current_user_ip());
+               add_debug::print_data('POST variable', $_POST);
+               add_debug::print_data('GET variable', $_GET);
+               add_debug::print_data('COOKIE variable', $_COOKIE);
+               add_debug::print_data('REQUEST variable', $_COOKIE);
+               if (isset($_SESSION)) {
+                  add_debug::print_data('SESSION variable', $_SESSION);
+               }
+
+               $add_mvc_root_timer->lap("Shutdown");
+               $add_mvc_root_timer->print_all_laps();
             }
 
-            $add_mvc_root_timer->lap("Shutdown");
-            $add_mvc_root_timer->print_all_laps();
+            return static::print_errors();
          }
-
-         return static::print_errors();
+      }
+      catch (Exception $e) {
+         add::$handle_shutdown = false;
+         add::handle_exception($e);
       }
    }
 
