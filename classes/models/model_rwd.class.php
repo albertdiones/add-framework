@@ -74,7 +74,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public static function db() {
       if (!static::$D)
-         throw new e_developer("No default db variable");
+         throw new e_developer('< class >::db() function is not declared and model_rwd::$D is not declared');
       return static::$D;
    }
 
