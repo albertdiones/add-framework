@@ -241,22 +241,34 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     */
    public function mail_body() {
 
+      $important_info = array(
+            "Path"   => $_SERVER['REQUEST_URI'],
+            "IP"     => $_SERVER['REMOTE_ADDR'],
+            "User Agent"     => $_SERVER['HTTP_USER_AGENT'],
+         );
+
+      $message = $this->getMessage();
+
+      if (strlen($message) > 30) {
+         $header = "= ".get_called_class().": ".substr($message,0,30)."=\r\n$message\r\n\r\n";
+      }
+      else {
+         $header = "= ".get_called_class().": ".$message."=\r\n\r\n";
+      }
+
+
       return
-         "*Path*: $_SERVER[REQUEST_URI] *IP*: $_SERVER[REMOTE_ADDR]\r\n".
-         "== Data ==\r\n".
-         ($this->data ? print_r($this->data,true) : "_null_ \r\n").
-         "== Trace ==\r\n".
-         print_r($this->getTrace(),true)."\r\n".
-         "== Request ==\r\n".
-         print_r($_REQUEST,true).
-         "== Get ==\r\n".
-         print_r($_GET,true).
-         "== Post ==\r\n".
-         print_r($_POST,true).
-         "== Cookie ==\r\n".
-         print_r($_COOKIE,true).
-         "== Server == \r\n".
-         print_r($_SERVER,true);
+         $header.
+         debug::return_pretty_var_dump($important_info)."\r\n".
+         "== Data ==\r\n".debug::return_pretty_var_dump($this->data)."\r\n".
+         "== Request Headers ==\r\n".debug::return_pretty_var_dump(function_exists('apache_request_headers') ? apache_request_headers() : false)."\r\n".
+         "== Trace ==\r\n".debug::return_pretty_var_dump($this->getTrace())."\r\n".
+         "== Request ==\r\n".debug::return_pretty_var_dump($_REQUEST)."\r\n".
+         "== Get ==\r\n".debug::return_pretty_var_dump($_GET)."\r\n".
+         "== Post ==\r\n".debug::return_pretty_var_dump($_POST)."\r\n".
+         "== Cookie ==\r\n".debug::return_pretty_var_dump($_COOKIE)."\r\n".
+         "== Session ==\r\n".debug::return_pretty_var_dump($_SESSION)."\r\n".
+         "== Server == \r\n".debug::return_pretty_var_dump($_SERVER);
    }
 
    /**

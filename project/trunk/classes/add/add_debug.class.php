@@ -156,6 +156,99 @@ ABSTRACT CLASS add_debug {
       return $args[0];
    }
 
+   /**
+    * return_var_dump()
+    * get var dump function
+    * @param mixed $args
+    * @since ADD MVC 0.0
+    */
+   public static function return_var_dump($args) {
+      ob_start();
+      call_user_func_array('var_dump',func_get_args());
+      $var = ob_get_clean();
+      return $var;
+   }
+
+   /**
+    * return pretty var dump
+    * get var dump function
+    * @param mixed $arg
+    * @since ADD MVC 0.0
+    */
+   public static function return_pretty_var_dump() {
+      static $indentation = 0;
+      static $indentation_length = 2;
+      static $type_value_indentation = 9;
+      static $key_indentation = 0;
+      $dump = "";
+
+      foreach (func_get_args() as $arg) {
+         # array
+         if (is_array($arg)) {
+            if ($arg) {
+               $dump .= "{";
+               $indentation+=$indentation_length;
+               $max_key_length = max(array_map("strlen",array_keys($arg)));
+               $pre_index_string = "* ";
+               $key_indentation = ceil(($max_key_length+strlen($pre_index_string)+1)/$indentation_length)*$indentation_length;
+               foreach ($arg as $index => $value) {
+                  $index_string = $pre_index_string.$index;
+                  $index_value_indentation = $key_indentation-strlen($index_string);
+                  $dump .= "\r\n".str_repeat(" ",$indentation).$index_string;
+                  $dump .= str_repeat(" ",$index_value_indentation);
+                  $dump .= static::return_pretty_var_dump($value);
+                  $index_value_indentation = 0;
+               }
+               $key_indentation = 0;
+               $dump .= "\r\n";
+               $dump .= str_repeat(" ",$indentation-$indentation_length)."}\r\n";
+               $indentation = 0;
+            }
+            else {
+               $dump .= "{}\r\n";
+            }
+         }
+         # String
+         else if (is_string($arg)) {
+            $type_string = "str(".strlen($arg).")";
+            $dump .= $type_string;
+            if (strlen($arg) > 70) {
+               $indentation_string = str_repeat(" ",
+                     $indentation
+                     +$key_indentation
+                     +$type_value_indentation
+                     +$indentation_length
+                  );
+               $dump .= " (word-wrapped)\r\n";
+               $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
+            }
+            else {
+               $indentation_string = str_repeat(" ",$type_value_indentation - strlen($type_string) );
+               $dump .= "$indentation_string\"".$arg."\"";
+            }
+         }
+         else if (is_int($arg) || is_float($arg) || is_bool($arg)) {
+            $type_string = gettype($arg);
+            $dump .= $type_string ;
+            $dump .= str_repeat(" ",$type_value_indentation - strlen($type_string) );
+            if (is_bool($arg)) {
+               $dump .= $arg ? "true" : "false";
+            }
+            else {
+               $dump .= $arg;
+            }
+         }
+         else {
+            ob_start();
+            call_user_func_array('var_dump',func_get_args());
+            $dump = trim(ob_get_clean());
+         }
+      }
+
+      return $dump;
+   }
+
+
   /**
    * make a list out of $arg
    *
@@ -263,23 +356,10 @@ ABSTRACT CLASS add_debug {
     * Call this on deprecated files
     * @since ADD MVC 0.0
     */
-   public function deprecated_file() {
+   public static function deprecated_file() {
       $locations = self::location();
       $var_dump = self::return_var_dump($locations);
       mail(self::EMAIL_ADDRESS,"DEPRECATED FILE STILL IN USE ".self::caller_file_line(),$var_dump);
-   }
-
-   /**
-    * return_var_dump()
-    * get var dump function
-    * @param mixed $args
-    * @since ADD MVC 0.0
-    */
-   public function return_var_dump($args) {
-      ob_start();
-      call_user_func_array('var_dump',$args);
-      $var = ob_get_clean();
-      return $var;
    }
 
    /**
@@ -328,17 +408,31 @@ ABSTRACT CLASS add_debug {
       static::print_data($label,$value);
    }
 
-
    /**
     * Prints a data with label
+    *
+    * @param mixed $label
+    * @param mixed $value
     *
     * @since ADD MVC 0.7.4
     */
    public static function print_data($label,$value) {
+      static::restricted_echo( static::return_print_data($label, $value) );
+   }
+
+   /**
+    * Returns the printable data
+    *
+    * @param mixed $label
+    * @param mixed $value
+    *
+    * @since ADD MVC 0.10.4
+    */
+   public static function return_print_data($label,$value) {
       $smarty = new add_smarty();
       $smarty -> assign('label',$label);
       $smarty -> assign('value',$value);
       $smarty -> assign('indentations',0);
-      static::restricted_echo($smarty->fetch('debug/print_data.tpl'));
+      return $smarty->fetch('debug/print_data.tpl');
    }
 }
