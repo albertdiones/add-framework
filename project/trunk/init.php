@@ -92,7 +92,7 @@ if (add::is_development() && !is_writeable($C->caches_dir)) {
 if (!is_writeable($C->caches_dir)) {
 
    if (!is_dir($C->caches_dir)) {
-      throw new e_system("Cache path is not a directory",$C->caches_dir);
+      throw new e_system("Cache path is not a directory (environment status: ".add::environment_status().")",$C->caches_dir);
    }
 
    $cache_files = new DirectoryIterator($C->caches_dir);
