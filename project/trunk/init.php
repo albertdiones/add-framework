@@ -43,10 +43,11 @@ if (!isset($C->incs_dir))
    $C->incs_dir            = $C->root_dir.'/includes';
 
 $C->classes_dirs        = array_merge(
-      array( $C->incs_dir.'/classes' , $C->add_dir.'/classes'),
-      isset($C->classes_dirs) && is_array($C->classes_dirs)
-         ? $C->classes_dirs
-         : array()
+      array( $C->incs_dir.'/classes'),
+      isset($C->classes_dirs)
+         ? (array) $C->classes_dirs
+         : array(),
+      array($C->add_dir.'/classes')
    );
 
 if (!isset($C->configs_dir))
