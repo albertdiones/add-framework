@@ -45,7 +45,7 @@ if (!isset($C->incs_dir))
 $C->classes_dirs        = array_merge(
       array( $C->incs_dir.'/classes'),
       isset($C->classes_dirs)
-         ? (array) $C->classes_dirs
+         ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
          : array(),
       array($C->add_dir.'/classes')
    );
