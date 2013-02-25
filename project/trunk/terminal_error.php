@@ -20,6 +20,7 @@ foreach (explode("\n",$backtraces) as $backtrace) {
    $file_lines[] = $backtrace;
 }
 ?>
+<!DOCTYPE html>
 <html>
    <head>
       <style>
@@ -28,6 +29,11 @@ foreach (explode("\n",$backtraces) as $backtrace) {
             font:12px verdana;
             color:#fff;
          }
+
+         section,header,footer,article {
+            display:block;
+         }
+
          section.page {
             color:#000;
             background:#fff;
@@ -35,6 +41,7 @@ foreach (explode("\n",$backtraces) as $backtrace) {
             margin:20% auto;
             width:700px;
             box-shadow:0 0 6px 3px #f33;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=0,strength=6);
          }
          header {
             padding:5px 10px;
@@ -103,6 +110,10 @@ foreach (explode("\n",$backtraces) as $backtrace) {
                );
             }
             );
+         document.createElement("section");
+         document.createElement("article");
+         document.createElement("footer");
+         document.createElement("header");
       </script>
    </head>
    <body>
