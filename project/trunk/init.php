@@ -117,17 +117,17 @@ if (!is_writeable($C->caches_dir)) {
 }
 
 if (!isset($C->assets_dir))
-   $C->assets_dir          = $C->root_dir.'/assets';
+   $C->assets_dir = $C->root_dir.'/assets';
 
 if (!isset($C->images_dir))
-   $C->images_dir          = $C->assets_dir.'/images';
+   $C->images_dir = $C->assets_dir.'/images';
 
 if (!isset($C->css_dir))
-   $C->css_dir             = $C->assets_dir.'/css';
-$C->js_dir              = $C->assets_dir.'/js';
+   $C->css_dir    = $C->assets_dir.'/css';
+$C->js_dir        = $C->assets_dir.'/js';
 
-$C->domain              = ( $C->sub_domain ? "$C->sub_domain." : "" ).$C->super_domain;
-$C->base_url            = "http://$C->domain".$C->path;
+$C->domain        = ( $C->sub_domain ? "$C->sub_domain." : "" ).$C->super_domain;
+$C->base_url      = "http://$C->domain$C->path";
 
 set_include_path($C->incs_dir);
 
