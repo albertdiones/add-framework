@@ -178,8 +178,9 @@ ABSTRACT CLASS add_debug {
    public static function return_pretty_var_dump() {
       static $indentation = 0;
       static $indentation_length = 4;
-      static $type_value_indentation = 2;
+      static $type_value_indentation = 4;
       static $key_indentation = 0;
+      static $indentation_char = "\t";
       $dump = "";
 
       foreach (func_get_args() as $arg) {
@@ -192,17 +193,27 @@ ABSTRACT CLASS add_debug {
                $pre_index_string = "* ";
                $key_indentation = ceil((($max_key_length-strlen($pre_index_string))+$indentation_length)/$indentation_length);
                foreach ($arg as $index => $value) {
+
                   $index_string = $pre_index_string.$index;
-                  $index_value_indentation = $key_indentation-ceil(strlen($index_string)/$indentation_length);
-                  $dump .= "\r\n".str_repeat("\t",$indentation).$index_string;
-                  $dump .= str_repeat("\t",$index_value_indentation);
-                  $dump .= static::return_pretty_var_dump($value);
+                  $index_value_indentation = $key_indentation - floor(strlen($index_string)/$indentation_length) + 1;
+                  $dump .= "\r\n".str_repeat("$indentation_char",$indentation).$index_string;
+                  $dump .= str_repeat("$indentation_char",$index_value_indentation);
+                  /**
+                   * add_debug::pretty_var_dump() causes infinite loop on self referrences
+                   * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=51
+                   */
+                  if (self::return_var_dump($value) == self::return_var_dump($arg)) {
+                     $dump .= "*RECURSION*";
+                  }
+                  else {
+                     $dump .= static::return_pretty_var_dump($value);
+                  }
                   $index_value_indentation = 0;
                }
                $key_indentation = 0;
                $dump .= "\r\n";
                $indentation--;
-               $dump .= str_repeat("\t",$indentation)."}\r\n";
+               $dump .= str_repeat("$indentation_char",$indentation)."}\r\n";
             }
             else {
                $dump .= "{}\r\n";
@@ -213,34 +224,39 @@ ABSTRACT CLASS add_debug {
             $type_string = "str(".strlen($arg).")";
             $dump .= $type_string;
             if (strlen($arg) > 70) {
-               $indentation_string = str_repeat("\t",
+               $indentation_string = str_repeat("$indentation_char",
                      ceil(
                            (
                               $indentation
                               + $key_indentation
                               + $type_value_indentation
-                              +1
                            )/$indentation_length
-                        )
+                        )+1
                   );
                $dump .= " (word-wrapped)\r\n";
                $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
             }
             else {
-               $indentation_string = str_repeat("\t",$type_value_indentation - strlen($type_string) );
+               $indentation_string = str_repeat("$indentation_char",$type_value_indentation - floor(strlen($type_string) / $indentation_length) + 1 );
                $dump .= "$indentation_string\"".$arg."\"";
             }
          }
          else if (is_int($arg) || is_float($arg) || is_bool($arg)) {
             $type_string = gettype($arg);
             $dump .= $type_string ;
-            $dump .= str_repeat("\t",$type_value_indentation - (strlen($type_string)/$indentation_length) );
+            $dump .= str_repeat("$indentation_char",$type_value_indentation - floor(strlen($type_string)/$indentation_length) + 1 );
             if (is_bool($arg)) {
                $dump .= $arg ? "true" : "false";
             }
             else {
                $dump .= $arg;
             }
+         }
+         else if (is_object($arg)) {
+            $type_string = get_class($arg);
+            $dump .= $type_string ;
+            $dump .= str_repeat("$indentation_char",$type_value_indentation - floor(strlen($type_string)/$indentation_length) + 1 );
+            $dump .= static::return_pretty_var_dump(get_object_vars($arg));
          }
          else {
             ob_start();
