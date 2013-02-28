@@ -145,7 +145,7 @@ ABSTRACT CLASS add_debug {
       if (!$args) {
          $args[0] = static::get_declared_globals();
       }
-      $var = self::return_var_dump($args);
+      $var = call_user_func_array('self::return_var_dump',$args);
       if (add::current_controller()->content_type() == 'text/plain') {
          $output="\r\nFile Line:".self::caller_file_line()."\r\n".$var."\r\n";
       }
@@ -177,8 +177,8 @@ ABSTRACT CLASS add_debug {
     */
    public static function return_pretty_var_dump() {
       static $indentation = 0;
-      static $indentation_length = 2;
-      static $type_value_indentation = 9;
+      static $indentation_length = 4;
+      static $type_value_indentation = 2;
       static $key_indentation = 0;
       $dump = "";
 
@@ -187,22 +187,22 @@ ABSTRACT CLASS add_debug {
          if (is_array($arg)) {
             if ($arg) {
                $dump .= "{";
-               $indentation+=$indentation_length;
+               $indentation++;
                $max_key_length = max(array_map("strlen",array_keys($arg)));
                $pre_index_string = "* ";
-               $key_indentation = ceil(($max_key_length+strlen($pre_index_string)+1)/$indentation_length)*$indentation_length;
+               $key_indentation = ceil((($max_key_length-strlen($pre_index_string))+$indentation_length)/$indentation_length);
                foreach ($arg as $index => $value) {
                   $index_string = $pre_index_string.$index;
-                  $index_value_indentation = $key_indentation-strlen($index_string);
-                  $dump .= "\r\n".str_repeat(" ",$indentation).$index_string;
-                  $dump .= str_repeat(" ",$index_value_indentation);
+                  $index_value_indentation = $key_indentation-ceil(strlen($index_string)/$indentation_length);
+                  $dump .= "\r\n".str_repeat("\t",$indentation).$index_string;
+                  $dump .= str_repeat("\t",$index_value_indentation);
                   $dump .= static::return_pretty_var_dump($value);
                   $index_value_indentation = 0;
                }
                $key_indentation = 0;
                $dump .= "\r\n";
-               $dump .= str_repeat(" ",$indentation-$indentation_length)."}\r\n";
-               $indentation = 0;
+               $indentation--;
+               $dump .= str_repeat("\t",$indentation)."}\r\n";
             }
             else {
                $dump .= "{}\r\n";
@@ -213,24 +213,28 @@ ABSTRACT CLASS add_debug {
             $type_string = "str(".strlen($arg).")";
             $dump .= $type_string;
             if (strlen($arg) > 70) {
-               $indentation_string = str_repeat(" ",
-                     $indentation
-                     +$key_indentation
-                     +$type_value_indentation
-                     +$indentation_length
+               $indentation_string = str_repeat("\t",
+                     ceil(
+                           (
+                              $indentation
+                              + $key_indentation
+                              + $type_value_indentation
+                              +1
+                           )/$indentation_length
+                        )
                   );
                $dump .= " (word-wrapped)\r\n";
                $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
             }
             else {
-               $indentation_string = str_repeat(" ",$type_value_indentation - strlen($type_string) );
+               $indentation_string = str_repeat("\t",$type_value_indentation - strlen($type_string) );
                $dump .= "$indentation_string\"".$arg."\"";
             }
          }
          else if (is_int($arg) || is_float($arg) || is_bool($arg)) {
             $type_string = gettype($arg);
             $dump .= $type_string ;
-            $dump .= str_repeat(" ",$type_value_indentation - strlen($type_string) );
+            $dump .= str_repeat("\t",$type_value_indentation - (strlen($type_string)/$indentation_length) );
             if (is_bool($arg)) {
                $dump .= $arg ? "true" : "false";
             }
