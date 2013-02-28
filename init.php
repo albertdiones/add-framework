@@ -86,14 +86,17 @@ if (add::is_development() && !is_writeable($C->caches_dir)) {
       mkdir($C->caches_dir);
    }
    else if (!is_dir($C->caches_dir)) {
-      throw new e_system("Cache path is not a directory", $C->caches_dir);
+      throw new e_system("Cache directory is not a directory", $C->caches_dir);
    }
 }
 
 if (!is_writeable($C->caches_dir)) {
 
+   if (!file_exists($C->caches_dir)) {
+      throw new e_system("Cache directory is not existing ",$C->caches_dir);
+   }
    if (!is_dir($C->caches_dir)) {
-      throw new e_system("Cache path is not a directory (environment status: ".add::environment_status().")",$C->caches_dir);
+      throw new e_system("Cache directory is not a directory (environment status: ".add::environment_status().")",$C->caches_dir);
    }
 
    $cache_files = new DirectoryIterator($C->caches_dir);
@@ -105,12 +108,12 @@ if (!is_writeable($C->caches_dir)) {
       }
 
       if (!is_writable($cache_file->getPathname())) {
-         throw new e_system("Cache path is not writeable and one (or more) of it's files are not writeable",array($C->caches_dir,$cache_file->getPathname()));
+         throw new e_system("Cache directory is not writeable and one (or more) of it's files are not writeable",array($C->caches_dir,$cache_file->getPathname()));
       }
 
    }
 
-   trigger_error("Cache path is not writeable",E_USER_WARNING);
+   trigger_error("Cache directory is not writeable",E_USER_WARNING);
 
    unset($cache_file,$cache_files);
 
