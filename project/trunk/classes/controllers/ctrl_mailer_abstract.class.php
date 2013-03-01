@@ -57,7 +57,17 @@ ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
     */
    public function execute() {
       $this->process_data($this->add_controller->data());
-      return parent::Send();
+      return $this->Send();
+   }
+
+
+   /**
+    * Fetches the view before sending
+    *
+    */
+   public function Send() {
+      $this->Body = $this->fetch_view();
+      return call_user_func_array('parent::'.__FUNCTION__, func_get_args());
    }
 
    /**
@@ -70,8 +80,6 @@ ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
    public function process_data($data) {
       if ($data)
          $this->assign($data);
-
-      $this->Body = $this->fetch_view();
    }
 
    /**
