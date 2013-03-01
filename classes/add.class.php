@@ -247,7 +247,7 @@ CLASS add {
                DEFINE('add\terminal_error\error_header',get_class($e));
                DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
                if (!headers_sent() && !add::include_include_file('terminal_error.php')) {
-                  throw new $e;
+                  throw new Exception("Failed to display terminal error");
                }
                add::shutdown(false);
             }
@@ -258,6 +258,7 @@ CLASS add {
                "<div style='color:red'>".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>"
                ."<div style='color:red'>".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>"
             );
+         die();
       }
    }
 
