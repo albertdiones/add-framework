@@ -253,8 +253,11 @@ CLASS add {
             }
          }
       }
-      catch (Exception $e) {
-         die("<div style='color:red'>".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>");
+      catch (Exception $e2) {
+         die(
+               "<div style='color:red'>".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>"
+               ."<div style='color:red'>".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>"
+            );
       }
    }
 
