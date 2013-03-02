@@ -55,6 +55,14 @@ CLASS add {
     */
    protected static $environment_status = 'live';
 
+
+   /**
+    * Mime type of this resource
+    *
+    * @since ADD MVC 0.10.5
+    */
+   protected static $content_type = 'text/html';
+
    /**
     * Gets the site config
     *
@@ -856,12 +864,14 @@ CLASS add {
    /**
     * content_type()
     *
-    * @since ADD MVC 0.8
+    * @since ADD MVC 0.10.5
     */
    public static function content_type($new_content_type = null) {
-      if ($new_content_type == 'text/plain') {
-         ini_set('html_errors',0);
+      if ($new_content_type) {
+         ini_set('html_errors',$new_content_type != 'text/plain');
+         static::$content_type = $new_content_type;
+         header("Content-type: ".$this->content_type);
       }
-      return add::current_controller()->content_type($new_content_type);
+      return static::$content_type;
    }
 }
