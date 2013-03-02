@@ -18,6 +18,8 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
    /**
     * Mime type of this resource
     *
+    * @deprecated see add::$content_type
+    *
     * @since ADD MVC 0.8
     */
    protected $content_type = 'text/plain';
