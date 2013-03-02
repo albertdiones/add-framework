@@ -8,8 +8,8 @@
 {include file='debug/print_data.tpl' label="BackTrace" value=$exception->getTrace()}
 {else}
    <h1>Uncaught Exception</h1>
-   <b>{$exception->getMessage()}</b>
-   <small>{$exception->getCode()}</small>
+   <h3>{get_class($exception)} <small>#{$exception->getCode()}</small></h3>
+   <h3>{$exception->getMessage()}</h3>
    <h3>Debug Data</h3>
       <xmp>{add_debug::return_var_dump(array($exception->data))}</xmp>
    <h3>Trace</h3>
