@@ -232,10 +232,15 @@ CLASS add {
     */
    static function handle_exception(Exception $e) {
       try {
-         if (method_exists($e,'handle_exception')) {
-            return $e->handle_exception();
+         try {
+            if (method_exists($e,'handle_exception')) {
+               return $e->handle_exception();
+            }
+            else {
+               throw new Exception("Non e_add exception sub class or no handle_exception() function found for exception");
+            }
          }
-         else {
+         catch (Exception $e2) {
             while (ob_get_level()) {
                ob_end_clean();
             }
@@ -261,16 +266,17 @@ CLASS add {
             }
          }
       }
-      catch (Exception $e2) {
+      catch (Exception $e3) {
          $e1_string = "<div style='color:red'>".get_class($e)."(#".$e->getCode().")".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>";
 
          echo $e1_string;
 
-         $e2_string = "<div style='color:red'>".get_class($e2)."(#".$e2->getCode().")".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>";
+         $e3_string = "<div style='color:red'>".get_class($e3)."(#".$e3->getCode().")".$e3->getMessage()."\r\n".$e3->getFile().":".$e3->getLine()."</div>";
 
-         if ($e2_string != $e1_string) {
-            echo $e2_string;
+         if ($e3_string != $e1_string) {
+            echo $e3_string;
          }
+         debug::var_dump($e3->getTraceAsString());
 
          die();
       }
