@@ -34,7 +34,7 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
    /**
     * Mime type of this resource
     *
-    * @deprecated see ctrl_abstract property
+    * @deprecated see add::$content_type
     *
     * @since ADD MVC 0.8
     */
@@ -338,14 +338,12 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
     *
     * @param string $new_content_type
     *
+    * @deprecated see add::content_type();
+    *
     * @since ADD MVC 0.8
     */
    public function content_type($new_content_type = null) {
-      if ($new_content_type) {
-         $this->content_type = $new_content_type;
-         header("Content-type: ".$this->content_type);
-      }
-      return $this->content_type;
+      return add::content_type($new_content_type);
    }
 
    /**
