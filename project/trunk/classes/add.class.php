@@ -254,10 +254,16 @@ CLASS add {
          }
       }
       catch (Exception $e2) {
-         echo "<div style='color:red'>".get_class($e)."(#".$e->getCode().")".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>";
-         if ($e2 != $e) {
-            echo "<div style='color:red'>".get_class($e2)."(#".$e2->getCode().")".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>";
+         $e1_string = "<div style='color:red'>".get_class($e)."(#".$e->getCode().")".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>";
+
+         echo $e1_string;
+
+         $e2_string = "<div style='color:red'>".get_class($e2)."(#".$e2->getCode().")".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>";
+
+         if ($e2_string != $e1_stirng) {
+            echo $e2_string;
          }
+
          die();
       }
    }
