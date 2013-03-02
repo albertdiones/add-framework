@@ -255,7 +255,7 @@ CLASS add {
       }
       catch (Exception $e2) {
          die(
-               "<div style='color:red'>(".get_class($e).")".$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>"
+               "<div style='color:red'>".get_class($e)."(#".$e->getCode().").$e->getMessage()."\r\n".$e->getFile().":".$e->getLine()."</div>"
                ."<div style='color:red'>".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>"
             );
          die();
