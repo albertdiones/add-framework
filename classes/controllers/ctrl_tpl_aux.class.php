@@ -15,6 +15,8 @@ ABSTRACT CLASS ctrl_tpl_aux {
    /**
     * Mime type of this resource
     *
+    * @deprecated see add::$content_type
+    *
     * @since ADD MVC 0.8
     */
    protected $content_type = 'text/plain';
@@ -118,13 +120,11 @@ ABSTRACT CLASS ctrl_tpl_aux {
     *
     * @param string $new_content_type
     *
+    * @deprecated use add::content_type()
+    *
     * @since ADD MVC 0.8
     */
    public function content_type($new_content_type = null) {
-      if ($new_content_type) {
-         $this->content_type = $new_content_type;
-         header("Content-type: ".$this->content_type);
-      }
-      return $this->content_type;
+      return add::content_type($new_content_type);
    }
 }
