@@ -146,7 +146,7 @@ ABSTRACT CLASS add_debug {
          $args[0] = static::get_declared_globals();
       }
       $var = call_user_func_array('self::return_var_dump',$args);
-      if (add::current_controller()->content_type() == 'text/plain') {
+      if (add::content_type() == 'text/plain') {
          $output="\r\nFile Line:".self::caller_file_line()."\r\n".$var."\r\n";
       }
       else {
