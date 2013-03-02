@@ -260,7 +260,7 @@ CLASS add {
 
          $e2_string = "<div style='color:red'>".get_class($e2)."(#".$e2->getCode().")".$e2->getMessage()."\r\n".$e2->getFile().":".$e2->getLine()."</div>";
 
-         if ($e2_string != $e1_stirng) {
+         if ($e2_string != $e1_string) {
             echo $e2_string;
          }
 
