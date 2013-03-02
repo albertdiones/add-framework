@@ -153,11 +153,7 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
     * @since ADD MVC 0.8
     */
    public function content_type($new_content_type = null) {
-      if ($new_content_type) {
-         $this->content_type = $new_content_type;
-         header("Content-type: ".$this->content_type);
-      }
-      return $this->content_type;
+      return add::content_type($new_content_type);
    }
 
    /**
