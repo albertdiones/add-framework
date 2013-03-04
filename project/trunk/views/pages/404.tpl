@@ -3,6 +3,7 @@
 {block name='main'}
    <h1>Page not found</h1>
    <p>The page you are looking for is not found</p>
+
    {if isset($is_development) }
       Configuration:
       <ul>
@@ -11,4 +12,5 @@
          <li>current controller: {add::current_controller_basename()|escape}</li>
       </ul>
    {/if}
+
 {/block}
