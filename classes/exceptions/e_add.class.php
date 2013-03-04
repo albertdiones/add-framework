@@ -230,7 +230,22 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.0
     */
    public function mail_subject() {
-      return "Error: ".$this->message;
+      return "Error: ".$this->truncated_subject();
+   }
+
+
+   /**
+    * truncated_subject()
+    *
+    */
+   public function truncated_subject() {
+      $ellipsis = "...";
+      $max_length = (128 - strlen($ellipsis));
+
+      if (strlen($this->message) > $max_length) {
+         return substr($this->message, 0, $max_length).$ellipsis;
+      }
+      return $this->message;
    }
 
    /**
@@ -247,13 +262,13 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
             "User Agent"     => $_SERVER['HTTP_USER_AGENT'],
          );
 
-      $message = $this->getMessage();
+      $original_message = $this->getMessage();
+      $message = $this->truncated_subject();
 
-      if (strlen($message) > 30) {
-         $header = "= ".get_called_class().": ".substr($message,0,30)."=\r\n$message\r\n\r\n";
-      }
-      else {
-         $header = "= ".get_called_class().": ".$message."=\r\n\r\n";
+      $header = "= $message =";
+
+      if ($original_message != $message) {
+         $header .= "\r\n$original_message\r\n\r\n";
       }
 
 
