@@ -214,8 +214,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       mail(
             $this->mail_to(),
             $this->mail_subject(),
-            $this->mail_body(),
-            "MIME-Version: 1.0\r\nContent-type: text/plain; charset=iso-8859-1"
+            "<pre style='font-size:12px'>".htmlentities($this->mail_body())."</pre>",
+            "MIME-Version: 1.0\r\nContent-type: text/html; charset=iso-8859-1"
          );
    }
 
