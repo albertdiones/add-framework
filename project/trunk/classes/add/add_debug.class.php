@@ -177,7 +177,7 @@ ABSTRACT CLASS add_debug {
     */
    public static function return_pretty_var_dump() {
       static $indentation = 0;
-      static $indentation_length = 4;
+      static $indentation_length = 8;
       static $type_value_indentation = 4;
       static $key_indentation = 0;
       static $indentation_char = "\t";
