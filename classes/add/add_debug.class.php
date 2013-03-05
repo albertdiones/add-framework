@@ -225,9 +225,9 @@ ABSTRACT CLASS add_debug {
             $dump .= $type_string;
             if (strlen($arg) > 70) {
                $indentation_string = str_repeat("$indentation_char",
+                     $indentation+
                      ceil(
                            (
-                              $indentation
                               + $key_indentation
                               + $type_value_indentation
                            )/$indentation_length
