@@ -240,7 +240,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     */
    public function truncated_subject() {
       $ellipsis = "...";
-      $max_length = (100 - strlen($ellipsis));
+      $max_length = (90 - strlen($ellipsis));
 
       if (strlen($this->message) > $max_length) {
          return substr($this->message, 0, $max_length).$ellipsis;
