@@ -229,7 +229,7 @@ ABSTRACT CLASS add_debug {
                      + $key_indentation
                   );
                $dump .= " (word-wrapped)\r\n";
-               $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
+               $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string)."\r\n";
             }
             else {
                $indentation_string = str_repeat("$indentation_char",$type_value_indentation - floor(strlen($type_string) / $indentation_length) + 1 );
@@ -258,6 +258,7 @@ ABSTRACT CLASS add_debug {
             call_user_func_array('var_dump',func_get_args());
             $dump = trim(ob_get_clean());
          }
+         $dump .= "\r\n";
       }
 
       return $dump;
