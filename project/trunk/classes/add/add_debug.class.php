@@ -225,14 +225,9 @@ ABSTRACT CLASS add_debug {
             $dump .= $type_string;
             if (strlen($arg) > 70) {
                $indentation_string = str_repeat("$indentation_char",
-                     $indentation+
-                     ceil(
-                           (
-                              strlen($type_string)
-                              + $key_indentation
-                              + $type_value_indentation
-                           )/$indentation_length
-                        )+1
+                     $indentation
+                     + $key_indentation
+                     +1
                   );
                $dump .= " (word-wrapped)\r\n";
                $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
