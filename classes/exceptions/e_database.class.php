@@ -47,7 +47,7 @@ CLASS e_database EXTENDS e_unknown {
             }
          default:
             $this->data = $data;
-            $this->message =  "Database Error #{$code} $message";
+            $this->message =  "Database Error #{$code} ".$this->truncated_subject();
          break;
       }
    }
