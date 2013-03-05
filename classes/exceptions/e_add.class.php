@@ -211,7 +211,12 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.0
     */
    public function mail() {
-      mail($this->mail_to(),$this->mail_subject(),$this->mail_body());
+      mail(
+            $this->mail_to(),
+            $this->mail_subject(),
+            $this->mail_body()
+            "MIME-Version: 1.0\r\nContent-type: text/plain; charset=iso-8859-1"
+         );
    }
 
    /**
@@ -276,8 +281,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          $header.
          debug::return_pretty_var_dump($important_info)."\r\n".
          "== Data ==\r\n".debug::return_pretty_var_dump($this->data)."\r\n".
-         "== Request Headers ==\r\n".debug::return_pretty_var_dump(function_exists('apache_request_headers') ? apache_request_headers() : false)."\r\n".
          "== Trace ==\r\n".debug::return_pretty_var_dump($this->getTrace())."\r\n".
+         "== Request Headers ==\r\n".debug::return_pretty_var_dump(function_exists('apache_request_headers') ? apache_request_headers() : false)."\r\n".
          "== Request ==\r\n".debug::return_pretty_var_dump($_REQUEST)."\r\n".
          "== Get ==\r\n".debug::return_pretty_var_dump($_GET)."\r\n".
          "== Post ==\r\n".debug::return_pretty_var_dump($_POST)."\r\n".
