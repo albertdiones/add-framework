@@ -228,6 +228,7 @@ ABSTRACT CLASS add_debug {
                      $indentation+
                      ceil(
                            (
+                              strlen($type_string)
                               + $key_indentation
                               + $type_value_indentation
                            )/$indentation_length
