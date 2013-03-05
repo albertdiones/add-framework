@@ -17,6 +17,6 @@ CLASS e_developer EXTENDS e_system {
     * @since ADD MVC 0.0
     */
    public function mail_subject() {
-      return "Developer Error: ".$this->message;
+      return "Developer Error: ".$this->truncated_subject();
    }
 }
