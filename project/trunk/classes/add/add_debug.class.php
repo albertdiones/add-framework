@@ -191,11 +191,11 @@ ABSTRACT CLASS add_debug {
                $indentation++;
                $max_key_length = max(array_map("strlen",array_keys($arg)));
                $pre_index_string = "* ";
-               $key_indentation = ceil((($max_key_length-strlen($pre_index_string))+$indentation_length)/$indentation_length);
+               $key_indentation = ceil(($max_key_length-strlen($pre_index_string))/$indentation_length);
                foreach ($arg as $index => $value) {
 
                   $index_string = $pre_index_string.$index;
-                  $index_value_indentation = $key_indentation - floor(strlen($index_string)/$indentation_length) + 1;
+                  $index_value_indentation = $key_indentation - floor(strlen($index_string)/$indentation_length);
                   $dump .= "\r\n".str_repeat("$indentation_char",$indentation).$index_string;
                   $dump .= str_repeat("$indentation_char",$index_value_indentation);
                   /**
@@ -227,7 +227,6 @@ ABSTRACT CLASS add_debug {
                $indentation_string = str_repeat("$indentation_char",
                      $indentation
                      + $key_indentation
-                     +1
                   );
                $dump .= " (word-wrapped)\r\n";
                $dump .= $indentation_string.wordwrap($arg,70,"\r\n".$indentation_string);
