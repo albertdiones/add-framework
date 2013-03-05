@@ -876,7 +876,7 @@ CLASS add {
       if ($new_content_type) {
          ini_set('html_errors',$new_content_type != 'text/plain');
          static::$content_type = $new_content_type;
-         header("Content-type: ".$this->content_type);
+         header("Content-type: ".static::$content_type);
       }
       return static::$content_type;
    }
