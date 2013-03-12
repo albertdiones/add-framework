@@ -25,7 +25,7 @@ CLASS add_ldap {
    }
 
    public function search($dn,$filter,$attr = array(),$attrs = 0,$sizelimit = 0,$timelimit = 0,$deref = 0) {
-      return $this->search = ldap_search($this->ds,$dn,$filter,$attr,$aattrs,$sizelimit,$timelimit,$deref);
+      return $this->search = ldap_search($this->ds,$dn,$filter,$attr,$attrs,$sizelimit,$timelimit,$deref);
    }
 
    public function get_entries() {
