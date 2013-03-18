@@ -32,13 +32,13 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">154</span></a></li>
+                <span class="label label-info">157</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">37</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">37</span></a></li>
+                <span class="label label-info">41</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -74,6 +74,10 @@ Call this on deprecated files</span><pre>deprecated_file()</pre></a></li>
 <li class="method public "><a href="#print_eval" title="print_eval :: evaluates $var and prints $var and the value it returns"><span class="description">evaluates $var and prints $var and the value it returns</span><pre>print_eval()</pre></a></li>
 <li class="method public "><a href="#print_request" title="print_request :: Prints request variables and sessions variables"><span class="description">Prints request variables and sessions variables</span><pre>print_request()</pre></a></li>
 <li class="method public "><a href="#restricted_echo" title="restricted_echo :: echo only if IP matched"><span class="description">echo only if IP matched</span><pre>restricted_echo()</pre></a></li>
+<li class="method public "><a href="#return_pretty_var_dump" title="return_pretty_var_dump :: return pretty var dump
+get var dump function"><span class="description">return pretty var dump
+get var dump function</span><pre>return_pretty_var_dump()</pre></a></li>
+<li class="method public "><a href="#return_print_data" title="return_print_data :: Returns the printable data"><span class="description">Returns the printable data</span><pre>return_print_data()</pre></a></li>
 <li class="method public "><a href="#return_var_dump" title="return_var_dump :: return_var_dump()
 get var dump function"><span class="description">return_var_dump()
 get var dump function</span><pre>return_var_dump()</pre></a></li>
@@ -258,7 +262,7 @@ Call this on deprecated files</h2>
 </div>
 <a name="print_data" id="print_data"></a><div class="element clickable method public print_data" data-toggle="collapse" data-target=".print_data .collapse">
 <h2>Prints a data with label</h2>
-<pre>print_data($label, $value) </pre>
+<pre>print_data(mixed $label, mixed $value) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -269,11 +273,11 @@ Call this on deprecated files</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$label</h4>
-<code></code>
+<code>mixed</code>
 </div>
 <div class="subelement argument">
 <h4>$value</h4>
-<code></code>
+<code>mixed</code>
 </div>
 </div></div>
 </div>
@@ -327,6 +331,40 @@ Call this on deprecated files</h2>
 <code>string</code><p>the string to echo</p></div>
 </div></div>
 </div>
+<a name="return_pretty_var_dump" id="return_pretty_var_dump"></a><div class="element clickable method public return_pretty_var_dump" data-toggle="collapse" data-target=".return_pretty_var_dump .collapse">
+<h2>return pretty var dump
+get var dump function</h2>
+<pre>return_pretty_var_dump() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a name="return_print_data" id="return_print_data"></a><div class="element clickable method public return_print_data" data-toggle="collapse" data-target=".return_print_data .collapse">
+<h2>Returns the printable data</h2>
+<pre>return_print_data(mixed $label, mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>ADD MVC 0.10.4</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
 <a name="return_var_dump" id="return_var_dump"></a><div class="element clickable method public return_var_dump" data-toggle="collapse" data-target=".return_var_dump .collapse">
 <h2>return_var_dump()
 get var dump function</h2>
@@ -371,7 +409,7 @@ var_dump with &lt;xmp&gt;</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-01-26T21:08:48+04:00.<br></footer></div>
+            generated on 2013-03-19T03:45:08+04:00.<br></footer></div>
 </div>
 </body>
 </html>
