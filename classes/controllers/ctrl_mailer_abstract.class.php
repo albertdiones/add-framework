@@ -57,8 +57,12 @@ ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
     */
    public function execute() {
       if ($this->add_controller instanceof ctrl_abstract) {
-         $this->process_data($this->add_controller->data());
+         $data = $this->add_controller->data();
       }
+      else {
+         $data = array();
+      }
+      $this->process_data($data);
       return $this->Send();
    }
 
