@@ -1475,7 +1475,7 @@ A sample 404 page controller]]></description>
     </class>
     <source>eJxtkV9rwjAUxd8L/Q4XEaxl2g58cv8Udexhk4Fl7EEoMcnasDQJSeo2ht99STqVwe5Lws3vnpyTXN+pWsVRlqZxBClgq3lpFS8n+QTQzliNsIVGEsoBc2RMoOZgUKM4BU8pVFHAUlgtOafaAwGaodbWUgPiO6otYVJQM6saxPgYy+aMKYTfvcR8uYSnl8V2cZIy29WnM9DdOTNM4BMF+Tjv2nvHOe1jI4ujxeN8s+mSeG8hyuq1WK2Xm3O+4Po7jtwMQJfeVQpFTUFpOtoz+uE2EtOQ2Z8dkX+d+JMsrKrdcYbhrRXYemO/IiVBFiV9F72RoqwUhhtAWqOvZDj0RiBUTRGhOuk9FMVzdjnOwwuvpYV72QrSG14dwb6tmRnduh9hlUgGzOnTPeVSNVTYwQUgQqbTv113UTd+iKPDD5fgkYA=</source>
   </file>
-  <file path="classes/controllers/ctrl_mailer_abstract.class.php" hash="6eac30a9c3ec9c1acb0e638ce28a721f" package="Default">
+  <file path="classes/controllers/ctrl_mailer_abstract.class.php" hash="fbccc71da9f3d9c0c6050016760edd12" package="Default">
     <parse_markers>
       <error line="1" code="50007">No page-level DocBlock was found in file classes/controllers/ctrl_mailer_abstract.class.php</error>
     </parse_markers>
@@ -1547,120 +1547,120 @@ A sample 404 page controller]]></description>
           <tag line="53" name="since" description="ADD MVC 0.10.4"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="68" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="74" package="">
         <name>Send</name>
         <type>function</type>
-        <docblock line="64">
+        <docblock line="70">
           <description><![CDATA[Fetches the view before sending]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="80" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="86" package="">
         <name>process_data</name>
         <type>function</type>
-        <docblock line="73">
+        <docblock line="79">
           <description><![CDATA[Process the data]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="73" name="param" description="" type="array" variable="$data">
+          <tag line="79" name="param" description="" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="73" name="since" description="ADD MVC 0.10.4"/>
+          <tag line="79" name="since" description="ADD MVC 0.10.4"/>
         </docblock>
-        <argument line="80">
+        <argument line="86">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="91" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="97" package="">
         <name>print_response</name>
         <type>function</type>
-        <docblock line="85">
+        <docblock line="91">
           <description><![CDATA[Print the response (instead of sending it)]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="85" name="param" description="" type="array" variable="$data">
+          <tag line="91" name="param" description="" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="91">
+        <argument line="97">
           <name>$data</name>
           <default><![CDATA[array()]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="105" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="111" package="">
         <name>view_basename</name>
         <type>function</type>
-        <docblock line="99">
+        <docblock line="105">
           <description><![CDATA[The view base file name of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="99" name="since" description="ADD MVC 0.3"/>
-          <tag line="99" name="version" description="0.1"/>
+          <tag line="105" name="since" description="ADD MVC 0.3"/>
+          <tag line="105" name="version" description="0.1"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="113" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="119" package="">
         <name>basename</name>
         <type>function</type>
-        <docblock line="109">
+        <docblock line="115">
           <description><![CDATA[The controller's basename]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="109" name="since" description="ADD MVC 0.3"/>
+          <tag line="115" name="since" description="ADD MVC 0.3"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="121" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="127" package="">
         <name>view_filepath</name>
         <type>function</type>
-        <docblock line="117">
+        <docblock line="123">
           <description><![CDATA[The view file path]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="117" name="since" description="ADD MVC 0.2"/>
+          <tag line="123" name="since" description="ADD MVC 0.2"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="129" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="135" package="">
         <name>view</name>
         <type>function</type>
-        <docblock line="125">
+        <docblock line="131">
           <description><![CDATA[The Smarty view object of $this controller]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="125" name="since" description="ADD MVC 0.2"/>
+          <tag line="131" name="since" description="ADD MVC 0.2"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="143" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="149" package="">
         <name>fetch_view</name>
         <type>function</type>
-        <docblock line="139">
+        <docblock line="145">
           <description><![CDATA[Gets the processed template]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="154" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="160" package="">
         <name>assign</name>
         <type>function</type>
-        <docblock line="149">
+        <docblock line="155">
           <description><![CDATA[Assign a variable to the view]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="149" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
+          <tag line="155" name="since" description="ADD MVC 0.6, ctrl_tpl_page 1.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="173" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="179" package="">
         <name>content_type</name>
         <type>function</type>
-        <docblock line="166">
+        <docblock line="172">
           <description><![CDATA[sets the content_type or get the current one]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="166" name="param" description="" type="string" variable="$new_content_type">
+          <tag line="172" name="param" description="" type="string" variable="$new_content_type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="166" name="since" description="ADD MVC 0.8"/>
+          <tag line="172" name="since" description="ADD MVC 0.8"/>
         </docblock>
-        <argument line="173">
+        <argument line="179">
           <name>$new_content_type</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
     </class>
-    <source>eJylVm2L20YQ/m7wf5gEg1bGsX1taIvTpnV8l1JorqV2k0JIl7W8tlVkSeyukhzN/ffO7Eqy3qxLqOBeNJp95u2Zmf3+x/SYDgfhHtijIBJac/kx1EYzD+UnEUZSeb4P/w4HACB2u8UiSsSOR+G2pvFsOLgfDmbjMeqN4ZWVwnKrjRKBIRn9zIaD5Yv15o/lagOrX5frNQRGRdxhcJFrw81fm5vb6zWU8GTd2nf4+IzhWu5FFhl4k6jdByVS+HYOwVEQgFQ61yqUf3ovFISxqYtn9m+abaMwgBEBvSGg8vkBMZ+1Lb8O5QdAwFBsIwmBCI6yE1clRqIzO9BGGLLwHg/qDkBMeniImY+qO2FEP9iIVNA1oZS4Y76FawIGSWxUElHmvsTPEZaXn892eLpKYqxRFphENTOcYupPrp5lIUf02pPzfRYHJkxi4GTWIbMOCAw3zqJoNobEHDEoJAbkzBDqkJ1kbDRCFyzFZ4RyjcfIAj9Iw+k9z5bTQLACezyzyeT6GO4Ns0dJ0+lhXAi/WFRdLFVKc+YY6ifP6/lDZGvBQd23s3nzUQaZkcC0jHd+M6E6jAMJy+trePV6BfPp1Xz6tDeJ0sGxahqcX1jiQGJnE3VYp69Pnttv/jluJU2m4gJhjR4yvxJJM5aX0iC/NGB9gHgOW7lPlAQKLYwPn0MCZ6Pl/Itkd0epdG97ssPJAmv5Gogo4pnGUWLL7jrEKwroTTl/+eftavPLb7ecT5rU8C+W6XeXPRtauz8L5ltrrjv/dyXr9aLflbTQpHayQlIhoJsk7nNPQDgKbThK6hRZjRQMkdtS7CDZFyWD0LQ4+UCol6JBc7wwxRoDrDOys6w3Nhee+0cGx+QySTo5uym5KjAFe5wnEIuTpBxYoMocvVjLr4shQEsGFw8FjBXuSki+Bsq8kGlOpslolfg5nbWM9ovFWeFiPSmOs6uehuJMn9cP+9fjWqrkASuaRiKQzJv9XV3jM2/ieRNqLOpHiVOGbhV9DVbWwZYgFeZ40fGvPjuxhEVQHd4/dp7q2eOpO7pYNGox9aYmjbxej9cnocydczzZ/oMr9IuI0xlJLYTaLLRJxK5p57WyhuwlLtRaGlYE5i4db935d369s7qVaNtiTLQgtI2R1dqtydJOjIuZ+1kaN0nzGYfXDiNPSCTTfTlp5KXa2a1N4cTnSeGk9XlRX2vFCQvLamQ486dvhCytKRDne5ZJyh340B74ZuLuS0g1noqDhKvpvDf64qJYv+dcNe45bN7kRKjzZWjVffj0CVDkSJvLOkdudVLzk1QHWU3qhNkPvnOiayRHOFYvwL61h941Xb9qU62DRLogEfUZLndu7lIc24q6w8kzRUsfklg2i+BWGF7kaMWNkOi8CvJQyb7rrU8VibWw81tsc+E11TorsXIKGwfTOtPOfZ3nleMVMt//Bzkl1Us=</source>
+    <source>eJylVm2P2kYQ/o7Ef5hGSDaIANdUbUXatIS7VJGSa1VoUilKV4tZwJWxrd11klPCf+/Mro3fFt9FRTrdsTfzzNszLz/9kh7Sfi/cgf9NEHGlmPgUKq18D9+PPIyE9IZD+NzvAQDfbufzKOFbFoWbmsTTfu/U701HI5QbwWvzCouN0pIHmt7oZ9rvLZ6v1n8ulmtYvlqsVhBoGTGLwXguDTd/r29ur1dwhifrxr7Fx88IrsWOZ5GGt4ncfpQ8hR9mEBw4AQipcqlC+NcPXEIY6/rz1PxOs00UBjAgoLcEdP78jJhP25bfhOIjIGDIN5GAgAcH4cSViRbozBaU5posfEBF5QDEpIf72B+i6JZr3g02IBF0jUvJ7/yhgWsCBkmsZRJR5r7GzwGWl5W6Dk+XSYw1ygKdyGaGU0z90dbzXMgBfe3I+S6LAx0mMTAya5F9BwSGG2dRNB1Bog8YFBIDcmZwuc+OItYKoQuW4meA7wrVyALbC83oe54tK4FgBfZoapLJ1CHcad+okqSVw7gQfj6vungWOZvTh1A9flbPHyIbCxbq1M7mzScRZFqAr0S8HTYTqsI4ELC4vobXb5Ywm1zNJt91JlFYOL+SBupqt28hxsLRQLKr16yiTHHlZHNiPH5G//XLVJ2KP0SkhBOnJG1DIzeAXAwEjiADbJRKWSl0JuNCcoUpK4BOrh54ITQSXgESBqjxYCN2iRRAuQ7j/UNYaW1USGVNP0+2d2VOdmSHkQW/5WvAo4hlCmeb4aGN3isY5U0Ye/HX7XL98vdbxsZNrg4v8uYPmyUTWntgFK1orNnM/29qOerSIJl5q1Y8Z4wdbdVSOgPC2WzCkUKl2GbYE0RQwbeABM1LBqFuNck9oV6KBs2xwpTfIKczsjqbL8ZWa4LgkFwmiZOz6zNXOaZghwMOYn4UlAMDVBnsF2v5pJhKtPVwE1LAWGFXQvK9dM4LmWZkmoxWiZ/TWYloN5+XAhfrSXGUrnoKCp0ur+/3r8O1VIo9VjSNeCB8b/pP9a6YemPPG1NjUT8KHGF05nQ12LkOpgQp14eLjn/74MQSFkE5vH9kPVXTRxOrOp83ajHxJjqNvE6PV0cu9Z11PNn8izv9q4jjjKQWQm0WmiRi17TzWtmL5qoMlRLaLwKzV9A7q/9+WO8stxCtf4yJto8yMdY3SJOlToyLmftNaDtJ8xmHd5AWRySSdl9LjbxUO7u1KexzOSnsa9daKzQMrF8jQ8mfrhGyMKaAl4efTs478L498P3YHgNINZbyvYCryawz+uJyrR9eV43Dy581ORGqfBka8SF8+QL4ZEmbvzlHbnVSs6OQe1FN6tg3/xhaJx50l5TK74zS+6brV22qOUikChJRn+FyZ/ouxbEtqTvseyZp6UMSi2YR7ArD64tW3ACJzqog95Xsx876VJH8FnZ+VjcXXlPMWYmlFVhbmJZOO/d1nlfUK2Q+/Qdxtfst</source>
   </file>
   <file path="classes/add.class.php" hash="f638740c20625ae11a845b9acc7d7909" package="ADD MVC">
     <docblock line="2">
