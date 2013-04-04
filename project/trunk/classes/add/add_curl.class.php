@@ -5,7 +5,7 @@
  * advance cURL library
  *
  * @package ADD MVC\Extras
- * @version 0.0
+ * @version 1.0
  * @since ADD MVC 0.5
  *
  * @author albertdiones@gmail.com
@@ -90,7 +90,7 @@ CLASS add_curl {
     * @since ADD MVC 0.5
     */
    public $proxies = array(
-         '72.64.146.73:3128',
+         # '72.64.146.73:3128', # Example
       );
 
 
@@ -109,18 +109,31 @@ CLASS add_curl {
     */
    public $proxy;
 
+   /**
+    * Settings and stuffs
+    *
+    * @since ADD MVC 0.8-data_mining
+    */
    public function __construct() {
       if (!isset($this->cookie_dir))
-         $this->cookie_dir = sys_get_temp_dir().'/cookies_'.preg_replace('/\W+/','_',__FILE__);
+         $this->cookie_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cookies';
       if ($this->enable_cache) {
-         $this->cache_dir = sys_get_temp_dir().'/cache_'.preg_replace('/\W+/','_',__FILE__);
+         $this->cache_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cache';
          if (!file_exists($this->cache_dir))
             mkdir($this->cache_dir,0777);
       }
+
+      if ($this->enable_proxy && empty($this->proxy) && isset($this->proxies) && is_array($this->proxies) && $this->proxies) {
+         $this->proxy = $this->proxies[array_rand($this->proxies)];
+         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->proxy);
+      }
+
    }
 
    /**
     * Advance cURL init
+    *
+    * @param string $url
     *
     * @since ADD MVC 0.5
     */
@@ -151,14 +164,12 @@ CLASS add_curl {
       curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, $this->enable_follow_location);
 
       curl_setopt($this->curl, CURLOPT_MAXREDIRS, 5);
-      curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 30);
-      curl_setopt($this->curl, CURLOPT_TIMEOUT, 3600);
+      curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
+      curl_setopt($this->curl, CURLOPT_TIMEOUT, 60);
 
       curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
 
       if ($this->enable_proxy) {
-         $this->proxy = $this->proxies[array_rand($this->proxies)];
-
          curl_setopt($this->curl,CURLOPT_PROXYTYPE,$this->proxy_type);
          curl_setopt($this->curl,CURLOPT_PROXY,$this->proxy);
          curl_setopt($this->curl,CURLOPT_HTTPPROXYTUNNEL ,1);
@@ -215,7 +226,7 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return static::parse_response($response);
+      return parse_response($response);
 
    }
 
@@ -223,8 +234,7 @@ CLASS add_curl {
     * returns complete cURL response of POST request
     *
     * @param string $url
-    * @param mixed $post (array or query string format)
-    *
+    * @param array  $post
     *
     * @since ADD MVC 0.5
     */
@@ -239,18 +249,24 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return static::parse_response($response);
+      return parse_response($response);
 
    }
 
    /**
     * returns the response body of GET request
     *
+    * @param string $url
+    *
     * @since ADD MVC 0.5
     */
    public function get_body($url) {
 
       $this->init($url);
+
+      if (!is_string($url)) {
+         throw new e_developer("Invalid ".__CLASS__."->".__FUNCTION__."() parameter ",$url);
+      }
 
       curl_setopt($this->curl, CURLOPT_REFERER, $url);
 
@@ -262,16 +278,23 @@ CLASS add_curl {
          if (!file_exists($cache_path)) {
 
             $response = $this->exec();
-            if ($response)
+
+            if ($response) {
                file_put_contents($cache_path,$response);
+
+               e_system::assert(file_exists($cache_path) && !is_dir($cache_path),"Failed to cache $cache_path");
+            }
+            else {
+               throw new e_developer("Failed to fetch $this->url", array($this,$cache_path));
+            }
 
          }
 
          if (file_exists($cache_path) && !is_dir($cache_path)) {
-            return file_get_contents($cache_path);
+            $response = file_get_contents($cache_path);
          }
          else {
-            throw new e_system("Failed to cache $cache_path");
+            $response = null;
          }
 
       }
@@ -288,6 +311,9 @@ CLASS add_curl {
 
    /**
     * Returns the body of a post request
+    *
+    * @param string $url
+    * @param mixed $post
     *
     * @since ADD MVC 0.6
     */
@@ -315,7 +341,12 @@ CLASS add_curl {
    public function cache_path() {
       e_developer::assert($this->cache_dir,"Cache directory is blank");
 
-      return $this->cache_dir.'/'.sha1($this->url);;
+      $cache_file_name = sha1($this->url);
+      if ($this->enable_proxy) {
+         $cache_file_name .= sha1($this->proxy);
+      }
+
+      return $this->cache_dir.'/'.$cache_file_name;
    }
 
 
@@ -330,6 +361,8 @@ CLASS add_curl {
 
    /**
     * validates a URL if it's existing
+    *
+    * @param string $url
     *
     * @since ADD MVC 0.5
     */
