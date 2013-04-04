@@ -105,7 +105,7 @@ CLASS add_curl {
     * Curl Options Array
     *
     */
-   public $curl_options = array(
+   public $default_curl_options = array(
          CURLOPT_AUTOREFERER     => true,
          CURLOPT_ENCODING        => 'gzip,deflate',
          CURLOPT_MAXREDIRS       =>  5,
@@ -217,7 +217,7 @@ CLASS add_curl {
          curl_setopt($this->curl, CURLOPT_COOKIEFILE, $cookie_dir);
       }
 
-      curl_setopt_array($this->curl,$this->curl_options);
+      curl_setopt_array($this->curl,$this->default_curl_options);
 
       if ($this->enable_proxy) {
          curl_setopt($this->curl,CURLOPT_PROXYTYPE,$this->proxy_type);
