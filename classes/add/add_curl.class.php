@@ -34,13 +34,7 @@ CLASS add_curl {
     * @since ADD MVC 0.5
     */
    public $header = array(
-         'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8 ( .NET4.0E)',
-         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-         'Accept-Language: en-us,en;q=0.5',
-         'Accept-Encoding: gzip,deflate',
-         'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7',
-         'Keep-Alive: 115',
-         'Connection: keep-alive'
+
       );
 
 
@@ -99,6 +93,11 @@ CLASS add_curl {
     */
    public $proxy;
 
+   private static $bc_new_option_indexes = array(
+         'header' => CURLOPT_HTTPHEADER,
+         'enable_follow_location' => CURLOPT_FOLLOWLOCATION,
+      );
+
 
 
    /**
@@ -106,6 +105,15 @@ CLASS add_curl {
     *
     */
    public $default_curl_options = array(
+         CURLOPT_HTTPHEADER => array(
+                'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8 ( .NET4.0E)',
+               'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+               'Accept-Language: en-us,en;q=0.5',
+               'Accept-Encoding: gzip,deflate',
+               'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+               'Keep-Alive: 115',
+               'Connection: keep-alive'
+            ),
          CURLOPT_AUTOREFERER     => true,
          CURLOPT_ENCODING        => 'gzip,deflate',
          CURLOPT_MAXREDIRS       =>  5,
@@ -140,6 +148,8 @@ CLASS add_curl {
     * Sets a field
     * (also updates the db row on the end of the script or after a call of $this->update_db_row())
     *
+    * Backward compatiblity for 0.10.6
+    *
     * @param string $varname
     * @param mixed $value
     *
@@ -147,20 +157,26 @@ CLASS add_curl {
     * @since ADD MVC 0.10.7
     */
    public function __set($varname, $value) {
-      if ($varname == 'enable_follow_location') {
-         return $this->curl_options[CURLOPT_FOLLOWLOCATION] = $value;
+      foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
+         if ($varname == $old_var) {
+            return $this->default_curl_options[$bc_new_option_index] = $value;
+         }
       }
    }
    /**
     * Magic function __get
-    * Gets $this->data[$varname]
+    *
+    * Backward compatiblity for 0.10.6
+    *
     * @param mixed $varname
-    * @since ADD MVC 0.0
+    * @since ADD MVC 0.10.7
     * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.get
     */
    public function __get($varname) {
-      if ($varname == 'enable_follow_location') {
-         return $this->curl_options[CURLOPT_FOLLOWLOCATION];
+      foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
+         if ($varname == $old_var) {
+            return $this->default_curl_options[$bc_new_option_index];
+         }
       }
    }
 
@@ -169,11 +185,13 @@ CLASS add_curl {
     *
     * @param mixed $varname (scalar values only)
     * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.isset
-    * @since ADD MVC 0.0
+    * @since ADD MVC 0.10.7
     */
    public function __isset($varname) {
-      if ($varname == 'enable_follow_location') {
-         return isset($this->curl_options[CURLOPT_FOLLOWLOCATION]);
+      foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
+         if ($varname == $old_var) {
+            return isset($this->default_curl_options[$bc_new_option_index]);
+         }
       }
    }
 
@@ -182,11 +200,13 @@ CLASS add_curl {
     *
     * @param mixed $varname (scalar values only)
     * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.unset
-    * @since ADD MVC 0.0
+    * @since ADD MVC 0.10.7
     */
    public function __unset($varname) {
-      if ($varname == 'enable_follow_location') {
-         return static::__set($varname,null);
+      foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
+         if ($varname == $old_var) {
+            return static::__set($varname,null);
+         }
       }
    }
 
@@ -203,7 +223,6 @@ CLASS add_curl {
 
       $this->curl = curl_init();
 
-      curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->header);
       curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
       curl_setopt($this->curl, CURLOPT_URL, $url);
@@ -215,6 +234,13 @@ CLASS add_curl {
       if ($cookie_dir = $this->cookie_dir) {
          curl_setopt($this->curl, CURLOPT_COOKIEJAR, $cookie_dir);
          curl_setopt($this->curl, CURLOPT_COOKIEFILE, $cookie_dir);
+      }
+
+      # Backward compatiblity for 0.10.6
+      foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
+         if ($this->$old_var != $this->__get($old_var)) {
+            $this->__set($old_var, $this->$old_var);
+         }
       }
 
       curl_setopt_array($this->curl,$this->default_curl_options);
