@@ -276,7 +276,7 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return parse_response($response);
+      return static::parse_response($response);
 
    }
 
@@ -299,7 +299,7 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return parse_response($response);
+      return static::parse_response($response);
 
    }
 
