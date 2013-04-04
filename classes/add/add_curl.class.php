@@ -158,7 +158,7 @@ CLASS add_curl {
     * @since ADD MVC 0.0
     * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.get
     */
-   public __get($varname) {
+   public function __get($varname) {
       if ($varname == 'enable_follow_location') {
          return $this->curl_options[CURLOPT_FOLLOWLOCATION];
       }
