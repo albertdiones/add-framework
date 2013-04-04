@@ -66,16 +66,6 @@ CLASS add_curl {
     */
    public $cache_dir;
 
-
-   /**
-    * Enable follow location
-    *
-    * @since ADD MVC 0.5
-    *
-    * @see init()
-    */
-   public $enable_follow_location = false;
-
    /**
     * Enable proxy
     *
@@ -109,6 +99,22 @@ CLASS add_curl {
     */
    public $proxy;
 
+
+
+   /**
+    * Curl Options Array
+    *
+    */
+   public $curl_options = array(
+         CURLOPT_AUTOREFERER     => true,
+         CURLOPT_ENCODING        => 'gzip,deflate',
+         CURLOPT_MAXREDIRS       =>  5,
+         CURLOPT_CONNECTTIMEOUT  => 10,
+         CURLOPT_TIMEOUT         => 60,
+         CURLOPT_FOLLOWLOCATION  => false
+      );
+
+
    /**
     * Settings and stuffs
     *
@@ -131,6 +137,60 @@ CLASS add_curl {
    }
 
    /**
+    * Sets a field
+    * (also updates the db row on the end of the script or after a call of $this->update_db_row())
+    *
+    * @param string $varname
+    * @param mixed $value
+    *
+    * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.set
+    * @since ADD MVC 0.10.7
+    */
+   public function __set($varname, $value) {
+      if ($varname == 'enable_follow_location') {
+         return $this->curl_options[CURLOPT_FOLLOWLOCATION] = $value;
+      }
+   }
+   /**
+    * Magic function __get
+    * Gets $this->data[$varname]
+    * @param mixed $varname
+    * @since ADD MVC 0.0
+    * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.get
+    */
+   public __get($varname) {
+      if ($varname == 'enable_follow_location') {
+         return $this->curl_options[CURLOPT_FOLLOWLOCATION];
+      }
+   }
+
+   /**
+    * Magic function __isset()
+    *
+    * @param mixed $varname (scalar values only)
+    * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.isset
+    * @since ADD MVC 0.0
+    */
+   public function __isset($varname) {
+      if ($varname == 'enable_follow_location') {
+         return isset($this->curl_options[CURLOPT_FOLLOWLOCATION]);
+      }
+   }
+
+   /**
+    * Magic function __unset()
+    *
+    * @param mixed $varname (scalar values only)
+    * @see http://www.php.net/manual/en/language.oop5.overloading.php#object.unset
+    * @since ADD MVC 0.0
+    */
+   public function __unset($varname) {
+      if ($varname == 'enable_follow_location') {
+         return static::__set($varname,null);
+      }
+   }
+
+   /**
     * Advance cURL init
     *
     * @param string $url
@@ -144,12 +204,8 @@ CLASS add_curl {
       $this->curl = curl_init();
 
       curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->header);
-
-      curl_setopt($this->curl, CURLOPT_AUTOREFERER, true);
       curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($this->curl, CURLOPT_TIMEOUT, 10);
-      curl_setopt($this->curl, CURLOPT_ENCODING, 'gzip,deflate');
-
+      curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
       curl_setopt($this->curl, CURLOPT_URL, $url);
 
       if (preg_match('/https?\:\/\//',$url)) {
@@ -161,13 +217,7 @@ CLASS add_curl {
          curl_setopt($this->curl, CURLOPT_COOKIEFILE, $cookie_dir);
       }
 
-      curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, $this->enable_follow_location);
-
-      curl_setopt($this->curl, CURLOPT_MAXREDIRS, 5);
-      curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
-      curl_setopt($this->curl, CURLOPT_TIMEOUT, 60);
-
-      curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
+      curl_setopt_array($this->curl,$this->curl_options);
 
       if ($this->enable_proxy) {
          curl_setopt($this->curl,CURLOPT_PROXYTYPE,$this->proxy_type);
