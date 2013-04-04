@@ -248,10 +248,18 @@ CLASS add_curl {
       $response_header_array = array();
       foreach($response_header_lines as $header_line) {
          list($header,$value) = explode(': ', $header_line, 2);
-         @$response_header_array[$header] .= $value."\n";
+         if (!isset($response_header_arrays[$header])) {
+            $response_header_arrays[$header] = array();
+         }
+
+         $response_header_arrays[$header][] = $value;
       }
 
-      return @array(
+      foreach ($response_header_arrays as $header_field => $header_values) {
+         $response_header_array[$header_field] = implode("\n",$header_values);
+      }
+
+      return array(
             'code' => $response_code,
             'header' => $response_header_array,
             'body' => $response_body,
