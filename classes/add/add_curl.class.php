@@ -202,6 +202,8 @@ CLASS add_curl {
    /**
     * returns complete cURL response of GET request
     *
+    * @param string $url
+    *
     * @since ADD MVC 0.5
     */
    public function get_response($url) {
@@ -213,12 +215,16 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return parse_response($response);
+      return static::parse_response($response);
 
    }
 
    /**
     * returns complete cURL response of POST request
+    *
+    * @param string $url
+    * @param mixed $post (array or query string format)
+    *
     *
     * @since ADD MVC 0.5
     */
@@ -233,7 +239,7 @@ CLASS add_curl {
 
       $response = $this->exec();
 
-      return parse_response($response);
+      return static::parse_response($response);
 
    }
 
