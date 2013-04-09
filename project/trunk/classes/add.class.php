@@ -303,7 +303,8 @@ CLASS add {
 
       set_error_handler(
             function() {
-               throw new e_developer("Failed to handle error",func_get_args());
+               $args = func_get_args();
+               throw new e_developer("Failed to handle error: $args[1]",);
             }
          );
 
