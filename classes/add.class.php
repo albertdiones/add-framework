@@ -348,7 +348,7 @@ CLASS add {
       if (!isset(static::$errors[$error_index]))
          static::$errors[$error_index] = array();
 
-      $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 20);
+      $backtrace = array(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS),1,20);
 
       array_shift($backtrace);
 
