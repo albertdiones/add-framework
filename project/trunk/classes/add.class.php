@@ -296,6 +296,12 @@ CLASS add {
     */
    public static function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $errcontext = NULL) {
 
+      set_error_handler(
+            function() {
+               throw new e_developer("Failed to handle error",func_get_args());
+            }
+         );
+
       static $error_code_strings = array(
             E_ERROR           => 'E_ERROR',
             E_WARNING         => 'E_WARNING',
@@ -329,12 +335,6 @@ CLASS add {
       if (!(error_reporting() & $errno)) {
          return;
       }
-
-      set_error_handler(
-            function() {
-               throw new e_developer("Failed to handle error",func_get_args());
-            }
-         );
 
       $error_index = isset($error_code_strings[$errno]) ? $error_code_strings[$errno] : $errno;
 
