@@ -339,12 +339,23 @@ CLASS add {
 
       array_shift($backtrace);
 
+      $location_repeats = array();
+
       # Throw away same backtrace as $errfile and $errline
       while (
             isset($backtrace[0]['file'])
             && $backtrace[0]['file'] == $errfile
             && $backtrace[0]['line'] == $errline
          ) {
+
+         (
+            isset($location_repeats["$errfile:$errline"])
+            &&
+            $location_repeats["$errfile:$errline"] ++
+         )
+         ||
+         $location_repeats["$errfile:$errline"] = 1;
+
          array_shift($backtrace);
       }
 
