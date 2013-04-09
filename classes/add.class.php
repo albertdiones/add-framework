@@ -358,10 +358,6 @@ CLASS add {
             && $backtrace[0]['line'] == $errline
          ) {
 
-         if ($location_repeats["$errfile:$errline"] >= 20) {
-            throw new e_developer("Possible infinite loop while handling the error");
-         }
-
          array_shift($backtrace);
       }
 
