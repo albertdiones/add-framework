@@ -339,6 +339,7 @@ CLASS add {
          );
 
       if (!(error_reporting() & $errno)) {
+         restore_error_handler();
          return;
       }
 
