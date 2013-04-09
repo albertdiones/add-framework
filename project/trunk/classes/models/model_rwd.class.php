@@ -548,7 +548,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
          }
       }
       else if (is_string($conditions)) {
-         $where_clause = "$prefix ".$conditions;
+         # Make sure there's something
+         if (trim($conditions)) {
+            $where_clause = "$prefix ".$conditions;
+         }
+         else {
+            return false;
+         }
       }
       return " $where_clause ";
    }
