@@ -356,7 +356,7 @@ CLASS add {
          ||
          $location_repeats["$errfile:$errline"] = 1;
 
-         if ($location_repeats["$errfile:$errline"] >= 50) {
+         if ($location_repeats["$errfile:$errline"] >= 20) {
             throw new e_developer("Possible infinite loop while handling the error");
          }
 
