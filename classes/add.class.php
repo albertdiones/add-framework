@@ -278,6 +278,10 @@ CLASS add {
          }
          debug::var_dump($e3->getTraceAsString());
 
+         if (isset($e3->data)) {
+            debug::var_dump($e3->data);
+         }
+
          die();
       }
    }
