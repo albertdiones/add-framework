@@ -330,6 +330,12 @@ CLASS add {
          return;
       }
 
+      set_error_handler(
+            function() {
+               throw new e_developer("Failed to handle error",func_get_args());
+            }
+         );
+
       $error_index = isset($error_code_strings[$errno]) ? $error_code_strings[$errno] : $errno;
 
       if (!isset(static::$errors[$error_index]))
@@ -339,22 +345,12 @@ CLASS add {
 
       array_shift($backtrace);
 
-      $location_repeats = array();
-
       # Throw away same backtrace as $errfile and $errline
       while (
             isset($backtrace[0]['file'])
             && $backtrace[0]['file'] == $errfile
             && $backtrace[0]['line'] == $errline
          ) {
-
-         (
-            isset($location_repeats["$errfile:$errline"])
-            &&
-            $location_repeats["$errfile:$errline"] ++
-         )
-         ||
-         $location_repeats["$errfile:$errline"] = 1;
 
          if ($location_repeats["$errfile:$errline"] >= 20) {
             throw new e_developer("Possible infinite loop while handling the error");
@@ -371,6 +367,9 @@ CLASS add {
             'line'       => $errline,
             'backtrace'  => $backtrace,
          );
+
+      restore_error_handler();
+
    }
 
    /**
