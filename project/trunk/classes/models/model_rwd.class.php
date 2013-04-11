@@ -270,7 +270,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
       # Fix for issue #3
-      if (!static::row_pk($row)) {
+      if (static::row_pk($row) === null) {
          throw new e_developer("Model ".get_called_class()." PK is not existing",array($row, static::TABLE, static::TABLE_PK));
       }
 
