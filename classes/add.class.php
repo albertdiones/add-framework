@@ -259,7 +259,6 @@ CLASS add {
                DEFINE('add\terminal_error\error_message',$e->getMessage());
                DEFINE('add\terminal_error\error_header',get_class($e));
                DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
-               DEFINE('add\terminal_error\error_trace',$e->getTraceAsString());
                if (!headers_sent() && !add::include_include_file('terminal_error.php')) {
                   throw new Exception("Failed to display terminal error");
                }
@@ -279,10 +278,6 @@ CLASS add {
          }
          debug::var_dump($e3->getTraceAsString());
 
-         if (isset($e3->data)) {
-            debug::var_dump($e3->data);
-         }
-
          die();
       }
    }
@@ -300,13 +295,6 @@ CLASS add {
     * @see http://www.php.net/manual/en/function.set-error-handler.php
     */
    public static function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $errcontext = NULL) {
-
-      set_error_handler(
-            function() {
-               $args = func_get_args();
-               throw new e_developer("Failed to handle error: $args[1]",$args);
-            }
-         );
 
       static $error_code_strings = array(
             E_ERROR           => 'E_ERROR',
@@ -339,7 +327,6 @@ CLASS add {
          );
 
       if (!(error_reporting() & $errno)) {
-         restore_error_handler();
          return;
       }
 
@@ -348,7 +335,7 @@ CLASS add {
       if (!isset(static::$errors[$error_index]))
          static::$errors[$error_index] = array();
 
-      $backtrace = array(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS),1,20);
+      $backtrace = array_slice(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS),1,20);
 
       array_shift($backtrace);
 
@@ -358,7 +345,6 @@ CLASS add {
             && $backtrace[0]['file'] == $errfile
             && $backtrace[0]['line'] == $errline
          ) {
-
          array_shift($backtrace);
       }
 
@@ -370,9 +356,6 @@ CLASS add {
             'line'       => $errline,
             'backtrace'  => $backtrace,
          );
-
-      restore_error_handler();
-
    }
 
    /**
