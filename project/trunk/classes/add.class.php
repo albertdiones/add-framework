@@ -357,7 +357,7 @@ CLASS add {
             'backtrace'  => $backtrace,
          );
 
-      if (! ( $keys = array_keys($error,static::$errors[$error_index]) ) ) {
+      if ( !( $keys = array_keys($error,static::$errors[$error_index]) ) ) {
          $error['num_occured']            = 1;
          static::$errors[$error_index][]  = $error;
       }
