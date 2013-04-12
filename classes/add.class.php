@@ -357,13 +357,17 @@ CLASS add {
             'backtrace'  => $backtrace,
          );
 
-      if ( !( $keys = array_keys(static::$errors[$error_index],$error) ) ) {
-         #$error['num_occured']            = 1;
-         static::$errors[$error_index][]  = $error;
+      $recorded_already = false;
+      foreach (static::$errors[$error_index] as $recorded_error) {
+         if (count(array_intersect($recorded_error, $error)) == count($error)) {
+            $recorded_error['num_occured'] ++;
+            $recorded_already = true;
+            break;
+         }
       }
-      else {
-         $key = reset($keys);
-         #static::$errors[$error_index][$key]['num_occured'] ++;
+      if ( !$recorded_already ) {
+         $error['num_occured']            = 1;
+         static::$errors[$error_index][]  = $error;
       }
 
    }
