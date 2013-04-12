@@ -348,7 +348,7 @@ CLASS add {
          array_shift($backtrace);
       }
 
-      static::$errors[$error_index][] = array(
+      $error = array(
             'type' => isset($error_code_readable_strings [$errno]) ? $error_code_readable_strings [$errno] : $errno,
             'errno'      => $errno,
             'message' => $errstr,
@@ -356,6 +356,16 @@ CLASS add {
             'line'       => $errline,
             'backtrace'  => $backtrace,
          );
+
+      if (! ( $keys = array_keys($error,static::$errors[$error_index]) ) ) {
+         $error['num_occured']            = 1;
+         static::$errors[$error_index][]  = $error;
+      }
+      else {
+         $key = reset($key);
+         static::$errors[$error_index][$key]['num_occured'] ++;
+      }
+
    }
 
    /**
