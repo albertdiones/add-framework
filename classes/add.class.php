@@ -357,13 +357,13 @@ CLASS add {
             'backtrace'  => $backtrace,
          );
 
-      if ( !( $keys = array_keys($error,static::$errors[$error_index]) ) ) {
-         $error['num_occured']            = 1;
+      if ( !( $keys = array_keys(static::$errors[$error_index],$error) ) ) {
+         #$error['num_occured']            = 1;
          static::$errors[$error_index][]  = $error;
       }
       else {
-         $key = reset($key);
-         static::$errors[$error_index][$key]['num_occured'] ++;
+         $key = reset($keys);
+         #static::$errors[$error_index][$key]['num_occured'] ++;
       }
 
    }
