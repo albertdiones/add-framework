@@ -3,7 +3,7 @@
 {if add::current_controller()->content_type() == 'text/plain'}
 ================================================================================================
 
-   {$error.type} - {$error.message}
+   {$error.type} - *{$error.message}* x {$error.num_occured}
    {$error.file}:{$error.line}
    {foreach $error['file_lines'] as $error_file_line}{$error_file_line.file}:{$error_file_line.line}
    {/foreach}
@@ -11,7 +11,7 @@
 <div style="{block name='error.style'}margin:5px auto;border:1px solid #333; background: #FFAAAA; padding:5px 10px;width:720px{/block};font-family:verdana;">
    <div style='float:left;width:40%;'>
       <small>{$error.type}</small>
-      <p>{$error.message}</p>
+      <p><b>{$error.message}</b> x {$error.num_occured}</p>
       <br />
       <small style="font-size:8px;">
          {$error.file}:{$error.line}
