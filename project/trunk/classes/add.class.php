@@ -246,7 +246,27 @@ CLASS add {
          catch (Exception $e2) {
 
             if ($e instanceof SmartyException) {
-               static::handle_exception(new e_smarty($e->getMessage(),$e));
+               static::handle_exception(
+                     new e_smarty(
+                           $e->getMessage(),
+                           array(
+                              'message' => $e->getMessage(),
+                              'code'    => $e->getCode(),
+                              'trace'   => str_replace(
+                                    array(
+                                          add::config()->root_dir
+                                          ,add::config()->add_dir
+                                       )
+                                       ,
+                                    array(
+                                          '*root_dir*',
+                                          '*add_dir*',
+                                       ),
+                                    $e->getTraceAsString()
+                                 ),
+                           )
+                        )
+                  );
             }
 
             if (add::content_type() == 'text/plain') {
