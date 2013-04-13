@@ -232,6 +232,9 @@ CLASS add {
     */
    static function handle_exception(Exception $e) {
       try {
+         while (ob_get_level()) {
+            echo ob_get_clean();
+         }
          try {
             if (method_exists($e,'handle_exception')) {
                return $e->handle_exception();
@@ -241,9 +244,6 @@ CLASS add {
             }
          }
          catch (Exception $e2) {
-            while (ob_get_level()) {
-               ob_end_clean();
-            }
 
             if ($e instanceof SmartyException) {
                static::handle_exception(new e_smarty($e->getMessage(),$e));
@@ -358,7 +358,7 @@ CLASS add {
          );
 
       $recorded_already = false;
-      foreach (static::$errors[$error_index] as $recorded_error) {
+      foreach (static::$errors[$error_index] as &$recorded_error) {
          if (count(array_intersect($recorded_error, $error)) == count($error)) {
             $recorded_error['num_occured'] ++;
             $recorded_already = true;
@@ -440,6 +440,9 @@ CLASS add {
     */
    static function handle_shutdown() {
       try {
+         while (ob_get_level()) {
+            echo ob_get_clean();
+         }
          if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
             global $add_mvc_root_timer;
 
