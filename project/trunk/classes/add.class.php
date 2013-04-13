@@ -249,6 +249,7 @@ CLASS add {
                static::handle_exception(
                      new e_smarty(
                            $e->getMessage(),
+                           # Fixed Issue #58, e_smarty data is too long
                            array(
                               'message' => $e->getMessage(),
                               'code'    => $e->getCode(),
