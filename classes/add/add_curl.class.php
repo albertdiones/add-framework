@@ -78,12 +78,6 @@ CLASS add_curl {
       );
 
 
-   /**
-    * the proxy type constant
-    *
-    * @since ADD MVC 0.5
-    */
-   public $proxy_type = CURLPROXY_HTTP;
 
 
    /**
@@ -94,8 +88,11 @@ CLASS add_curl {
    public $proxy;
 
    private static $bc_new_option_indexes = array(
-         'header' => CURLOPT_HTTPHEADER,
+         'header'                 => CURLOPT_HTTPHEADER,
          'enable_follow_location' => CURLOPT_FOLLOWLOCATION,
+         'proxy_type'             => CURLOPT_PROXYTYPE,
+         'proxy'                  => CURLOPT_PROXY,
+         'enable_proxy'           => CURLOPT_HTTPPROXYTUNNEL,
       );
 
 
@@ -105,7 +102,7 @@ CLASS add_curl {
     *
     */
    public $default_curl_options = array(
-         CURLOPT_HTTPHEADER => array(
+         CURLOPT_HTTPHEADER      => array(
                 'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8 ( .NET4.0E)',
                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                'Accept-Language: en-us,en;q=0.5',
@@ -115,11 +112,22 @@ CLASS add_curl {
                'Connection: keep-alive'
             ),
          CURLOPT_AUTOREFERER     => true,
+         CURLOPT_PROXYTYPE       => CURLPROXY_HTTP,
+         
+         # set this to ip:port formated IP (e.g. 123.123.123.123:321)
+         CURLOPT_PROXY           => null,
+         # set this to true to enable proxy
+         CURLOPT_HTTPPROXYTUNNEL => false,
          CURLOPT_ENCODING        => 'gzip,deflate',
+         
+         # Follow redirects
+         CURLOPT_FOLLOWLOCATION  => false,
+         # How many redirects to follow
          CURLOPT_MAXREDIRS       =>  5,
+         
+         # Time outs
          CURLOPT_CONNECTTIMEOUT  => 10,
          CURLOPT_TIMEOUT         => 60,
-         CURLOPT_FOLLOWLOCATION  => false
       );
 
 
@@ -137,9 +145,16 @@ CLASS add_curl {
             mkdir($this->cache_dir,0777);
       }
 
-      if ($this->enable_proxy && empty($this->proxy) && isset($this->proxies) && is_array($this->proxies) && $this->proxies) {
-         $this->proxy = $this->proxies[array_rand($this->proxies)];
-         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->proxy);
+      if (
+            $this->default_curl_options[CURLOPT_HTTPPROXYTUNNEL]
+            && 
+            empty($this->default_curl_options[CURLOPT_PROXY]) 
+            && 
+            !empty($this->proxies) 
+            && is_array($this->proxies)
+         ) {
+         $this->default_curl_options[CURLOPT_PROXY] = $this->proxies[array_rand($this->proxies)];
+         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->default_curl_options[CURLOPT_PROXY]);
       }
 
    }
@@ -244,12 +259,6 @@ CLASS add_curl {
       }
 
       curl_setopt_array($this->curl,$this->default_curl_options);
-
-      if ($this->enable_proxy) {
-         curl_setopt($this->curl,CURLOPT_PROXYTYPE,$this->proxy_type);
-         curl_setopt($this->curl,CURLOPT_PROXY,$this->proxy);
-         curl_setopt($this->curl,CURLOPT_HTTPPROXYTUNNEL ,1);
-      }
 
       return $this->curl;
    }
@@ -426,8 +435,8 @@ CLASS add_curl {
       e_developer::assert($this->cache_dir,"Cache directory is blank");
 
       $cache_file_name = sha1($this->url);
-      if ($this->enable_proxy) {
-         $cache_file_name .= sha1($this->proxy);
+      if ($this->default_curl_options[CURLOPT_HTTPPROXYTUNNEL]) {
+         $cache_file_name .= sha1($this->default_curl_options[CURLOPT_PROXY]);
       }
 
       return $this->cache_dir.'/'.$cache_file_name;
@@ -484,7 +493,7 @@ CLASS add_curl {
       $response = curl_exec($this->curl);
 
       if ($e = curl_error($this->curl)) {
-         throw new e_system("curl error: (#".curl_errno($this->curl).")$e url:$this->url proxy: $this->proxy",null,curl_errno($this->curl));
+         throw new e_system("curl error: (#".curl_errno($this->curl).")$e url:$this->url proxy: {$this->default_curl_options[CURLOPT_PROXY]}",null,curl_errno($this->curl));
       }
 
       $this->reset();
