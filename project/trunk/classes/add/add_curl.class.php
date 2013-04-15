@@ -60,13 +60,6 @@ CLASS add_curl {
     */
    public $cache_dir;
 
-   /**
-    * Enable proxy
-    *
-    * @since ADD MVC 0.5
-    */
-   public $enable_proxy = false;
-
 
    /**
     * Proxies IP:port
