@@ -60,7 +60,6 @@ CLASS add_curl {
     */
    public $cache_dir;
 
-
    /**
     * Proxies IP:port
     *
@@ -71,14 +70,6 @@ CLASS add_curl {
       );
 
 
-
-
-   /**
-    * Current proxy
-    *
-    * @since ADD MVC 0.5
-    */
-   public $proxy;
 
    private static $bc_new_option_indexes = array(
          'header'                 => CURLOPT_HTTPHEADER,
@@ -94,7 +85,7 @@ CLASS add_curl {
     * Curl Options Array
     *
     */
-   public $default_curl_options = array(
+   protected $default_curl_options = array(
          CURLOPT_HTTPHEADER      => array(
                 'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8 ( .NET4.0E)',
                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -122,6 +113,15 @@ CLASS add_curl {
          CURLOPT_CONNECTTIMEOUT  => 10,
          CURLOPT_TIMEOUT         => 60,
       );
+   
+   
+   /**
+    * The real options that are gonna be used
+    *
+    * @see set_curl_options()
+    *
+    */
+   public $curl_options;
 
 
    /**
@@ -137,18 +137,21 @@ CLASS add_curl {
          if (!file_exists($this->cache_dir))
             mkdir($this->cache_dir,0777);
       }
+      
+      $this->set_curl_options();
 
       if (
-            $this->default_curl_options[CURLOPT_HTTPPROXYTUNNEL]
+            $this->curl_options[CURLOPT_HTTPPROXYTUNNEL]
             && 
-            empty($this->default_curl_options[CURLOPT_PROXY]) 
+            empty($this->curl_options[CURLOPT_PROXY]) 
             && 
             !empty($this->proxies) 
             && is_array($this->proxies)
          ) {
-         $this->default_curl_options[CURLOPT_PROXY] = $this->proxies[array_rand($this->proxies)];
-         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->default_curl_options[CURLOPT_PROXY]);
+         $this->curl_options[CURLOPT_PROXY] = $this->proxies[array_rand($this->proxies)];
+         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->curl_options[CURLOPT_PROXY]);
       }
+      
 
    }
 
@@ -167,7 +170,7 @@ CLASS add_curl {
    public function __set($varname, $value) {
       foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
          if ($varname == $old_var) {
-            return $this->default_curl_options[$bc_new_option_index] = $value;
+            return $this->curl_options[$bc_new_option_index] = $value;
          }
       }
    }
@@ -183,7 +186,7 @@ CLASS add_curl {
    public function __get($varname) {
       foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
          if ($varname == $old_var) {
-            return $this->default_curl_options[$bc_new_option_index];
+            return $this->curl_options[$bc_new_option_index];
          }
       }
    }
@@ -198,7 +201,7 @@ CLASS add_curl {
    public function __isset($varname) {
       foreach (self::$bc_new_option_indexes as $old_var => $bc_new_option_index) {
          if ($varname == $old_var) {
-            return isset($this->default_curl_options[$bc_new_option_index]);
+            return isset($this->curl_options[$bc_new_option_index]);
          }
       }
    }
@@ -251,9 +254,18 @@ CLASS add_curl {
          }
       }
 
-      curl_setopt_array($this->curl,$this->default_curl_options);
+      curl_setopt_array($this->curl,$this->curl_options);
 
       return $this->curl;
+   }
+   /**
+    * Sets the curl options, extend this on child classes to add new curl options
+    *
+    * @see $curl_options
+    *
+    */
+   public function set_curl_options() {
+      $this->curl_options = $this->default_curl_options;
    }
 
    /**
@@ -428,8 +440,8 @@ CLASS add_curl {
       e_developer::assert($this->cache_dir,"Cache directory is blank");
 
       $cache_file_name = sha1($this->url);
-      if ($this->default_curl_options[CURLOPT_HTTPPROXYTUNNEL]) {
-         $cache_file_name .= sha1($this->default_curl_options[CURLOPT_PROXY]);
+      if ($this->curl_options[CURLOPT_HTTPPROXYTUNNEL]) {
+         $cache_file_name .= sha1($this->curl_options[CURLOPT_PROXY]);
       }
 
       return $this->cache_dir.'/'.$cache_file_name;
@@ -486,7 +498,7 @@ CLASS add_curl {
       $response = curl_exec($this->curl);
 
       if ($e = curl_error($this->curl)) {
-         throw new e_system("curl error: (#".curl_errno($this->curl).")$e url:$this->url proxy: {$this->default_curl_options[CURLOPT_PROXY]}",null,curl_errno($this->curl));
+         throw new e_system("curl error: (#".curl_errno($this->curl).")$e url:$this->url proxy: {$this->curl_options[CURLOPT_PROXY]}",null,curl_errno($this->curl));
       }
 
       $this->reset();
