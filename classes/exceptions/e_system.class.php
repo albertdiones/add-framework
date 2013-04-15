@@ -27,6 +27,6 @@ CLASS e_system EXTENDS e_add {
     * @since ADD MVC 0.0
     */
    public function mail_subject() {
-      return "System Error: ".$this->truncated_subject();
+      return $this->truncated_subject("System Error: ");
    }
 }
