@@ -235,22 +235,24 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.0
     */
    public function mail_subject() {
-      return "Error: ".$this->truncated_subject();
+      return $this->truncated_subject("Error: ");
    }
 
 
    /**
     * truncated_subject()
     *
+    * @param string $prefix
+    * @param string $suffix
+    *
     */
-   public function truncated_subject() {
-      $ellipsis = "...";
-      $max_length = (80 - strlen($ellipsis));
+   public function truncated_subject($prefix="", $suffix = "...") {
+      $max_length = ( 80 - strlen($suffix) - strlen($prefix) );
 
       if (strlen($this->message) > $max_length) {
-         return substr($this->message, 0, $max_length).$ellipsis;
+         return substr($this->message, 0, $max_length).$suffix;
       }
-      return $this->message;
+      return $prefix.$this->message;
    }
 
    /**
