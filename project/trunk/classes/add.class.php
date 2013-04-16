@@ -379,13 +379,15 @@ CLASS add {
          );
 
       $recorded_already = false;
-      foreach (static::$errors[$error_index] as &$recorded_error) {
-         if (count(array_intersect($recorded_error, $error)) == count($error)) {
-            $recorded_error['num_occured'] ++;
+      foreach (static::$errors[$error_index] as $error_number => $recorded_error) {
+         unset($recorded_error['num_occured']);
+         if ($recorded_error === $error) {
+            static::$errors[$error_index][$error_number]++;
             $recorded_already = true;
             break;
          }
       }
+
       if ( !$recorded_already ) {
          $error['num_occured']            = 1;
          static::$errors[$error_index][]  = $error;
