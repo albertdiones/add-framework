@@ -250,7 +250,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       $max_length = ( 80 - strlen($suffix) - strlen($prefix) );
 
       if (strlen($this->message) > $max_length) {
-         return substr($this->message, 0, $max_length).$suffix;
+         return $prefix.substr($this->message, 0, $max_length).$suffix;
       }
       return $prefix.$this->message;
    }
