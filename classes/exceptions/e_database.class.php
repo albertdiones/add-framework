@@ -69,6 +69,6 @@ CLASS e_database EXTENDS e_unknown {
     * @since ADD MVC 0.10.7
     */
    public function mail_subject() {
-      return $this->truncated_subject("Database Error #".$this->getCode()." ");
+      return $this->truncated_subject("Database Error".($this->getCode() ? '#'.$this->getCode() : '').": ");
    }
 }
