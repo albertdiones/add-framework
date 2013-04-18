@@ -47,7 +47,7 @@ CLASS e_database EXTENDS e_unknown {
             }
          default:
             $this->data = $data;
-            $this->message =  $this->getMessage();
+            $this->message =  $message;
          break;
       }
    }
