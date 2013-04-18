@@ -47,7 +47,7 @@ CLASS e_database EXTENDS e_unknown {
             }
          default:
             $this->data = $data;
-            $this->message =  $this->truncated_subject("Database Error #{$code} ");
+            $this->message =  $this->getMessage();
          break;
       }
    }
@@ -61,5 +61,14 @@ CLASS e_database EXTENDS e_unknown {
     */
    public function handle_exception() {
       $this->handle_sensitive_exception("A database error occured");
+   }
+
+   /**
+    * The email subject
+    *
+    * @since ADD MVC 0.10.7
+    */
+   public function mail_subject() {
+      return $this->truncated_subject("Database Error #".$this->getCode()." ");
    }
 }
