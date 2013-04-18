@@ -41,7 +41,10 @@ foreach (explode("\n",$backtraces) as $backtrace) {
             margin:20% auto;
             width:700px;
             box-shadow:0 0 6px 3px #f33;
-            filter: progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=0,strength=6);
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=45,strength=6),
+               progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=135,strength=6),
+               progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=225,strength=6),
+               progid:DXImageTransform.Microsoft.Shadow(color=#ff3333,direction=315,strength=6);
          }
          header {
             padding:5px 10px;
