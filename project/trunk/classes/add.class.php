@@ -280,6 +280,8 @@ CLASS add {
                DEFINE('add\terminal_error\error_message',$e->getMessage());
                DEFINE('add\terminal_error\error_header',get_class($e));
                DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
+               DEFINE('add\terminal_error\error_trace',$e->getTraceAsString());
+
                if (!headers_sent() && !add::include_include_file('terminal_error.php')) {
                   throw new Exception("Failed to display terminal error");
                }
