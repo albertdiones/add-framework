@@ -287,8 +287,8 @@ CLASS add {
                else {
                   $debug_mail_to = add::config()->developer_emails;
 
-                  if (is_array($debug_mail_to)) {
-                     $debug_mail_to = implode(",",$debug_mail_to);
+                  if (is_array($debug_mail_to) || is_object($debug_mail_to)) {
+                     $debug_mail_to = implode(",",(array)$debug_mail_to);
                   }
 
                   mail(
