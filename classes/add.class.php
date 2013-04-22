@@ -277,10 +277,26 @@ CLASS add {
                   );
             }
             else {
-               DEFINE('add\terminal_error\error_message',$e->getMessage());
-               DEFINE('add\terminal_error\error_header',get_class($e));
-               DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
-               DEFINE('add\terminal_error\error_trace',$e->getTraceAsString());
+
+               if (add::is_developer()) {
+                  DEFINE('add\terminal_error\error_message',$e->getMessage());
+                  DEFINE('add\terminal_error\error_trace',$e->getTraceAsString());
+                  DEFINE('add\terminal_error\error_header',get_class($e));
+                  DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
+               }
+               else {
+
+                  mail(
+                        add::config()->developer_emails,
+                        "Terminal Error: ".$e->getMessage(),
+                        $e->getTraceAsString()
+                     );
+
+                  DEFINE('add\terminal_error\error_message','An error occured');
+                  DEFINE('add\terminal_error\error_header','Warning!');
+                  DEFINE('add\terminal_error\error_trace','');
+               }
+
 
                if (!headers_sent() && !add::include_include_file('terminal_error.php')) {
                   throw new Exception("Failed to display terminal error");
