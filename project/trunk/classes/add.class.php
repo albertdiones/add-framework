@@ -292,8 +292,9 @@ CLASS add {
                         $e->getTraceAsString()
                      );
 
-                  DEFINE('add\terminal_error\error_message','An error occured');
+                  DEFINE('add\terminal_error\error_message','An error occured<br />please contact the system administrators or go back to <a href="'.add::config()->path.'">Home</a>');
                   DEFINE('add\terminal_error\error_header','Warning!');
+                  DEFINE('add\terminal_error\error_footer','Please contact the system administrators');
                   DEFINE('add\terminal_error\error_trace','');
                }
 
