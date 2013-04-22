@@ -9,15 +9,17 @@ $error_message = error_message;
 $error_message = preg_replace('/(?<= )(\S{30,})(?= )/','<br />\1<br />',$error_message);
 
 $backtraces = error_trace;
-$file_lines = array();
-$dirname = dirname(__FILE__);
-foreach (explode("\n",$backtraces) as $backtrace) {
-   $backtrace = preg_replace('/^\#\d+\s+/',"",$backtrace);
-   $backtrace = str_replace($dirname,".",$backtrace);
-   $backtrace = str_replace(": ","\r\n   ",$backtrace);
-   $backtrace = str_replace("::","\r\n   ::",$backtrace);
-   $backtrace = str_replace("->","\r\n   ->",$backtrace);
-   $file_lines[] = $backtrace;
+if ($backtraces) {
+   $file_lines = array();
+   $dirname = dirname(__FILE__);
+   foreach (explode("\n",$backtraces) as $backtrace) {
+      $backtrace = preg_replace('/^\#\d+\s+/',"",$backtrace);
+      $backtrace = str_replace($dirname,".",$backtrace);
+      $backtrace = str_replace(": ","\r\n   ",$backtrace);
+      $backtrace = str_replace("::","\r\n   ::",$backtrace);
+      $backtrace = str_replace("->","\r\n   ->",$backtrace);
+      $file_lines[] = $backtrace;
+   }
 }
 ?>
 <!DOCTYPE html>
@@ -124,7 +126,7 @@ foreach (explode("\n",$backtraces) as $backtrace) {
          <header><?php echo error_header ?></header>
          <article>
             <h1><?php echo $error_message ?></h1>
-            <?php if ($file_lines): ?>
+            <?php if (!empty($file_lines)): ?>
                <a href="#backtrace">&uarr;&darr; Toggle Backtrace</a>
                <ul id="backtrace">
                   <?php foreach ($file_lines as $file_line): ?>
