@@ -124,13 +124,15 @@ foreach (explode("\n",$backtraces) as $backtrace) {
          <header><?php echo error_header ?></header>
          <article>
             <h1><?php echo $error_message ?></h1>
-            <a href="#backtrace">&uarr;&darr; Toggle Backtrace</a>
-            <ul id="backtrace">
-               <?php foreach ($file_lines as $file_line): ?>
-               <li><xmp><?php echo $file_line ?></xmp></li>
-               <?php endforeach ?>
-            </ul>
-            <p>Contact the system administrator with the error printed above</p>
+            {if $file_lines}
+               <a href="#backtrace">&uarr;&darr; Toggle Backtrace</a>
+               <ul id="backtrace">
+                  <?php foreach ($file_lines as $file_line): ?>
+                  <li><xmp><?php echo $file_line ?></xmp></li>
+                  <?php endforeach ?>
+               </ul>
+               <p>Contact the system administrator with the error printed above</p>
+            {/if}
          </article>
          <footer><?php echo error_footer ?></footer>
       </section>
