@@ -285,9 +285,14 @@ CLASS add {
                   DEFINE('add\terminal_error\error_footer',$e->getFile().":".$e->getLine());
                }
                else {
+                  $debug_mail_to = add::config()->developer_emails;
+
+                  if (is_array($debug_mail_to)) {
+                     $debug_mail_to = implode(",",$debug_mail_to);
+                  }
 
                   mail(
-                        add::config()->developer_emails,
+                        $debug_mail_to,
                         "Terminal Error: ".$e->getMessage(),
                         $e->getTraceAsString()
                      );
