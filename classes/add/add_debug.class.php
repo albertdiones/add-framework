@@ -203,7 +203,7 @@ ABSTRACT CLASS add_debug {
                $indentation++;
                $max_key_length = max(array_map("strlen",array_keys($arg)));
                $pre_index_string = "* ";
-               $key_indentation = ceil(($max_key_length-strlen($pre_index_string))/$indentation_length);
+               $key_indentation = ceil($max_key_length/$indentation_length);
                foreach ($arg as $index => $value) {
 
                   $index_string = $pre_index_string.$index;
