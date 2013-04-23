@@ -101,7 +101,7 @@ ABSTRACT CLASS add_debug {
    * @since ADD MVC 0.0
    */
    static function caller_file_line() {
-      $backtrace = static::caller_backtrace();
+      $backtrace = static::protected_caller_backtrace();
 
       if (!$backtrace) {
          return "Unknown Location";
@@ -119,20 +119,32 @@ ABSTRACT CLASS add_debug {
    * Returns the debug info of the caller
    * @since ADD MVC 0.7
    */
-   static function caller_backtrace() {
+   public static function caller_backtrace() {
+      return static::protected_caller_backtrace();
+   }
+
+   /**
+    * Gets the caller backtrace
+    *
+    */
+   protected static function protected_caller_backtrace() {
       $backtraces = debug_backtrace();
 
       foreach ($backtraces as $backtrace) {
-         $is_trace_class_debug = isset($backtrace['class']) && ($backtrace['class'] == __CLASS__ || is_subclass_of($backtrace['class'],__CLASS__));
+         $is_trace_this_function = isset($backtrace['class']) && ($backtrace['class'] == __CLASS__ || is_subclass_of($backtrace['class'],__CLASS__) && $backtrace['function'] == __FUNCTION__);
+
          if (empty($backtrace['class']) || !$is_trace_class_debug) {
             break;
          }
-         $caller_backtrace = $backtrace;
       }
+
+      $caller_backtrace = next($backtraces);
 
       return $caller_backtrace;
 
    }
+
+
 
    /**
     * XMP Var Dump
