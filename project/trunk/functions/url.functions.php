@@ -7,6 +7,8 @@
  * @param string $url
  *
  * @since ADD MVC 0.5
+ *
+ * @version 0.1
  */
 function build_url($base,$url) {
    $base_parts=url_parts($base);
