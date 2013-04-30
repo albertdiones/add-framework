@@ -128,17 +128,9 @@ ABSTRACT CLASS add_debug {
     *
     */
    protected static function protected_caller_backtrace() {
-      $backtraces = debug_backtrace();
+      $backtraces = debug_backtrace(@DEBUG_BACKTRACE_IGNORE_ARGS);
 
-      foreach ($backtraces as $backtrace) {
-         $is_trace_this_function = isset($backtrace['class']) && ($backtrace['class'] == __CLASS__ || is_subclass_of($backtrace['class'],__CLASS__) && $backtrace['function'] == __FUNCTION__);
-
-         if (empty($backtrace['class']) || !$is_trace_class_debug) {
-            break;
-         }
-      }
-
-      $caller_backtrace = next($backtraces);
+      $caller_backtrace = $backtraces[2];
 
       return $caller_backtrace;
 
