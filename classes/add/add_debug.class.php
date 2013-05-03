@@ -193,9 +193,9 @@ ABSTRACT CLASS add_debug {
             if ($arg) {
                $dump .= "{";
                $indentation++;
-               $max_key_length = max(array_map("strlen",array_keys($arg)));
                $pre_index_string = "* ";
-               $value_indentation = ceil($max_key_length/$indentation_length);
+               $max_key_length = max(array_map("strlen",array_keys($arg))) + strlen($pre_index_string);
+               $value_indentation = ceil(($max_key_length/$indentation_length)+0.1);
                $current_value_indentation = $value_indentation;
                foreach ($arg as $index => $value) {
 
