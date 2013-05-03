@@ -27,7 +27,8 @@ CLASS array_entity IMPLEMENTS Iterator {
       if (isset($array)) {
          foreach ($array as $index=>$value) {
             if (is_array($value)) {
-               $this->data[$index] = new static($array[$index]);
+               # Fix for https://code.google.com/p/add-mvc-framework/issues/detail?id=83
+               $this->data[$index] = new self($array[$index]);
             }
             else {
                $this->data[$index] = $array[$index];
