@@ -14,7 +14,7 @@ function build_url($base,$url) {
    $base_parts=url_parts($base);
 
    # https://code.google.com/p/add-mvc-framework/issues/detail?id=81
-   if (preg_match('/^javascript\:/',$url)) {
+   if (preg_match('/^(javascript|data)\:/',$url)) {
       return $url;
    }
 
