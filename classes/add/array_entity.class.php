@@ -27,19 +27,22 @@ CLASS array_entity IMPLEMENTS Iterator {
       if (isset($array)) {
          foreach ($array as $index=>$value) {
             if (is_array($value)) {
-
                # Check for recursive arrays, this idea of print_r isn't good
-               if (print_r($array[$index],true) === print_r($array,true)) {
-                  # Something
+               if (
+                     count($value) === count($array)
+                     &&
+                     print_r($value,true) === print_r($array,true)
+                  ) {
+                  continue;
                }
                else {
                   # Fix for https://code.google.com/p/add-mvc-framework/issues/detail?id=83
-                  $this->data[$index] = new self($array[$index]);
+                  $this->data[$index] = new self($value);
                }
 
             }
             else {
-               $this->data[$index] = $array[$index];
+               $this->data[$index] = $value;
             }
          }
       }
