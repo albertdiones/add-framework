@@ -20,7 +20,6 @@ ABSTRACT CLASS add_adodb {
     */
    public $adodb;
 
-   public static $debug = false;
    public $add_last_operation;
 
    static $ignore_error_numbers = array();
