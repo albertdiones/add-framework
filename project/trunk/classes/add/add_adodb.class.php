@@ -82,7 +82,7 @@ ABSTRACT CLASS add_adodb {
    }
 
    static function debug() {
-      return debug::x(func_get_args());
+      return debug::var_dump(func_get_args());
    }
 
    abstract public function Connect();
