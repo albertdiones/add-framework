@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">149</span></a></li>
+                <span class="label label-info">136</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">37</span>
@@ -58,37 +58,24 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public inherited"><a href="#Connect" title="Connect :: "><span class="description">Connect()
-        </span><pre>Connect()</pre></a></li>
-<li class="method public inherited"><a href="#__call" title="__call :: "><span class="description">__call()
-        </span><pre>__call()</pre></a></li>
-<li class="method public inherited"><a href="#__clone" title="__clone :: "><span class="description">__clone()
-        </span><pre>__clone()</pre></a></li>
-<li class="method public inherited"><a href="#__construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public inherited"><a href="#__get" title="__get :: "><span class="description">__get()
-        </span><pre>__get()</pre></a></li>
-<li class="method public inherited"><a href="#__set" title="__set :: "><span class="description">__set()
-        </span><pre>__set()</pre></a></li>
-<li class="method public inherited"><a href="#check_error" title="check_error :: "><span class="description">check_error()
-        </span><pre>check_error()</pre></a></li>
-<li class="method public inherited"><a href="#debug" title="debug :: "><span class="description">debug()
-        </span><pre>debug()</pre></a></li>
-<li class="method public "><a href="#handle_error" title="handle_error :: "><span class="description">handle_error()
-        </span><pre>handle_error()</pre></a></li>
-<li class="method public "><a href="#meta_quote" title="meta_quote :: "><span class="description">meta_quote()
-        </span><pre>meta_quote()</pre></a></li>
+<li class="method public inherited"><a href="#Connect" title="Connect :: Extend this method to specify the credentials"><span class="description">Extend this method to specify the credentials</span><pre>Connect()</pre></a></li>
+<li class="method public inherited"><a href="#__call" title="__call :: Record the function and the arguments then call the adodb method"><span class="description">Record the function and the arguments then call the adodb method</span><pre>__call()</pre></a></li>
+<li class="method public inherited"><a href="#__clone" title="__clone :: Prevent to be cloned"><span class="description">Prevent to be cloned</span><pre>__clone()</pre></a></li>
+<li class="method public inherited"><a href="#__construct" title="__construct :: Construction"><span class="description">Construction</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#__get" title="__get :: Get the property of the inner adodb object"><span class="description">Get the property of the inner adodb object</span><pre>__get()</pre></a></li>
+<li class="method public inherited"><a href="#__set" title="__set :: Set the property of the inner adodb object"><span class="description">Set the property of the inner adodb object</span><pre>__set()</pre></a></li>
+<li class="method public inherited"><a href="#check_error" title="check_error :: Check if there is error on the last operation"><span class="description">Check if there is error on the last operation</span><pre>check_error()</pre></a></li>
+<li class="method public "><a href="#handle_error" title="handle_error :: Handle specific mysql errors"><span class="description">Handle specific mysql errors</span><pre>handle_error()</pre></a></li>
+<li class="method public "><a href="#meta_quote" title="meta_quote :: Quote the fields and table"><span class="description">Quote the fields and table</span><pre>meta_quote()</pre></a></li>
 <li class="method public "><a href="#quote" title="quote :: "><span class="description">quote()
         </span><pre>quote()</pre></a></li>
-<li class="method public inherited"><a href="#singleton" title="singleton :: "><span class="description">singleton()
-        </span><pre>singleton()</pre></a></li>
+<li class="method public inherited"><a href="#singleton" title="singleton :: Creates a single instance for the adodb class"><span class="description">Creates a single instance for the adodb class</span><pre>singleton()</pre></a></li>
 <li class="method public inherited"><a href="#varname" title="varname :: The variable name of the singleton of this class"><span class="description">The variable name of the singleton of this class</span><pre>varname()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
-<li class="property public inherited"><a href="#%24add_last_operation" title="$add_last_operation :: "><span class="description">$add_last_operation</span><pre>$add_last_operation</pre></a></li>
+<li class="property public inherited"><a href="#%24add_last_operation" title="$add_last_operation :: Contains data about the last operation"><span class="description">Contains data about the last operation</span><pre>$add_last_operation</pre></a></li>
 <li class="property public inherited"><a href="#%24adodb" title="$adodb :: The adodb object variable"><span class="description">The adodb object variable</span><pre>$adodb</pre></a></li>
-<li class="property public inherited"><a href="#%24debug" title="$debug :: "><span class="description">$debug</span><pre>$debug</pre></a></li>
-<li class="property public "><a href="#%24ignore_error_numbers" title="$ignore_error_numbers :: "><span class="description">$ignore_error_numbers</span><pre>$ignore_error_numbers</pre></a></li>
+<li class="property public inherited"><a href="#%24ignore_error_numbers" title="$ignore_error_numbers :: Error codes to ignore, those that are normally throwing such as insert duplicate error"><span class="description">Error codes to ignore, those that are normally throwing such as insert duplicate error</span><pre>$ignore_error_numbers</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants</li>
 <li class="constant  "><a href="#DB_TYPE" title="DB_TYPE :: "><span class="description">DB_TYPE</span><pre>DB_TYPE</pre></a></li>
@@ -116,8 +103,7 @@ Being considered to be deprecated</p>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="Connect" id="Connect"></a><div class="element clickable method public Connect" data-toggle="collapse" data-target=".Connect .collapse">
-<h2>Connect()
-        </h2>
+<h2>Extend this method to specify the credentials</h2>
 <pre>Connect() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -129,8 +115,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="__call" id="__call"></a><div class="element clickable method public __call" data-toggle="collapse" data-target=".__call .collapse">
-<h2>__call()
-        </h2>
+<h2>Record the function and the arguments then call the adodb method</h2>
 <pre>__call($method, $args) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -151,8 +136,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="__clone" id="__clone"></a><div class="element clickable method public __clone" data-toggle="collapse" data-target=".__clone .collapse">
-<h2>__clone()
-        </h2>
+<h2>Prevent to be cloned</h2>
 <pre>__clone() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -164,8 +148,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Construction</h2>
 <pre>__construct($adodb) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -182,8 +165,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="__get" id="__get"></a><div class="element clickable method public __get" data-toggle="collapse" data-target=".__get .collapse">
-<h2>__get()
-        </h2>
+<h2>Get the property of the inner adodb object</h2>
 <pre>__get($property) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -200,8 +182,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
-<h2>__set()
-        </h2>
+<h2>Set the property of the inner adodb object</h2>
 <pre>__set($property, $value) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -222,8 +203,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="check_error" id="check_error"></a><div class="element clickable method public check_error" data-toggle="collapse" data-target=".check_error .collapse">
-<h2>check_error()
-        </h2>
+<h2>Check if there is error on the last operation</h2>
 <pre>check_error() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -234,38 +214,22 @@ Being considered to be deprecated</p>
 </tr></table>
 </div></div>
 </div>
-<a name="debug" id="debug"></a><div class="element clickable method public debug" data-toggle="collapse" data-target=".debug .collapse">
-<h2>debug()
-        </h2>
-<pre>debug() </pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\add_adodb::debug()</td>
-</tr></table>
-</div></div>
-</div>
 <a name="handle_error" id="handle_error"></a><div class="element clickable method public handle_error" data-toggle="collapse" data-target=".handle_error .collapse">
-<h2>handle_error()
-        </h2>
+<h2>Handle specific mysql errors</h2>
 <pre>handle_error() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="meta_quote" id="meta_quote"></a><div class="element clickable method public meta_quote" data-toggle="collapse" data-target=".meta_quote .collapse">
-<h2>meta_quote()
-        </h2>
-<pre>meta_quote($arg) </pre>
+<h2>Quote the fields and table</h2>
+<pre>meta_quote(mixed $arg) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$arg</h4>
-<code></code>
-</div>
+<code>mixed</code><p>string or array, if array will be treated as multiple fields</p></div>
 </div></div>
 </div>
 <a name="quote" id="quote"></a><div class="element clickable method public quote" data-toggle="collapse" data-target=".quote .collapse">
@@ -283,8 +247,7 @@ Being considered to be deprecated</p>
 </div></div>
 </div>
 <a name="singleton" id="singleton"></a><div class="element clickable method public singleton" data-toggle="collapse" data-target=".singleton .collapse">
-<h2>singleton()
-        </h2>
+<h2>Creates a single instance for the adodb class</h2>
 <pre>singleton() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -316,15 +279,21 @@ Being considered to be deprecated</p>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24add_last_operation" id="$add_last_operation"> </a><div class="element clickable property public $add_last_operation" data-toggle="collapse" data-target=".$add_last_operation .collapse">
-<h2>$add_last_operation</h2>
+<h2>Contains data about the last operation</h2>
 <pre>$add_last_operation </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\__call</td>
+</tr>
+<tr>
 <th>inherited_from</th>
 <td>\add_adodb::$$add_last_operation</td>
-</tr></table>
+</tr>
+</table>
 </div></div>
 </div>
 <a name="%24adodb" id="$adodb"> </a><div class="element clickable property public $adodb" data-toggle="collapse" data-target=".$adodb .collapse">
@@ -345,23 +314,17 @@ Being considered to be deprecated</p>
 </table>
 </div></div>
 </div>
-<a name="%24debug" id="$debug"> </a><div class="element clickable property public $debug" data-toggle="collapse" data-target=".$debug .collapse">
-<h2>$debug</h2>
-<pre>$debug </pre>
+<a name="%24ignore_error_numbers" id="$ignore_error_numbers"> </a><div class="element clickable property public $ignore_error_numbers" data-toggle="collapse" data-target=".$ignore_error_numbers .collapse">
+<h2>Error codes to ignore, those that are normally throwing such as insert duplicate error</h2>
+<pre>$ignore_error_numbers </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
-<td>\add_adodb::$$debug</td>
+<td>\add_adodb::$$ignore_error_numbers</td>
 </tr></table>
 </div></div>
-</div>
-<a name="%24ignore_error_numbers" id="$ignore_error_numbers"> </a><div class="element clickable property public $ignore_error_numbers" data-toggle="collapse" data-target=".$ignore_error_numbers .collapse">
-<h2>$ignore_error_numbers</h2>
-<pre>$ignore_error_numbers </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
@@ -402,7 +365,7 @@ Being considered to be deprecated</p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-04-23T21:04:41+04:00.<br></footer></div>
+            generated on 2013-05-21T01:05:49+04:00.<br></footer></div>
 </div>
 </body>
 </html>
