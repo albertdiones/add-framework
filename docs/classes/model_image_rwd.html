@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">149</span></a></li>
+                <span class="label label-info">136</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">37</span>
@@ -108,9 +108,13 @@ optional: get all object instance of rows matching ALL $conditions</span><pre>ge
 <li class="method public inherited"><a href="#get_count" title="get_count :: get the count of rows from static::TABLE"><span class="description">get the count of rows from static::TABLE</span><pre>get_count()</pre></a></li>
 <li class="method public "><a href="#get_gd" title="get_gd :: User_photo::get_gd($arg1)
 vehicle_picture::get_gd('photo');
-vehicle_picture::get_instance(123)-&gt;get_gd();"><span class="description">User_photo::get_gd($arg1)
+vehicle_picture::get_instance(123)-&gt;get_gd();
+param $arg1 if string, gets the gd resource of $_FILES[$arg1]
+param string $arg1 the input[type=file] name"><span class="description">User_photo::get_gd($arg1)
 vehicle_picture::get_gd('photo');
-vehicle_picture::get_instance(123)-&gt;get_gd();</span><pre>get_gd()</pre></a></li>
+vehicle_picture::get_instance(123)-&gt;get_gd();
+param $arg1 if string, gets the gd resource of $_FILES[$arg1]
+param string $arg1 the input[type=file] name</span><pre>get_gd()</pre></a></li>
 <li class="method public inherited"><a href="#get_instance" title="get_instance :: model_rwd::get_instance($arg)
 Gets an instance that represent the row from the table
 $arg can either be the primary key or
@@ -903,7 +907,9 @@ optional: get all object instance of rows matching ALL $conditions</h2>
 <a name="get_gd" id="get_gd"></a><div class="element clickable method public get_gd" data-toggle="collapse" data-target=".get_gd .collapse">
 <h2>User_photo::get_gd($arg1)
 vehicle_picture::get_gd('photo');
-vehicle_picture::get_instance(123)-&gt;get_gd();</h2>
+vehicle_picture::get_instance(123)-&gt;get_gd();
+param $arg1 if string, gets the gd resource of $_FILES[$arg1]
+param string $arg1 the input[type=file] name</h2>
 <pre>get_gd() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -1938,7 +1944,7 @@ default table pk is 'id'</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-04-23T21:04:39+04:00.<br></footer></div>
+            generated on 2013-05-21T01:05:49+04:00.<br></footer></div>
 </div>
 </body>
 </html>

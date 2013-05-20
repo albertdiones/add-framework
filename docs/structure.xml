@@ -3750,7 +3750,7 @@ readonly model (no update and delete)]]></description>
     </class>
     <source>eJy1k8Fu2zAMhu9+CqLYwQmKpNh1AxYv6W3dYcmKHQYItMXYwmTJkOgYxdB3H2WnQQu0C7B2utgiqV/89EsfP3VNly3n8wzm0HpNVgXAMnLAiqcAVBZjTPlAqL2zd8d47jz0nUYmQKdBQsQ0k8JUu8KeGy9atqTA2nhHcVW3aOyi8u1DUYfVL6wJis0Gbm7XP2+S8LjXKhpXnRJwtbgaowcKUbSO82VWfN7uvhXrHay/FNvtieD6x+766+Y0HzT8zjIAGEFlzKFgprZjYA9CZ2oHCAe0PY0R2BuyGvbBt8ANge85Gk3T2qOCNB+wBTkq42p4d/BGv5x5/3TpM3ApsUyfri+tqWDfu4oTqlKROB9VLietmdDAOLgJfgBHA5DSdCDrOwr5xS0Gg6UlGILh1IOJ4DyLGdYPpEFUk5fwyMyLRU2sKqkgrUbH89nsQ9rm/uWTO7qfTkh+sMRIIA39O+skqHSpRCY/y/k9lSe+/wFnXJSbK3chbXuiejAXQ8C7p67/DTSyNPoIFLVWojvZepaz0HqknBqJ0AXfmNLwG9JOr1cakKvyKgsnofPebVJdonol0f0fMTNyQQ==</source>
   </file>
-  <file path="classes/models/model_image_rwd.class.php" hash="3b6484d50e65e1e272b6a28c1cbe6cd0" package="ADD MVC\Models\Extras">
+  <file path="classes/models/model_image_rwd.class.php" hash="dbccff0dd95e534bbdeb11feed1052fc" package="ADD MVC\Models\Extras">
     <docblock line="2">
       <description><![CDATA[model_image_rwd
 A class for db entities that are images]]></description>
@@ -3761,8 +3761,6 @@ A class for db entities that are images]]></description>
       <tag line="2" name="version" description="0.0"/>
     </docblock>
     <parse_markers>
-      <notice line="39" code="50013">Parameter  could not be found in get_gd()</notice>
-      <notice line="39" code="50013">Parameter $arg1 could not be found in get_gd()</notice>
       <notice line="381" code="50013">Parameter $image_arg could not be found in add_new()</notice>
       <notice line="381" code="50013">Parameter $image_arg could not be found in add_new()</notice>
     </parse_markers>
@@ -3832,14 +3830,10 @@ returns the url of the image]]></description>
         <docblock line="39">
           <description><![CDATA[User_photo::get_gd($arg1)
 vehicle_picture::get_gd('photo');
-vehicle_picture::get_instance(123)->get_gd();]]></description>
+vehicle_picture::get_instance(123)->get_gd();
+param $arg1 if string, gets the gd resource of $_FILES[$arg1]
+param string $arg1 the input[type=file] name]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="39" name="param" description="if string, gets the gd resource of $_FILES[$arg1]" type="\$arg1" variable="">
-            <type by_reference="false">\$arg1</type>
-          </tag>
-          <tag line="39" name="param" description="the input[type=file] name" type="string" variable="$arg1">
-            <type by_reference="false">string</type>
-          </tag>
         </docblock>
       </method>
       <method final="false" abstract="false" static="true" visibility="private" namespace="default" line="72" package="">
@@ -4146,7 +4140,7 @@ returns a resource gd that is resized according to max_width and max_height]]></
         </argument>
       </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="classes/dom/node_list_wrapper.class.php" hash="c0b0a7b9b3f2a5b36860421f2d909932" package="Default">
     <parse_markers>
@@ -5336,7 +5330,7 @@ Custom Exception Class for syntax errors]]></description>
     </class>
     <source>eJyzsS/IKODl0tfS4uVS0FJIjS+uzCtJrFBIzkksLgYLOZcWl+TnKrhWJKcWlGTm5yk4g6QU0vKLFKBqU4uK8ovAivV5uZx9HIODEea4RoS4+rmABFJSy1Jz8gtSixSqebl4uWoBAhkmHw==</source>
   </file>
-  <file path="classes/exceptions/e_add.class.php" hash="4c4723318f23238c83d54e76c5d816b4" package="ADD MVC\Exceptions">
+  <file path="classes/exceptions/e_add.class.php" hash="a2b44bed1309113200bf045b69d53d3c" package="ADD MVC\Exceptions">
     <docblock line="2">
       <description><![CDATA[e_add class
 Custom Exception Class]]></description>
@@ -5604,7 +5598,7 @@ Extend this to child classes]]></description>
         </docblock>
       </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="classes/exceptions/e_hack.class.php" hash="b9ee2c647d77aa3cd87a049811a25c85" package="ADD MVC\Exceptions">
     <docblock line="2">
@@ -5729,11 +5723,11 @@ extend to change]]></description>
     </class>
     <source>eJydVVFv2jAQfkfiP9wqNALqSp/20I51rGQVGqUbgWpTVUVuOMBa6jDb2YYq/vsuiZ2EwFY2v0Ds7767+/xd8uZitVzVa/Vap92u16ANYbTgIkSlIFYok610+53iIkDo9ftwfXsJpyevk+1OvdZ7703GvcsJXA57ngeKInkk/CQY3C8Td9QvNlFortfwRKEASjPNA2gQ8SJEHQnoApOSrZ3WeQoIIqE0eK7nDW5G/kf3KwGaZf7meVI4IbPaabW38+fU5tSCsmbMUyf9XcUPIVVjiprHItBEUzA4LVM2LT4H5wVXCrWT4c/Oii7uFqj9gIUhzvwgZEo5rXtolaK3CRq+afDOUtkOviEpcd9qleJoPYevimiiLOgHk4R4+RyLFTZbBzbZBYE/DdgpZyxK2dg/EnUsxYHMWfim8KjOrldLxjWkKOvTTtUPkyVSMjZjDyGCYI8I0Rw0bRp379qi4vHshNAqr3bqueNR79r1PwzcYX+fjXL/JBnL1jF9N/SSq1dvnyxjwbbJm/2bLYNYShomn4Z1QULxHXvi40qv/81cprQ5CxXmF4b0sIvJ2YrpOKhsKjeKdbnWWBw0BCX26gVL/B5ziWUpKkdqr1zJ/R8nWpEZJAJXICKBxxQ0o5hAAxMzmHHM6XIvrJhkj8B9FuulfaU1UkOahKm/TE7IcgIXoCN4wAz5nPFOt0xVlXG35T3FdEfT4bD60rLy7hFk+w1lgenXwLeaOH+eZC1j3PZA6Y6qLHYff2kklUmYYMnEAv9Tjyp9edzMnu1neHM1GPmfelfuydGFPe0encQyRBFEM0y9OL51x3fNsft56noTfzoeNGlUqh7c+VSULbsz8baA0udsi7Be2/wGq7YvHg==</source>
   </file>
-  <file path="classes/session/session_entity.class.php" hash="184b9b42175fc6413a6e87f5654f2e8b" package="Default">
+  <file path="classes/session/session_entity.class.php" hash="fe695b4532d13c70e1911fc47f30622a" package="Default">
     <parse_markers>
       <error line="10" code="50018">No DocBlock was found for property $data</error>
-      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="29" code="50010">No DocBlock was found for method __set()</error>
+      <error line="21" code="50015">Argument $session_var is missing from the Docblock of __construct()</error>
+      <error line="34" code="50010">No DocBlock was found for method __set()</error>
       <error line="1" code="50007">No page-level DocBlock was found in file classes/session/session_entity.class.php</error>
     </parse_markers>
     <class final="false" abstract="false" namespace="default" line="8" package="Default">
@@ -5759,31 +5753,36 @@ extend to change]]></description>
           <tag line="12" name="since" description="ADD MVC 0.6"/>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="default" line="22" package="">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="default" line="27" package="">
         <name>__construct</name>
         <type>function</type>
-        <argument line="22">
+        <docblock line="21">
+          <description><![CDATA[Do not inherit the __construct of array_entity since it is faulty ( see issue #83 )]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="21" name="see" description="\https://code.google.com/p/add-mvc-framework/issues/detail?id=83" refers="\https://code.google.com/p/add-mvc-framework/issues/detail?id=83"/>
+        </docblock>
+        <argument line="27">
           <name>$session_var</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="29" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="34" package="">
         <name>__set</name>
         <type>function</type>
-        <argument line="29">
+        <argument line="34">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="29">
+        <argument line="34">
           <name>$value</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
     </class>
-    <source>eJxtkEtrwzAQhO8G/4c9BOOYtu6ph6SPhDi3toe6lEIpRpE3xODKRloVQsl/r+SnHKKLzM6M5lvfP9WH2vd8L44i34MIFCpVVCJDQQUd7agZr1QhOMI6SeDlYwO3N3d2HPve5nmdpmcp2H6+b1+TFJiU7NgP/2wNANR6VxYcZjkjtuxmbbs5EbzhHqVE20ZV6+qk6QWrHGuJnBHmoBXCjA6Fun60ASiEImT5YL1Eb5V4QtRv8ctkA9aKsiLktmSvBSejQ5bxyhRIzSkM3NTcLgnNqZnZgRYL1zuxLnuny/0AwRnFxONIjXVMts7TSN2u5CArNAAmKNgPXpmPUqODa1rJPBnuqqqchyP8pZSDruu8+f99EkKH6asPfhu9yw5RiaSlaHuDYHhp2OP0DwRlvqE=</source>
+    <source>eJxtUl1LAzEQfC/0PyxYyrXYRhCk1I+2WN/UBysiiJSY7HnB6+VINoqI/93krldzpXnJMTuzM7u5i1mZld1Ot8OGw24HhmDRWqWLNRak6DtAFTy3qhAIi+US7p6u4WR8FmDW7VzfLlarPRXcPD/e3C9XwI3h3w34E2wAoHRvuRLQk5z4+Rar3f0ZwgOmaAwGN9I1a1tqXzCXWBoUnFCCswg9ypQdXQUBqMIScrmjHkofKqyVqJnik5sDwZYaCk2+dYZGEVCGsF4L7Z2MEwQ6bY9bW3qispByl3so8XvykLUO4WhyCoP9iUI5IyrtlDGhJY7ftX7PcSz0hpWMSznafIpRavgGv7T5YFUryyQSV/lMycvJabvldj6jCUXYU+oKQX7EOHnSjwcfhHeC6hyV3L8DTacxucU9b6jx7i+hv7fJFicqVdR/Zc38DZuPnyXKbNEH8MLCL+DYf+QOo7zelXzL5E3rfJD8hz+kiqK7Ulb/UKOEJMr00ghffX2r3UkNkjNF7dvv7zrt5vj9A/pe+cw=</source>
   </file>
   <file path="classes/add/add_debug_mail.class.php" hash="55bcca6621978c04edb43f5b091420cb" package="ADD MVC\Debuggers">
     <docblock line="2">
@@ -6355,7 +6354,7 @@ advance cURL library]]></description>
     </class>
     <source>eJx1UMFOwzAMvecrfOgBJrGO82BsancbXDohbpWXum1EmlSJOwmh/TtpWkBDwgdLeX5+7zkPT33bi3SxELCAzJpaNeCVaTSxNSA1ej9Otj3Kd2wIdnkOz69ZxHDg1jpAfSLHlbKG/LbpUOmltF1kBCVJsFrer8IzFdlhVxSAVVXKyWn/dty/5AUUxzw7BCv4FADQO8skmSpIyJyVs6Yjw6Vn5MGvxUiJgUOFzI6QCWbB2tkO0Dn8gCSbGDMvXODwv9mUM/YJSmOO4aSVhHowktX4G9Z4doPkm2SyK6Pa7ZQ6VG1DGNnC9RzQwzdQK9IVPG5+gDPqgX4VQiXcKn+3+bNxvbCe6RcR2+UL0aSIow==</source>
   </file>
-  <file path="classes/add/add_debug.class.php" hash="5939c9debbe06e4c7fc0b8985492994f" package="ADD MVC\Debuggers">
+  <file path="classes/add/add_debug.class.php" hash="72a7e7a7ec11c73febaeefe5be521504" package="ADD MVC\Debuggers">
     <docblock line="2">
       <description><![CDATA[For debugging purposes only
 Not intended to appear permanently on any code]]></description>
@@ -6366,9 +6365,9 @@ Not intended to appear permanently on any code]]></description>
       <tag line="2" name="version" description="0.1"/>
     </docblock>
     <parse_markers>
-      <notice line="172" code="50013">Parameter $arg could not be found in return_pretty_var_dump()</notice>
-      <error line="409" code="50015">Argument $field is missing from the Docblock of print_config()</error>
-      <error line="409" code="50015">Argument $boolean is missing from the Docblock of print_config()</error>
+      <notice line="176" code="50013">Parameter $arg could not be found in return_pretty_var_dump()</notice>
+      <error line="414" code="50015">Argument $field is missing from the Docblock of print_config()</error>
+      <error line="414" code="50015">Argument $boolean is missing from the Docblock of print_config()</error>
     </parse_markers>
     <class final="false" abstract="true" namespace="default" line="12" package="ADD MVC\Debuggers">
       <name>add_debug</name>
@@ -6466,199 +6465,207 @@ Not intended to appear permanently on any code]]></description>
           <tag line="118" name="since" description="ADD MVC 0.7"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="143" package="">
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="default" line="130" package="">
+        <name>protected_caller_backtrace</name>
+        <type>function</type>
+        <docblock line="126">
+          <description><![CDATA[Gets the caller backtrace]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="147" package="">
         <name>var_dump</name>
         <type>function</type>
-        <docblock line="137">
+        <docblock line="141">
           <description><![CDATA[XMP Var Dump
 var_dump with <xmp>]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="137" name="author" description="albertdiones@gmail.com"/>
-          <tag line="137" name="since" description="ADD MVC 0.0"/>
+          <tag line="141" name="author" description="albertdiones@gmail.com"/>
+          <tag line="141" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="165" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="169" package="">
         <name>return_var_dump</name>
         <type>function</type>
-        <docblock line="159">
+        <docblock line="163">
           <description><![CDATA[return_var_dump()
 get var dump function]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="159" name="param" description="" type="mixed" variable="$args">
+          <tag line="163" name="param" description="" type="mixed" variable="$args">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="159" name="since" description="ADD MVC 0.0"/>
+          <tag line="163" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="165">
+        <argument line="169">
           <name>$args</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="178" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="182" package="">
         <name>return_pretty_var_dump</name>
         <type>function</type>
-        <docblock line="172">
+        <docblock line="176">
           <description><![CDATA[return pretty var dump
 get var dump function]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="172" name="param" description="" type="mixed" variable="$arg">
+          <tag line="176" name="param" description="" type="mixed" variable="$arg">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="172" name="since" description="ADD MVC 0.0"/>
+          <tag line="176" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="276" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="281" package="">
         <name>html_print</name>
         <type>function</type>
-        <docblock line="268">
+        <docblock line="273">
           <description><![CDATA[make a list out of $arg]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="268" name="param" description="the data to print" type="mixed" variable="$arg">
+          <tag line="273" name="param" description="the data to print" type="mixed" variable="$arg">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="268" name="param" description="the title of this list" type="string" variable="$name">
+          <tag line="273" name="param" description="the title of this list" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="268" name="since" description="ADD MVC 0.0"/>
+          <tag line="273" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="276">
+        <argument line="281">
           <name>$arg</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="276">
+        <argument line="281">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="317" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="322" package="">
         <name>print_eval</name>
         <type>function</type>
-        <docblock line="310">
+        <docblock line="315">
           <description><![CDATA[evaluates $var and prints $var and the value it returns]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="310" name="param" description="the command to eval" type="string" variable="$var">
+          <tag line="315" name="param" description="the command to eval" type="string" variable="$var">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="310" name="since" description="ADD MVC 0.0"/>
+          <tag line="315" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="317">
+        <argument line="322">
           <name>$var</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="342" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="347" package="">
         <name>print_array_table</name>
         <type>function</type>
-        <docblock line="335">
+        <docblock line="340">
           <description><![CDATA[Prints array into a HTML table]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="335" name="param" description="the array to convert" type="array" variable="$array">
+          <tag line="340" name="param" description="the array to convert" type="array" variable="$array">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="335" name="since" description="ADD MVC 0.0"/>
+          <tag line="340" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="342">
+        <argument line="347">
           <name>$array</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="375" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="380" package="">
         <name>deprecated_file</name>
         <type>function</type>
-        <docblock line="370">
+        <docblock line="375">
           <description><![CDATA[deprecated_file() function
 Call this on deprecated files]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="370" name="since" description="ADD MVC 0.0"/>
+          <tag line="375" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="385" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="390" package="">
         <name>get_declared_globals</name>
         <type>function</type>
-        <docblock line="381">
+        <docblock line="386">
           <description><![CDATA[Returns an array of declared globals]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="381" name="since" description="ADD MVC 0.0"/>
+          <tag line="386" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="414" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="419" package="">
         <name>print_config</name>
         <type>function</type>
-        <docblock line="409">
+        <docblock line="414">
           <description><![CDATA[Prints the config value]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="409" name="since" description="ADD MVC 0.7.4"/>
+          <tag line="414" name="since" description="ADD MVC 0.7.4"/>
         </docblock>
-        <argument line="414">
+        <argument line="419">
           <name>$field</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="414">
+        <argument line="419">
           <name>$boolean</name>
           <default><![CDATA[false]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="435" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="440" package="">
         <name>print_data</name>
         <type>function</type>
-        <docblock line="427">
+        <docblock line="432">
           <description><![CDATA[Prints a data with label]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="427" name="param" description="" type="mixed" variable="$label">
+          <tag line="432" name="param" description="" type="mixed" variable="$label">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="427" name="param" description="" type="mixed" variable="$value">
+          <tag line="432" name="param" description="" type="mixed" variable="$value">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="427" name="since" description="ADD MVC 0.7.4"/>
+          <tag line="432" name="since" description="ADD MVC 0.7.4"/>
         </docblock>
-        <argument line="435">
+        <argument line="440">
           <name>$label</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="435">
+        <argument line="440">
           <name>$value</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="447" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="452" package="">
         <name>return_print_data</name>
         <type>function</type>
-        <docblock line="439">
+        <docblock line="444">
           <description><![CDATA[Returns the printable data]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="439" name="param" description="" type="mixed" variable="$label">
+          <tag line="444" name="param" description="" type="mixed" variable="$label">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="439" name="param" description="" type="mixed" variable="$value">
+          <tag line="444" name="param" description="" type="mixed" variable="$value">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="439" name="since" description="ADD MVC 0.10.4"/>
+          <tag line="444" name="since" description="ADD MVC 0.10.4"/>
         </docblock>
-        <argument line="447">
+        <argument line="452">
           <name>$label</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="447">
+        <argument line="452">
           <name>$value</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
-  <file path="classes/add/array_entity.class.php" hash="adb80f71e83773752f2aed560618acb0" package="ADD MVC\Extras">
+  <file path="classes/add/array_entity.class.php" hash="6cb7ffc134775101bfc584ab46c48fb5" package="ADD MVC\Extras">
     <docblock line="2">
       <description><![CDATA[array_entity class]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -6668,7 +6675,7 @@ Call this on deprecated files]]></description>
       <tag line="2" name="version" description="0.0"/>
     </docblock>
     <parse_markers>
-      <error line="40" code="50015">Argument $array is missing from the Docblock of construct()</error>
+      <error line="52" code="50015">Argument $array is missing from the Docblock of construct()</error>
     </parse_markers>
     <class final="false" abstract="false" namespace="default" line="11" package="ADD MVC\Extras">
       <name>array_entity</name>
@@ -6710,174 +6717,174 @@ Fills $this->data with the $array contents]]></description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="45" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="57" package="">
         <name>construct</name>
         <type>function</type>
-        <docblock line="40">
+        <docblock line="52">
           <description><![CDATA[construct]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="40" name="since" description="ADD MVC 0.4"/>
+          <tag line="52" name="since" description="ADD MVC 0.4"/>
         </docblock>
-        <argument line="45">
+        <argument line="57">
           <name>$array</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="56" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="68" package="">
         <name>__get</name>
         <type>function</type>
-        <docblock line="49">
+        <docblock line="61">
           <description><![CDATA[Magic function __get
 Gets $this->data[$varname]]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="param" description="" type="mixed" variable="$varname">
+          <tag line="61" name="param" description="" type="mixed" variable="$varname">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="49" name="since" description="ADD MVC 0.0"/>
-          <tag line="49" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.get" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.get"/>
+          <tag line="61" name="since" description="ADD MVC 0.0"/>
+          <tag line="61" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.get" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.get"/>
         </docblock>
-        <argument line="56">
+        <argument line="68">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="71" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="83" package="">
         <name>__set</name>
         <type>function</type>
-        <docblock line="63">
+        <docblock line="75">
           <description><![CDATA[Magic function __set
 Sets $this->data[$varname] = $value]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="63" name="param" description="" type="mixed" variable="$varname">
+          <tag line="75" name="param" description="" type="mixed" variable="$varname">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="63" name="param" description="" type="mixed" variable="$value">
+          <tag line="75" name="param" description="" type="mixed" variable="$value">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="63" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.set" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.set"/>
-          <tag line="63" name="since" description="ADD MVC 0.0"/>
+          <tag line="75" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.set" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.set"/>
+          <tag line="75" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="71">
+        <argument line="83">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="71">
+        <argument line="83">
           <name>$value</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="85" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="97" package="">
         <name>__isset</name>
         <type>function</type>
-        <docblock line="78">
+        <docblock line="90">
           <description><![CDATA[Magic function __isset()]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="78" name="param" description="(scalar values only)" type="mixed" variable="$varname">
+          <tag line="90" name="param" description="(scalar values only)" type="mixed" variable="$varname">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="78" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.isset" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.isset"/>
-          <tag line="78" name="since" description="ADD MVC 0.0"/>
+          <tag line="90" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.isset" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.isset"/>
+          <tag line="90" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="85">
+        <argument line="97">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="96" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="108" package="">
         <name>__unset</name>
         <type>function</type>
-        <docblock line="89">
+        <docblock line="101">
           <description><![CDATA[Magic function __unset()]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="89" name="param" description="(scalar values only)" type="mixed" variable="$varname">
+          <tag line="101" name="param" description="(scalar values only)" type="mixed" variable="$varname">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="89" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset"/>
-          <tag line="89" name="since" description="ADD MVC 0.0"/>
+          <tag line="101" name="see" description="\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset" refers="\http://www.php.net/manual/en/language.oop5.overloading.php#object.unset"/>
+          <tag line="101" name="since" description="ADD MVC 0.0"/>
         </docblock>
-        <argument line="96">
+        <argument line="108">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="107" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="119" package="">
         <name>valid_magic_property</name>
         <type>function</type>
-        <docblock line="101">
+        <docblock line="113">
           <description><![CDATA[Checks if the $this->data index is valid]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="101" name="param" description="" type="string" variable="$varname">
+          <tag line="113" name="param" description="" type="string" variable="$varname">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="101" name="todo" description="consider merging/relating __isset() and this function."/>
-          <tag line="101" name="since" description=""/>
+          <tag line="113" name="todo" description="consider merging/relating __isset() and this function."/>
+          <tag line="113" name="since" description=""/>
         </docblock>
-        <argument line="107">
+        <argument line="119">
           <name>$varname</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="127" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="139" package="">
         <name>rewind</name>
         <type>function</type>
-        <docblock line="122">
+        <docblock line="134">
           <description><![CDATA[Iterator::rewind() implementation]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="122" name="see" description="\http://www.php.net/manual/en/iterator.rewind.php" refers="\http://www.php.net/manual/en/iterator.rewind.php"/>
-          <tag line="122" name="since" description="ADD MVC 0.0"/>
+          <tag line="134" name="see" description="\http://www.php.net/manual/en/iterator.rewind.php" refers="\http://www.php.net/manual/en/iterator.rewind.php"/>
+          <tag line="134" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="137" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="149" package="">
         <name>current</name>
         <type>function</type>
-        <docblock line="132">
+        <docblock line="144">
           <description><![CDATA[Iterator::current() implementation]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="132" name="see" description="\http://www.php.net/manual/en/iterator.current.php" refers="\http://www.php.net/manual/en/iterator.current.php"/>
-          <tag line="132" name="since" description="ADD MVC 0.0"/>
+          <tag line="144" name="see" description="\http://www.php.net/manual/en/iterator.current.php" refers="\http://www.php.net/manual/en/iterator.current.php"/>
+          <tag line="144" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="147" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="159" package="">
         <name>key</name>
         <type>function</type>
-        <docblock line="142">
+        <docblock line="154">
           <description><![CDATA[Iterator::key() implementation]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="142" name="see" description="\http://www.php.net/manual/en/iterator.key.php" refers="\http://www.php.net/manual/en/iterator.key.php"/>
-          <tag line="142" name="since" description="ADD MVC 0.0"/>
+          <tag line="154" name="see" description="\http://www.php.net/manual/en/iterator.key.php" refers="\http://www.php.net/manual/en/iterator.key.php"/>
+          <tag line="154" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="157" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="169" package="">
         <name>next</name>
         <type>function</type>
-        <docblock line="152">
+        <docblock line="164">
           <description><![CDATA[Iterator::next() implementation]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="152" name="see" description="\http://www.php.net/manual/en/iterator.next.php" refers="\http://www.php.net/manual/en/iterator.next.php"/>
-          <tag line="152" name="since" description="ADD MVC 0.0"/>
+          <tag line="164" name="see" description="\http://www.php.net/manual/en/iterator.next.php" refers="\http://www.php.net/manual/en/iterator.next.php"/>
+          <tag line="164" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="167" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="179" package="">
         <name>valid</name>
         <type>function</type>
-        <docblock line="162">
+        <docblock line="174">
           <description><![CDATA[Iterator::valid() implementation]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="162" name="see" description="\http://www.php.net/manual/en/iterator.valid.php" refers="\http://www.php.net/manual/en/iterator.valid.php"/>
-          <tag line="162" name="since" description="ADD MVC 0.0"/>
+          <tag line="174" name="see" description="\http://www.php.net/manual/en/iterator.valid.php" refers="\http://www.php.net/manual/en/iterator.valid.php"/>
+          <tag line="174" name="since" description="ADD MVC 0.0"/>
         </docblock>
       </method>
     </class>
-    <source>eJzNVk1v4zYQvQfIf5hNjYUT7Ep7aC9us90gmy0COIsCbntpFwIjjS02FCWQVOyg8H/vkPqWbMdxDLS6xOGQwzfvzQznp5+zODs98S8uTk/gAphS7ClAabh5glAwre2yM31iuYlTBUzcozIRTyXqT4uEceGFadJsy1j4wBYIV58/w90f13/drIxiurBpLsPaAh+8D8XyIypN/qoF//Tkeno1m3XR3N79Or25u/n62wxuDSpmCMs/pyd0AKCAT98FjEzM9fuPETMMwlQaxqUGEyOMnDe3Rh51ub86thGatfjub6ZSg6HBCEbO82WBbXz+4xBBENAd2qg8NOPi0vPK9IULoTsQl9zEO+BZOhVLitvKPS+GPM9laCy/G5BZCsF9fA5jrjXWppaNvnmqkIUxlFZgFAeXEa4uP44emcixu712GBRElXsGm+hr0fFn4fIb8StxCdoww8PyxspmKW8fX3f/RaFx70u6nnc4rn8XP9ZW9b7uNbfPpdb3HZ3mXDIBWX4veFhG3Ci2Qy+FJldyyFPJz3oI8I4t2r6DYIEVVvgFje6S9MiUZAl+62Viwle2Ckrrs7lIFkSIjckmvr9cLj1qN55E4ydM5kz4KH3B5CKnjuGlafaDl1IzECmLuFzYvd+l939TFnsN1DK7C766wYwrWL20flMQNJlQEvIoSCwPAdVHRo3sqTnUTU4Tq3Tp6MUgwkcUdvv47FY6J3BmIQUhEwKjwHXK8bl3BuSLs3uBNUNn7wpam7Rd9xTcyPr+IupGxNlWEW2uuwrcT82esX3uOHK2QD/XxgZC65bQ7wa957/Xe5vcu4XZX/CiSVdvyk5BYawJMVPgrtCQStE8RkeS0sE5WMzyxRnWbVkcxQjwgDQGrLg2uqV8Q+cLWl4u/1fkOTgHk1cEs528qgx6NSNzIdqU9Um7jjF80LaS3GDSmlbcOwlcg6uJHnv0UFF0w2Zi0ih1DxmPUEGCakHbfIWCwNH+OqGByQjsZXWIXpeZnWzsLvUBNfSoYoeCagJ+3//caj1x3tJ4puaMZKpurkbb5/LB9QyPl448N3YfkEiFA3tv44IvJE1n2+H7m1SuQppMFC5JWBKAJ5nAhMZPd8H+qV4HVXgqgR2S0zWUll4udzcX+/aYwlwpCuQYQZWuXhFVA6afhpXlxfFRRzxGbOTmFXEVIPox2dUXxyNxdRSxrJ9XRFTCGA7ZqwM0ci3pGEE5R6+IqgJShzUijWjy2KyUtVPfJPvY7XtzeQlff59O4e1bqBe+XE1nN82BapSlczU1638Bxf+z/g==</source>
+    <source>eJzNV21v2zYQ/h4g/4FNjNYJEqnANmBw5rZBmg4BnGKAu33ZCoGRzjIXijRIynYw5L/vROpdspM4BjZ9scGjjs89z93x9MvHxXxxeOCfnh4ekFNClaIPAQjDzAMJOdU6W7amTzQ1c6kI5XegTMSkAP0pTijjXiiTatuChvc0BnL5+TO5/ePqr+u1UVQ7m2YiLC3kvffeLS9BafRXLPiHB1eTy+m0iebm9rfJ9e31129TcmNAUYNY/jk8wBcIcfDxOSUDM2f6/ENEDSWhFIYyoYmZAxlYb3YNPep8f/FaL7TM4tvfhZIGQgMRGVjPY4dteHLRRRAEeIY2Kg3N0B16Upi+MM51A+KKmfkWeBmdiibutHzPiyHPUhGajN8eZBmFxD5sRoZMayhNNRs+M6mAhnOSWwnFOJiIYD3+MFhSnkJze+kwcETlezqb8DkmV3MI77MTiIIwxVxYgotYn5GMK8IioETOMCYmTKAI0+KdIbGUUcdbdmpn0T2hTIUpkJDxeFys1EXqPG/fbjDkYHKHZ0hr7rU0WL/O0OejjwwLExNepHDRMT52VoBr6PdyjMm2tpzOjVnoke+HMgIPOYs5ZBXrL3waRefJMjyfYYrBSqp7HxMgBe1HgHXDP7Jo/PMPfc5rGfyny4LvWBICVkQDnxUU9wbQXGtFtCGc/uPcKRebHZb/3R97eLtYy4J4qh/82CiuGROUk0V6x1lItKEGf8oy21JkCkyqhGPKvlVsuaggNgHe0rjuOwhiKLCSX8HoJjlLqgRq+b3VPhK2zlpXbn2ygaAFwOYNps1qtfLwjvAEGD+hIqXcB+FzKuIU27wn5eInT2IH55JGTMTZ3mN59ze2Hq+Cmrckx1czmGEBq9WL3jiCRiOUmUVBkvEQYFNb4O3zUL3ULCIzV3Jl6YUggiXwbPvw6EZYJ+QogxSElHOIAnu9DU+8I4K+GL3jUDJ0dOZorVL4saVgL+vPF1FXIk43iljm+PPUbBnr7+1Hzhrop+6ejtC6JvRZ58L47/XeJPd2YZ4vuLtZi0Fgq6BkqBExVcQeoYkUvJog9iSlhbOzmPmY0K3bvDjc3HYPOLutmTa6pnxF5wtaXir+V+RZODuT54LZTF5RBq2aESnndcrapNkZSmeVZKfJ2ohpL0wcmYitiRZ7eFFhdN1mYmQk7UWGo5ciCagYt/kKOILD/WVCEyoiN6MVIXpNZraysb3UO9Rkk1SDguKz5bz92NXyM+EGZ2o1oyhTcXLxPfJUPtie4bHckWe/lXZIJOcgO7dywWKBI/Vm+H6fykVIo5GCFQqLArBkwSHBbwZ7wPNTvQzKecqB7ZLTJZSaXjZ3+4t9c0w4+ysMZB9B5a5eEVUFpp2GheXF8WFH3Eds6OYVcTkQ7Ziy1RfHI2C9F7EyP6+IKIfRHbLXO2hkW9I+grKOXhFVAaQMa4Aa4eTRr1Rmx76J9qHd9wa/Q7/+Ppng5yspF75cTqbX1QvFKIvvldQ8/gvmzxnb</source>
   </file>
-  <file path="classes/add/add_adodb_mysql.class.php" hash="2f0de2a4e7d2a733eace479fc4cfa572" package="ADD MVC\ADODB wrappers">
+  <file path="classes/add/add_adodb_mysql.class.php" hash="975132c99873fcae2212085298899c99" package="ADD MVC\ADODB wrappers">
     <docblock line="2">
       <description><![CDATA[adodb mysql wrapper abstract
 A class to be used as wrapper on adodb
@@ -6887,10 +6894,7 @@ Being considered to be deprecated]]></description>
       <tag line="2" name="version" description="0.0"/>
     </docblock>
     <parse_markers>
-      <error line="12" code="50018">No DocBlock was found for property $ignore_error_numbers</error>
-      <error line="14" code="50010">No DocBlock was found for method meta_quote()</error>
-      <error line="27" code="50010">No DocBlock was found for method handle_error()</error>
-      <error line="51" code="50010">No DocBlock was found for method quote()</error>
+      <error line="60" code="50010">No DocBlock was found for method quote()</error>
     </parse_markers>
     <class final="false" abstract="true" namespace="default" line="9" package="ADD MVC\ADODB wrappers">
       <name>add_adodb_mysql</name>
@@ -6912,182 +6916,221 @@ Being considered to be deprecated]]></description>
         <name>DB_TYPE</name>
         <value><![CDATA['mysql']]></value>
       </constant>
-      <property final="false" static="true" visibility="public" line="12" package="Default">
-        <name>$ignore_error_numbers</name>
-        <default><![CDATA[array()]]></default>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="14" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="19" package="">
         <name>meta_quote</name>
         <type>function</type>
-        <argument line="14">
+        <docblock line="13">
+          <description><![CDATA[Quote the fields and table]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="13" name="param" description="string or array, if array will be treated as multiple fields" type="mixed" variable="$arg">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="19">
           <name>$arg</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="27" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="36" package="">
         <name>handle_error</name>
         <type>function</type>
+        <docblock line="32">
+          <description><![CDATA[Handle specific mysql errors]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="51" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="60" package="">
         <name>quote</name>
         <type>function</type>
-        <argument line="51">
+        <argument line="60">
           <name>$arg</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
     </class>
-    <source>eJzNVF1v2kAQfOdXrBCS7cg4pI9JQ2o+KlUKpAk0akTR5WwvYMXYzt25JKry37tnA8aRE1V9qMqTuZ2Znd3bvY8X6SptHB8dNeAIeJAEHqyf5WMEG8HTFAVwTyrBfaXjLvgRlxJUAh5CJjEALvfIJC4ENLKHYbwEP4llGKAgXEEJMBXoc4WBBn1Kuf/AlwjuYACj2/4Pd3A16O30ZA75SR8hKXecDv0/bri9yfTG7U+hf+lOJpQwYHlSVrgefp8Ox4ODc/jVAMiNKLh1b8buaAjnYIzuJteXbGCcldFBj03vvubRXKuIScVV6EMrXMaJQIZCJILF2dojXwTlQvBn0zpraGyaeRFhF1nsK+15jYqzxyxRaLa4WFqFF/qFCzBDyQpyHipj9GtdU2hZkd/HFuSC+yvIabr7rVDhukIvFWZz0mipVSih3a3YyUkHsi/lp0CViRiaZtMJ12mUBGg2wYamvRW1nKbV3FF3PIwkHnrYidw3HRofJjCNuI+m4Ri2ce/cG3ZetUPxitJLbR9XPA6ibe/NstQWzaJiCY0Kz2HbUttdffnV2C5JK+CK7/taaZmxS8divkaDTs67UF5SVW/WmVtw8doBnc5O5nBac26/k4v5CfUZ1R8m1ZNDPaX9qgG8bawzd4xTg8wtUbF8jd+gO0a7a1jOX9emZ8Q4PKGSXpNO5iVnuzx61zah0qNN1akkSjYozPzCZq/uZl5dF5/T7Bk8Uwk+oZ9RH0+ry1BoKO5FxNVjUhzkRnXJZ3XwRYhRIGvwJ/X4fXE1lA+HFI8W+KGc+kZFJUAvWxYK9ROsn4789hg+hVJJ00CmqR41wbCsMo1aiWQDMW6gBJj7BaGXsd0d6oUayaVp2Xl6uyY8Tkxr/1DoLa/LMHzyMdUu30nwnjR1oW7v/5+n89++mvu0jPk8ikzGPn8b96dfrsaM2bo7TO+wVj24m+37+fIbADRGsA==</source>
+    <source>eJzNVFFv2jAQfudXnBCSExTSdo/tSgeFaZMKXVtWreqQa5IDogaS2s6gmvrfd3YKIVXaTXuY5heC77vv7r7z3fuTdJ7W9prNGjRBhEk4gcWjeohhJUWaogQxUVqKQBt7B4JYKAU6gQlCpjAEobbIZJkTGGQXo+UMgmSpohAl4XKXEFOJgdAYGtCHVAT3YobQ6fVgcH36vdM773U3fMpCftBHRMz7/j7936t1ulejy87pCE7POldXFDDkNijPs+5/G/WHvZ17+FkDsIlouO5cDjuDPhwDG9xcXZzxHjsqrL0uH918sVbLRTZjtNLQacJFlmgEPUeYRhiHCsSS6hKTGHPAM4yqkmIBi2hNZTeEnAEJaNRISEwpxaMH0TT/glUUx0YXLdGIYtRcZLGO0ngTZJd6z/yk2SSOAphmy0AbYRaoBX8wqTkmmJsXTIeCOJHiNlBuKmx0GhdkmikqN0e4R4VtmlA+wRysm0mqEWlclNwLhtsxcTT0PFLQapfSsU47tE/Fp0SdySXUnbofLdI4CdGpgwd175nU9etufeO68cNY4W4OG5K7uk8Sc4lpLAJ0mM88duffMc9W7ZO9xPT0oq+fqI+kt0oxiKYkbf6SUMpE/l7+uXXmFu0UCjVoTjRP6BkLC3tWqNU2D7Ns2+TWCIUW23aUlGabcHwpFsjo5rgNRW/LfLf7YxdOXmZAt7cHYzisuPfeiMWDhNqD+g+DmgeXv/YKwOuJ7Y99dsgouRlqblfMK+4+a7WZ6/91beZpsd0bKuml08G48HHzHUBHrSJtJoKq00mcrFA6tmG3L3ozLk9ZIOjJMpHpBNcYZKTjYXmGcg67RZgdpPzCJmpKPqqC56uhAn9Qjd8WV+HybtdlQnN/XwxLrcQS4iSb5QzVL9hsHNs9jutIaeUw5MZ1QiIw1y3C6LlMVrDEFRQAZzsgtLVb7b4ZqIGaOa5nw3sV5mHiuNv9YpZDVYT+OsDUZPlGgLeoSYWquf9/Nu6/XbbbsJwHIo4dzj9+HZ6OPp8POfeMOtzMsGHd6c3z2n36BV3ccJ4=</source>
   </file>
-  <file path="classes/add/add_adodb.class.php" hash="6cf6f3928d34eabc7542825c836fd45d" package="ADD MVC\ADODB wrappers">
+  <file path="classes/add/add_adodb.class.php" hash="d04a9ff682e47490abfb28d992e4cdad" package="ADD MVC\ADODB wrappers">
     <docblock line="2">
       <description><![CDATA[adodb wrapper abstract
 A class to be used as wrapper on adodb
-Being considered to be deprecated]]></description>
+One child class = one database connection, therefore for each database connection you must create a concrete class or use the 2 built in concrete class mysql and mssql]]></description>
       <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="see" description="\add_adodb_mysql" refers="\add_adodb_mysql"/>
       <tag line="2" name="package" description="ADD MVC\ADODB wrappers"/>
       <tag line="2" name="version" description="0.0"/>
     </docblock>
     <parse_markers>
-      <error line="23" code="50018">No DocBlock was found for property $debug</error>
-      <error line="24" code="50018">No DocBlock was found for property $add_last_operation</error>
-      <error line="26" code="50018">No DocBlock was found for property $ignore_error_numbers</error>
-      <error line="28" code="50010">No DocBlock was found for method singleton()</error>
-      <error line="49" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="54" code="50010">No DocBlock was found for method __clone()</error>
-      <error line="58" code="50010">No DocBlock was found for method __call()</error>
-      <error line="65" code="50010">No DocBlock was found for method __get()</error>
-      <error line="69" code="50010">No DocBlock was found for method __set()</error>
-      <error line="73" code="50010">No DocBlock was found for method check_error()</error>
-      <error line="80" code="50010">No DocBlock was found for method handle_error()</error>
-      <error line="84" code="50010">No DocBlock was found for method debug()</error>
-      <error line="88" code="50010">No DocBlock was found for method Connect()</error>
+      <error line="67" code="50015">Argument $adodb is missing from the Docblock of __construct()</error>
+      <error line="83" code="50015">Argument $method is missing from the Docblock of __call()</error>
+      <error line="83" code="50015">Argument $args is missing from the Docblock of __call()</error>
+      <error line="94" code="50015">Argument $property is missing from the Docblock of __get()</error>
+      <error line="102" code="50015">Argument $property is missing from the Docblock of __set()</error>
+      <error line="102" code="50015">Argument $value is missing from the Docblock of __set()</error>
     </parse_markers>
-    <class final="false" abstract="true" namespace="default" line="9" package="ADD MVC\ADODB wrappers">
+    <class final="false" abstract="true" namespace="default" line="14" package="ADD MVC\ADODB wrappers">
       <name>add_adodb</name>
       <full_name>\add_adodb</full_name>
       <extends/>
       <docblock line="2">
         <description><![CDATA[adodb wrapper abstract
 A class to be used as wrapper on adodb
-Being considered to be deprecated]]></description>
+One child class = one database connection, therefore for each database connection you must create a concrete class or use the 2 built in concrete class mysql and mssql]]></description>
         <long-description><![CDATA[]]></long-description>
+        <tag line="2" name="see" description="\add_adodb_mysql" refers="\add_adodb_mysql"/>
         <tag line="2" name="package" description="ADD MVC\ADODB wrappers"/>
         <tag line="2" name="version" description="0.0"/>
       </docblock>
-      <constant namespace="default" line="15" package="Default">
+      <constant namespace="default" line="20" package="Default">
         <name>FETCH_MODE</name>
         <value><![CDATA[ADODB_FETCH_ASSOC]]></value>
-        <docblock line="11">
+        <docblock line="16">
           <description><![CDATA[The default adodb fetch mode]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="11" name="since" description="0.0"/>
+          <tag line="16" name="since" description="0.0"/>
         </docblock>
       </constant>
-      <property final="false" static="false" visibility="public" line="21" package="Default">
+      <property final="false" static="false" visibility="public" line="26" package="Default">
         <name>$adodb</name>
         <default><![CDATA[]]></default>
-        <docblock line="17">
+        <docblock line="22">
           <description><![CDATA[The adodb object variable]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="17" name="since" description="0.0"/>
+          <tag line="22" name="since" description="0.0"/>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="public" line="23" package="Default">
-        <name>$debug</name>
-        <default><![CDATA[false]]></default>
-      </property>
-      <property final="false" static="false" visibility="public" line="24" package="Default">
+      <property final="false" static="false" visibility="public" line="34" package="Default">
         <name>$add_last_operation</name>
         <default><![CDATA[]]></default>
+        <docblock line="28">
+          <description><![CDATA[Contains data about the last operation]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="28" name="see" description="\__call" refers="\__call"/>
+        </docblock>
       </property>
-      <property final="false" static="true" visibility="public" line="26" package="Default">
+      <property final="false" static="true" visibility="public" line="40" package="Default">
         <name>$ignore_error_numbers</name>
         <default><![CDATA[array()]]></default>
+        <docblock line="36">
+          <description><![CDATA[Error codes to ignore, those that are normally throwing such as insert duplicate error]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="28" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="46" package="">
         <name>singleton</name>
         <type>function</type>
+        <docblock line="42">
+          <description><![CDATA[Creates a single instance for the adodb class]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="49" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="71" package="">
         <name>__construct</name>
         <type>function</type>
-        <argument line="49">
+        <docblock line="67">
+          <description><![CDATA[Construction]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="71">
           <name>$adodb</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="54" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="79" package="">
         <name>__clone</name>
         <type>function</type>
+        <docblock line="75">
+          <description><![CDATA[Prevent to be cloned]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="58" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="87" package="">
         <name>__call</name>
         <type>function</type>
-        <argument line="58">
+        <docblock line="83">
+          <description><![CDATA[Record the function and the arguments then call the adodb method]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="87">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="58">
+        <argument line="87">
           <name>$args</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="65" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="98" package="">
         <name>__get</name>
         <type>function</type>
-        <argument line="65">
+        <docblock line="94">
+          <description><![CDATA[Get the property of the inner adodb object]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="98">
           <name>$property</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="69" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="106" package="">
         <name>__set</name>
         <type>function</type>
-        <argument line="69">
+        <docblock line="102">
+          <description><![CDATA[Set the property of the inner adodb object]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="106">
           <name>$property</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="69">
+        <argument line="106">
           <name>$value</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="73" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="114" package="">
         <name>check_error</name>
         <type>function</type>
+        <docblock line="110">
+          <description><![CDATA[Check if there is error on the last operation]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="80" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="126" package="">
         <name>handle_error</name>
         <type>function</type>
+        <docblock line="122">
+          <description><![CDATA[Handle the error, extend this to handle specific erors]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="84" package="">
-        <name>debug</name>
-        <type>function</type>
-      </method>
-      <method final="false" abstract="true" static="false" visibility="public" namespace="default" line="88" package="">
+      <method final="false" abstract="true" static="false" visibility="public" namespace="default" line="134" package="">
         <name>Connect</name>
         <type>function</type>
+        <docblock line="130">
+          <description><![CDATA[Extend this method to specify the credentials]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="95" package="">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="default" line="141" package="">
         <name>varname</name>
         <type>function</type>
-        <docblock line="90">
+        <docblock line="136">
           <description><![CDATA[The variable name of the singleton of this class]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="90" name="since" description="ADD MVC 0.7"/>
+          <tag line="136" name="since" description="ADD MVC 0.7"/>
         </docblock>
       </method>
     </class>
-    <source>eJydVttu2zgQffdXTILAkYIk7tsCTpOtY7u7D0mzqI0FFm0hUNJY1lYmBZKKW2zz7zskdZfdFuWDLZEzZ25nOHr9e77NR5OLixFcAItFHMJesjxHCSxUWrJIm5MZRBlTCrSAEKFQGANTtaTgTtVI3mPKE4gEV2mMkuScSoy5xIhpjI3Qm5xFn1mCMFss4PHv+cfZ4mlxX+EpK/JMDykhv7p+Re+T0ex+tX4/m69h/jBbrchgHDh//xuNAMCGQOsC1ltjbsOKTJcRbVBHW9iJGEuRNyrlETposzExf8ZnDW+X6/mfwePTYgm3YN0K3BYZfZrfHLDlbIjwX4w0PDOZsjD7rqG8CLM0gjOr6BDLLaWZNicxhkVC9jcsU3jT1YkDqoQOBCWKhAV3AJVmmnAhMUAphQx4sQspiwTEpGRfPb8juyl4ZACAfEwy1IJ7PiUT7HLOuRS8w/1ccI5W2nPa0yklZv3PX0v/ptJIMhGyLKAMcLZDUq0ky53KPK10A175SOskVQq1d/bHw9P97GH1oYf0yW9Ev31rnml5nbefh6E1HndeT46qQUq0YFRFsQGF2aaj1sJsclenL6ga5BaOw98Cx32ZK8/p1TkdIl3dQVkL7/tSduPqboX6rWH/I5G/Ll3D8RrjpSqNRF1Iftxfq+CkawIFge0dWZBXZQQNkfQ2VVd3FZ0q0juQFrPbYJng2OKi3kqxt1lafokwtyw8nxshKjlwQW2eZWKP8fW5f8Q9EvDOdqi3Ir4kH2SiCH4yMftl/7pD1fe63211L7nfdnQE7ED8S2fh5kdgH84lKrqmzg0LjC8B3awyMI4Hv2ol2mL02fV/w5CqqD925HD+EtNXuTTy+mtTmDZszTnzUMsehlNtOAromWUF9igDFWfacIZAVvgQbifyBmxQv/HRNFTpMtfTydnRWo3H4A1O3Y27Q6VortmCtqt2dbc0548q8XzfAJykPBgWtxR7Jzz/smrWg1e6371tHMSW8TjDfu1fDqSqK9k0mkyThAjo9k/dULYeTcE7vT7i6fWp3zobUquXmXaL9ieRnXvegGB2ezr94tnOIDIGhvmUyRZU9bUyuE9a1+VwdlfjGuzIohte02Y9D90GcdF+/Di17mAvv19owP82HPD96Oo52I/PRGTaH+PAWvLqwF7+B9jv6Vg=</source>
+    <source>eJytV21v2zYQ/p5fcQmCRAqcpOiXAcma1XHc9kPSFHUwYOgGgRbPslZZ1EgqqbHmv++O1JslOx2G6YNDUce7h3fPveTnX4plsXd+crIHJyCkknN40qIoUIOYG6tFbPnLGOJMGANWwRyhNChBmEZS5f4oS97nCPEyzWR14g19RZDCirkw9EnlOcY2VfkI7BI1LpRGoB9AES+3ycFalbAqjYVYo7AIgj/SmpbeBB0mRKwOXsO8TDMLad4XWq3NXxmIXMLK0IqgMtq3BkmhlJHDH3mhUXenFWb5a0zzhFWbVBJ4WTlEYqExJnDSKS1E/FUkCOObG7j7dfL7+Ob+5rr2lnEij7Tgy706e0Xv53vj69nD5/HkASa349msBQB/7+0BgAsQPSfwsGRzC1HSLb3EAi15bqUkViJvTZrH6FXzxjn/YcwW3k0fJh+iu/ubKQXGwYr8Fhm9n1xuseVtqPmfFA14FDoV8+xFQ0U5z9IYDt3BvsaJyq1Ic+MCTQxTpXVxoxBZUOQdwSH3wo0RClEUxSLz4YuXGH+NUGulg7Ar2bMuI1YaNUr7UKasgdwi0dE6TXJiIpNSOS4Jci8xkzZXZHlNO1o9cfBNSd4m8tMtUFuQZUEGmZcO0gCQsWSdAHn9HneUl6s5EYBiILQW6yAc+MlR3RDXycVJhmzNCnY2p4pt4uK4vcvmosx9BnkdVuVBSHwC9/j4eBZ8xKdJk2+BP31xQdx4+O3TlLBVJ5JMzUUWEQlysUI6WktWO/U16EkXEFRLevZTY9AGh+9v76/Ht7MvPU1/hK3o9+/tmp5g4+3fq6Hn6GjjdX/nsca3agEGs8XGsY7O1neN+6K6Ar6B3erfQI5Pla8Cf67x6VDT6RVUsQhelnIbp1cztO+4ANwRkZvQtWne6HiuQ0M1sdT5brzuwPMwb6kZlHE/Ox3dGp5RltZy9UVbvtllak6vatbV5WGLrU8aHzG3VWmNM+ofcleed02zYIfgLmGd66ffYiwctY8nLEQ8orym/M4y9YTy7DjciuMzxkpLl2yNGS5ALvt0Uq4IpOE36jVcnNqsXCFVkSHmLlg6EBx6uRE5QyeGkJ+f+yrXUWL67uuXtaaG+N+um0mxVxKOvIXLHyn7cqzRUGc5ZtYylogaq44YePRfrWzU68seCX8MZGto3qNvG4XmE3YNlLr8nlLi6I2W9VIQEi4mtYqWOF1sTaLxopHdimn2v2AyXUzk2keRldjLIqjTqIuJc8oJb89fDgJXZTdzcQK4gPDk9nL73cS3EcsW1ICRRzsDWxOAG8T+4U72HR1BMPjqe+cKjaHhylG0y8PTK9fR70wShCEr2E/zaEjXSuyjCsJRXS63Nudws957FUsqABn22fxcuXzT5x+crPOvkx8BfrPoCkjqRg6vDEyBcbqgYoYkNGzmjfM3bbd1TqdJQknq9w/8rOnueAHBwdmOu58dhJ1vw/Tr+Xp7hZx27uNrAF/L32ftLk4TuKQymYpseLH6/4tBLe/0v+E8Wo+g4GaQKseaAcdvEJzBYFQPq9VMTkPrT8N20h+cmsGmXxyodLgajjJyloLGQc//AKGS/FA=</source>
   </file>
   <file path="classes/add/add_debug_timer.class.php" hash="d064a2232ec9ed8cc70a1a59dde30f31" package="ADD MVC\Debuggers">
     <docblock line="2">
@@ -8610,47 +8653,56 @@ Gets the IP of the user]]></description>
     </function>
     <source>eJyFUmFr2zAQ/R7If7hBwHZWnLgf1q3ZWEviboG1DV7oBnMnVEeJRRLLSHJKaPPfJ8lWYjeBGWPkd093797d5695mrdb7Vav2223oAt3RD4zvoR5kSWSskwY9AoXMmUc8OqJcDlTOBFXizWmKz9h65KS42SJFwSuRyO4fRjGN/UMJUXQLNkToO8HJbwhXCiiAvoa6NX10BzRDGWlKldITrMFdGjumegwJclSAJ2DTAmMJ0AFPFOZ0swA1TVgZVwQrkpZtRyv4ZDPJpAMEp20EmJteKNDC4AXxQFd2805WaA1lknqOr2/rhv0Yz+evX8NPp3HfvDho2d+Syy+jC+D1+D8Ivb75g28Ts850xltSvVwIguumuAFGRhsZ75kJcgRaY4VumfttHsH/54YW0FScE4yiZpNbBidnbKxYkOh/HIUmmtXm46WHiqCaBrz1rXThW2flf5m0F7R1dU91/MGVVO2pWpoR0QT/EaksLOsxq4J/9nBU5r3ebVao1fNCJU7hDaYoyXZCvgCmHO8de1M1ON8n04naPhjHN5N0XjinB3FfqOb++jXdTQKR/rkWIJu1ZznjBOcpOCeKokFdNShti16B9+RdS63bgf9DKOHMPqjKY/1lToY3uQMLGFnV6g+nD3XicLb+2mIlHOR82iE7v4BQe85bw==</source>
   </file>
-  <file path="functions/url.functions.php" hash="b486b75486bcf787a20f4d2b074baa02" package="Default">
+  <file path="functions/url.functions.php" hash="df517027fd4ee6f69f49612d886c6ab4" package="Default">
     <parse_markers>
-      <error line="3" code="50015">Argument $base is missing from the Docblock of build_url()</error>
-      <error line="3" code="50015">Argument $url is missing from the Docblock of build_url()</error>
-      <error line="29" code="50015">Argument $url is missing from the Docblock of url_parts()</error>
+      <error line="39" code="50014">Name of argument $url does not match with the DocBlock's name $Url in url_parts()</error>
+      <notice line="39" code="50013">Parameter $Url could not be found in url_parts()</notice>
       <error line="1" code="50007">No page-level DocBlock was found in file functions/url.functions.php</error>
     </parse_markers>
-    <function namespace="default" line="8" package="Default">
+    <function namespace="default" line="13" package="Default">
       <name>build_url</name>
       <type>function</type>
       <docblock line="3">
         <description><![CDATA[Returns the complete url according to $base]]></description>
         <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="param" description="" type="string" variable="$base">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="3" name="param" description="" type="string" variable="$url">
+          <type by_reference="false">string</type>
+        </tag>
         <tag line="3" name="since" description="ADD MVC 0.5"/>
+        <tag line="3" name="version" description="0.1"/>
       </docblock>
-      <argument line="8">
+      <argument line="13">
         <name>$base</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="8">
+      <argument line="13">
         <name>$url</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
     </function>
-    <function namespace="default" line="34" package="Default">
+    <function namespace="default" line="46" package="Default">
       <name>url_parts</name>
       <type>function</type>
-      <docblock line="29">
+      <docblock line="39">
         <description><![CDATA[Returns the URL parts of the url]]></description>
         <long-description><![CDATA[]]></long-description>
-        <tag line="29" name="since" description="ADD MVC 0.5"/>
+        <tag line="39" name="param" description="" type="string" variable="$Url">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="39" name="since" description="ADD MVC 0.5"/>
       </docblock>
-      <argument line="34">
+      <argument line="46">
         <name>$url</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
     </function>
-    <source>eJyVUtFu0zAUfc9XXNpKidMR74WXdY1BjAckkNCkwUOdRa7jNhGJHRyHDcH+fbazhnSDCV4i555zj4/PveekLdsgwHEcQAyXwvRadmBKAVw1bS2MgF7XwDhXuqjkHoyCxZZ1wtJdx+uuklzAm4sL+Pj5LZwmr2wVB7teclMpCdu+qovcSkS+62Rhjwh+BjCo5C3Tplvb4nAaWGgVWEK1g8jRN6fZer0OcTj0AWjvErTRVRNNZDZhq5VRXNV5oRpWyTA7cW2JU1nZ1runqmRUdcCLYzVmSskaEWbIM448T2FnbjW19ryp5C8yz/mce58TrNVinzfM8DIK8XVpTNsRekbxEodDyI/S+q0d/F+CMzxDTx2Pbu/+uDxXlx/As0HtfMFy/3FjJrsw7oqfzfGLI/Lp/JHZdFpLJ5EgBxw4m2uK6Zfs14Ym9GWGlsijWnzrRWfsplaDzMNUxp+U4ihZUowIIq62q2qRWi1C59mSHKpWRP/IO5ur3KeUWHyexRaM6NzBJevKNIkRIouHMfnP8N5xYoKXCgqx7ff5lvGvRjMuIjQsmCm1ugEpbuDdLRetSyyavZffWV0VLrozP+gZOqzRZPrDLW5iJL0HHkc7VA==</source>
+    <source>eJyVU11v0zAUfc+vMO2kxO0abw9IqF1jEOMBaUho0uChziLXcRuzJA6204LY/jt20mxpCxXkIUrOuT6+H+de4SqrPA+NRh4YgVtualVqYDIOmCyqnBsOapUDyphUqSjXwEhwtqSa23B34m1FFS2ANsqRHXMIW4kuXouScfDu+hp8+vIeXISvO2LDlRaytNCl/Ufeqi6ZccCyFnmaWImgkT93ahD88gBo70vsXUbPLdp+tWFw5rmIIciMqfQUISZTHq6lXOc8tLWhCtE0nRQbNlnZVPlWqgcktK65Rik3VORYpPM3l05ErEBQKb5OCmpYFvjoPvhGN1QzJSrzmFJDIZkiv81sl5p9VNPNpvqZg568TsxBi4t4Pp/7yD86oGzXiqBX28KvlDSSyTxJZUFF6cfn7mDYkz5Wxj1lR73aV6QmK23dfgx3Mfv97Ee4LGcHRZ3MLvyL0OmEh03Ce+x+15tRYjIlaPyv3f6flg7QAB5n/pz10x/X5O72BjTRQK4aoOf1/SW4O70EPcf3rPzi9WaEBy7En68Oyoj6WNRrGHREF7O4J4h8jR8XJCSTGI5hwyr+3brf2FUTrcxubs8/EUFBOCYIYogdthI5j6wWJsN4jDvUiqifSVt1RLDlh/HIkgEZOjqjOovCEYT4bDfE5tUW3JsnZ5kEKV/W62RJ2YNRlPEAdjY0mZJbUPIt+PCD8cq1LRh8LDc0F6nr37QxwgC+mK3nj/YuN1Ec/Qbw2IgH</source>
   </file>
   <file path="functions/geo.funcs.php" hash="0298abb397ee8cd264dec1ed32a0f067" package="ADD MVC\Functions">
     <docblock line="2">
