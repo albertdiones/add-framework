@@ -9,8 +9,13 @@
 ABSTRACT CLASS add_adodb_mysql EXTENDS add_adodb {
    const VARNAME = 'MYSQL_D';
    const DB_TYPE = 'mysql';
-   static $ignore_error_numbers = array();
 
+   /**
+    * Quote the fields and table
+    *
+    * @param mixed $arg string or array, if array will be treated as multiple fields
+    *
+    */
    public function meta_quote($arg) {
       if (is_array($arg)) {
          $Q_args = array();
@@ -24,6 +29,10 @@ ABSTRACT CLASS add_adodb_mysql EXTENDS add_adodb {
       }
    }
 
+   /**
+    * Handle specific mysql errors
+    *
+    */
    public function handle_error() {
       $last_operation = $this->add_last_operation;
       $data = array(
