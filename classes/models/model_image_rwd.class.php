@@ -1,4 +1,4 @@
-<?php
+\<?php
 /**
  * model_image_rwd
  * A class for db entities that are images
@@ -37,12 +37,12 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
    abstract public function img_src();
 
    /**
-   * User_photo::get_gd($arg1)
-   * vehicle_picture::get_gd('photo');
-   * vehicle_picture::get_instance(123)->get_gd();
-   * @param $arg1 if string, gets the gd resource of $_FILES[$arg1]
-   * @param string $arg1 the input[type=file] name
-   */
+    * User_photo::get_gd($arg1)
+    * vehicle_picture::get_gd('photo');
+    * vehicle_picture::get_instance(123)->get_gd();
+     * param $arg1 if string, gets the gd resource of $_FILES[$arg1]
+    * param string $arg1 the input[type=file] name
+    */
    public function get_gd(/* Polymorphic */) {
       if (!isset($this) || (isset($this) && !$this instanceof self)) {
          $args = func_get_args();
