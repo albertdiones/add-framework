@@ -283,7 +283,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          $header.
          debug::return_pretty_var_dump($important_info)."\r\n".
          "== Data ==\r\n".debug::return_pretty_var_dump($this->data)."\r\n".
-         "== Trace ==\r\n".debug::return_pretty_var_dump($this->getTrace())."\r\n".
+         "== Trace ==\r\n".$this->getTraceAsString()."\r\n".
          "== Request Headers ==\r\n".debug::return_pretty_var_dump(function_exists('apache_request_headers') ? apache_request_headers() : false)."\r\n".
          "== Request ==\r\n".debug::return_pretty_var_dump($_REQUEST)."\r\n".
          "== Get ==\r\n".debug::return_pretty_var_dump($_GET)."\r\n".
