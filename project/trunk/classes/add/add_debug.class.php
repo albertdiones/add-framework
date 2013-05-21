@@ -207,7 +207,11 @@ ABSTRACT CLASS add_debug {
                    * add_debug::pretty_var_dump() causes infinite loop on self referrences
                    * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=51
                    */
-                  if (self::return_var_dump($value) == self::return_var_dump($arg)) {
+                  if (
+                        count($value) == count($arg)
+                        &&
+                        self::return_var_dump($value) == self::return_var_dump($arg)
+                        ) {
                      $dump .= "*RECURSION*";
                   }
                   else {
