@@ -233,7 +233,8 @@ CLASS add {
    static function handle_exception(Exception $e) {
       try {
          while (ob_get_level()) {
-            echo ob_get_clean();
+            # Do not echo this, it is a big security risk
+            ob_get_clean();
          }
          try {
             if (method_exists($e,'handle_exception')) {
@@ -488,7 +489,8 @@ CLASS add {
    static function handle_shutdown() {
       try {
          while (ob_get_level()) {
-            echo ob_get_clean();
+            # Do not echo this, it is a big security risk
+            ob_get_clean();
          }
          if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
             global $add_mvc_root_timer;
