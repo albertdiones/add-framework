@@ -10,6 +10,22 @@
  * @version 0.1
  */
 ABSTRACT CLASS add_debug {
+
+/**
+ * (var) dumping flag
+ *
+ * @var boolean
+ *
+ */
+   private static $dumping = false;
+
+
+   /**
+    * Max depth of recursion, to avoid infinite loops on recursive referrences
+    *
+    */
+   public static $max_indentation = 15;
+
   /**
    * echo only if IP matched
    *
@@ -166,11 +182,31 @@ ABSTRACT CLASS add_debug {
     * @param mixed $args
     * @since ADD MVC 0.0
     */
-   public static function return_var_dump($args) {
+   final public static function return_var_dump($args) {
       ob_start();
+      self::$dumping = true;
       call_user_func_array('var_dump',func_get_args());
+
+      /**
+       * Debugging for https://code.google.com/p/add-mvc-framework/issues/detail?id=93
+       *
+        throw new Exception("test");
+        die();
+       */
+
       $var = ob_get_clean();
+      self::$dumping = false;
       return $var;
+   }
+
+
+
+   /**
+    * Dumping flag
+    *
+    */
+   public static function dumping() {
+      return self::$dumping;
    }
 
    /**
@@ -207,12 +243,15 @@ ABSTRACT CLASS add_debug {
                    * add_debug::pretty_var_dump() causes infinite loop on self referrences
                    * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=51
                    */
-                  if (
-                        count($value) == count($arg)
-                        &&
-                        self::return_var_dump($value) == self::return_var_dump($arg)
-                        ) {
-                     $dump .= "*RECURSION*";
+                  if ( is_array( $value ) ) {
+                     if (
+                           $indentation < static::$max_indentation
+                           ) {
+                        $dump .= static::return_pretty_var_dump($value);
+                     }
+                     else {
+                        $dump .= "*...*";
+                     }
                   }
                   else {
                      $dump .= static::return_pretty_var_dump($value);

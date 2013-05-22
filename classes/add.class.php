@@ -232,10 +232,9 @@ CLASS add {
     */
    static function handle_exception(Exception $e) {
       try {
-         while (ob_get_level()) {
-            # Do not echo this, it is a big security risk
-            ob_get_clean();
-         }
+
+         static::ob_flush();
+
          try {
             if (method_exists($e,'handle_exception')) {
                return $e->handle_exception();
@@ -488,10 +487,7 @@ CLASS add {
     */
    static function handle_shutdown() {
       try {
-         while (ob_get_level()) {
-            # Do not echo this, it is a big security risk
-            ob_get_clean();
-         }
+         static::ob_flush();
          if (static::$handle_shutdown && !add::is_live() && add::is_developer()) {
             global $add_mvc_root_timer;
 
@@ -523,6 +519,21 @@ CLASS add {
       catch (Exception $e) {
          add::$handle_shutdown = false;
          add::handle_exception($e);
+      }
+   }
+
+   /**
+    * Flush unflushed buffers, if the debug class isn't done var dumping, then void
+    *
+    */
+   public static function ob_flush() {
+      if (!add_debug::dumping()) {
+         while (ob_get_level()) {
+            echo ob_get_clean();
+         }
+      }
+      else {
+         $void_dump = ob_get_clean();
       }
    }
 
