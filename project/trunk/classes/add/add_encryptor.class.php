@@ -1,9 +1,8 @@
 <?php
-
 /**
  * add_encryptor
  *
- * @author albertdiones@gmail.com
+ * A reversible encryption class
  *
  * @since ADD MVC 0.6
  * @version 0.1
@@ -47,14 +46,19 @@ CLASS add_encryptor {
     */
    public $cypher = self::DEFAULT_CYPHER;
 
+   /**
+    * The mode used for mcrypt_encrypt(), mcrypt_get_iv_size() and mcrypt_decrypt()
+    *
+    */
    public $mode = self::DEFAULT_MODE;
 
 
    /**
-    * construct
+    * Create a new instance of this class, pass the first argument
     *
     * @param string $string the string to encrypt
-    * @param string $key the string to use as key
+    * @param string $key custom string to use as key, omit to generate a key, then get the key using $this->key
+    *
     * @since ADD MVC 0.6
     */
    public function __construct($string, $key=false ) {
@@ -66,7 +70,9 @@ CLASS add_encryptor {
    }
 
    /**
-    * encrypt $this->string
+    * Encrypt $this->string passed from __construct($string)
+    *
+    * @return string encrypted string
     *
     * @since ADD MVC 0.6
     */
@@ -75,7 +81,12 @@ CLASS add_encryptor {
    }
 
    /**
-    * decrypt the string and create a new instance
+    * Decrypt the $encrypted_string and create a new instance of this class
+    *
+    * @param string $encrypted_string
+    * @param string $key
+    * @param int $cypher
+    * @param int $mode
     *
     * @since ADD MVC 0.6
     */
@@ -182,7 +193,7 @@ CLASS add_encryptor {
 
    public static function generate_key($length = 30) {
       $key = "";
-      
+
       $key_content = "abcdefghijklamnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+~";
 
       for ($x=1; $x<=$length; $x++) {

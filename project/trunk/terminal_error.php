@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Terminal Error file
+ *
+ * When all else fails, this will print
+ *
+ *
+ */
+
 namespace add\terminal_error;
 #var_dump($GLOBALS);
 
