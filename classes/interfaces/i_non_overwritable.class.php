@@ -1,5 +1,4 @@
 <?php
-
 /**
  * i_non_overwritable interface
  * an interface for non overwritable class
@@ -13,10 +12,22 @@
  */
 INTERFACE i_non_overwritable {
 
+   /**
+    * Destruct, error out when the instance is destroyed
+    *
+    */
    function __destruct();
 
+   /**
+    * Prevent cloning
+    *
+    */
    public function __clone();
 
+   /**
+    * Returns a cached single instance of this class
+    *
+    */
    static function singleton(/* Polymorphic */);
 
 }

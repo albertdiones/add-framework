@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * URL functions
+ *
+ */
+
+/**
  * Returns the complete url according to $base
  *
  * @param string $base

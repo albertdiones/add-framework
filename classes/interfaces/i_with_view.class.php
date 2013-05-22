@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Interface for classes with views
  *

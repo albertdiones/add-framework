@@ -59,6 +59,11 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
    /**
     * __call() magic function
     *
+    * For renamed functions and error when it's undefined
+    *
+    * @param string $function_name
+    * @param array $arguments
+    *
     * @since ADD MVC 0.6
     */
    public function __call($function_name,$arguments) {

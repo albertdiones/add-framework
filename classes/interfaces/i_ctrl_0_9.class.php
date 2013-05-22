@@ -1,7 +1,8 @@
 <?php
-
 /**
  * i_ctrl controller interface
+ *
+ * @deprecated since 0.9, former i_ctrl
  *
  * @since ADD MVC 0.6
  */
@@ -16,6 +17,8 @@ INTERFACE i_ctrl_0_9 {
 
    /**
     * print_response() - print the response according to data
+    *
+    * @param array $data the assigned data through assign()
     *
     * @since ADD MVC 0.6
     */
