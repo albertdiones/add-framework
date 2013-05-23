@@ -21,7 +21,6 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
-<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,13 +31,13 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">136</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">37</span>
+                <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">39</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -62,28 +61,23 @@
 Gets $this-&gt;data[$varname]"><span class="description">Magic function __get
 Gets $this-&gt;data[$varname]</span><pre>__get()</pre></a></li>
 <li class="method public inherited"><a href="#__isset" title="__isset :: Magic function __isset()"><span class="description">Magic function __isset()</span><pre>__isset()</pre></a></li>
-<li class="method public inherited"><a href="#__set" title="__set :: Magic function __set
-Sets $this-&gt;data[$varname] = $value"><span class="description">Magic function __set
-Sets $this-&gt;data[$varname] = $value</span><pre>__set()</pre></a></li>
+<li class="method public inherited"><a href="#__set" title="__set :: Sets the session variable"><span class="description">Sets the session variable</span><pre>__set()</pre></a></li>
 <li class="method public inherited"><a href="#__unset" title="__unset :: Magic function __unset()"><span class="description">Magic function __unset()</span><pre>__unset()</pre></a></li>
 <li class="method public inherited"><a href="#construct" title="construct :: construct"><span class="description">construct</span><pre>construct()</pre></a></li>
 <li class="method public inherited"><a href="#current" title="current :: Iterator::current() implementation"><span class="description">Iterator::current() implementation</span><pre>current()</pre></a></li>
-<li class="method public "><a href="#current_logged_in" title="current_logged_in :: "><span class="description">current_logged_in()
-        </span><pre>current_logged_in()</pre></a></li>
+<li class="method public "><a href="#current_logged_in" title="current_logged_in :: Current logged in session_user"><span class="description">Current logged in session_user</span><pre>current_logged_in()</pre></a></li>
 <li class="method public inherited"><a href="#key" title="key :: Iterator::key() implementation"><span class="description">Iterator::key() implementation</span><pre>key()</pre></a></li>
 <li class="method public "><a href="#login_redirect" title="login_redirect :: login_redirect()
 extend to change"><span class="description">login_redirect()
 extend to change</span><pre>login_redirect()</pre></a></li>
-<li class="method public "><a href="#logout" title="logout :: "><span class="description">logout()
-        </span><pre>logout()</pre></a></li>
+<li class="method public "><a href="#logout" title="logout :: Unsets the session, logs out the session_user"><span class="description">Unsets the session, logs out the session_user</span><pre>logout()</pre></a></li>
 <li class="method public "><a href="#name" title="name :: The readable name of the user"><span class="description">The readable name of the user</span><pre>name()</pre></a></li>
 <li class="method public inherited"><a href="#next" title="next :: Iterator::next() implementation"><span class="description">Iterator::next() implementation</span><pre>next()</pre></a></li>
 <li class="method public "><a href="#require_logged_in" title="require_logged_in :: require_logged_in()
 requires current_logged_in() user, if there is none, redirect and die()"><span class="description">require_logged_in()
 requires current_logged_in() user, if there is none, redirect and die()</span><pre>require_logged_in()</pre></a></li>
 <li class="method public inherited"><a href="#rewind" title="rewind :: Iterator::rewind() implementation"><span class="description">Iterator::rewind() implementation</span><pre>rewind()</pre></a></li>
-<li class="method public "><a href="#session_key" title="session_key :: "><span class="description">session_key()
-        </span><pre>session_key()</pre></a></li>
+<li class="method public "><a href="#session_key" title="session_key :: Session key"><span class="description">Session key</span><pre>session_key()</pre></a></li>
 <li class="method public "><a href="#singleton" title="singleton :: session_user singleton"><span class="description">session_user singleton</span><pre>singleton()</pre></a></li>
 <li class="method public inherited"><a href="#valid" title="valid :: Iterator::valid() implementation"><span class="description">Iterator::valid() implementation</span><pre>valid()</pre></a></li>
 <li class="method public inherited"><a href="#valid_magic_property" title="valid_magic_property :: Checks if the $this-&gt;data index is valid"><span class="description">Checks if the $this-&gt;data index is valid</span><pre>valid_magic_property()</pre></a></li>
@@ -91,9 +85,9 @@ requires current_logged_in() user, if there is none, redirect and die()</span><p
 <li class="method protected inherited"><a href="#__construct" title="__construct :: Do not inherit the __construct of array_entity since it is faulty ( see issue #83 )"><span class="description">Do not inherit the __construct of array_entity since it is faulty ( see issue #83 )</span><pre>__construct()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
-<li class="property public inherited"><a href="#%24data" title="$data :: $this-&gt;data contains the $array contents"><span class="description">$this-&gt;data contains the $array contents</span><pre>$data</pre></a></li>
+<li class="property public inherited"><a href="#%24data" title="$data :: Session variable placeholder"><span class="description">Session variable placeholder</span><pre>$data</pre></a></li>
 <li class="property public inherited"><a href="#%24session_var" title="$session_var :: Referrence to $data"><span class="description">Referrence to $data</span><pre>$session_var</pre></a></li>
-<li class="property public "><a href="#%24singleton" title="$singleton :: "><span class="description">$singleton</span><pre>$singleton</pre></a></li>
+<li class="property public "><a href="#%24singleton" title="$singleton :: Singleton placeholder"><span class="description">Singleton placeholder</span><pre>$singleton</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants</li>
 <li class="constant  "><a href="#SESSION_KEY" title="SESSION_KEY :: "><span class="description">SESSION_KEY</span><pre>SESSION_KEY</pre></a></li>
@@ -106,16 +100,16 @@ requires current_logged_in() user, if there is none, redirect and die()</span><p
 <p class="long_description"></p>
 <table class="table table-bordered">
 <tr>
+<th>package</th>
+<td><a href="..//packages/ADD%20MVC.Session.html">ADD MVC\Session</a></td>
+</tr>
+<tr>
 <th>since</th>
 <td>ADD MVC 0.6</td>
 </tr>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
-</tr>
-<tr>
-<th>package</th>
-<td><a href="..//packages/Default.html">ADD MVC\Extras</a></td>
 </tr>
 <tr>
 <th>version</th>
@@ -188,9 +182,8 @@ Gets $this-&gt;data[$varname]</h2>
 </div></div>
 </div>
 <a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
-<h2>Magic function __set
-Sets $this-&gt;data[$varname] = $value</h2>
-<pre>__set(mixed $varname, mixed $value) </pre>
+<h2>Sets the session variable</h2>
+<pre>__set(string $varname, mixed $value) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -201,7 +194,7 @@ Sets $this-&gt;data[$varname] = $value</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$varname</h4>
-<code>mixed</code>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$value</h4>
@@ -242,7 +235,7 @@ Sets $this-&gt;data[$varname] = $value</h2>
 </div>
 <a name="construct" id="construct"></a><div class="element clickable method public construct" data-toggle="collapse" data-target=".construct .collapse">
 <h2>construct</h2>
-<pre>construct($array) </pre>
+<pre>construct(array $array) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -263,7 +256,7 @@ Sets $this-&gt;data[$varname] = $value</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$array</h4>
-<code></code>
+<code>array</code>
 </div>
 </div></div>
 </div>
@@ -294,11 +287,16 @@ Sets $this-&gt;data[$varname] = $value</h2>
 </div></div>
 </div>
 <a name="current_logged_in" id="current_logged_in"></a><div class="element clickable method public current_logged_in" data-toggle="collapse" data-target=".current_logged_in .collapse">
-<h2>current_logged_in()
-        </h2>
+<h2>Current logged in session_user</h2>
 <pre>current_logged_in() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\i_auth_entity</td>
+</tr></table>
+</div></div>
 </div>
 <a name="key" id="key"></a><div class="element clickable method public key" data-toggle="collapse" data-target=".key .collapse">
 <h2>Iterator::key() implementation</h2>
@@ -340,11 +338,16 @@ extend to change</h2>
 </div></div>
 </div>
 <a name="logout" id="logout"></a><div class="element clickable method public logout" data-toggle="collapse" data-target=".logout .collapse">
-<h2>logout()
-        </h2>
+<h2>Unsets the session, logs out the session_user</h2>
 <pre>logout() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\i_auth_entity</td>
+</tr></table>
+</div></div>
 </div>
 <a name="name" id="name"></a><div class="element clickable method public name" data-toggle="collapse" data-target=".name .collapse">
 <h2>The readable name of the user</h2>
@@ -435,8 +438,7 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 </div></div>
 </div>
 <a name="session_key" id="session_key"></a><div class="element clickable method public session_key" data-toggle="collapse" data-target=".session_key .collapse">
-<h2>session_key()
-        </h2>
+<h2>Session key</h2>
 <pre>session_key() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -508,7 +510,7 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 </div>
 <a name="__construct" id="__construct"></a><div class="element clickable method protected __construct" data-toggle="collapse" data-target=".__construct .collapse">
 <h2>Do not inherit the __construct of array_entity since it is faulty ( see issue #83 )</h2>
-<pre>__construct($session_var) </pre>
+<pre>__construct(array $session_var) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -525,14 +527,14 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$session_var</h4>
-<code></code>
+<code>array</code>
 </div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24data" id="$data"> </a><div class="element clickable property public $data" data-toggle="collapse" data-target=".$data .collapse">
-<h2>$this-&gt;data contains the $array contents</h2>
+<h2>Session variable placeholder</h2>
 <pre>$data </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -562,7 +564,7 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 </div></div>
 </div>
 <a name="%24singleton" id="$singleton"> </a><div class="element clickable property public $singleton" data-toggle="collapse" data-target=".$singleton .collapse">
-<h2>$singleton</h2>
+<h2>Singleton placeholder</h2>
 <pre>$singleton </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -582,7 +584,7 @@ requires current_logged_in() user, if there is none, redirect and die()</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-21T01:05:49+04:00.<br></footer></div>
+            generated on 2013-05-23T23:28:29+04:00.<br></footer></div>
 </div>
 </body>
 </html>

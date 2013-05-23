@@ -21,7 +21,6 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
-<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,13 +31,13 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">136</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">37</span>
+                <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">39</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -61,10 +60,11 @@
 <li class="method public inherited"><a href="#caller_backtrace" title="caller_backtrace :: Returns the debug info of the caller"><span class="description">Returns the debug info of the caller</span><pre>caller_backtrace()</pre></a></li>
 <li class="method public inherited"><a href="#caller_file_line" title="caller_file_line :: Returns the file and line number of the caller of the function"><span class="description">Returns the file and line number of the caller of the function</span><pre>caller_file_line()</pre></a></li>
 <li class="method public inherited"><a href="#current_url" title="current_url :: Returns the current url"><span class="description">Returns the current url</span><pre>current_url()</pre></a></li>
-<li class="method public "><a href="#current_user_allowed" title="current_user_allowed :: Declare this on extensions to set the allowed IPs or allowed users to see the debug prints"><span class="description">Declare this on extensions to set the allowed IPs or allowed users to see the debug prints</span><pre>current_user_allowed()</pre></a></li>
+<li class="method public "><a href="#current_user_allowed" title="current_user_allowed :: Always visible when not live"><span class="description">Always visible when not live</span><pre>current_user_allowed()</pre></a></li>
 <li class="method public inherited"><a href="#deprecated_file" title="deprecated_file :: deprecated_file() function
 Call this on deprecated files"><span class="description">deprecated_file() function
 Call this on deprecated files</span><pre>deprecated_file()</pre></a></li>
+<li class="method public inherited"><a href="#dumping" title="dumping :: Dumping flag"><span class="description">Dumping flag</span><pre>dumping()</pre></a></li>
 <li class="method public inherited"><a href="#get_declared_globals" title="get_declared_globals :: Returns an array of declared globals"><span class="description">Returns an array of declared globals</span><pre>get_declared_globals()</pre></a></li>
 <li class="method public inherited"><a href="#html_print" title="html_print :: make a list out of $arg"><span class="description">make a list out of $arg</span><pre>html_print()</pre></a></li>
 <li class="method public inherited"><a href="#lap" title="lap :: Add a lap with $label"><span class="description">Add a lap with $label</span><pre>lap()</pre></a></li>
@@ -96,9 +96,12 @@ var_dump with &lt;xmp&gt;</span><pre>var_dump()</pre></a></li>
 <li class="method protected inherited"><a href="#protected_caller_backtrace" title="protected_caller_backtrace :: Gets the caller backtrace"><span class="description">Gets the caller backtrace</span><pre>protected_caller_backtrace()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public inherited"><a href="#%24max_indentation" title="$max_indentation :: Max depth of recursion, to avoid infinite loops on recursive referrences"><span class="description">Max depth of recursion, to avoid infinite loops on recursive referrences</span><pre>$max_indentation</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected inherited"><a href="#%24lap_timestamps" title="$lap_timestamps :: The timestamp of the laps"><span class="description">The timestamp of the laps</span><pre>$lap_timestamps</pre></a></li>
 <li class="property protected inherited"><a href="#%24start_timestamp" title="$start_timestamp :: The start timestamp of the timer"><span class="description">The start timestamp of the timer</span><pre>$start_timestamp</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private inherited"><a href="#%24dumping" title="$dumping :: (var) dumping flag"><span class="description">(var) dumping flag</span><pre>$dumping</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -108,16 +111,16 @@ var_dump with &lt;xmp&gt;</span><pre>var_dump()</pre></a></li>
 <p class="long_description"></p>
 <table class="table table-bordered">
 <tr>
+<th>package</th>
+<td><a href="..//packages/ADD%20MVC.Debuggers.html">ADD MVC\Debuggers</a></td>
+</tr>
+<tr>
 <th>since</th>
 <td>ADD MVC 0.7.2</td>
 </tr>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
-</tr>
-<tr>
-<th>package</th>
-<td><a href="..//packages/Default.html">ADD MVC\Debuggers</a></td>
 </tr>
 <tr>
 <th>version</th>
@@ -193,7 +196,7 @@ var_dump with &lt;xmp&gt;</span><pre>var_dump()</pre></a></li>
 </div></div>
 </div>
 <a name="current_user_allowed" id="current_user_allowed"></a><div class="element clickable method public current_user_allowed" data-toggle="collapse" data-target=".current_user_allowed .collapse">
-<h2>Declare this on extensions to set the allowed IPs or allowed users to see the debug prints</h2>
+<h2>Always visible when not live</h2>
 <pre>current_user_allowed() : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
@@ -222,6 +225,24 @@ Call this on deprecated files</h2>
 <tr>
 <th>inherited_from</th>
 <td>\add_debug_timer::deprecated_file()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="dumping" id="dumping"></a><div class="element clickable method public dumping" data-toggle="collapse" data-target=".dumping .collapse">
+<h2>Dumping flag</h2>
+<pre>dumping() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\add_debug::dumping()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\add_debug_timer::dumping()</td>
 </tr>
 </table>
 </div></div>
@@ -376,7 +397,7 @@ Call this on deprecated files</h2>
 </div>
 <a name="print_config" id="print_config"></a><div class="element clickable method public print_config" data-toggle="collapse" data-target=".print_config .collapse">
 <h2>Prints the config value</h2>
-<pre>print_config($field, $boolean) </pre>
+<pre>print_config(string $field, boolean $boolean) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -397,17 +418,17 @@ Call this on deprecated files</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$field</h4>
-<code></code>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$boolean</h4>
-<code></code>
+<code>boolean</code>
 </div>
 </div></div>
 </div>
 <a name="print_data" id="print_data"></a><div class="element clickable method public print_data" data-toggle="collapse" data-target=".print_data .collapse">
 <h2>print_data extended</h2>
-<pre>print_data($label, $lap_difference) </pre>
+<pre>print_data(float $label, float $lap_difference) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -424,11 +445,10 @@ Call this on deprecated files</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$label</h4>
-<code></code>
-</div>
+<code>float</code><p>the microsecond time</p></div>
 <div class="subelement argument">
 <h4>$lap_difference</h4>
-<code></code>
+<code>float</code>
 </div>
 </div></div>
 </div>
@@ -491,11 +511,15 @@ Call this on deprecated files</h2>
 </div>
 <a name="print_lap_difference" id="print_lap_difference"></a><div class="element clickable method public print_lap_difference" data-toggle="collapse" data-target=".print_lap_difference .collapse">
 <h2>Print lap details from lap1 to lap2</h2>
-<pre>print_lap_difference($lap1, $lap2) </pre>
+<pre>print_lap_difference(array $lap1, array $lap2) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\$this-&gt;print_lap()</td>
+</tr>
 <tr>
 <th>since</th>
 <td>ADD MVC 0.7.2</td>
@@ -508,11 +532,11 @@ Call this on deprecated files</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$lap1</h4>
-<code></code>
+<code>array</code>
 </div>
 <div class="subelement argument">
 <h4>$lap2</h4>
-<code></code>
+<code>array</code>
 </div>
 </div></div>
 </div>
@@ -678,7 +702,7 @@ get var dump function</h2>
 </div>
 <a name="us_diff_html" id="us_diff_html"></a><div class="element clickable method public us_diff_html" data-toggle="collapse" data-target=".us_diff_html .collapse">
 <h2>Microseconds diff html style</h2>
-<pre>us_diff_html($string, $second_difference) </pre>
+<pre>us_diff_html(string $string, float $second_difference) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -695,11 +719,11 @@ get var dump function</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$string</h4>
-<code></code>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$second_difference</h4>
-<code></code>
+<code>float</code>
 </div>
 </div></div>
 </div>
@@ -794,6 +818,24 @@ var_dump with &lt;xmp&gt;</h2>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24max_indentation" id="$max_indentation"> </a><div class="element clickable property public $max_indentation" data-toggle="collapse" data-target=".$max_indentation .collapse">
+<h2>Max depth of recursion, to avoid infinite loops on recursive referrences</h2>
+<pre>$max_indentation </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\add_debug::$$max_indentation</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\add_debug_timer::$$max_indentation</td>
+</tr>
+</table>
+</div></div>
+</div>
 <a name="%24lap_timestamps" id="$lap_timestamps"> </a><div class="element clickable property protected $lap_timestamps" data-toggle="collapse" data-target=".$lap_timestamps .collapse">
 <h2>The timestamp of the laps</h2>
 <pre>$lap_timestamps </pre>
@@ -830,6 +872,24 @@ var_dump with &lt;xmp&gt;</h2>
 </table>
 </div></div>
 </div>
+<a name="%24dumping" id="$dumping"> </a><div class="element clickable property private $dumping" data-toggle="collapse" data-target=".$dumping .collapse">
+<h2>(var) dumping flag</h2>
+<pre>$dumping : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\add_debug::$$dumping</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\add_debug_timer::$$dumping</td>
+</tr>
+</table>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -837,7 +897,7 @@ var_dump with &lt;xmp&gt;</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-21T01:05:50+04:00.<br></footer></div>
+            generated on 2013-05-23T23:28:29+04:00.<br></footer></div>
 </div>
 </body>
 </html>
