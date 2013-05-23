@@ -1,9 +1,9 @@
 <?php
 /**
- * ctrl_tpl_404 abstract model class
  * A sample 404 page controller
  *
- * @author albertdiones@gmail.com
+ * replace this with your own on your application's /classes directory
+ *
  *
  * @package ADD MVC\Controllers\Extras
  * @since ADD MVC 0.0

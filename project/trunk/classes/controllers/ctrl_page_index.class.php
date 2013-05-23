@@ -1,9 +1,8 @@
 <?php
 /**
- * ctrl_page_index default index page
+ * default index page
  * A sample index page controller
- *
- * @author albertdiones@gmail.com
+ * replace this with your own on your application's classes directory
  *
  * @package ADD MVC\Controllers\Extras
  * @since ADD MVC 0.0
