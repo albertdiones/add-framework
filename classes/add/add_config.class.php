@@ -6,6 +6,11 @@
  * @since 0.10
  */
 CLASS add_config EXTENDS STDCLass {
+
+/**
+ * Environment status??
+ *
+ */
    protected $environment_status;
 
    /**

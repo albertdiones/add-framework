@@ -38,7 +38,10 @@ CLASS session_entity EXTENDS array_entity {
       $this->session_var = &$this->data;
    }
 
-
+   /**
+    * Sets the session variable
+    *
+    */
    public function __set($varname,$value) {
       $set = (bool)(parent::__set($varname,$value));
       $updated = (bool) ($this->data[$varname] = $value);

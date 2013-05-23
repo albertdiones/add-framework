@@ -116,7 +116,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
    /**
     * print_data extended
     *
-    * @param float $us_time the microsecond time
+    * @param float $label the microsecond time
     * @param float $lap_difference
     *
     * @since ADD MVC 0.7.4

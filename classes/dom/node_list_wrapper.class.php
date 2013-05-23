@@ -32,6 +32,8 @@ CLASS node_list_wrapper EXTENDS dom_wrapper IMPLEMENTS Iterator {
    /**
     * Find an element inside the first element using xfind
     *
+    * @param string $xpath
+    *
     * @since ADD MVC 0.4.2
     */
    public function xfind($xpath) {
@@ -167,6 +169,10 @@ CLASS node_list_wrapper EXTENDS dom_wrapper IMPLEMENTS Iterator {
       return (bool)$valid;
    }
 
+   /**
+    * Gets the first item from the node list
+    *
+    */
    public function first_item() {
       if ($this->instance->item(0))
          return dom_wrapper::factory($this->instance->item(0));
