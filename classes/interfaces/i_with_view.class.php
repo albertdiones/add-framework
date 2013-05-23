@@ -2,6 +2,8 @@
 /**
  * Interface for classes with views
  *
+ * @package ADD MVC\Extras\Interfaces
+ *
  * @since ADD MVC 0.7
  */
 INTERFACE i_with_view {

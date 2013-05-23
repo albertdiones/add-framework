@@ -3,7 +3,7 @@
  * i_ctrl controller interface
  *
  * future i_ctrl
- * @package ADD MVC\Extras
+ * @package ADD MVC\Extras\Interfaces
  * @since ADD MVC 0.6
  */
 INTERFACE i_ctrl_0_9 {

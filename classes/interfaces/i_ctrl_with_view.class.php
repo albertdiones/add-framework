@@ -4,7 +4,7 @@
  *
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC\Extras\Interfaces
  * @since ADD MVC 0.3
  * @version 1.0
  *
