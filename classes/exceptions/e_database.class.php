@@ -1,6 +1,8 @@
 <?php
 /**
- * Custom Exception Class for database errors
+ * Custom Exception Class for database errors (Emailed)
+ *
+ * This will typically send email to developer_emails declared on config
  *
  * @author albertdiones@gmail.com
  *
