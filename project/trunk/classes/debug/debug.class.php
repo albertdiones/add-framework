@@ -1,6 +1,6 @@
 <?php
 /**
- * Debugger class
+ * Default Debug class
  * Override this on application for customized debugging
  *
  * @author albertdiones@gmail.com

@@ -1,9 +1,8 @@
 <?php
 /**
- * add_development_timer
+ * Automatic timer printed on the shutdown handle when in development environment_status
  *
  * @package ADD MVC\Debuggers
- *
  *
  * @since ADD MVC 0.7.2
  */
