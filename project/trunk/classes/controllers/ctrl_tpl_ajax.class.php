@@ -124,6 +124,9 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
 
    /**
     * convert $data to json
+    *
+    * @param array $data assign()`ed data
+    *
     * @since ADD MVC 0.6
     *
     */

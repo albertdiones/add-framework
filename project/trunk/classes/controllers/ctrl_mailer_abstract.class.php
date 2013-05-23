@@ -12,6 +12,11 @@
 if (!class_exists('phpmailer')) {
    add::load_lib('phpmailer');
 }
+
+/**
+ * Class Declaration
+ *
+ */
 ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
 
    /**

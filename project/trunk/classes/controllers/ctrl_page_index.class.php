@@ -73,6 +73,8 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
    /**
     * Checks if a directory exists
     *
+    * @param string $dir
+    *
     */
    public function check_dir_exists($dir) {
       if (!file_exists($dir)) {

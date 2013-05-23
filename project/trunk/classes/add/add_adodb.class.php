@@ -87,7 +87,7 @@ ABSTRACT CLASS add_adodb {
     * Record the function and the arguments then call the adodb method
     * Also checks for errors
     *
-    * @param string $medthod
+    * @param string $method
     * @param array $args
     *
     */
@@ -100,6 +100,8 @@ ABSTRACT CLASS add_adodb {
 
    /**
     * Get the property of the inner adodb object
+    *
+    * @param string $property
     *
     */
    function __get($property) {
