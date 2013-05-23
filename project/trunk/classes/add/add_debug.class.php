@@ -212,7 +212,9 @@ ABSTRACT CLASS add_debug {
    /**
     * return pretty var dump
     * get var dump function
-    * @param mixed $arg
+    *
+    *
+    *
     * @since ADD MVC 0.0
     */
    public static function return_pretty_var_dump() {
@@ -456,6 +458,10 @@ ABSTRACT CLASS add_debug {
 
    /**
     * Prints the config value
+    *
+    * @param string $field
+    * @param boolean $boolean
+    *
     *
     * @since ADD MVC 0.7.4
     */

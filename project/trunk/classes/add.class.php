@@ -540,6 +540,8 @@ CLASS add {
    /**
     * Custom die() function
     *
+    * @param boolean $handle_shutdown weather to print the shutdown handle or not
+    *
     * @since ADD MVC 0.7.2
     */
    static function shutdown($handle_shutdown = true) {
@@ -821,6 +823,8 @@ CLASS add {
    /**
     * Sets and return or return an environment status
     *
+    * @param string $new_status either live or development
+    *
     * @since ADD MVC 0.8
     */
    public static function environment_status($new_status = null) {
@@ -946,6 +950,8 @@ CLASS add {
 
    /**
     * content_type()
+    *
+    * @param string $new_content_type
     *
     * @since ADD MVC 0.10.5
     */

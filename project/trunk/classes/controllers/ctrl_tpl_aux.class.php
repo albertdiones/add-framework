@@ -4,12 +4,22 @@
  * ctrl_tpl_aux
  * Auxiliary Script Controller
  *
+ * A resource that is made to run an internal script not to be accessed by normal users
+ *
+ *
+ * @package ADD MVC\Controllers
+ *
  * @since ADD MVC 0.4
  * @author albertdiones@gmail.com
  * @version 1.0
  *
  */
 ABSTRACT CLASS ctrl_tpl_aux {
+
+   /**
+    * Placeholder for response
+    *
+    */
    protected $response;
 
    /**
@@ -45,7 +55,12 @@ ABSTRACT CLASS ctrl_tpl_aux {
    }
 
    /**
-    * __call() magic function
+    * __call()
+    * Backward compatiblity: renamed functions
+    *
+    * @param string $function_name
+    * @param array $arguments
+    *
     *
     * @since ADD MVC 0.6.2
     */

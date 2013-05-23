@@ -13,6 +13,12 @@
  */
 ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
 
+/**
+ * Request mode placeholder
+ *
+ * @see ctrl_abstract::$mode
+ *
+ */
    public $mode;
 
    /**
@@ -34,6 +40,11 @@ ABSTRACT CLASS ctrl_tpl_ajax EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_0_9 {
 
    /**
     * __call() magic function
+    *
+    * Backward compatiblity: renamed functions
+    *
+    * @param string $function_name
+    * @param array $arguments
     *
     * @since ADD MVC 0.6
     */

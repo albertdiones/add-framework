@@ -14,6 +14,8 @@ CLASS ctrl_page_404 EXTENDS ctrl_tpl_page {
    /**
     * The pre-view process
     *
+    * @param array $common_gpc
+    *
     * @since ADD MVC 0.0
     */
    public function process_data($common_gpc = array()) {

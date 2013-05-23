@@ -52,6 +52,8 @@ CLASS array_entity IMPLEMENTS Iterator {
    /**
     * construct
     *
+    * @param array $array
+    *
     * @since ADD MVC 0.4
     */
    final public static function construct($array) {

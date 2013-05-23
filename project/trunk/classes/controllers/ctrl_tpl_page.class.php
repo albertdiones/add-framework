@@ -159,8 +159,11 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
     * (former $this->process())
     *
     * @since ADD MVC 0.0
+    *
     * @version 0.1
-    * @param array $gpc
+    *
+    * @param array $common_gpc
+    *
     * @todo ADD MVC 1.0: remove version 0.5 and version 0.8 support
     */
    public function process_data( $common_gpc = array()/* ADD MVC 0.8 support */) {
@@ -194,6 +197,10 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
       return $view_filepath;
    }
 
+   /**
+    * Future version of view_filepath
+    *
+    */
    public static function view_filepath_009() {
       return static::view_basename().'.tpl';
    }
@@ -248,6 +255,8 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
 
    /**
     * display() the Smarty template of $this controller
+    *
+    * @param array $data assign()`ed data
     *
     * @since ADD MVC 0.0, ctrl_tpl_page 0.1
     * @version 0.2

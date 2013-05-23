@@ -381,9 +381,9 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
    /**
     * add_new
     * @param $data
-    * @param string $image_arg the input[type=file][name]
+    * #param string $image_arg the input[type=file][name]
     * OR
-    * @param resource $image_arg the image resource
+    * #param resource $image_arg the image resource
     *
     * @deprecated use add_new_image()
     */

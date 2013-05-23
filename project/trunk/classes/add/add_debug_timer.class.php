@@ -53,6 +53,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
    /**
     * Add a lap with $label
+    *
     * @param string $label the description of where the function is called (eg. "before mysql query" )
     *
     * @since ADD MVC 0.0
@@ -95,6 +96,12 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
    /**
     * Print lap details from lap1 to lap2
     *
+    *
+    * @see $this->print_lap()
+    *
+    * @param array $lap1
+    * @param array $lap2
+    *
     * @since ADD MVC 0.7.2
     */
    public function print_lap_difference($lap1, $lap2) {
@@ -110,7 +117,7 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
     * print_data extended
     *
     * @param float $us_time the microsecond time
-    * @param
+    * @param float $lap_difference
     *
     * @since ADD MVC 0.7.4
     */
@@ -149,6 +156,9 @@ ABSTRACT CLASS add_debug_timer EXTENDS add_debug {
 
    /**
     * Microseconds diff html style
+    *
+    * @param string $string
+    * @param float $second_difference
     *
     * @since ADD MVC 0.4
     */

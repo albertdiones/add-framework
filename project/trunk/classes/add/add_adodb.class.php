@@ -65,7 +65,10 @@ ABSTRACT CLASS add_adodb {
    }
 
    /**
-    * Construction
+    * Construct from adodb, see singleton() and Connect
+    *
+    * @param object $adodb
+    *
     *
     */
    function __construct($adodb) {
@@ -82,6 +85,10 @@ ABSTRACT CLASS add_adodb {
 
    /**
     * Record the function and the arguments then call the adodb method
+    * Also checks for errors
+    *
+    * @param string $medthod
+    * @param array $args
     *
     */
    function __call($method, $args) {//call adodb methods
@@ -102,9 +109,12 @@ ABSTRACT CLASS add_adodb {
    /**
     * Set the property of the inner adodb object
     *
+    * @param string $property
+    * @param mixed $value
+    *
     */
    function __set($property, $value) {
-      $this ->adodb -> $property = $value;
+      $this -> adodb -> $property = $value;
    }
 
    /**

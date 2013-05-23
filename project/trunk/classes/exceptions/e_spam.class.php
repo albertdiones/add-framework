@@ -11,7 +11,10 @@
  */
 CLASS e_spam EXTENDS e_user_malicious {
 
-
+/**
+ * Do nothing, the reason we hate spam is because it bothers us, so we will ignore this error
+ *
+ */
    public function handle_exception() {
       return add::shutdown(false);
    }

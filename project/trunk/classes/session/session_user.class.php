@@ -8,7 +8,13 @@
  * @since ADD MVC 0.6
  */
 ABSTRACT CLASS session_user EXTENDS session_entity {
+
+   /**
+    * Singleton placeholder
+    *
+    */
    static $singleton = array();
+
    const SESSION_KEY = 'session_user';
 
    /**
@@ -40,6 +46,12 @@ ABSTRACT CLASS session_user EXTENDS session_entity {
       return $this->{static::NAME_FIELD};
    }
 
+   /**
+    * Current logged in session_user
+    *
+    * @see i_auth_entity interface
+    *
+    */
    public static function current_logged_in() {
       if (empty($_SESSION[static::session_key()]))
          return false;
@@ -47,6 +59,12 @@ ABSTRACT CLASS session_user EXTENDS session_entity {
          return static::singleton();
    }
 
+   /**
+    * Unsets the session, logs out the session_user
+    *
+    * @see i_auth_entity interface
+    *
+    */
    public static function logout() {
       unset($_SESSION[static::session_key()]);
    }
@@ -76,7 +94,10 @@ ABSTRACT CLASS session_user EXTENDS session_entity {
       redirect(static::LOGIN_PAGE."?redirect=".urlencode($_SERVER['REQUEST_URI']));
    }
 
-
+   /**
+    * Session key
+    *
+    */
    static function session_key() {
       return static::SESSION_KEY;
    }
