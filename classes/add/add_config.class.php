@@ -11,7 +11,7 @@ CLASS add_config EXTENDS STDCLass {
    /**
     * Create config from array $C
     *
-    * @param array $C
+    * @param array $config_array
     *
     * @since since
     */

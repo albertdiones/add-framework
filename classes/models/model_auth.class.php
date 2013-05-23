@@ -177,6 +177,8 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
    /**
     * Hash the password
     *
+    * @param string $password
+    *
     * @since ADD MVC 0.1
     */
    static function hash_password($password) {

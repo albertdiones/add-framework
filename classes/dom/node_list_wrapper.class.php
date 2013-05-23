@@ -1,8 +1,12 @@
 <?php
 /**
-* Add_DOMNodeListWrapper
-* @author albertdiones@gmail.com
-*/
+ * Add_DOMNodeListWrapper
+ *
+ * @package ADD MVC\DOM
+ *
+ *
+ * @author albertdiones@gmail.com
+ */
 CLASS node_list_wrapper EXTENDS dom_wrapper IMPLEMENTS Iterator {
 
    /**

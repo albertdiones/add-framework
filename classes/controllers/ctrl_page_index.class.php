@@ -34,6 +34,9 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
    /**
     * Require and attempt to create the directory
     *
+    * @param string $dir
+    * @param boolean $writable weather to require it being writeable or not
+    *
     * @since ADD MVC 0.5
     */
    public function require_dir($dir,$writable) {
@@ -53,6 +56,9 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
    /**
     * Require existence of a directory
     *
+    * @param string $dir
+    * @param boolean $writable weather to require it being writeable or not
+    *
     * @since ADD MVC 0.5
     */
    public static function require_dir_exists($dir,$writable=false) {
@@ -64,7 +70,10 @@ CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
       }
    }
 
-
+   /**
+    * Checks if a directory exists
+    *
+    */
    public function check_dir_exists($dir) {
       if (!file_exists($dir)) {
          $this->view()->append('log.warnings',"Directory $dir is not existing");

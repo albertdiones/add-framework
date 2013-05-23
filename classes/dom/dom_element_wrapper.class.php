@@ -162,6 +162,8 @@ CLASS dom_element_wrapper EXTENDS dom_wrapper {
    /**
     * Find an element using xfind
     *
+    * @param string $xpath
+    *
     * @since ADD MVC 0.4.2
     */
    public function xfind($xpath) {

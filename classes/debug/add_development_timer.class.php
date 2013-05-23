@@ -2,6 +2,9 @@
 /**
  * add_development_timer
  *
+ * @package ADD MVC\Debuggers
+ *
+ *
  * @since ADD MVC 0.7.2
  */
 CLASS add_development_timer EXTENDS add_debug_timer {

@@ -24,12 +24,16 @@ CLASS add_curl {
    /**
     * Variable that holds the URL of the cURL
     *
+    * @var string
+    *
     * @since ADD MVC 0.5
     */
    public $url;
 
    /**
     * Variable that holds the header array
+    *
+    * @var array
     *
     * @since ADD MVC 0.5
     */
@@ -49,12 +53,16 @@ CLASS add_curl {
    /**
     * Flag to enable caching
     *
+    * @var boolean
+    *
     * @since ADD MVC 0.5
     */
    public $enable_cache = false;
 
    /**
     * The cache directory
+    *
+    * @var string
     *
     * @since ADD MVC 0.5
     */
@@ -69,8 +77,12 @@ CLASS add_curl {
          # '72.64.146.73:3128', # Example
       );
 
-
-
+   /**
+    * Backward compatiblity option indexes
+    *
+    * @var array
+    *
+    */
    private static $bc_new_option_indexes = array(
          'header'                 => CURLOPT_HTTPHEADER,
          'enable_follow_location' => CURLOPT_FOLLOWLOCATION,
@@ -97,24 +109,24 @@ CLASS add_curl {
             ),
          CURLOPT_AUTOREFERER     => true,
          CURLOPT_PROXYTYPE       => CURLPROXY_HTTP,
-         
+
          # set this to ip:port formated IP (e.g. 123.123.123.123:321)
          CURLOPT_PROXY           => null,
          # set this to true to enable proxy
          CURLOPT_HTTPPROXYTUNNEL => false,
          CURLOPT_ENCODING        => 'gzip,deflate',
-         
+
          # Follow redirects
          CURLOPT_FOLLOWLOCATION  => false,
          # How many redirects to follow
          CURLOPT_MAXREDIRS       =>  5,
-         
+
          # Time outs
          CURLOPT_CONNECTTIMEOUT  => 10,
          CURLOPT_TIMEOUT         => 60,
       );
-   
-   
+
+
    /**
     * The real options that are gonna be used
     *
@@ -137,21 +149,21 @@ CLASS add_curl {
          if (!file_exists($this->cache_dir))
             mkdir($this->cache_dir,0777);
       }
-      
+
       $this->set_curl_options();
 
       if (
             $this->curl_options[CURLOPT_HTTPPROXYTUNNEL]
-            && 
-            empty($this->curl_options[CURLOPT_PROXY]) 
-            && 
-            !empty($this->proxies) 
+            &&
+            empty($this->curl_options[CURLOPT_PROXY])
+            &&
+            !empty($this->proxies)
             && is_array($this->proxies)
          ) {
          $this->curl_options[CURLOPT_PROXY] = $this->proxies[array_rand($this->proxies)];
          $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->curl_options[CURLOPT_PROXY]);
       }
-      
+
 
    }
 

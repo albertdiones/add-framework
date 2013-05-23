@@ -1,11 +1,17 @@
 <?php
-if (!class_exists('phpmailer')) {
-   add::load_lib('phpmailer');
-}
 /**
  * Mailer Abstract
  *
+ * A phpmailer object directly integrated with a controller
+ *
+ *
+ * @package ADD MVC\Controllers
+ *
+ *
  */
+if (!class_exists('phpmailer')) {
+   add::load_lib('phpmailer');
+}
 ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
 
    /**

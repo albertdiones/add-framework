@@ -9,6 +9,10 @@
  */
 CLASS session_entity EXTENDS array_entity {
 
+   /**
+    * Session variable placeholder
+    *
+    */
    public $data;
 
    /**
@@ -22,6 +26,8 @@ CLASS session_entity EXTENDS array_entity {
 
    /**
     * Do not inherit the __construct of array_entity since it is faulty ( see issue #83 )
+    *
+    * @param array $session_var
     *
     * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=83
     *

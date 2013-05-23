@@ -3,6 +3,9 @@
 /**
  * Abstract Controller
  *
+ * @package ADD MVC\Controllers
+ *
+ *
  * @since ADD MVC 0.10
  */
 ABSTRACT CLASS ctrl_abstract {
@@ -61,7 +64,7 @@ ABSTRACT CLASS ctrl_abstract {
     * process_mode function
     * Processes any GPC requests
     *
-    * @param array $gpc
+    * @param array $common_gpc
     * @since ADD MVC 0.1
     *
     * @version 1.0
@@ -111,6 +114,8 @@ ABSTRACT CLASS ctrl_abstract {
    /**
     * recursive compact($array_keys)
     * Returns an array of GPC from the $array_keys
+    *
+    * @param array $gpc_array_keys
     *
     * @since ADD MVC 0.1, ctrl_tpl_page 0.1
     */

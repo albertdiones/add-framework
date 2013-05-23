@@ -56,7 +56,12 @@ ABSTRACT CLASS add_adodb_mysql EXTENDS add_adodb {
          throw new Exception($this->adodb->ErrorMsg(),$this->adodb->ErrorNo());
    }
 
-
+   /**
+    * Escape and quote a value
+    *
+    * @param mixed $arg
+    *
+    */
    public function quote($arg) {
       if (is_array($arg)) {
          $Q_args = array();
