@@ -1,6 +1,8 @@
 <?php
 /**
- * e_login class
+ * e_login class (Emailed)
+ *
+ * This will typically send email to developer_emails declared on config
  *
  * Custom Exception Class for hackish login required errors
  *

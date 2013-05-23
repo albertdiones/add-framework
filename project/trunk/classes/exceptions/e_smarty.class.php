@@ -1,8 +1,9 @@
 <?php
 /**
- * e_smarty class
- * Custom Exception Class for smarty errors
+ * Custom Exception Class for smarty errors (Emailed)
  * Typically, you won't need to throw this manually
+ *
+ * This will typically send email to developer_emails declared on config
  *
  *
  * @package ADD MVC\Exceptions
