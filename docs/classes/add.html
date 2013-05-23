@@ -21,7 +21,6 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
-<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,13 +31,13 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">136</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">37</span>
+                <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">39</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -97,6 +96,7 @@ example: include_filepath('functions/common.functions.php')</span><pre>include_f
 <li class="method public "><a href="#load_class" title="load_class :: Autoload class function"><span class="description">Autoload class function</span><pre>load_class()</pre></a></li>
 <li class="method public "><a href="#load_functions" title="load_functions :: load_functions($functions_group_name)"><span class="description">load_functions($functions_group_name)</span><pre>load_functions()</pre></a></li>
 <li class="method public "><a href="#load_lib" title="load_lib :: Load library from $C config"><span class="description">Load library from $C config</span><pre>load_lib()</pre></a></li>
+<li class="method public "><a href="#ob_flush" title="ob_flush :: Flush unflushed buffers, if the debug class isn't done var dumping, then void"><span class="description">Flush unflushed buffers, if the debug class isn't done var dumping, then void</span><pre>ob_flush()</pre></a></li>
 <li class="method public "><a href="#php_check_syntax" title="php_check_syntax :: Check php syntax(this still needs to be tested and fixed)"><span class="description">Check php syntax(this still needs to be tested and fixed)</span><pre>php_check_syntax()</pre></a></li>
 <li class="method public "><a href="#print_errors" title="print_errors :: Print errors"><span class="description">Print errors</span><pre>print_errors()</pre></a></li>
 <li class="method public "><a href="#redirect" title="redirect :: Redirect function
@@ -184,7 +184,7 @@ Every sitewide features and modules should be based from this class</p>
 </div>
 <a name="content_type" id="content_type"></a><div class="element clickable method public content_type" data-toggle="collapse" data-target=".content_type .collapse">
 <h2>content_type()</h2>
-<pre>content_type($new_content_type) </pre>
+<pre>content_type(string $new_content_type) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -195,7 +195,7 @@ Every sitewide features and modules should be based from this class</p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$new_content_type</h4>
-<code></code>
+<code>string</code>
 </div>
 </div></div>
 </div>
@@ -265,7 +265,7 @@ take note that all controllers start with the prefix ctrl_page_</h2>
 </div>
 <a name="environment_status" id="environment_status"></a><div class="element clickable method public environment_status" data-toggle="collapse" data-target=".environment_status .collapse">
 <h2>Sets and return or return an environment status</h2>
-<pre>environment_status($new_status) </pre>
+<pre>environment_status(string $new_status) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -276,8 +276,7 @@ take note that all controllers start with the prefix ctrl_page_</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$new_status</h4>
-<code></code>
-</div>
+<code>string</code><p>either live or development</p></div>
 </div></div>
 </div>
 <a name="gpc_get" id="gpc_get"></a><div class="element clickable method public gpc_get" data-toggle="collapse" data-target=".gpc_get .collapse">
@@ -487,6 +486,12 @@ example: include_filepath('functions/common.functions.php')</h2>
 </div>
 </div></div>
 </div>
+<a name="ob_flush" id="ob_flush"></a><div class="element clickable method public ob_flush" data-toggle="collapse" data-target=".ob_flush .collapse">
+<h2>Flush unflushed buffers, if the debug class isn't done var dumping, then void</h2>
+<pre>ob_flush() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
 <a name="php_check_syntax" id="php_check_syntax"></a><div class="element clickable method public php_check_syntax" data-toggle="collapse" data-target=".php_check_syntax .collapse">
 <h2>Check php syntax(this still needs to be tested and fixed)</h2>
 <pre>php_check_syntax(string $filepath) </pre>
@@ -556,7 +561,7 @@ redirects to the new query string, die()s in the process</h2>
 </div>
 <a name="shutdown" id="shutdown"></a><div class="element clickable method public shutdown" data-toggle="collapse" data-target=".shutdown .collapse">
 <h2>Custom die() function</h2>
-<pre>shutdown($handle_shutdown) </pre>
+<pre>shutdown(boolean $handle_shutdown) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -567,8 +572,7 @@ redirects to the new query string, die()s in the process</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$handle_shutdown</h4>
-<code></code>
-</div>
+<code>boolean</code><p>weather to print the shutdown handle or not</p></div>
 </div></div>
 </div>
 <a name="include_include_file" id="include_include_file"></a><div class="element clickable method protected include_include_file" data-toggle="collapse" data-target=".include_include_file .collapse">
@@ -693,7 +697,7 @@ example: ctrl_page_index</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-21T01:05:49+04:00.<br></footer></div>
+            generated on 2013-05-23T23:28:28+04:00.<br></footer></div>
 </div>
 </body>
 </html>

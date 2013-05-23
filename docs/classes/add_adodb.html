@@ -21,7 +21,6 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
-<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,13 +31,13 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">136</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">37</span>
+                <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">41</span></a></li>
+                <span class="label label-info">39</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -59,9 +58,11 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public "><a href="#Connect" title="Connect :: Extend this method to specify the credentials"><span class="description">Extend this method to specify the credentials</span><pre>Connect()</pre></a></li>
-<li class="method public "><a href="#__call" title="__call :: Record the function and the arguments then call the adodb method"><span class="description">Record the function and the arguments then call the adodb method</span><pre>__call()</pre></a></li>
+<li class="method public "><a href="#__call" title="__call :: Record the function and the arguments then call the adodb method
+Also checks for errors"><span class="description">Record the function and the arguments then call the adodb method
+Also checks for errors</span><pre>__call()</pre></a></li>
 <li class="method public "><a href="#__clone" title="__clone :: Prevent to be cloned"><span class="description">Prevent to be cloned</span><pre>__clone()</pre></a></li>
-<li class="method public "><a href="#__construct" title="__construct :: Construction"><span class="description">Construction</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#__construct" title="__construct :: Construct from adodb, see singleton() and Connect"><span class="description">Construct from adodb, see singleton() and Connect</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#__get" title="__get :: Get the property of the inner adodb object"><span class="description">Get the property of the inner adodb object</span><pre>__get()</pre></a></li>
 <li class="method public "><a href="#__set" title="__set :: Set the property of the inner adodb object"><span class="description">Set the property of the inner adodb object</span><pre>__set()</pre></a></li>
 <li class="method public "><a href="#check_error" title="check_error :: Check if there is error on the last operation"><span class="description">Check if there is error on the last operation</span><pre>check_error()</pre></a></li>
@@ -108,19 +109,20 @@ One child class = one database connection, therefore for each database connectio
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="__call" id="__call"></a><div class="element clickable method public __call" data-toggle="collapse" data-target=".__call .collapse">
-<h2>Record the function and the arguments then call the adodb method</h2>
-<pre>__call($method, $args) </pre>
+<h2>Record the function and the arguments then call the adodb method
+Also checks for errors</h2>
+<pre>__call(string $method, array $args) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$method</h4>
-<code></code>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$args</h4>
-<code></code>
+<code>array</code>
 </div>
 </div></div>
 </div>
@@ -131,45 +133,45 @@ One child class = one database connection, therefore for each database connectio
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>Construction</h2>
-<pre>__construct($adodb) </pre>
+<h2>Construct from adodb, see singleton() and Connect</h2>
+<pre>__construct(object $adodb) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$adodb</h4>
-<code></code>
+<code>object</code>
 </div>
 </div></div>
 </div>
 <a name="__get" id="__get"></a><div class="element clickable method public __get" data-toggle="collapse" data-target=".__get .collapse">
 <h2>Get the property of the inner adodb object</h2>
-<pre>__get($property) </pre>
+<pre>__get(string $property) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$property</h4>
-<code></code>
+<code>string</code>
 </div>
 </div></div>
 </div>
 <a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
 <h2>Set the property of the inner adodb object</h2>
-<pre>__set($property, $value) </pre>
+<pre>__set(string $property, mixed $value) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$property</h4>
-<code></code>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$value</h4>
-<code></code>
+<code>mixed</code>
 </div>
 </div></div>
 </div>
@@ -256,7 +258,7 @@ One child class = one database connection, therefore for each database connectio
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-21T01:05:49+04:00.<br></footer></div>
+            generated on 2013-05-23T23:28:29+04:00.<br></footer></div>
 </div>
 </body>
 </html>
