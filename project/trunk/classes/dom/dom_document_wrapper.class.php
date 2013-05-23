@@ -3,7 +3,7 @@
 /**
  * Wrapper class for PHP's DOMDocument class
  *
- * @package ADD MVC\DOM
+ * @package ADD MVC DOM Tools
  * @since ADD MVC 0.4.2
  * @version 0.0
  *
