@@ -15,7 +15,7 @@ if (!class_exists('phpmailer')) {
 
 /**
  * Class Declaration
- *
+ * @package ADD MVC\Controllers
  */
 ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
 
