@@ -6,7 +6,7 @@
  * This will typically send email to developer_emails declared on config
  *
  *
- * @package ADD MVC\Exceptions
+ * @package ADD MVC Exceptions
  *
  */
 CLASS e_smarty EXTENDS e_system {
