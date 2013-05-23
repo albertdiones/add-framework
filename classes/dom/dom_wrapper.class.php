@@ -1,6 +1,8 @@
 <?php
 /**
- * DOM wrapper for dom and html elements manipulation
+ * DOM wrapper for dom and html elements manipulation, with CSS like searching (see find())
+ * Based on the function names of Jquery
+ *
  *
  * @author albertdiones@gmail.com
  *
@@ -26,9 +28,11 @@ ABSTRACT CLASS dom_wrapper {
 
 
    /**
-    * factory
-    * factory function
+    * factory function, creates a new wrapped class
+    *
     * @param $arg either domnode, domnodelist or domdocument instance
+    *
+    * @return object dom_document_wrapper, node_list_wrapper or dom_element_wrapper or false or null
     *
     * @todo Remove or fix the code on if (is_object($arg)) { onwards
     */
@@ -84,6 +88,7 @@ ABSTRACT CLASS dom_wrapper {
 
   /**
    * enables function call by $arg()
+   *
    * example: $document('div > .odd');
    * @param string $arg the css3 string to query
    *

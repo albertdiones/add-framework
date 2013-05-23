@@ -1,8 +1,7 @@
 <?php
 
 /**
- * dom_document_wrapper CLASS
- * Wrapper of DOMDocument class
+ * Wrapper class for PHP's DOMDocument class
  *
  * @package ADD MVC\DOM
  * @since ADD MVC 0.4.2
@@ -12,21 +11,24 @@
  */
 CLASS dom_document_wrapper EXTENDS dom_wrapper {
 
-/**
- * Constructor function
- *
- * @param DOMDocument $document
- * @since ADD MVC 0.4.2
- */
+  /**
+   * Constructor function
+   *
+   * @param DOMDocument $document the domdocument instance to wrap
+   *
+   * @since ADD MVC 0.4.2
+   */
    protected function __construct(DOMDocument $document) {
       $this->instance = $document;
    }
 
 
    /**
-    * XFIND find an element with xpath
+    * Find an element using xpath
     *
     * @param string $xpath
+    *
+    * @return object node_list_wrapper
     *
     * @since ADD MVC 0.4.2
     */
@@ -37,6 +39,8 @@ CLASS dom_document_wrapper EXTENDS dom_wrapper {
 
    /**
     * Returns the HTML of the document
+    *
+    * @return string
     *
     * @since ADD MVC 0.4.2
     */
@@ -49,6 +53,8 @@ CLASS dom_document_wrapper EXTENDS dom_wrapper {
 
    /**
     * Returns the DOMXpath instance that this object will use
+    *
+    * @return DOMXpath
     *
     * @since ADD MVC 0.4.2
     */

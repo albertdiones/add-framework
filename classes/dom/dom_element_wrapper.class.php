@@ -1,9 +1,10 @@
 <?php
 /**
- * HTML Element class
- * To be merged with add_dom classes I've made
+ * (HTML Element class) Wrapper for PHP's DOMElement class
  *
- * @author albertdiones@gmail.com
+ * (To be merged with add_dom classes I've made) - not sure what this means now
+ *
+ *  Used by pagination class
  *
  * @package ADD MVC\DOM
  * @since ADD MVC 0.0
@@ -27,7 +28,9 @@ CLASS dom_element_wrapper EXTENDS dom_wrapper {
    public $dummy_document;
 
    /**
-    * construct function
+    * Creates new instance using DOMElement object or a tag name
+    *
+    * Behavior when all arguments are blank is unknown
     *
     * @param mixed $arg1 tag name or a dom element
     * @param string $value the html contents
