@@ -2,7 +2,7 @@
 /**
  * i_ctrl controller interface file
  *
- * @package ADD MVC\Extras
+ * @package ADD MVC\Extras\Interfaces
  *
  * @since ADD MVC 0.6
  */
@@ -17,6 +17,11 @@ INTERFACE i_ctrl {
 
    /**
     * print_response() - print the response according to data
+    *
+    * @param array $data assigned variables
+    *
+    *
+    * @see $this->assign()
     *
     * @since ADD MVC 0.6
     */

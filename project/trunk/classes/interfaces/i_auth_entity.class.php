@@ -4,6 +4,7 @@
  * an interface for authenticated entities
  *
  * @package ADD MVC\Extras\Interfaces
+ *
  * @version 0.0
  * @since ADD MVC 0.0
  * @author albertdiones@gmail.com
