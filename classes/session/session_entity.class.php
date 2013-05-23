@@ -41,6 +41,9 @@ CLASS session_entity EXTENDS array_entity {
    /**
     * Sets the session variable
     *
+    * @param string $varname
+    * @param mixed $value
+    *
     */
    public function __set($varname,$value) {
       $set = (bool)(parent::__set($varname,$value));
