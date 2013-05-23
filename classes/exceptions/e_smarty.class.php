@@ -2,9 +2,10 @@
 /**
  * e_smarty class
  * Custom Exception Class for smarty errors
+ * Typically, you won't need to throw this manually
+ *
  *
  * @package ADD MVC\Exceptions
- *
  *
  */
 CLASS e_smarty EXTENDS e_system {

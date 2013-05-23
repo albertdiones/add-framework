@@ -1,6 +1,5 @@
 <?php
 /**
- * e_database class
  * Custom Exception Class for database errors
  *
  * @author albertdiones@gmail.com

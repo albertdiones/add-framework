@@ -1,7 +1,7 @@
 <?php
 /**
- * e_syntax class
  * Custom Exception Class for syntax errors
+ * Probably useless
  *
  * @package ADD MVC\Exceptions
  *

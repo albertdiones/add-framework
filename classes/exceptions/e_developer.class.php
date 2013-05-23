@@ -1,6 +1,5 @@
 <?php
 /**
- * e_developer class
  * Custom Exception Class for system and developer errors
  *
  * @author albertdiones@gmail.com

@@ -3,6 +3,14 @@
  * e_spam class
  * Custom Exception Class for spam errors
  *
+ * <code>
+ * # Honeypot input
+ * if (!empty($_GET['website'])) {
+ *    throw new e_spam("");
+ * }
+ *
+ * </code>
+ *
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC\Exceptions

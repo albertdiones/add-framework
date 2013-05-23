@@ -3,6 +3,8 @@
 /**
  * malicious user error exception
  *
+ * @see e_hack
+ *
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC\Exceptions
