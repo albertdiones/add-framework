@@ -4,6 +4,10 @@ add::load_lib('phpmailer');
  * ctrl_tpl_mailer
  * Abstract controller class for emails
  *
+ * @package ADD MVC\Extras
+ *
+ * @deprecated
+ *
  * @since ADD MVC 0.2
  */
 ABSTRACT CLASS ctrl_tpl_mailer EXTENDS phpMailer IMPLEMENTS i_ctrl, i_ctrl_with_view {

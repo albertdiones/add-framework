@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @package ADD MVC\LDAP
+ * @deprecated
+ *
+ */
 ABSTRACT CLASS ldap_member EXTENDS session_user IMPLEMENTS i_auth_entity {
 
    private static $ldap;

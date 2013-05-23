@@ -2,8 +2,8 @@
 /**
  * i_ctrl controller interface
  *
- * @deprecated since 0.9, former i_ctrl
- *
+ * future i_ctrl
+ * @package ADD MVC\Extras
  * @since ADD MVC 0.6
  */
 INTERFACE i_ctrl_0_9 {

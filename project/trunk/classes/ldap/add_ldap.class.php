@@ -1,7 +1,8 @@
 <?php
-
 /**
  * LDAP Wrapper class
+ *
+ * @package ADD MVC\LDAP
  *
  * A class for wrapping ldap functions
  *
@@ -23,13 +24,18 @@ CLASS add_ldap {
    /**
     * connect
     *
+    * @param string $host
+    *
     */
    public function __construct($host) {
       $this->ds = ldap_connect($host);
    }
 
    /**
-    * login
+    * login, wrapper for ldap_bind
+    *
+    * @param string $user sAMAccountName
+    * @param string password
     *
     */
    public function bind($user, $password) {
@@ -99,7 +105,7 @@ CLASS add_ldap {
     * Escape the string for searching
     *
     * @param string $str
-    * @pram boolean $for_dn weather to escape the string for dn compatibility
+    * @param boolean $for_dn weather to escape the string for dn compatibility
     *
     */
    public static function escape($str, $for_dn = true) {
