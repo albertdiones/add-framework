@@ -3,7 +3,7 @@
  * Debugging class
  *
  * <code>
- * debug::var_dump($_SERVER)
+ * add_debug::var_dump($_SERVER)
  * </code>
  *
  * @author albertdiones@gmail.com
