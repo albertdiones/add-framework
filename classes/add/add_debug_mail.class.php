@@ -1,7 +1,14 @@
 <?php
 /**
- * ADD Debug Mailer
+ * Abstract mailing debug class
  *
+ * <code>
+ * CLASS debug_mail EXTENDS add_debug_mail {
+ *    function mail_var_dump_recepient() {
+ *       return 'john@gmail.com, doe@gmail.com';
+ *    }
+ * }
+ * </code>
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC\Debuggers

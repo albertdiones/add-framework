@@ -1,6 +1,21 @@
 <?php
 /**
  * Debug timer class
+ * Probably shouldn't be abstract
+ *
+ * <code>
+ * CLASS debug_timer EXTENDS add_debug_timer {
+ * }
+ *
+ * $timer = debug_timer::start("Start");
+ * sleep(3);
+ * $timer->lap("After 3 seconds");
+ * sleep(5);
+ * $timer->lap("After 5 seconds");
+ * $timer->print_all_laps();
+ * </code>
+ *
+ *
  * @todo remove the extra micro times that the functions are using
  * @author albertdiones@gmail.com
  *

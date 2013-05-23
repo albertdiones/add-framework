@@ -1,7 +1,10 @@
 <?php
 /**
- * For debugging purposes only
- * Not intended to appear permanently on any code
+ * Debugging class
+ *
+ * <code>
+ * debug::var_dump($_SERVER)
+ * </code>
  *
  * @author albertdiones@gmail.com
  *
