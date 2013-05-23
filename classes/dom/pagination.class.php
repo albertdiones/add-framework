@@ -3,10 +3,8 @@
  * Pagination HTML Element class
  *
  * <code>
- *    <?php
- *       $pagination = new pagination(30,2,5); # 30 items, 2nd page as current page, 5 items per page
- *       echo $pagination;
- *     ?>
+ * $pagination = new pagination(30,2,5); # 30 items, 2nd page as current page, 5 items per page
+ * echo $pagination;
  * </code>
  * @author albertdiones@gmail.com
  *
