@@ -3,6 +3,10 @@
 /**
  * i_ctrl controller interface
  *
+ * @deprecated use i_ctrl_009 or i_ctrl
+ *
+ * @package ADD MVC\Extras
+ *
  * @since ADD MVC 0.6
  */
 INTERFACE i_ctrl_006 {

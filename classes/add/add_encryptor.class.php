@@ -4,6 +4,8 @@
  *
  * A reversible encryption class
  *
+ *
+ * @package ADD MVC\Extras
  * @since ADD MVC 0.6
  * @version 0.1
  */
@@ -58,6 +60,12 @@ CLASS add_encryptor {
     *
     * @param string $string the string to encrypt
     * @param string $key custom string to use as key, omit to generate a key, then get the key using $this->key
+    *
+    * example:
+    * {{{
+    * $encryptor = new add_encryptor('myPassword','abcdefghij');
+    * $encrypted_string = $encryptor->encrypt()
+    * }}}
     *
     * @since ADD MVC 0.6
     */

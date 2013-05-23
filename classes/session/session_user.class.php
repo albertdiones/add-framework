@@ -3,6 +3,8 @@
 /**
  * loginless user
  *
+ * @package ADD MVC\Session
+ *
  * @since ADD MVC 0.6
  */
 ABSTRACT CLASS session_user EXTENDS session_entity {

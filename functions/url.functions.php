@@ -3,6 +3,8 @@
 /**
  * URL functions
  *
+ * @package ADD MVC\Functions
+ *
  */
 
 /**
@@ -44,7 +46,7 @@ function build_url($base,$url) {
 /**
  * Returns the URL parts of the url
  *
- * @param string $Url
+ * @param string $url
  *
  * @since ADD MVC 0.5
  */

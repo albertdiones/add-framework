@@ -3,6 +3,8 @@
 /**
  * session_entity
  *
+ * @package ADD MVC\Session
+ *
  * @since ADD MVC 0.6
  */
 CLASS session_entity EXTENDS array_entity {

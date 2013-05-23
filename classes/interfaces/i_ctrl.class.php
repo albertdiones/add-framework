@@ -1,6 +1,8 @@
 <?php
 /**
- * i_ctrl controller interface
+ * i_ctrl controller interface file
+ *
+ * @package ADD MVC\Extras
  *
  * @since ADD MVC 0.6
  */

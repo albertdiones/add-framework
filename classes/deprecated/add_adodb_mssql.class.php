@@ -5,6 +5,9 @@
  * Being considered to be deprecated
  * @package ADD MVC\ADODB wrappers
  * @version 0.0
+ *
+ * @deprecated
+ *
  */
 ABSTRACT CLASS add_adodb_mssql EXTENDS add_adodb {
 

@@ -8,6 +8,8 @@
  * @since ADD MVC 0.7
  * @version 0.0
  *
+ * @deprecated
+ *
  * @todo make the config variables changeable outside framework
  */
 CLASS e_add_smarty EXTENDS add_smarty {
