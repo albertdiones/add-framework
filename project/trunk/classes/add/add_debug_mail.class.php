@@ -11,7 +11,7 @@
  * </code>
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Debuggers
+ * @package ADD MVC Debuggers
  * @since ADD MVC 0.0
  * @version 0.0
  */
