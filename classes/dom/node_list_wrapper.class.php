@@ -4,7 +4,7 @@
  *
  * When used like a dom_element_wrapper, it will do the operation on the first item on the list
  *
- * @package ADD MVC\DOM
+ * @package ADD MVC DOM Tools
  *
  *
  * @author albertdiones@gmail.com

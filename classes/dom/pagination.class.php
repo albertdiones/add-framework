@@ -8,7 +8,7 @@
  * </code>
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\DOM\Extras
+ * @package ADD MVC DOM Tools\Extras
  * @since ADD MVC 0.0
  * @version 0.0
  *
