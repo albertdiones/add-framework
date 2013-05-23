@@ -1,6 +1,8 @@
 <?php
 /**
- * Add_DOMNodeListWrapper
+ * Wrapper for PHP's DOMNodeList
+ *
+ * When used like a dom_element_wrapper, it will do the operation on the first item on the list
  *
  * @package ADD MVC\DOM
  *
@@ -18,7 +20,9 @@ CLASS node_list_wrapper EXTENDS dom_wrapper IMPLEMENTS Iterator {
 
 
    /**
-    * Constructor function
+    * Constructs new instance from DOMNodeList object
+    *
+    * @see dom_wrapper::find()
     *
     * @param DOMNodeList $domnodelist The DOMNodelist
     *
