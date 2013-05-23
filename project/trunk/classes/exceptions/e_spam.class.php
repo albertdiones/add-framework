@@ -1,7 +1,6 @@
 <?php
 /**
- * e_spam class
- * Custom Exception Class for spam errors
+ * Custom Exception Class for spam detection
  *
  * <code>
  * # Honeypot input
