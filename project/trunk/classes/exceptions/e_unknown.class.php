@@ -1,7 +1,6 @@
 <?php
 /**
- * e_unknown class
- * Custom Exception Class
+ * Custom exception class for errors with unknown reason (weather system or the user)
  *
  * @author albertdiones@gmail.com
  *

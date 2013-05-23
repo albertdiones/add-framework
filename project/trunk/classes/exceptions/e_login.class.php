@@ -1,7 +1,14 @@
 <?php
 /**
  * e_login class
+ *
  * Custom Exception Class for hackish login required errors
+ *
+ * <code>
+ * if (!member::current_logged_in()) {
+ *    throw new e_hack("Attempt to vote without logging in",$current_user);
+ * }
+ * </code>
  *
  * @author albertdiones@gmail.com
  *

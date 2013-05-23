@@ -1,7 +1,6 @@
 <?php
 /**
- * e_add class
- * Custom Exception Class
+ * Custom Exception for ADD MVC
  *
  * @author albertdiones@gmail.com
  *

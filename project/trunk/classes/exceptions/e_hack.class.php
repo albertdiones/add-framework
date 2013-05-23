@@ -1,7 +1,13 @@
 <?php
 /**
- * e_hack class
  * Custom Exception Class for hackish errors
+ * This will typically send email to developer_emails declared on config
+ *
+ * <code>
+ * if (!$current_user->owns($page)) {
+ *    throw new e_hack("Current user does not own page",array($current_user,$page));
+ * }
+ * </code>
  *
  * @author albertdiones@gmail.com
  *

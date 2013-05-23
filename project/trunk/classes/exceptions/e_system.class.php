@@ -1,7 +1,13 @@
 <?php
 /**
- * e_system class
  * Custom Exception Class for system errors
+ * When it's an error of the system but it's not developer's fault, use this
+ *
+ * <code>
+ * if ($api_limit_reached) {
+ *    throw new e_system("The API limit has been reached");
+ * }
+ * <code>
  *
  * @author albertdiones@gmail.com
  *
