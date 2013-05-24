@@ -4,6 +4,11 @@
  *
  *
  */
+
+/**
+ * Require PHPMailer
+ *
+ */
 if (!class_exists('phpmailer')) {
    add::load_lib('phpmailer');
 }
