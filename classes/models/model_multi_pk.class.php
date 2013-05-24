@@ -1,7 +1,7 @@
 <?php
 /**
  * Abstract class for tables with more than one PKs
- * @package ADD MVC\Models
+ * @package ADD MVC Models
  * @author albertdiones@gmail.com
  * @version 0.1
  */

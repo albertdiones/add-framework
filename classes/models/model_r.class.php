@@ -5,7 +5,7 @@
  *
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Models
+ * @package ADD MVC Models
  * @since ADD MVC 0.0
  * @version 0.0
  */
