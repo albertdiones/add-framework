@@ -1,6 +1,6 @@
 <?php
 /**
- * ctrl_tpl_page abstract model class
+ * Abstract controller for normal pages
  *
  * @author albertdiones@gmail.com
  *
