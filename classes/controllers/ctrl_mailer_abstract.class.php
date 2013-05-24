@@ -5,7 +5,7 @@
  * A phpmailer object directly integrated with a controller
  *
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  *
  *
  */

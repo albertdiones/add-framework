@@ -3,8 +3,9 @@
 /**
  * Abstract Controller
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  *
+ * @see ctrl_tpl_page, ctrl_tpl_ajax and ctrl_tpl_aux
  *
  * @since ADD MVC 0.10
  */
@@ -46,6 +47,8 @@ ABSTRACT CLASS ctrl_abstract {
    /**
     * Set mode function
     *
+    * @see ctrl_tpl_page::execute()
+    *
     * @since ADD MVC 0.10
     */
    public function set_mode() {
@@ -61,8 +64,10 @@ ABSTRACT CLASS ctrl_abstract {
    }
 
    /**
-    * process_mode function
     * Processes any GPC requests
+    * Usually you won't need to extend/overload this, use process_mode_* methods instead
+    *
+    * @see https://code.google.com/p/add-mvc-framework/wiki/modesAndSubModes
     *
     * @param array $common_gpc
     * @since ADD MVC 0.1
@@ -116,6 +121,8 @@ ABSTRACT CLASS ctrl_abstract {
     * Returns an array of GPC from the $array_keys
     *
     * @param array $gpc_array_keys
+    *
+    * @see ctrl_abstract::process_mode()
     *
     * @since ADD MVC 0.1, ctrl_tpl_page 0.1
     */

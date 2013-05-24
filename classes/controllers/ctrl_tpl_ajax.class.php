@@ -3,7 +3,7 @@
 /**
  * The controller template class for ajaxed urls
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  * @since ADD MVC 0.0
  * @version 0.1
  * @author albertdiones@gmail.com

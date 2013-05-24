@@ -7,7 +7,7 @@
  * A resource that is made to run an internal script not to be accessed by normal users
  *
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  *
  * @since ADD MVC 0.4
  * @author albertdiones@gmail.com
