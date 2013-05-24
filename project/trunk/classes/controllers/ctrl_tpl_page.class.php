@@ -8,8 +8,6 @@
  * @since ADD MVC 0.0
  * @version 1.0
  *
- * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
- *
  * <code>
  * CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
  *    protected $mode_gpc_login = array(
@@ -21,6 +19,8 @@
  *    }
  * }
  * </code>
+ *
+ * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
  */
 ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
