@@ -1,5 +1,14 @@
 <?php
 /**
+ * Mailer Abstract File
+ *
+ *
+ */
+if (!class_exists('phpmailer')) {
+   add::load_lib('phpmailer');
+}
+
+/**
  * Mailer Abstract
  *
  * A phpmailer object directly integrated with a controller
@@ -24,16 +33,6 @@
  * Hello {$member->username} you are successfully registered!
  * </code>
  *
- * @package ADD MVC Controllers
- *
- *
- */
-if (!class_exists('phpmailer')) {
-   add::load_lib('phpmailer');
-}
-
-/**
- * Class Declaration
  * @package ADD MVC Controllers
  */
 ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
