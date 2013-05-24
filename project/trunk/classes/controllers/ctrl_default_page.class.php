@@ -6,7 +6,7 @@
  *
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  * @since ADD MVC 0.10
  * @version 0.0
  */

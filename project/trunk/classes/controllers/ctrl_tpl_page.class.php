@@ -4,11 +4,23 @@
  *
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Controllers
+ * @package ADD MVC Controllers
  * @since ADD MVC 0.0
  * @version 1.0
  *
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
+ *
+ * <code>
+ * CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
+ *    protected $mode_gpc_login = array(
+ *          '_POST' => array('username' , 'password')
+ *       );
+ *    public function process_mode_login($gpc) {
+ *       extract($gpc);
+ *       member::login($username,$password);
+ *    }
+ * }
+ * </code>
  *
  */
 ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {

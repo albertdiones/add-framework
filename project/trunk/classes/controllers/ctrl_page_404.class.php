@@ -5,7 +5,7 @@
  * replace this with your own on your application's /classes directory
  *
  *
- * @package ADD MVC\Controllers\Extras
+ * @package ADD MVC Controllers\Extras
  * @since ADD MVC 0.0
  * @version 0.0
  */
