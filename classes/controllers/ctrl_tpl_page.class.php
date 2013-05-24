@@ -2,12 +2,6 @@
 /**
  * Abstract controller for normal pages
  *
- * @author albertdiones@gmail.com
- *
- * @package ADD MVC Controllers
- * @since ADD MVC 0.0
- * @version 1.0
- *
  * <code>
  * CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
  *    protected $mode_gpc_login = array(
@@ -19,6 +13,12 @@
  *    }
  * }
  * </code>
+ *
+ * @author albertdiones@gmail.com
+ *
+ * @package ADD MVC Controllers
+ * @since ADD MVC 0.0
+ * @version 1.0
  *
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
