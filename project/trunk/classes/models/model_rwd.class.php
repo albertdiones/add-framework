@@ -1,11 +1,18 @@
 <?php
 /**
- * model_rwd class
- * An object class representing a table, then rows are represented by instance of this class
- * Aims to be compatible with any databases
- * static variable $D should be declared, and the functions are biased to adodb object class
+ * An model class representing a table, instances of this class represents a row
  *
- * @package ADD MVC\Models
+ * Aims to be compatible with any databases
+ * static function db() should be declared, returning an adodb object or adodb-like object (method names)
+ *
+ * <code>
+ * CLASS company EXTENDS model_rwd {
+ *    const TABLE = 'company';
+ *    const TABLE_PK = 'company_id'; # Default is 'id'
+ * }
+ * </code>
+ *
+ * @package ADD MVC Models
  * @version 1.4.1
  * @since ADD MVC 0.0
  * @author albertdiones@gmail.com

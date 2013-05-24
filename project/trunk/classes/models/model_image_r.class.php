@@ -5,7 +5,7 @@
  * readonly version of model_image_rwd
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Models\Extras
+ * @package ADD MVC Models\Extras
  * @since ADD MVC 0.0
  * @version 0.0
  */

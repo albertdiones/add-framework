@@ -3,9 +3,22 @@
  * model_auth object class
  * An abstract class for authenticated models
  * example: members, admins
+ *
+ * <code>
+ * CLASS user EXTENDS model_auth {
+ *    const TABLE = 'users';
+ *    const TABLE_PK = 'uid';
+ *    const USERNAME_FIELD = 'username';
+ *    const PASSWORD_FIELD = 'password';
+ *    static function hash_password($password) {
+ *       return $password; # unencrypted
+ *    }
+ * }
+ * </code>
+ *
  * @author albertdiones@gmail.com
  *
- * @package ADD MVC\Models\Extras
+ * @package ADD MVC Models\Extras
  * @since ADD MVC 0.0
  * @version 0.1.1
  */

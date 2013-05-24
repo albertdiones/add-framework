@@ -1,10 +1,23 @@
 \<?php
 /**
- * model_image_rwd
- * A class for db entities that are images
- * @author albertdiones@gmail.com
+ * A class for models (tables) that represent photos
  *
- * @package ADD MVC\Models\Extras
+ * <code>
+ * CLASS user_photo EXTENDS model_image_rwd {
+ *    const TABLE = 'user_photos';
+ *    const TABLE_PK = 'photo_id';
+ *
+ *    public function file_path_name() {
+ *        return add::config()->images_dir.'/'.$this->user_id.'-'.$this->id().'.jpg';
+ *    }
+ *
+ *    public function img_src() {
+ *        return add::config()->images_path.'/'.$this->user_id.'-'.$this->id().'.jpg';
+ *    }
+ * }
+ * </code>
+ *
+ * @package ADD MVC Models\Extras
  * @since ADD MVC 0.0
  * @version 0.0
  */
