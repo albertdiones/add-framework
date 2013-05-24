@@ -1,10 +1,10 @@
 <?php
 /**
  * LDAP Wrapper class
- *
- * @package ADD MVC\LDAP
- *
  * A class for wrapping ldap functions
+ *
+ * @package ADD MVC LDAP
+ *
  *
  */
 CLASS add_ldap {
