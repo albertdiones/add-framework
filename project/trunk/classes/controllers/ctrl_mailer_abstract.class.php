@@ -24,10 +24,13 @@ if (!class_exists('phpmailer')) {
  *       $mailer->execute();
  *    }
  * }
+ * </code>
+ * <code>
  * #includes/classes/ctrl_mailer_register.class.php
  * CLASS ctrl_mailer_register EXTENDS ctrl_mailer_abstract {
  * }
- *
+ * </code>
+ * <code>
  * #views/mailers/register.tpl
  * {*SMARTY*}
  * Hello {$member->username} you are successfully registered!
