@@ -4,6 +4,25 @@
  *
  * A phpmailer object directly integrated with a controller
  *
+ * <code>
+ * #includes/classes/ctrl_page_register.class.php
+ * CLASS ctrl_page_register EXTENDS ctrl_tpl_page {
+ *    public $mode_gpc_register = array( '_POST' => array('username');
+ *    public function process_mode_register($gpc) {
+ *       # ... registered successfully
+ *       $this->assign('member', member::add_new($gpc));
+ *       $mailer = new ctrl_mailer_register($this);
+ *       $mailer->execute();
+ *    }
+ * }
+ * #includes/classes/ctrl_mailer_register.class.php
+ * CLASS ctrl_mailer_register EXTENDS ctrl_mailer_abstract {
+ * }
+ *
+ * #views/mailers/register.tpl
+ * {*SMARTY*}
+ * Hello {$member->username} you are successfully registered!
+ * </code>
  *
  * @package ADD MVC Controllers
  *
