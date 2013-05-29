@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="../packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="../packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="../packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="../packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="../packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="../packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="../packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -59,19 +67,15 @@
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public inherited"><a href="#__call" title="__call :: Magic function __call"><span class="description">Magic function __call</span><pre>__call()</pre></a></li>
 <li class="method public inherited"><a href="#__get" title="__get :: Magic function __get"><span class="description">Magic function __get</span><pre>__get()</pre></a></li>
-<li class="method public inherited"><a href="#__invoke" title="__invoke :: enables function call by $arg()
-example: $document('div &gt; .odd');"><span class="description">enables function call by $arg()
-example: $document('div &gt; .odd');</span><pre>__invoke()</pre></a></li>
+<li class="method public inherited"><a href="#__invoke" title="__invoke :: enables function call by $arg()"><span class="description">enables function call by $arg()</span><pre>__invoke()</pre></a></li>
 <li class="method public inherited"><a href="#css2xpath" title="css2xpath :: css2xpath($selector)
 Converts CSS3 path to Xpath"><span class="description">css2xpath($selector)
 Converts CSS3 path to Xpath</span><pre>css2xpath()</pre></a></li>
 <li class="method public "><a href="#dom_xpath" title="dom_xpath :: Returns the DOMXpath instance that this object will use"><span class="description">Returns the DOMXpath instance that this object will use</span><pre>dom_xpath()</pre></a></li>
-<li class="method public inherited"><a href="#factory" title="factory :: factory
-factory function"><span class="description">factory
-factory function</span><pre>factory()</pre></a></li>
+<li class="method public inherited"><a href="#factory" title="factory :: factory function, creates a new wrapped class"><span class="description">factory function, creates a new wrapped class</span><pre>factory()</pre></a></li>
 <li class="method public inherited"><a href="#find" title="find :: find($selector)"><span class="description">find($selector)</span><pre>find()</pre></a></li>
 <li class="method public "><a href="#html" title="html :: Returns the HTML of the document"><span class="description">Returns the HTML of the document</span><pre>html()</pre></a></li>
-<li class="method public "><a href="#xfind" title="xfind :: XFIND find an element with xpath"><span class="description">XFIND find an element with xpath</span><pre>xfind()</pre></a></li>
+<li class="method public "><a href="#xfind" title="xfind :: Find an element using xpath"><span class="description">Find an element using xpath</span><pre>xfind()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="method protected "><a href="#__construct" title="__construct :: Constructor function"><span class="description">Constructor function</span><pre>__construct()</pre></a></li>
 <li class="nav-header">
@@ -83,14 +87,13 @@ factory function</span><pre>factory()</pre></a></li>
 </div>
 <div class="span8">
 <a name="%5Cdom_document_wrapper" id="\dom_document_wrapper"></a><div href="../classes/dom_document_wrapper.html" class="element class">
-<p class="short_description">dom_document_wrapper CLASS
-Wrapper of DOMDocument class</p>
+<p class="short_description">Wrapper class for PHP's DOMDocument class</p>
 <div class="details">
 <p class="long_description"></p>
 <table class="table table-bordered">
 <tr>
 <th>package</th>
-<td><a href="..//packages/ADD%20MVC.DOM.html">ADD MVC\DOM</a></td>
+<td><a href="..//packages/ADD%20MVC%20DOM%20Tools.html">ADD MVC DOM Tools</a></td>
 </tr>
 <tr>
 <th>since</th>
@@ -162,12 +165,11 @@ Wrapper of DOMDocument class</p>
 </div></div>
 </div>
 <a name="__invoke" id="__invoke"></a><div class="element clickable method public __invoke" data-toggle="collapse" data-target=".__invoke .collapse">
-<h2>enables function call by $arg()
-example: $document('div &gt; .odd');</h2>
+<h2>enables function call by $arg()</h2>
 <pre>__invoke(string $arg) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>example: $document('div > .odd');</p></p>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -203,7 +205,7 @@ Converts CSS3 path to Xpath</h2>
 </div>
 <a name="dom_xpath" id="dom_xpath"></a><div class="element clickable method public dom_xpath" data-toggle="collapse" data-target=".dom_xpath .collapse">
 <h2>Returns the DOMXpath instance that this object will use</h2>
-<pre>dom_xpath() </pre>
+<pre>dom_xpath() : \DOMXpath</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -211,12 +213,13 @@ Converts CSS3 path to Xpath</h2>
 <th>since</th>
 <td>ADD MVC 0.4.2</td>
 </tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\DOMXpath</code></div>
 </div></div>
 </div>
 <a name="factory" id="factory"></a><div class="element clickable method public factory" data-toggle="collapse" data-target=".factory .collapse">
-<h2>factory
-factory function</h2>
-<pre>factory(\$arg $arg) </pre>
+<h2>factory function, creates a new wrapped class</h2>
+<pre>factory(\$arg $arg) : object</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -228,6 +231,9 @@ factory function</h2>
 <div class="subelement argument">
 <h4>$arg</h4>
 <code>\$arg</code><p>either domnode, domnodelist or domdocument instance</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>dom_document_wrapper, node_list_wrapper or dom_element_wrapper or false or null</div>
 </div></div>
 </div>
 <a name="find" id="find"></a><div class="element clickable method public find" data-toggle="collapse" data-target=".find .collapse">
@@ -251,7 +257,7 @@ factory function</h2>
 </div>
 <a name="html" id="html"></a><div class="element clickable method public html" data-toggle="collapse" data-target=".html .collapse">
 <h2>Returns the HTML of the document</h2>
-<pre>html() </pre>
+<pre>html() : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -259,11 +265,13 @@ factory function</h2>
 <th>since</th>
 <td>ADD MVC 0.4.2</td>
 </tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="xfind" id="xfind"></a><div class="element clickable method public xfind" data-toggle="collapse" data-target=".xfind .collapse">
-<h2>XFIND find an element with xpath</h2>
-<pre>xfind(string $xpath) </pre>
+<h2>Find an element using xpath</h2>
+<pre>xfind(string $xpath) : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -276,6 +284,9 @@ factory function</h2>
 <h4>$xpath</h4>
 <code>string</code>
 </div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>node_list_wrapper</div>
 </div></div>
 </div>
 <a name="__construct" id="__construct"></a><div class="element clickable method protected __construct" data-toggle="collapse" data-target=".__construct .collapse">
@@ -291,8 +302,7 @@ factory function</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$document</h4>
-<code><a href="http://php.net/manual/en/class.domdocument.php">\DOMDocument</a></code>
-</div>
+<code><a href="http://php.net/manual/en/class.domdocument.php">\DOMDocument</a></code><p>the domdocument instance to wrap</p></div>
 </div></div>
 </div>
 <h3>
@@ -340,7 +350,7 @@ factory function</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:42+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:50+04:00.<br></footer></div>
 </div>
 </body>
 </html>

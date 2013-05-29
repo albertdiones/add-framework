@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="../packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="../packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="../packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="../packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="../packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="../packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="../packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -76,24 +84,22 @@
         </span><pre>getTrace()</pre></a></li>
 <li class="method public inherited"><a href="#getTraceAsString" title="getTraceAsString :: "><span class="description">getTraceAsString()
         </span><pre>getTraceAsString()</pre></a></li>
-<li class="method public inherited"><a href="#handle_exception" title="handle_exception :: The handling of the exception
-Extend this to child classes"><span class="description">The handling of the exception
-Extend this to child classes</span><pre>handle_exception()</pre></a></li>
-<li class="method public inherited"><a href="#handle_sensitive_exception" title="handle_sensitive_exception :: Handling Exceptions"><span class="description">Handling Exceptions</span><pre>handle_sensitive_exception()</pre></a></li>
-<li class="method public inherited"><a href="#mail" title="mail :: Send email about the exception"><span class="description">Send email about the exception</span><pre>mail()</pre></a></li>
+<li class="method public inherited"><a href="#handle_exception" title="handle_exception :: Handle the exception"><span class="description">Handle the exception</span><pre>handle_exception()</pre></a></li>
+<li class="method public inherited"><a href="#handle_sensitive_exception" title="handle_sensitive_exception :: Handling exception as sensitive"><span class="description">Handling exception as sensitive</span><pre>handle_sensitive_exception()</pre></a></li>
+<li class="method public inherited"><a href="#mail" title="mail :: Exception email notification"><span class="description">Exception email notification</span><pre>mail()</pre></a></li>
 <li class="method public inherited"><a href="#mail_body" title="mail_body :: The mail body / message
 Extend this to child classes"><span class="description">The mail body / message
 Extend this to child classes</span><pre>mail_body()</pre></a></li>
-<li class="method public inherited"><a href="#mail_subject" title="mail_subject :: The email subject"><span class="description">The email subject</span><pre>mail_subject()</pre></a></li>
-<li class="method public inherited"><a href="#mail_to" title="mail_to :: The email recipient
-Extend this to child classes"><span class="description">The email recipient
-Extend this to child classes</span><pre>mail_to()</pre></a></li>
-<li class="method public inherited"><a href="#print_exception" title="print_exception :: print_exception()"><span class="description">print_exception()</span><pre>print_exception()</pre></a></li>
+<li class="method public inherited"><a href="#mail_subject" title="mail_subject :: The full email subject"><span class="description">The full email subject</span><pre>mail_subject()</pre></a></li>
+<li class="method public inherited"><a href="#mail_to" title="mail_to :: The exception email recipient
+Defaults to add::config()-&gt;developer_emails"><span class="description">The exception email recipient
+Defaults to add::config()-&gt;developer_emails</span><pre>mail_to()</pre></a></li>
+<li class="method public inherited"><a href="#print_exception" title="print_exception :: Print the exception"><span class="description">Print the exception</span><pre>print_exception()</pre></a></li>
 <li class="method public inherited"><a href="#print_response" title="print_response :: Print the exception's response"><span class="description">Print the exception's response</span><pre>print_response()</pre></a></li>
-<li class="method public inherited"><a href="#truncated_subject" title="truncated_subject :: truncated_subject()"><span class="description">truncated_subject()</span><pre>truncated_subject()</pre></a></li>
+<li class="method public inherited"><a href="#truncated_subject" title="truncated_subject :: Truncated subject"><span class="description">Truncated subject</span><pre>truncated_subject()</pre></a></li>
 <li class="method public inherited"><a href="#view" title="view :: The smarty object"><span class="description">The smarty object</span><pre>view()</pre></a></li>
 <li class="method public inherited"><a href="#view_basename" title="view_basename :: The basename of the view of the exception"><span class="description">The basename of the view of the exception</span><pre>view_basename()</pre></a></li>
-<li class="method public inherited"><a href="#view_filepath" title="view_filepath :: Exception page view"><span class="description">Exception page view</span><pre>view_filepath()</pre></a></li>
+<li class="method public inherited"><a href="#view_filepath" title="view_filepath :: Exception page view filepath name"><span class="description">Exception page view filepath name</span><pre>view_filepath()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public inherited"><a href="#%24data" title="$data :: exception data"><span class="description">exception data</span><pre>$data</pre></a></li>
@@ -102,17 +108,24 @@ Extend this to child classes</span><pre>mail_to()</pre></a></li>
 </div>
 <div class="span8">
 <a name="%5Ce_user_malicious" id="\e_user_malicious"></a><div href="../classes/e_user_malicious.html" class="element class">
-<p class="short_description">malicious user error exception</p>
+<p class="short_description">Malicious user error exception</p>
 <div class="details">
-<p class="long_description"></p>
+<p class="long_description"><p>Maybe this should be abstract?</p>
+
+<p>Throwing this kind of error inside the controller will cause the $error_message template variable to be filled
+unless it is e_user_malicious (e_hack or e_spam)</p></p>
 <table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\e_hack,</td>
+</tr>
 <tr>
 <th>author</th>
 <td><a href="">albertdiones@gmail.com</a></td>
 </tr>
 <tr>
 <th>package</th>
-<td><a href="..//packages/ADD%20MVC.Exceptions.html">ADD MVC\Exceptions</a></td>
+<td><a href="..//packages/ADD%20MVC%20Exceptions.html">ADD MVC Exceptions</a></td>
 </tr>
 <tr>
 <th>since</th>
@@ -130,7 +143,9 @@ Extend this to child classes</span><pre>mail_to()</pre></a></li>
 <pre>__construct(string $message, mixed $data, int $code, Exception $exception) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><pre><code>   if (!$username)
+      throw new e_user_input("Username is blank"):
+</code></pre></p>
 <table class="table table-bordered">
 <tr>
 <th>since</th>
@@ -407,8 +422,7 @@ Extend this to child classes</span><pre>mail_to()</pre></a></li>
 </div></div>
 </div>
 <a name="handle_exception" id="handle_exception"></a><div class="element clickable method public handle_exception" data-toggle="collapse" data-target=".handle_exception .collapse">
-<h2>The handling of the exception
-Extend this to child classes</h2>
+<h2>Handle the exception</h2>
 <pre>handle_exception() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -430,7 +444,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="handle_sensitive_exception" id="handle_sensitive_exception"></a><div class="element clickable method public handle_sensitive_exception" data-toggle="collapse" data-target=".handle_sensitive_exception .collapse">
-<h2>Handling Exceptions</h2>
+<h2>Handling exception as sensitive</h2>
 <pre>handle_sensitive_exception(string $user_message) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -457,7 +471,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="mail" id="mail"></a><div class="element clickable method public mail" data-toggle="collapse" data-target=".mail .collapse">
-<h2>Send email about the exception</h2>
+<h2>Exception email notification</h2>
 <pre>mail() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -502,7 +516,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="mail_subject" id="mail_subject"></a><div class="element clickable method public mail_subject" data-toggle="collapse" data-target=".mail_subject .collapse">
-<h2>The email subject</h2>
+<h2>The full email subject</h2>
 <pre>mail_subject() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -524,8 +538,8 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="mail_to" id="mail_to"></a><div class="element clickable method public mail_to" data-toggle="collapse" data-target=".mail_to .collapse">
-<h2>The email recipient
-Extend this to child classes</h2>
+<h2>The exception email recipient
+Defaults to add::config()-&gt;developer_emails</h2>
 <pre>mail_to() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -547,7 +561,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="print_exception" id="print_exception"></a><div class="element clickable method public print_exception" data-toggle="collapse" data-target=".print_exception .collapse">
-<h2>print_exception()</h2>
+<h2>Print the exception</h2>
 <pre>print_exception() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -591,7 +605,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="truncated_subject" id="truncated_subject"></a><div class="element clickable method public truncated_subject" data-toggle="collapse" data-target=".truncated_subject .collapse">
-<h2>truncated_subject()</h2>
+<h2>Truncated subject</h2>
 <pre>truncated_subject(string $prefix, string $suffix) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -658,7 +672,7 @@ Extend this to child classes</h2>
 </div></div>
 </div>
 <a name="view_filepath" id="view_filepath"></a><div class="element clickable method public view_filepath" data-toggle="collapse" data-target=".view_filepath .collapse">
-<h2>Exception page view</h2>
+<h2>Exception page view filepath name</h2>
 <pre>view_filepath() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
@@ -732,7 +746,7 @@ Extend this to child classes</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:42+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:50+04:00.<br></footer></div>
 </div>
 </body>
 </html>

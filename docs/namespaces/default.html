@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="../packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="../packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="../packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="../packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="../packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="../packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="../packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -205,13 +213,20 @@ param string $arg1 [$arg2,$argn...] the string key to the get to copy to globals
 </div></div>
 </div>
 <a name="handle_error" id="handle_error"></a><div class="element clickable function  handle_error" data-toggle="collapse" data-target=".handle_error .collapse">
-<h2>handle_error()
-callback function for handling trigger_error() errors</h2>
+<h2>handle_error()</h2>
 <pre>handle_error(int $errno, string $errstr, string $errfile, int $errline, array $errcontext) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::handle_error()</td>
+</tr>
 <tr>
 <th>see</th>
 <td>\http://www.php.net/manual/en/function.set-error-handler.php</td>
@@ -243,7 +258,19 @@ callback function for handling trigger_error() errors</h2>
 <h2>Handle shutdown</h2>
 <pre>handle_shutdown() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::handle_shutdown()</td>
+</tr>
+</table>
+</div></div>
 </div>
 <a name="ip_in_network" id="ip_in_network"></a><div class="element clickable function  ip_in_network" data-toggle="collapse" data-target=".ip_in_network .collapse">
 <h2>ip_in_network(string $ip)
@@ -281,7 +308,19 @@ param string $arg1 [$arg2,$argn...] the string key to the post to copy to global
 <h2>Print errors</h2>
 <pre>print_errors() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::print_errors()</td>
+</tr>
+</table>
+</div></div>
 </div>
 <a name="r2globals" id="r2globals"></a><div class="element clickable function  r2globals" data-toggle="collapse" data-target=".r2globals .collapse">
 <h2>Copies the request variable to global
@@ -334,10 +373,16 @@ die() included</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>deprecated</th>
-<td>see add::redirect()</td>
-</tr></table>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::redirect()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$url</h4>
@@ -543,9 +588,7 @@ One child class = one database connection, therefore for each database connectio
 <a name="add_adodb_mysql" id="add_adodb_mysql"></a><div class="element ajax clickable class" href="../classes/add_adodb_mysql.html">
 <h1>add_adodb_mysql<a href="../classes/add_adodb_mysql.html">¶</a>
 </h1>
-<p class="short_description">adodb mysql wrapper abstract
-A class to be used as wrapper on adodb
-Being considered to be deprecated</p>
+<p class="short_description">adodb mysql wrapper abstract</p>
 <div class="details collapse"></div>
 <a href="../classes/add_adodb_mysql.html" class="more">« More »</a>
 </div>
@@ -567,29 +610,29 @@ advance cURL library</p>
 <a name="add_debug" id="add_debug"></a><div class="element ajax clickable class" href="../classes/add_debug.html">
 <h1>add_debug<a href="../classes/add_debug.html">¶</a>
 </h1>
-<p class="short_description">For debugging purposes only
-Not intended to appear permanently on any code</p>
+<p class="short_description">Debugging class</p>
 <div class="details collapse"></div>
 <a href="../classes/add_debug.html" class="more">« More »</a>
 </div>
 <a name="add_debug_mail" id="add_debug_mail"></a><div class="element ajax clickable class" href="../classes/add_debug_mail.html">
 <h1>add_debug_mail<a href="../classes/add_debug_mail.html">¶</a>
 </h1>
-<p class="short_description">ADD Debug Mailer</p>
+<p class="short_description">Abstract mailing debug class</p>
 <div class="details collapse"></div>
 <a href="../classes/add_debug_mail.html" class="more">« More »</a>
 </div>
 <a name="add_debug_timer" id="add_debug_timer"></a><div class="element ajax clickable class" href="../classes/add_debug_timer.html">
 <h1>add_debug_timer<a href="../classes/add_debug_timer.html">¶</a>
 </h1>
-<p class="short_description">Debug timer class</p>
+<p class="short_description">Debug timer class
+Probably shouldn't be abstract</p>
 <div class="details collapse"></div>
 <a href="../classes/add_debug_timer.html" class="more">« More »</a>
 </div>
 <a name="add_development_timer" id="add_development_timer"></a><div class="element ajax clickable class" href="../classes/add_development_timer.html">
 <h1>add_development_timer<a href="../classes/add_development_timer.html">¶</a>
 </h1>
-<p class="short_description">add_development_timer</p>
+<p class="short_description">Timer automatically used and printed when in development config environment status</p>
 <div class="details collapse"></div>
 <a href="../classes/add_development_timer.html" class="more">« More »</a>
 </div>
@@ -603,7 +646,8 @@ Not intended to appear permanently on any code</p>
 <a name="add_ldap" id="add_ldap"></a><div class="element ajax clickable class" href="../classes/add_ldap.html">
 <h1>add_ldap<a href="../classes/add_ldap.html">¶</a>
 </h1>
-<p class="short_description">LDAP Wrapper class</p>
+<p class="short_description">LDAP Wrapper class
+Class wrapping ldap functions</p>
 <div class="details collapse"></div>
 <a href="../classes/add_ldap.html" class="more">« More »</a>
 </div>
@@ -631,37 +675,37 @@ Not intended to appear permanently on any code</p>
 <a name="ctrl_default_page" id="ctrl_default_page"></a><div class="element ajax clickable class" href="../classes/ctrl_default_page.html">
 <h1>ctrl_default_page<a href="../classes/ctrl_default_page.html">¶</a>
 </h1>
-<p class="short_description">ctrl_default_page default page for views with no controllers</p>
+<p class="short_description">Default page for views with no controllers - Prints the view without any process</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_default_page.html" class="more">« More »</a>
 </div>
 <a name="ctrl_mailer_abstract" id="ctrl_mailer_abstract"></a><div class="element ajax clickable class" href="../classes/ctrl_mailer_abstract.html">
 <h1>ctrl_mailer_abstract<a href="../classes/ctrl_mailer_abstract.html">¶</a>
 </h1>
-<p class="short_description">Class Declaration</p>
+<p class="short_description">Mailer Abstract</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_mailer_abstract.html" class="more">« More »</a>
 </div>
 <a name="ctrl_page_404" id="ctrl_page_404"></a><div class="element ajax clickable class" href="../classes/ctrl_page_404.html">
 <h1>ctrl_page_404<a href="../classes/ctrl_page_404.html">¶</a>
 </h1>
-<p class="short_description">ctrl_tpl_404 abstract model class
-A sample 404 page controller</p>
+<p class="short_description">A sample 404 page controller</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_page_404.html" class="more">« More »</a>
 </div>
 <a name="ctrl_page_index" id="ctrl_page_index"></a><div class="element ajax clickable class" href="../classes/ctrl_page_index.html">
 <h1>ctrl_page_index<a href="../classes/ctrl_page_index.html">¶</a>
 </h1>
-<p class="short_description">ctrl_page_index default index page
-A sample index page controller</p>
+<p class="short_description">default index page
+A sample index page controller
+replace this with your own on your application's classes directory</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_page_index.html" class="more">« More »</a>
 </div>
 <a name="ctrl_tpl_ajax" id="ctrl_tpl_ajax"></a><div class="element ajax clickable class" href="../classes/ctrl_tpl_ajax.html">
 <h1>ctrl_tpl_ajax<a href="../classes/ctrl_tpl_ajax.html">¶</a>
 </h1>
-<p class="short_description">The controller template class for ajaxed urls</p>
+<p class="short_description">The controller template class for ajaxed resources</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_tpl_ajax.html" class="more">« More »</a>
 </div>
@@ -676,14 +720,14 @@ Auxiliary Script Controller</p>
 <a name="ctrl_tpl_page" id="ctrl_tpl_page"></a><div class="element ajax clickable class" href="../classes/ctrl_tpl_page.html">
 <h1>ctrl_tpl_page<a href="../classes/ctrl_tpl_page.html">¶</a>
 </h1>
-<p class="short_description">ctrl_tpl_page abstract model class</p>
+<p class="short_description">Abstract controller for normal pages</p>
 <div class="details collapse"></div>
 <a href="../classes/ctrl_tpl_page.html" class="more">« More »</a>
 </div>
 <a name="debug" id="debug"></a><div class="element ajax clickable class" href="../classes/debug.html">
 <h1>debug<a href="../classes/debug.html">¶</a>
 </h1>
-<p class="short_description">Debugger class
+<p class="short_description">Default Debug class
 Override this on application for customized debugging</p>
 <div class="details collapse"></div>
 <a href="../classes/debug.html" class="more">« More »</a>
@@ -691,31 +735,30 @@ Override this on application for customized debugging</p>
 <a name="dom_document_wrapper" id="dom_document_wrapper"></a><div class="element ajax clickable class" href="../classes/dom_document_wrapper.html">
 <h1>dom_document_wrapper<a href="../classes/dom_document_wrapper.html">¶</a>
 </h1>
-<p class="short_description">dom_document_wrapper CLASS
-Wrapper of DOMDocument class</p>
+<p class="short_description">Wrapper class for PHP's DOMDocument class</p>
 <div class="details collapse"></div>
 <a href="../classes/dom_document_wrapper.html" class="more">« More »</a>
 </div>
 <a name="dom_element_wrapper" id="dom_element_wrapper"></a><div class="element ajax clickable class" href="../classes/dom_element_wrapper.html">
 <h1>dom_element_wrapper<a href="../classes/dom_element_wrapper.html">¶</a>
 </h1>
-<p class="short_description">HTML Element class
-To be merged with add_dom classes I've made</p>
+<p class="short_description">(HTML Element class) Wrapper for PHP's DOMElement class</p>
 <div class="details collapse"></div>
 <a href="../classes/dom_element_wrapper.html" class="more">« More »</a>
 </div>
 <a name="dom_wrapper" id="dom_wrapper"></a><div class="element ajax clickable class" href="../classes/dom_wrapper.html">
 <h1>dom_wrapper<a href="../classes/dom_wrapper.html">¶</a>
 </h1>
-<p class="short_description">DOM wrapper for dom and html elements manipulation</p>
+<p class="short_description">DOM wrapper for dom and html elements manipulation, with CSS like searching (see find())
+Based on the function names of Jquery</p>
 <div class="details collapse"></div>
 <a href="../classes/dom_wrapper.html" class="more">« More »</a>
 </div>
 <a name="e_add" id="e_add"></a><div class="element ajax clickable class" href="../classes/e_add.html">
 <h1>e_add<a href="../classes/e_add.html">¶</a>
 </h1>
-<p class="short_description">e_add class
-Custom Exception Class</p>
+<p class="short_description">Custom exception for ADD MVC
+can mail error message to developers, change the view completely, smart assert etc.</p>
 <div class="details collapse"></div>
 <a href="../classes/e_add.html" class="more">« More »</a>
 </div>
@@ -729,80 +772,73 @@ Custom Exception Class</p>
 <a name="e_database" id="e_database"></a><div class="element ajax clickable class" href="../classes/e_database.html">
 <h1>e_database<a href="../classes/e_database.html">¶</a>
 </h1>
-<p class="short_description">e_database class
-Custom Exception Class for database errors</p>
+<p class="short_description">Custom exception class for database errors (Emailed)</p>
 <div class="details collapse"></div>
 <a href="../classes/e_database.html" class="more">« More »</a>
 </div>
 <a name="e_developer" id="e_developer"></a><div class="element ajax clickable class" href="../classes/e_developer.html">
 <h1>e_developer<a href="../classes/e_developer.html">¶</a>
 </h1>
-<p class="short_description">e_developer class
-Custom Exception Class for system and developer errors</p>
+<p class="short_description">Custom exception class for system and developer errors (Emailed)</p>
 <div class="details collapse"></div>
 <a href="../classes/e_developer.html" class="more">« More »</a>
 </div>
 <a name="e_hack" id="e_hack"></a><div class="element ajax clickable class" href="../classes/e_hack.html">
 <h1>e_hack<a href="../classes/e_hack.html">¶</a>
 </h1>
-<p class="short_description">e_hack class
-Custom Exception Class for hackish errors</p>
+<p class="short_description">Custom exception class for hackish errors (Emailed)</p>
 <div class="details collapse"></div>
 <a href="../classes/e_hack.html" class="more">« More »</a>
 </div>
 <a name="e_login" id="e_login"></a><div class="element ajax clickable class" href="../classes/e_login.html">
 <h1>e_login<a href="../classes/e_login.html">¶</a>
 </h1>
-<p class="short_description">e_login class
-Custom Exception Class for hackish login required errors</p>
+<p class="short_description">e_login class (Emailed)</p>
 <div class="details collapse"></div>
 <a href="../classes/e_login.html" class="more">« More »</a>
 </div>
 <a name="e_smarty" id="e_smarty"></a><div class="element ajax clickable class" href="../classes/e_smarty.html">
 <h1>e_smarty<a href="../classes/e_smarty.html">¶</a>
 </h1>
-<p class="short_description">e_smarty class
-Custom Exception Class for smarty errors</p>
+<p class="short_description">Custom exception class for smarty errors (Emailed)
+Typically, you won't need to throw this manually</p>
 <div class="details collapse"></div>
 <a href="../classes/e_smarty.html" class="more">« More »</a>
 </div>
 <a name="e_spam" id="e_spam"></a><div class="element ajax clickable class" href="../classes/e_spam.html">
 <h1>e_spam<a href="../classes/e_spam.html">¶</a>
 </h1>
-<p class="short_description">e_spam class
-Custom Exception Class for spam errors</p>
+<p class="short_description">Custom exception class for spam detection</p>
 <div class="details collapse"></div>
 <a href="../classes/e_spam.html" class="more">« More »</a>
 </div>
 <a name="e_syntax" id="e_syntax"></a><div class="element ajax clickable class" href="../classes/e_syntax.html">
 <h1>e_syntax<a href="../classes/e_syntax.html">¶</a>
 </h1>
-<p class="short_description">e_syntax class
-Custom Exception Class for syntax errors</p>
+<p class="short_description">Custom exception class for syntax errors
+Probably useless</p>
 <div class="details collapse"></div>
 <a href="../classes/e_syntax.html" class="more">« More »</a>
 </div>
 <a name="e_system" id="e_system"></a><div class="element ajax clickable class" href="../classes/e_system.html">
 <h1>e_system<a href="../classes/e_system.html">¶</a>
 </h1>
-<p class="short_description">e_system class
-Custom Exception Class for system errors</p>
+<p class="short_description">Custom exception class for system errors
+When it's an error of the system but it's not developer's fault, use this</p>
 <div class="details collapse"></div>
 <a href="../classes/e_system.html" class="more">« More »</a>
 </div>
 <a name="e_unknown" id="e_unknown"></a><div class="element ajax clickable class" href="../classes/e_unknown.html">
 <h1>e_unknown<a href="../classes/e_unknown.html">¶</a>
 </h1>
-<p class="short_description">e_unknown class
-Custom Exception Class</p>
+<p class="short_description">Custom exception class for errors with unknown reason (weather system or the user)</p>
 <div class="details collapse"></div>
 <a href="../classes/e_unknown.html" class="more">« More »</a>
 </div>
 <a name="e_user" id="e_user"></a><div class="element ajax clickable class" href="../classes/e_user.html">
 <h1>e_user<a href="../classes/e_user.html">¶</a>
 </h1>
-<p class="short_description">e_user class
-Custom Exception Class for user errors</p>
+<p class="short_description">Custom exception class for end-user errors</p>
 <div class="details collapse"></div>
 <a href="../classes/e_user.html" class="more">« More »</a>
 </div>
@@ -816,7 +852,7 @@ Custom Exception Class for user errors</p>
 <a name="e_user_malicious" id="e_user_malicious"></a><div class="element ajax clickable class" href="../classes/e_user_malicious.html">
 <h1>e_user_malicious<a href="../classes/e_user_malicious.html">¶</a>
 </h1>
-<p class="short_description">malicious user error exception</p>
+<p class="short_description">Malicious user error exception</p>
 <div class="details collapse"></div>
 <a href="../classes/e_user_malicious.html" class="more">« More »</a>
 </div>
@@ -840,8 +876,7 @@ readonly version of model_image_rwd</p>
 <a name="model_image_rwd" id="model_image_rwd"></a><div class="element ajax clickable class" href="../classes/model_image_rwd.html">
 <h1>model_image_rwd<a href="../classes/model_image_rwd.html">¶</a>
 </h1>
-<p class="short_description">model_image_rwd
-A class for db entities that are images</p>
+<p class="short_description">A class for models (tables) that represent photos</p>
 <div class="details collapse"></div>
 <a href="../classes/model_image_rwd.html" class="more">« More »</a>
 </div>
@@ -863,38 +898,35 @@ readonly model (no update and delete)</p>
 <a name="model_rwd" id="model_rwd"></a><div class="element ajax clickable class" href="../classes/model_rwd.html">
 <h1>model_rwd<a href="../classes/model_rwd.html">¶</a>
 </h1>
-<p class="short_description">model_rwd class
-An object class representing a table, then rows are represented by instance of this class
-Aims to be compatible with any databases
-static variable $D should be declared, and the functions are biased to adodb object class</p>
+<p class="short_description">An model class representing a table, instances of this class represents a row</p>
 <div class="details collapse"></div>
 <a href="../classes/model_rwd.html" class="more">« More »</a>
 </div>
 <a name="node_list_wrapper" id="node_list_wrapper"></a><div class="element ajax clickable class" href="../classes/node_list_wrapper.html">
 <h1>node_list_wrapper<a href="../classes/node_list_wrapper.html">¶</a>
 </h1>
-<p class="short_description">Add_DOMNodeListWrapper</p>
+<p class="short_description">Wrapper for PHP's DOMNodeList</p>
 <div class="details collapse"></div>
 <a href="../classes/node_list_wrapper.html" class="more">« More »</a>
 </div>
 <a name="pagination" id="pagination"></a><div class="element ajax clickable class" href="../classes/pagination.html">
 <h1>pagination<a href="../classes/pagination.html">¶</a>
 </h1>
-<p class="short_description">Pagination HTML Element</p>
+<p class="short_description">Pagination HTML Element class</p>
 <div class="details collapse"></div>
 <a href="../classes/pagination.html" class="more">« More »</a>
 </div>
 <a name="session_entity" id="session_entity"></a><div class="element ajax clickable class" href="../classes/session_entity.html">
 <h1>session_entity<a href="../classes/session_entity.html">¶</a>
 </h1>
-<p class="short_description">session_entity</p>
+<p class="short_description">Session variable linked object</p>
 <div class="details collapse"></div>
 <a href="../classes/session_entity.html" class="more">« More »</a>
 </div>
 <a name="session_user" id="session_user"></a><div class="element ajax clickable class" href="../classes/session_user.html">
 <h1>session_user<a href="../classes/session_user.html">¶</a>
 </h1>
-<p class="short_description">loginless user</p>
+<p class="short_description">Session variable linked loginless user</p>
 <div class="details collapse"></div>
 <a href="../classes/session_user.html" class="more">« More »</a>
 </div>
@@ -904,7 +936,7 @@ static variable $D should be declared, and the functions are biased to adodb obj
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:41+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:48+04:00.<br></footer></div>
 </div>
 </body>
 </html>

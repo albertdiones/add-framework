@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -57,6 +65,7 @@
 <li><a href="#classes/controllers/ctrl_tpl_aux.class.php"><i class="icon-file"></i>classes/controllers/ctrl_tpl_aux.class.php</a></li>
 <li><a href="#classes/models/model_rwd.class.php"><i class="icon-file"></i>classes/models/model_rwd.class.php</a></li>
 <li><a href="#classes/models/model_image_rwd.class.php"><i class="icon-file"></i>classes/models/model_image_rwd.class.php</a></li>
+<li><a href="#classes/exceptions/e_add.class.php"><i class="icon-file"></i>classes/exceptions/e_add.class.php</a></li>
 <li><a href="#classes/session/session_entity.class.php"><i class="icon-file"></i>classes/session/session_entity.class.php</a></li>
 <li><a href="#classes/add/add_debug_mail.class.php"><i class="icon-file"></i>classes/add/add_debug_mail.class.php</a></li>
 <li><a href="#classes/smarty/add_smarty.class.php"><i class="icon-file"></i>classes/smarty/add_smarty.class.php</a></li>
@@ -84,42 +93,42 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>16</td>
+<td>28</td>
 <td>see ctrl_abstract property</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>25</td>
-<td>see ctrl_abstract property</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>318</td>
+<td>330</td>
 <td>use the view instead</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>329</td>
+<td>341</td>
 <td>use the view instead</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>339</td>
+<td>351</td>
 <td>use the view instead</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>34</td>
-<td>see add::$content_type</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>350</td>
+<td>362</td>
 <td>see add::content_type();</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>50</td>
+<td>37</td>
+<td>see ctrl_abstract property</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>46</td>
+<td>see add::$content_type</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>62</td>
 <td>see ctrl_abstract property</td>
 </tr>
 </table></div>
@@ -134,12 +143,12 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>163</td>
+<td>176</td>
 <td>use add::content_type()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>24</td>
+<td>37</td>
 <td>see add::$content_type</td>
 </tr>
 </table></div>
@@ -174,42 +183,42 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>59</td>
-<td>use static::db() instead</td>
-</tr>
-<tr>
-<td>deprecated</td>
-<td>613</td>
+<td>652</td>
 <td></td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>857</td>
+<td>66</td>
+<td>use static::db() instead</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>901</td>
 <td>use get_row_instance()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>883</td>
+<td>927</td>
 <td>use get_row_instance()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>900</td>
+<td>944</td>
 <td>use model_rwd::get_where_order_page</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>914</td>
+<td>958</td>
 <td>static::get_where_order_page</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>926</td>
+<td>970</td>
 <td>see static::get_page_instances()</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>941</td>
+<td>984</td>
 <td>use model_rwd::instances_from_sql()</td>
 </tr>
 </table></div>
@@ -224,8 +233,23 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>381</td>
+<td>394</td>
 <td>use add_new_image()</td>
+</tr>
+</table></div>
+<a name="classes/exceptions/e_add.class.php" id="classes/exceptions/e_add.class.php"></a><h3>
+<i class="icon-file"></i>classes/exceptions/e_add.class.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>426</td>
+<td></td>
 </tr>
 </table></div>
 <a name="classes/session/session_entity.class.php" id="classes/session/session_entity.class.php"></a><h3>
@@ -254,7 +278,7 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>87</td>
+<td>94</td>
 <td>unused</td>
 </tr>
 </table></div>
@@ -314,7 +338,7 @@
 </tr>
 </table></div>
 <a name="functions/common.functions.php" id="functions/common.functions.php"></a><h3>
-<i class="icon-file"></i>functions/common.functions.php<small style="float: right;padding-right: 10px;">10</small>
+<i class="icon-file"></i>functions/common.functions.php<small style="float: right;padding-right: 10px;">13</small>
 </h3>
 <div><table class="table markers table-bordered">
 <tr>
@@ -324,32 +348,37 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>100</td>
+<td>108</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>110</td>
+<td>118</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>120</td>
+<td>128</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>130</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>138</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>140</td>
-<td>see add::redirect()</td>
+<td>148</td>
+<td></td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>153</td>
+<td>162</td>
 <td>see add::redirect_query()</td>
 </tr>
 <tr>
@@ -359,17 +388,27 @@
 </tr>
 <tr>
 <td>deprecated</td>
-<td>46</td>
+<td>31</td>
+<td></td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>42</td>
+<td></td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td>54</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>68</td>
+<td>76</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 <tr>
 <td>deprecated</td>
-<td>90</td>
+<td>98</td>
 <td>due to incompatibility with ADD MVC</td>
 </tr>
 </table></div>
@@ -394,7 +433,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:43+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:51+04:00.<br></footer></div>
 </div>
 </body>
 </html>
