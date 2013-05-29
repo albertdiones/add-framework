@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="../packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="../packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="../packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="../packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="../packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="../packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="../packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -77,9 +85,7 @@ Gets the IP of the user</span><pre>current_user_ip</pre></a></li>
 <li class="function  "><a href="#g2globals" title="g2globals :: Copies the get variable to global
 param string $arg1 [$arg2,$argn...] the string key to the get to copy to globals"><span class="description">Copies the get variable to global
 param string $arg1 [$arg2,$argn...] the string key to the get to copy to globals</span><pre>g2globals</pre></a></li>
-<li class="function  "><a href="#handle_error" title="handle_error :: handle_error()
-callback function for handling trigger_error() errors"><span class="description">handle_error()
-callback function for handling trigger_error() errors</span><pre>handle_error</pre></a></li>
+<li class="function  "><a href="#handle_error" title="handle_error :: handle_error()"><span class="description">handle_error()</span><pre>handle_error</pre></a></li>
 <li class="function  "><a href="#handle_shutdown" title="handle_shutdown :: Handle shutdown"><span class="description">Handle shutdown</span><pre>handle_shutdown</pre></a></li>
 <li class="function  "><a href="#ip_in_network" title="ip_in_network :: ip_in_network(string $ip)
 Checks if the IP is within the network of the server"><span class="description">ip_in_network(string $ip)
@@ -255,13 +261,20 @@ param string $arg1 [$arg2,$argn...] the string key to the get to copy to globals
 </div></div>
 </div>
 <a name="handle_error" id="handle_error"></a><div class="element clickable function  handle_error" data-toggle="collapse" data-target=".handle_error .collapse">
-<h2>handle_error()
-callback function for handling trigger_error() errors</h2>
+<h2>handle_error()</h2>
 <pre>handle_error(int $errno, string $errstr, string $errfile, int $errline, array $errcontext) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::handle_error()</td>
+</tr>
 <tr>
 <th>see</th>
 <td>\http://www.php.net/manual/en/function.set-error-handler.php</td>
@@ -293,7 +306,19 @@ callback function for handling trigger_error() errors</h2>
 <h2>Handle shutdown</h2>
 <pre>handle_shutdown() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::handle_shutdown()</td>
+</tr>
+</table>
+</div></div>
 </div>
 <a name="ip_in_network" id="ip_in_network"></a><div class="element clickable function  ip_in_network" data-toggle="collapse" data-target=".ip_in_network .collapse">
 <h2>ip_in_network(string $ip)
@@ -331,7 +356,19 @@ param string $arg1 [$arg2,$argn...] the string key to the post to copy to global
 <h2>Print errors</h2>
 <pre>print_errors() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>deprecated</th>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::print_errors()</td>
+</tr>
+</table>
+</div></div>
 </div>
 <a name="r2globals" id="r2globals"></a><div class="element clickable function  r2globals" data-toggle="collapse" data-target=".r2globals .collapse">
 <h2>Copies the request variable to global
@@ -384,10 +421,16 @@ die() included</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>deprecated</th>
-<td>see add::redirect()</td>
-</tr></table>
+<td></td>
+</tr>
+<tr>
+<th>see</th>
+<td>\add::redirect()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$url</h4>
@@ -526,7 +569,7 @@ Copies $array items with keys $keys, and quoting it if possible</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:41+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:48+04:00.<br></footer></div>
 </div>
 </body>
 </html>

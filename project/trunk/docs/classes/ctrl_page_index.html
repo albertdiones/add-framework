@@ -21,6 +21,14 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
 <li><a href="../packages/ADD%20MVC.html"><i class="icon-folder-open"></i> ADD MVC</a></li>
+<li><a href="../packages/ADD%20MVC%20ADODB%20wrappers.html"><i class="icon-folder-open"></i> ADD MVC ADODB wrappers</a></li>
+<li><a href="../packages/ADD%20MVC%20Controllers.html"><i class="icon-folder-open"></i> ADD MVC Controllers</a></li>
+<li><a href="../packages/ADD%20MVC%20DOM%20Tools.html"><i class="icon-folder-open"></i> ADD MVC DOM Tools</a></li>
+<li><a href="../packages/ADD%20MVC%20Debuggers.html"><i class="icon-folder-open"></i> ADD MVC Debuggers</a></li>
+<li><a href="../packages/ADD%20MVC%20Exceptions.html"><i class="icon-folder-open"></i> ADD MVC Exceptions</a></li>
+<li><a href="../packages/ADD%20MVC%20LDAP.html"><i class="icon-folder-open"></i> ADD MVC LDAP</a></li>
+<li><a href="../packages/ADD%20MVC%20Models.html"><i class="icon-folder-open"></i> ADD MVC Models</a></li>
+<li><a href="../packages/ADD%20MVC%20Session%20Classes.html"><i class="icon-folder-open"></i> ADD MVC Session Classes</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -37,7 +45,7 @@
                 <span class="label label-info">35</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">39</span></a></li>
+                <span class="label label-info">43</span></a></li>
 </ul>
 </li>
 </ul></div>
@@ -76,9 +84,9 @@
 <li class="method public inherited"><a href="#process_data" title="process_data :: The pre-display process of the controller
 (former $this-&gt;process())"><span class="description">The pre-display process of the controller
 (former $this-&gt;process())</span><pre>process_data()</pre></a></li>
-<li class="method public inherited"><a href="#process_mode" title="process_mode :: process_mode function
-Processes any GPC requests"><span class="description">process_mode function
-Processes any GPC requests</span><pre>process_mode()</pre></a></li>
+<li class="method public inherited"><a href="#process_mode" title="process_mode :: Processes any GPC requests
+Usually you won't need to extend/overload this, use process_mode_* methods instead"><span class="description">Processes any GPC requests
+Usually you won't need to extend/overload this, use process_mode_* methods instead</span><pre>process_mode()</pre></a></li>
 <li class="method public inherited"><a href="#recursive_compact" title="recursive_compact :: recursive compact($array_keys)
 Returns an array of GPC from the $array_keys"><span class="description">recursive compact($array_keys)
 Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre></a></li>
@@ -102,18 +110,24 @@ Returns an array of GPC from the $array_keys</span><pre>recursive_compact()</pre
 </div>
 <div class="span8">
 <a name="%5Cctrl_page_index" id="\ctrl_page_index"></a><div href="../classes/ctrl_page_index.html" class="element class">
-<p class="short_description">ctrl_page_index default index page
-A sample index page controller</p>
+<p class="short_description">default index page
+A sample index page controller
+replace this with your own on your application's classes directory</p>
 <div class="details">
-<p class="long_description"></p>
+<p class="long_description"><pre><code>CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
+   protected $mode_gpc_login = array(
+         '_POST' => array('username' , 'password')
+      );
+   public function process_mode_login($gpc) {
+      extract($gpc);
+      member::login($username,$password);
+   }
+}
+</code></pre></p>
 <table class="table table-bordered">
 <tr>
-<th>author</th>
-<td><a href="">albertdiones@gmail.com</a></td>
-</tr>
-<tr>
 <th>package</th>
-<td><a href="..//packages/ADD%20MVC.Controllers.Extras.html">ADD MVC\Controllers\Extras</a></td>
+<td><a href="..//packages/ADD%20MVC%20Controllers.Extras.html">ADD MVC Controllers\Extras</a></td>
 </tr>
 <tr>
 <th>since</th>
@@ -122,6 +136,10 @@ A sample index page controller</p>
 <tr>
 <th>version</th>
 <td>0.0</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">albertdiones@gmail.com</a></td>
 </tr>
 </table>
 <h3>
@@ -489,13 +507,17 @@ A sample index page controller</p>
 </div></div>
 </div>
 <a name="process_mode" id="process_mode"></a><div class="element clickable method public process_mode" data-toggle="collapse" data-target=".process_mode .collapse">
-<h2>process_mode function
-Processes any GPC requests</h2>
+<h2>Processes any GPC requests
+Usually you won't need to extend/overload this, use process_mode_* methods instead</h2>
 <pre>process_mode(array $common_gpc) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\https://code.google.com/p/add-mvc-framework/wiki/modesAndSubModes</td>
+</tr>
 <tr>
 <th>since</th>
 <td>ADD MVC 0.1</td>
@@ -528,6 +550,10 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ctrl_abstract::process_mode()</td>
+</tr>
 <tr>
 <th>since</th>
 <td>ADD MVC 0.1, ctrl_tpl_page 0.1</td>
@@ -613,6 +639,10 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ctrl_tpl_page::execute()</td>
+</tr>
 <tr>
 <th>since</th>
 <td>ADD MVC 0.10</td>
@@ -797,7 +827,7 @@ Returns an array of GPC from the $array_keys</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-23T23:33:42+04:00.<br></footer></div>
+            generated on 2013-05-29T22:13:49+04:00.<br></footer></div>
 </div>
 </body>
 </html>
