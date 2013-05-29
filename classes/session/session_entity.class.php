@@ -1,9 +1,9 @@
 <?php
 
 /**
- * session_entity
+ * Session variable linked object
  *
- * @package ADD MVC\Session
+ * @package ADD MVC Session Classes
  *
  * @since ADD MVC 0.6
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Exception Class for syntax errors
+ * Custom exception class for syntax errors
  * Probably useless
  *
  * @package ADD MVC Exceptions

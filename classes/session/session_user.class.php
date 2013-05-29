@@ -1,9 +1,9 @@
 <?php
 
 /**
- * loginless user
+ * Session variable linked loginless user
  *
- * @package ADD MVC\Session
+ * @package ADD MVC Session Classes
  *
  * @since ADD MVC 0.6
  */

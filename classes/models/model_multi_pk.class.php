@@ -1,6 +1,16 @@
 <?php
 /**
  * Abstract class for tables with more than one PKs
+ *
+ * <code>
+ * CLASS member_friend_connection EXTENDS model_multi_pk {
+ *    const TABLE = 'member_friend_connections';
+ *    static $TABLE_PKS = array('member_id','friend_member_id');
+ *
+ * }
+ * </code>
+ *
+ *
  * @package ADD MVC Models
  * @author albertdiones@gmail.com
  * @version 0.1

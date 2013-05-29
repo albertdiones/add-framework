@@ -1,6 +1,15 @@
 <?php
 /**
- * Custom Exception for ADD MVC
+ * Custom exception for ADD MVC
+ * can mail error message to developers, change the view completely, smart assert etc.
+ *
+ * <code>
+ * CLASS e_insufficient_credits EXTENDS e_system {
+ *    public function mail_to() {
+ *       return "management@add.ph";
+ *    }
+ * }
+ * </code>
  *
  * @author albertdiones@gmail.com
  *
@@ -26,6 +35,12 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    /**
     * Exception constructor
     *
+    *
+    * <code>
+    *    if (!$username)
+    *       throw new e_user_input("Username is blank"):
+    * </code>
+    *
     * @param string $message
     * @param mixed $data
     * @param int $code
@@ -39,7 +54,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * Checks $condition, if false, throw the exception class
+    * Checks $condition, if false, throw the static exception class
     *
     * @param mixed $condition
     * @param string $message the error message
@@ -205,7 +220,9 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * Send email about the exception
+    * Exception email notification
+    *
+    *
     *
     * @since ADD MVC 0.0
     */
@@ -219,8 +236,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * The email recipient
-    * Extend this to child classes
+    * The exception email recipient
+    * Defaults to add::config()->developer_emails
     *
     * @since ADD MVC 0.0
     */
@@ -229,7 +246,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * The email subject
+    * The full email subject
     *
     * @since ADD MVC 0.0
     */
@@ -239,7 +256,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
 
 
    /**
-    * truncated_subject()
+    * Truncated subject
     *
     * @param string $prefix
     * @param string $suffix
@@ -293,8 +310,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * The handling of the exception
-    * Extend this to child classes
+    * Handle the exception
     *
     * @since ADD MVC 0.0
     */
@@ -305,7 +321,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
 
 
    /**
-    * Handling Exceptions
+    * Handling exception as sensitive
     *
     * @param string $user_message
     *
@@ -344,7 +360,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
 
    }
    /**
-    * print_exception()
+    * Print the exception
     *
     * @since ADD MVC 0.7
     */
@@ -373,7 +389,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    }
 
    /**
-    * Exception page view
+    * Exception page view filepath name
     *
     */
    public static function view_filepath() {
@@ -411,6 +427,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * Backward support
     *
     * @since ADD MVC 0.8
+    * @deprecated
     */
    public function display_view() {
       return $this->print_response();

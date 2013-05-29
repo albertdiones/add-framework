@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Exception Class for system errors
+ * Custom exception class for system errors
  * When it's an error of the system but it's not developer's fault, use this
  *
  * <code>

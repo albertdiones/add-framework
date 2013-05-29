@@ -1,9 +1,9 @@
 <?php
 
 /**
- * malicious user error exception
+ * Malicious user error exception
  *
- * @see e_hack
+ * @see e_hack, e_spam
  *
  * @author albertdiones@gmail.com
  *

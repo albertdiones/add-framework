@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Exception Class for hackish errors (Emailed)
+ * Custom exception class for hackish errors (Emailed)
  *
  * This will typically send email to developer_emails declared on config
  *
