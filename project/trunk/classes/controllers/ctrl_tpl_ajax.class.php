@@ -1,8 +1,21 @@
 <?php
 
 /**
- * The controller template class for ajaxed urls
+ * The controller template class for ajaxed resources
  *
+ * <code>
+ * # /ajax/suggestions?mode=title&q=about
+ * CLASS ctrl_page_ajax__suggestions EXTENDS ctrl_tpl_page {
+ *    public $gpc_mode_title = array(
+ *          '_GET' => array( 'q' )
+ *       );
+ *    public function process_mode_title($gpc) {
+ *       # Imaginary model "page"
+ *       $suggestions = page::get_suggestions($gpc['q']);
+ *       $this->assign('suggestions',$suggestions);
+ *    }
+ * }
+ * </code>
  * @package ADD MVC Controllers
  * @since ADD MVC 0.0
  * @version 0.1

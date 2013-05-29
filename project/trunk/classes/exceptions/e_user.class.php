@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Exception Class for end-user errors
+ * Custom exception class for end-user errors
  *
  * Maybe this should be abstract?
  *

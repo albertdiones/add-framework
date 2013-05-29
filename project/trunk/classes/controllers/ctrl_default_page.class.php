@@ -1,8 +1,6 @@
 <?php
 /**
- * ctrl_default_page default page for views with no controllers
- *
- * Prints the view without any process
+ * Default page for views with no controllers - Prints the view without any process
  *
  * @author albertdiones@gmail.com
  *

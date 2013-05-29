@@ -86,8 +86,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Sets a field
-    * (also updates the db row on the end of the script or after a call of $this->update_db_row())
+    * Sets a field - also updates the db row on the end of the script or after a call of $this->update_db_row()
     *
     * @param string $varname
     * @param mixed $value
@@ -128,7 +127,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Script to run when the object instance is destructed
+    * Process upon destruct - update the database row
+    *
     * @see http://www.php.net/manual/en/language.oop5.decon.php
     * @since ADD MVC 0.0
     */
@@ -140,6 +140,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * The string equivalent when object instance converted to string
+    *
     * @return string the string representation of object instances under this class
     * @since ADD MVC 0.0
     */
@@ -149,7 +150,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * Script to run when this class is loaded
+    * Class loaded script - check if the table is declared
+    *
+    * @see add::load_class()
     *
     * @since ADD MVC 0.8
     */
@@ -164,8 +167,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * model_rwd->update_db_row()
     * Updates the fields of the database table that has been updated since the object has been instantiated
+    *
+    * @see model_rwd::__destruct()
     *
     * @todo experiment with the second parameter of autoExecute(), see if there's error on special keyword fields
     *
@@ -185,18 +189,16 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * model_rwd::get_instance($arg)
-    * Gets an instance that represent the row from the table
-    * $arg can either be the primary key or
-    * the field value of the field related to the variable type
+    * Gets an instance that represent the row from the table (cached)
     *
-    * examples:
-    *    member::get_instance(1); // gets the member::TABLE row with primary key 1
+    * <code>
+    *    member::get_instance(1); # gets the member::TABLE row with primary key 1
     *    admin::get_instance(123);
     *    member::get_instance('albert@add.ph');
+    * </code>
     *
     * @return object $model the model_rwd class object
-    * @param mixed $arg the primary key or the field value to search
+    * @param mixed $arg can either be the primary key or the field value of the field related to the variable type
     * @since ADD MVC 0.0
     */
    public static function get_instance($arg) {
@@ -234,10 +236,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * get_value_index_field($arg)
-    * returns the index field to be used on fetching
-    * redeclare on classes for polymorphic get_instance()
+    * Gets the index field based on the field value - redeclare on classes for polymorphic get_instance()
     *
+    * @return the index field to be used on fetching
     * @see model_rwd::get_instance
     * @param mixed $arg
     * @since ADD MVC 0.0
@@ -266,9 +267,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    /**
     * Creates a new instance using the array $row
     * Automatically cache it by the PK of the table
-    * Take note that, the $row is discarded if the row is already cached
+    * the $row array is discarded if the row is already cached
     *
     * @param array $row complete array of fields and values of the row
+    * @see model_rwd::get_instance()
     *
     */
    static function get_row_instance($row) {
@@ -296,9 +298,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * row_pk
     *
-    * Gets the pk from the $row
+    * Gets the pk value from the array $row
     *
     * @param array $row
     *
@@ -311,7 +312,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Cache the model_rwd instance, optionally using the $field
+    * Cache the model_rwd instance, optionally using the $field as cache index
     *
     * @param model_rwd $instance with class model_rwd to cache
     * @param mixed $field to use as key to instance
@@ -344,7 +345,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Fetch cached instance with $field = $field_value
+    * Fetch cached instance with cache index $field equal to $field_value
     *
     * @param string $field name
     * @param string $field_value to search
@@ -366,9 +367,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Gets array of instance from the sql
+    *
     * @param string $sql_format must contain 2 %s, the first is for to be replaced with "SELF::TABLE.*" and the "SELF::TABLE". For literal "%", escape them with "%%" (two percent signs) or else it will cause (very) unexpected behavior
-    * @param int $page to fetch
-    * @param int $per_page items per page
+    * @param int $page number to fetch, null if fetching all
+    * @param int $per_page items per page, null if fetching all
     * @since ADD MVC 0.0
     */
    public static function instances_from_sql($sql_format,$page=null,$per_page=null) {
@@ -412,11 +414,15 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Centralized select query
+    * Centralized select query method
+    *
     * @param mixed $conditions array or string of conditions
     * @param string $order_by string to use as order by
     * @param int $page for limit clause
     * @param int $per_page number of items per page for limit clause
+    *
+    * @return model_rwd instance
+    *
     * @since ADD MVC 0.0
     */
    public static function get_where_order_page($conditions,$order_by=NULL,$page=NULL,$per_page=10) {
@@ -435,7 +441,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * get the count of rows from static::TABLE
+    *
     * @param mixed $conditions to query
+    *
     * @since ADD MVC 0.0
     */
    static function get_count($conditions=array()) {
@@ -447,12 +455,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * get_page_instances
-    * get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page
+    * get page of array of instances from static::TABLE
+    *
     * @param int $page to fetch
     * @param string $order_by order by clause
     * @param array $conditions the where clause conditions
-    * @param array $per_page item count
+    * @param array $per_page instances per page
+    *
     * @since ADD MVC 0.0
     */
    static function get_page_instances($page=1,$order_by = '',$conditions=array(),$per_page=10) {
@@ -462,8 +471,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Insert a new row and return the new object instance
+    *
     * @param array $row_data the array of row to add
+    *
     * @return object $instance of that row that has been inserted
+    *
     * @since ADD MVC 0.0
     */
    static function add_new($row_data) {
@@ -499,8 +511,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * validates associative array for row insertion
+    * validates associative array for row insertion - can also fix or trim the field values to prepare them for database insertion
+    *
     * @param array $row_data associative array of the table row
+    *
+    * @return boolean $valid
+    *
     * @since ADD MVC 0.0
     * @version 0.1
     */
@@ -519,7 +535,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Returns the ID of the row
+    * Returns the pk of the row
+    *
     * @since ADD MVC 0.0
     */
    public function id() {
@@ -568,6 +585,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Centralized creator the order by clause by string $order_by
+    *
     * @param string $order_by string
     * @return string the order by clause string
     * @since ADD MVC 0.0
@@ -580,6 +598,20 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    /**
     * Validates $field $value
     * Redeclare this on each class to be able to uniformize values
+    *
+    * <code>
+    * static function validate_field($field,&$value) {
+    *    case 'username':
+    *       return preg_match('/^\w+$/',$value);
+    *    break;
+    *    case 'full_name':
+    *       $value = trim($full_name);
+    *       $value = preg_replace('/\s+/',' ',$value);
+    *    default:
+    *       return true;
+    * }
+    * </code>
+    *
     * @param string $field the database field name
     * @param string $value the value to validate
     * @since ADD MVC 0.0
@@ -589,12 +621,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * model_rwd->delete()
+    * Deletes $this row from the table
     *
     * @return boolean true on success false on failure
     *
     * @todo make this function support static calling or make a separate static version of this function
-    * @todo add "top" support
+    * @todo add "top" (MSSQL) support
     *
     * @since ADD MVC 0.0
     */
@@ -618,8 +650,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
-    * get_one_where function
-    * get an instance of a row matching the $conditions
+    * get a single instance of a row matching the $conditions
     * @param mixed $conditions the conditions that should match the row
     * @param string $order_by the order by value
     * @deprecated
@@ -638,8 +669,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
  * -----------------
  */
    /**
-    * TABLE pk function
-    * Returns the table's primary key
+    * Gets the primary key
+    *
+    * @return the table's primary key (field, not value)
+    *
     * @see model_multi_pk::table_pk()
     */
    static function table_pk() {
@@ -648,7 +681,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * Returns the scalar index to use caching instances of this class using the primary key
+    *
     * @see model_rwd::get_row_instance(), model_rwd::cache_instance(), see model_multi_pk::cache_main_key()
+    *
     * @since ADD MVC 0.0
     */
    static function cache_main_key() {
@@ -656,9 +691,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Returns the cache_main_key() value
-    * the scalar index to use when caching $this instance using the primary key
+    * the scalar index to use when caching $this instance
+    *
     * @return string primary key value
+    *
+    * @see cache_main_key()
+    *
     * @since ADD MVC 0.0
     */
    public function cache_main_id() {
@@ -666,12 +704,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Returns the cache_main_key() value
-    * the scalar index to use when caching an instance using the primary key
-    * if the instance is __construct()`ed using $row argument
-    * on normal
+    * the scalar index to use when caching array $row
     *
     * @param array $row
+    *
+    * @returns the cache_main_key() value from array $row
     *
     * @return string primary key value
     * @since ADD MVC 0.0
@@ -888,7 +925,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * Deprecated function
+    * Deprecated function, old version of get_row_instance()?
     * @param string $table
     * @param string $field
     * @param string $field_value
@@ -931,7 +968,6 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * get_page_where
     * get all instance from static::TABLE matching ALL $conditions , with pagination of page 1, 10 rows/page
     *
     * @param int $page

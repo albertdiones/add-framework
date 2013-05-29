@@ -1,9 +1,11 @@
 <?php
 /**
  * adodb mysql wrapper abstract
- * A class to be used as wrapper on adodb
+ *
+ * Declare Connect() on your concrete class
+ *
  * Being considered to be deprecated
- * @package ADD MVC\ADODB wrappers
+ * @package ADD MVC ADODB wrappers
  * @version 0.0
  */
 ABSTRACT CLASS add_adodb_mysql EXTENDS add_adodb {

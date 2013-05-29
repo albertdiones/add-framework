@@ -12,7 +12,8 @@
 
 /**
  * handle_error()
- * callback function for handling trigger_error() errors
+ * @deprecated
+ * @see add::handle_error()
  *
  * @param int  $errno contains the level of the error raised, as an integer.
  * @param string $errstr contains the error message, as a string.
@@ -30,6 +31,9 @@ function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $err
 /**
  * Print errors
  *
+ * @deprecated
+ * @see add::print_errors()
+ *
  */
 function print_errors() {
    trigger_error( "Deprecated print_errors function", E_USER_DEPRECATED );
@@ -37,6 +41,10 @@ function print_errors() {
 }
 /**
  * Handle shutdown
+ *
+ * @deprecated
+ * @see add::handle_shutdown()
+ *
  */
 function handle_shutdown() {
    trigger_error( "Deprecated handle_shutdown function", E_USER_DEPRECATED );
@@ -143,7 +151,8 @@ function s2globals(/* args */) {
  * @param string $url the href to redirect into
  * todo do not die when failed to rediredct
  *
- * @deprecated see add::redirect()
+ * @deprecated
+ * @see add::redirect()
  */
 function redirect($url) {
    trigger_error( "Deprecated redirect function", E_USER_DEPRECATED );

@@ -4,11 +4,11 @@
  * A class to be used as wrapper on adodb
  * One child class = one database connection, therefore for each database connection you must create a concrete class or use the 2 built in concrete class mysql and mssql
  *
- * @see add_adodb_mysql , add_adodb_mssql
+ * @see add_adodb_mysql , add_adodb_mssql, model_rwd::db()
  *
  *
  * Being considered to be deprecated
- * @package ADD MVC\ADODB wrappers
+ * @package ADD MVC ADODB wrappers
  * @version 0.0
  */
 ABSTRACT CLASS add_adodb {

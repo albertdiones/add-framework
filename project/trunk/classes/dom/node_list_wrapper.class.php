@@ -2,7 +2,7 @@
 /**
  * Wrapper for PHP's DOMNodeList
  *
- * When used like a dom_element_wrapper, it will do the operation on the first item on the list
+ * When used like a dom_element_wrapper, it will do the operation on the first element on the list
  *
  * @package ADD MVC DOM Tools
  *

@@ -1,9 +1,8 @@
 <?php
 /**
  * adodb MSSQL wrapper abstract
- * A class to be used as wrapper on adodb
- * Being considered to be deprecated
- * @package ADD MVC\ADODB wrappers
+ *
+ * @package ADD MVC ADODB wrappers
  * @version 0.0
  *
  * @deprecated

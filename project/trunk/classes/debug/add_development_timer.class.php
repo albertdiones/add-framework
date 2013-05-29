@@ -1,6 +1,6 @@
 <?php
 /**
- * Automatic timer printed on the shutdown handle when in development environment_status
+ * Timer automatically used and printed when in development config environment status
  *
  * @package ADD MVC Debuggers
  *
