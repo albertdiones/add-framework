@@ -48,6 +48,7 @@ CLASS add_curl {
     * @var string
     *
     * @since ADD MVC 0.10.8
+    * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=101
     */
    public $cookie_file;
 
