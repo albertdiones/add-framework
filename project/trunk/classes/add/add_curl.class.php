@@ -94,6 +94,10 @@ CLASS add_curl {
          'enable_proxy'           => CURLOPT_HTTPPROXYTUNNEL,
       );
 
+   /**
+    * Backward compability for new property names
+    *
+    */
    private static $bc_new_properties = array(
          'cookie_dir'   => 'cookie_file'
       );
