@@ -97,6 +97,7 @@ CLASS add_curl {
    /**
     * Backward compability for new property names
     *
+    * @see https://code.google.com/p/add-mvc-framework/issues/detail?id=101
     */
    private static $bc_new_properties = array(
          'cookie_dir'   => 'cookie_file'
