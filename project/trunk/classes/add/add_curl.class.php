@@ -43,11 +43,13 @@ CLASS add_curl {
 
 
    /**
-    * The cookie jar directory
+    * The cookie jar/file path name, must be full path
     *
-    * @since ADD MVC 0.5
+    * @var string
+    *
+    * @since ADD MVC 0.10.8
     */
-   public $cookie_dir;
+   public $cookie_file;
 
 
    /**
@@ -89,6 +91,10 @@ CLASS add_curl {
          'proxy_type'             => CURLOPT_PROXYTYPE,
          'proxy'                  => CURLOPT_PROXY,
          'enable_proxy'           => CURLOPT_HTTPPROXYTUNNEL,
+      );
+
+   private static $bc_new_properties = array(
+         'cookie_dir'   => 'cookie_file'
       );
 
 
@@ -142,8 +148,8 @@ CLASS add_curl {
     * @since ADD MVC 0.8-data_mining
     */
    public function __construct() {
-      if (!isset($this->cookie_dir))
-         $this->cookie_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cookies';
+      if (!isset($this->cookie_file))
+         $this->cookie_file = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cookies';
       if ($this->enable_cache) {
          $this->cache_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cache';
          if (!file_exists($this->cache_dir))
@@ -161,7 +167,7 @@ CLASS add_curl {
             && is_array($this->proxies)
          ) {
          $this->curl_options[CURLOPT_PROXY] = $this->proxies[array_rand($this->proxies)];
-         $this->cookie_dir = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->curl_options[CURLOPT_PROXY]);
+         $this->cookie_file = add::config()->caches_dir.'/cookies_'.preg_replace('/\W+/','_',__FILE__)."_".preg_replace("/\W+/","_",$this->curl_options[CURLOPT_PROXY]);
       }
 
 
@@ -185,6 +191,11 @@ CLASS add_curl {
             return $this->curl_options[$bc_new_option_index] = $value;
          }
       }
+
+      if (isset(self::$bc_new_properties[$varname])) {
+         $new_varname = self::$bc_new_properties[$varname];
+         return $this->$new_varname = $value;
+      }
    }
    /**
     * Magic function __get
@@ -200,6 +211,11 @@ CLASS add_curl {
          if ($varname == $old_var) {
             return $this->curl_options[$bc_new_option_index];
          }
+      }
+
+      if (isset(self::$bc_new_properties[$varname])) {
+         $new_varname = self::$bc_new_properties[$varname];
+         return $this->$new_varname;
       }
    }
 
@@ -254,9 +270,9 @@ CLASS add_curl {
          curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
       }
 
-      if ($cookie_dir = $this->cookie_dir) {
-         curl_setopt($this->curl, CURLOPT_COOKIEJAR, $cookie_dir);
-         curl_setopt($this->curl, CURLOPT_COOKIEFILE, $cookie_dir);
+      if ($cookie_file = $this->cookie_file) {
+         curl_setopt($this->curl, CURLOPT_COOKIEJAR, $cookie_file);
+         curl_setopt($this->curl, CURLOPT_COOKIEFILE, $cookie_file);
       }
 
       # Backward compatiblity for 0.10.6
