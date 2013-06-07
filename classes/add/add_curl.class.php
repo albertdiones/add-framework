@@ -30,17 +30,6 @@ CLASS add_curl {
     */
    public $url;
 
-   /**
-    * Variable that holds the header array
-    *
-    * @var array
-    *
-    * @since ADD MVC 0.5
-    */
-   public $header = array(
-
-      );
-
 
    /**
     * The cookie jar/file path name, must be full path
