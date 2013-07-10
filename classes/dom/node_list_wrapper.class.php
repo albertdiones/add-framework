@@ -104,7 +104,12 @@ CLASS node_list_wrapper EXTENDS dom_wrapper IMPLEMENTS Iterator {
     * @since ADD MVC 0.4.2
     */
    public function attr($name) {
-      return $this->first_item()->getAttribute($name);
+      if ($this->first_item()) {
+         return $this->first_item()->getAttribute($name);
+      }
+      else {
+         return "";
+      }
    }
 
 
