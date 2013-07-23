@@ -87,17 +87,17 @@
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24cache_dir" title="$cache_dir :: The cache directory"><span class="description">The cache directory</span><pre>$cache_dir</pre></a></li>
-<li class="property public "><a href="#%24cookie_dir" title="$cookie_dir :: The cookie jar directory"><span class="description">The cookie jar directory</span><pre>$cookie_dir</pre></a></li>
+<li class="property public "><a href="#%24cookie_file" title="$cookie_file :: The cookie jar/file path name, must be full path"><span class="description">The cookie jar/file path name, must be full path</span><pre>$cookie_file</pre></a></li>
 <li class="property public "><a href="#%24curl" title="$curl :: Variable that holds the cURL resource variable"><span class="description">Variable that holds the cURL resource variable</span><pre>$curl</pre></a></li>
 <li class="property public "><a href="#%24curl_options" title="$curl_options :: The real options that are gonna be used"><span class="description">The real options that are gonna be used</span><pre>$curl_options</pre></a></li>
 <li class="property public "><a href="#%24enable_cache" title="$enable_cache :: Flag to enable caching"><span class="description">Flag to enable caching</span><pre>$enable_cache</pre></a></li>
-<li class="property public "><a href="#%24header" title="$header :: Variable that holds the header array"><span class="description">Variable that holds the header array</span><pre>$header</pre></a></li>
 <li class="property public "><a href="#%24proxies" title="$proxies :: Proxies IP:port"><span class="description">Proxies IP:port</span><pre>$proxies</pre></a></li>
 <li class="property public "><a href="#%24url" title="$url :: Variable that holds the URL of the cURL"><span class="description">Variable that holds the URL of the cURL</span><pre>$url</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected "><a href="#%24default_curl_options" title="$default_curl_options :: Curl Options Array"><span class="description">Curl Options Array</span><pre>$default_curl_options</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="property private "><a href="#%24bc_new_option_indexes" title="$bc_new_option_indexes :: Backward compatiblity option indexes"><span class="description">Backward compatiblity option indexes</span><pre>$bc_new_option_indexes</pre></a></li>
+<li class="property private "><a href="#%24bc_new_properties" title="$bc_new_properties :: Backward compability for new property names"><span class="description">Backward compability for new property names</span><pre>$bc_new_properties</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -436,16 +436,22 @@ advance cURL library</p>
 </tr></table>
 </div></div>
 </div>
-<a name="%24cookie_dir" id="$cookie_dir"> </a><div class="element clickable property public $cookie_dir" data-toggle="collapse" data-target=".$cookie_dir .collapse">
-<h2>The cookie jar directory</h2>
-<pre>$cookie_dir </pre>
+<a name="%24cookie_file" id="$cookie_file"> </a><div class="element clickable property public $cookie_file" data-toggle="collapse" data-target=".$cookie_file .collapse">
+<h2>The cookie jar/file path name, must be full path</h2>
+<pre>$cookie_file : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>since</th>
-<td>ADD MVC 0.5</td>
-</tr></table>
+<td>ADD MVC 0.10.8</td>
+</tr>
+<tr>
+<th>see</th>
+<td>\https://code.google.com/p/add-mvc-framework/issues/detail?id=101</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a name="%24curl" id="$curl"> </a><div class="element clickable property public $curl" data-toggle="collapse" data-target=".$curl .collapse">
@@ -475,18 +481,6 @@ advance cURL library</p>
 <a name="%24enable_cache" id="$enable_cache"> </a><div class="element clickable property public $enable_cache" data-toggle="collapse" data-target=".$enable_cache .collapse">
 <h2>Flag to enable caching</h2>
 <pre>$enable_cache : boolean</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>since</th>
-<td>ADD MVC 0.5</td>
-</tr></table>
-</div></div>
-</div>
-<a name="%24header" id="$header"> </a><div class="element clickable property public $header" data-toggle="collapse" data-target=".$header .collapse">
-<h2>Variable that holds the header array</h2>
-<pre>$header : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
@@ -532,6 +526,18 @@ advance cURL library</p>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
+<a name="%24bc_new_properties" id="$bc_new_properties"> </a><div class="element clickable property private $bc_new_properties" data-toggle="collapse" data-target=".$bc_new_properties .collapse">
+<h2>Backward compability for new property names</h2>
+<pre>$bc_new_properties </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\https://code.google.com/p/add-mvc-framework/issues/detail?id=101</td>
+</tr></table>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -539,7 +545,7 @@ advance cURL library</p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2013-05-29T22:13:50+04:00.<br></footer></div>
+            generated on 2013-07-24T03:39:19+04:00.<br></footer></div>
 </div>
 </body>
 </html>
