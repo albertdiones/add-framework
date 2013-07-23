@@ -486,26 +486,32 @@ ABSTRACT CLASS add_debug {
     *
     * @param mixed $label
     * @param mixed $value
+    * @param boolean $escape (htmlspecialchars)
     *
     * @since ADD MVC 0.7.4
     */
-   public static function print_data($label,$value) {
-      static::restricted_echo( static::return_print_data($label, $value) );
+   public static function print_data($label,$value, $escape = true) {
+      static::restricted_echo( static::return_print_data($label, $value, $escape) );
    }
+
 
    /**
     * Returns the printable data
     *
     * @param mixed $label
     * @param mixed $value
+    * @param boolean $escape (htmlspecialchars)
     *
     * @since ADD MVC 0.10.4
     */
-   public static function return_print_data($label,$value) {
+   public static function return_print_data($label,$value, $escape = true) {
       $smarty = new add_smarty();
       $smarty -> assign('label',$label);
       $smarty -> assign('value',$value);
       $smarty -> assign('indentations',0);
+      if ($escape === false) {
+         $smarty -> assign('escape',false);
+      }
       return $smarty->fetch('debug/print_data.tpl');
    }
 }
