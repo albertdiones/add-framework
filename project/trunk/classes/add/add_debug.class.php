@@ -512,6 +512,9 @@ ABSTRACT CLASS add_debug {
       if ($escape === false) {
          $smarty -> assign('escape',false);
       }
+      else {
+         $smarty -> assign('escape',true);
+      }
       return $smarty->fetch('debug/print_data.tpl');
    }
 }
