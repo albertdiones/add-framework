@@ -160,7 +160,7 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     * @since ADD MVC 0.0
     */
    static function current_logged_in() {
-      return self::get_instance($_SESSION[static::SESSION_KEY]);
+      return static::get_instance($_SESSION[static::SESSION_KEY]);
    }
 
    /**
@@ -172,7 +172,7 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     * @since ADD MVC 0.0
     */
    static function require_logged_in(i_auth_entity $user=NULL) {
-      if (!self::current_logged_in()) {
+      if (!static::current_logged_in()) {
          static::login_redirect();
       }
       return true;
