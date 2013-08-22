@@ -395,7 +395,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public static function view_filepath() {
       if (add::is_development()) {
 
-         $tpl_filepath = "exceptions/development/".self::view_basename().".tpl";
+         $tpl_filepath = "exceptions/development/".static::view_basename().".tpl";
 
          if (!static::view()->templateExists($tpl_filepath)) {
             $tpl_filepath = "exceptions/development/e_add.tpl";
@@ -410,7 +410,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          }
       }
       else {
-         return "exceptions/".self::view_basename().".tpl";
+         return "exceptions/".static::view_basename().".tpl";
       }
    }
 
@@ -439,6 +439,6 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.8
     */
    public function print_response() {
-      return $this->view()->display(self::view_filepath());
+      return $this->view()->display(static::view_filepath());
    }
 }
