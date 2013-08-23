@@ -72,8 +72,15 @@ CLASS add_encryptor {
    public function __construct($string, $key=false ) {
       $this->string = $string;
 
-      if ($key === false)
+      if ($key === false) {
          $this->key = static::generate_key(30);
+      }
+      else if (is_string($key)) {
+         $this->key = $key;
+      }
+      else {
+         throw new e_developer("Invalid salt variable type");
+      }
 
    }
 
