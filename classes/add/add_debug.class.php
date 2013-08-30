@@ -486,7 +486,9 @@ ABSTRACT CLASS add_debug {
     *
     * @param mixed $label
     * @param mixed $value
-    * @param boolean $escape (htmlspecialchars)
+    * @param boolean $escape (htmlspecialchars) (will still escape if passed null)
+    *
+    * @see return_print_data
     *
     * @since ADD MVC 0.7.4
     */
@@ -500,7 +502,7 @@ ABSTRACT CLASS add_debug {
     *
     * @param mixed $label
     * @param mixed $value
-    * @param boolean $escape (htmlspecialchars)
+    * @param boolean $escape (htmlspecialchars) (will still escape if passed null)
     *
     * @since ADD MVC 0.10.4
     */
@@ -509,12 +511,14 @@ ABSTRACT CLASS add_debug {
       $smarty -> assign('label',$label);
       $smarty -> assign('value',$value);
       $smarty -> assign('indentations',0);
+
       if ($escape === false) {
          $smarty -> assign('escape',false);
       }
       else {
          $smarty -> assign('escape',true);
       }
+
       return $smarty->fetch('debug/print_data.tpl');
    }
 }
