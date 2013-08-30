@@ -486,7 +486,7 @@ ABSTRACT CLASS add_debug {
     *
     * @param mixed $label
     * @param mixed $value
-    * @param boolean $escape (htmlspecialchars) (will still escape if passed null)
+    * @param boolean $escape (htmlspecialchars) will still escape if passed null, and escape is ignored if the content type is text/plain (could be a problem if we are mistakenly thinking that the content type is text plain!
     *
     * @see return_print_data
     *
@@ -502,7 +502,7 @@ ABSTRACT CLASS add_debug {
     *
     * @param mixed $label
     * @param mixed $value
-    * @param boolean $escape (htmlspecialchars) (will still escape if passed null)
+    * @param boolean $escape (htmlspecialchars) (will still escape if passed null) and escape is ignored if the content type is text/plain (could be a problem if we are mistakenly thinking that the content type is text plain!
     *
     * @since ADD MVC 0.10.4
     */
