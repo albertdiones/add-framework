@@ -17,7 +17,7 @@
          <div>{nl2br($exception->getTraceAsString())}</div>
    {/if}
 {else}
-if add::content_type() == 'text/plain'}
+{if add::content_type() == 'text/plain'}
 = Uncaught Exception =
 Unknown Data
 {$user_message}
