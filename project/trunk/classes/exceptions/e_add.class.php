@@ -344,8 +344,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
                echo $user_message;
             }
          }
-         if (add::is_development()) {
-            # Prevent misuse on live exceptions
+         # Prevent misuse on live exceptions
+         if (add::is_development() || add::is_developer()) {
             $this->view()->assign('exception',$this);
          }
          $this->view()->assign('user_message',$user_message);
@@ -410,7 +410,12 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          }
       }
       else {
-         return "exceptions/".static::view_basename().".tpl";
+         $tpl_filepath = "exceptions/".static::view_basename().".tpl";
+         if (!static::view()->templateExists($tpl_filepath)) {
+            $parent_class = get_parent_class(get_called_class());
+            $tpl_filepath = $parent_class::view_filepath();
+         }
+         return $tpl_filepath;
       }
    }
 
