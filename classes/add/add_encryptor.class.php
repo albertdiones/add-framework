@@ -108,6 +108,9 @@ CLASS add_encryptor {
    public static function from_encrypted($encrypted_string, $key = false, $cypher = false, $mode = false) {
       if ($key === false) {
          $default_vars = get_class_vars(get_called_class());
+         if (!isset($default_vars['key'])) {
+           throw new e_developer("Key argument for ".get_called_class()."::".__FUNCTION__." is null or not passed and no default key is found on this class");
+         }
          $key = $default_vars['key'];
       }
       if ($cypher === false) {
