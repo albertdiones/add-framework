@@ -105,8 +105,11 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   public static function from_encrypted($encrypted_string, $key, $cypher = false, $mode = false) {
-
+   public static function from_encrypted($encrypted_string, $key = false, $cypher = false, $mode = false) {
+      if ($key === false) {
+         $default_vars = get_class_vars(get_called_class());
+         $key = $default_vars['key'];
+      }
       if ($cypher === false) {
          $cypher = static::DEFAULT_CYPHER;
       }
