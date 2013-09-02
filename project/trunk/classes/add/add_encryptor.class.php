@@ -92,7 +92,7 @@ CLASS add_encryptor {
     */
    public function encrypt() {
       if (empty($this->key)) {
-         throw new e_developer("Invalid salt variable type");
+         throw new e_developer("No valid key was found");
       }
       return static::string_encrypt($this->string,$this->key,$this->cypher,$this->mode);
    }
