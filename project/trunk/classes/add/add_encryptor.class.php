@@ -25,7 +25,7 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   const DEFAULT_MODE = MCRYPT_MODE_ECB;
+   const DEFAULT_MODE = MCRYPT_MODE_CBC;
 
    /**
     * The string to encrypt
@@ -53,6 +53,13 @@ CLASS add_encryptor {
     *
     */
    public $mode = self::DEFAULT_MODE;
+
+
+   /**
+    * IV - change at your own will
+    *
+    */
+   public $iv = 'RFc1TuMCWs7SL6LPBlKRsDXhTQWTV7';
 
 
    /**
@@ -94,7 +101,7 @@ CLASS add_encryptor {
       if (empty($this->key)) {
          throw new e_developer("No valid key was found");
       }
-      return static::string_encrypt($this->string,$this->key,$this->cypher,$this->mode);
+      return static::string_encrypt($this->string,$this->key,$this->cypher,$this->mode, $this->iv);
    }
 
    /**
@@ -107,7 +114,7 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   public static function from_encrypted($encrypted_string, $key = false, $cypher = false, $mode = false) {
+   public static function from_encrypted($encrypted_string, $key = false, $cypher = false, $mode = false, $iv = false) {
 
       $decrypted_string = static::string_decrypt($encrypted_string, $key, $cypher, $mode);
 
@@ -115,8 +122,9 @@ CLASS add_encryptor {
       $key && $instance -> key         = $key;
       $cypher && $instance -> cypher   = $cypher;
       $mode && $instance -> mode       = $mode;
+      $iv && $instance -> iv           = $iv;
 
-      $instance->string = $instance::string_decrypt($encrypted_string, $instance->key, $instance -> cypher, $instance -> mode);
+      $instance->string = $instance::string_decrypt($encrypted_string, $instance->key, $instance -> cypher, $instance -> mode, $instance -> iv);
 
       return $instance;
 
@@ -132,7 +140,7 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   public static function string_encrypt($string, $key, $cypher = false, $mode = false) {
+   public static function string_encrypt($string, $key, $cypher = false, $mode = false, &$iv = false) {
 
       if (!$cypher) {
          $cypher = static::DEFAULT_CYPHER;
@@ -142,11 +150,19 @@ CLASS add_encryptor {
          $mode = static::DEFAULT_MODE;
       }
 
+      if (!$iv) {
+         $iv = mcrypt_create_iv(
+               mcrypt_get_iv_size($cypher, $mode),
+               MCRYPT_RAND
+            );
+      }
+
       $encrypted = mcrypt_encrypt(
             $cypher,
             $key,
             $string,
-            $mode
+            $mode,
+            $iv
          );
 
       return base64_encode($encrypted);
@@ -162,13 +178,13 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   public static function string_decrypt($string, $key, $cypher = false, $mode = false) {
+   public static function string_decrypt($string, $key, $cypher = false, $mode = false, $iv = false) {
 
-      if ($cypher === false) {
+      if (!$cypher) {
          $cypher = static::DEFAULT_CYPHER;
       }
 
-      if ($mode === false) {
+      if (!$mode) {
          $mode = static::DEFAULT_MODE;
       }
 
@@ -176,7 +192,8 @@ CLASS add_encryptor {
             $cypher,
             $key,
             base64_decode($string),
-            static::DEFAULT_MODE
+            $mode,
+            $iv
          );
 
       return trim($decrypted);
