@@ -25,7 +25,7 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   const DEFAULT_MODE = MCRYPT_MODE_ECB;
+   const DEFAULT_MODE = MCRYPT_MODE_CBC;
 
    /**
     * The string to encrypt
