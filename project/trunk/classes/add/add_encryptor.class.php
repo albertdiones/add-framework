@@ -25,7 +25,7 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   const DEFAULT_MODE = MCRYPT_MODE_CBC;
+   const DEFAULT_MODE = MCRYPT_MODE_ECB;
 
    /**
     * The string to encrypt
@@ -142,17 +142,11 @@ CLASS add_encryptor {
          $mode = static::DEFAULT_MODE;
       }
 
-      $iv = mcrypt_create_iv(
-            mcrypt_get_iv_size($cypher, $mode),
-            MCRYPT_RAND
-         );
-
       $encrypted = mcrypt_encrypt(
             $cypher,
             $key,
             $string,
-            $mode,
-            $iv
+            $mode
          );
 
       return base64_encode($encrypted);
@@ -178,17 +172,11 @@ CLASS add_encryptor {
          $mode = static::DEFAULT_MODE;
       }
 
-      $iv = mcrypt_create_iv(
-            mcrypt_get_iv_size($cypher, $mode),
-            MCRYPT_RAND
-         );
-
       $decrypted = mcrypt_decrypt(
             $cypher,
             $key,
             base64_decode($string),
-            static::DEFAULT_MODE,
-            $iv
+            static::DEFAULT_MODE
          );
 
       return trim($decrypted);
