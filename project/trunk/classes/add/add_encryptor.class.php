@@ -69,19 +69,16 @@ CLASS add_encryptor {
     *
     * @since ADD MVC 0.6
     */
-   public function __construct($string, $key=false ) {
-      $this->string = $string;
-
+   public function __construct($string = false, $key=false ) {
+      if ($string) {
+         $this->string = $string;
+      }
       if ($key === false && empty($this->key)) {
          $key = static::generate_key(30);
       }
 
       if (is_string($key)) {
          $this->key = $key;
-      }
-
-      if (empty($this->key)) {
-         throw new e_developer("Invalid salt variable type");
       }
 
    }
@@ -94,6 +91,9 @@ CLASS add_encryptor {
     * @since ADD MVC 0.6
     */
    public function encrypt() {
+      if (empty($this->key)) {
+         throw new e_developer("Invalid salt variable type");
+      }
       return static::string_encrypt($this->string,$this->key,$this->cypher,$this->mode);
    }
 
@@ -108,25 +108,15 @@ CLASS add_encryptor {
     * @since ADD MVC 0.6
     */
    public static function from_encrypted($encrypted_string, $key = false, $cypher = false, $mode = false) {
-      if ($key === false) {
-         $default_vars = get_class_vars(get_called_class());
-         if (!isset($default_vars['key'])) {
-           throw new e_developer("Key argument for ".get_called_class()."::".__FUNCTION__." is null or not passed and no default key is found on this class");
-         }
-         $key = $default_vars['key'];
-      }
-      if ($cypher === false) {
-         $cypher = static::DEFAULT_CYPHER;
-      }
-      if ($mode === false) {
-         $mode = static::DEFAULT_MODE;
-      }
 
       $decrypted_string = static::string_decrypt($encrypted_string, $key, $cypher, $mode);
 
-      $instance = new static($decrypted_string, $key);
-      $instance -> cypher = $cypher;
-      $instance -> mode   = $mode;
+      $instance                        = new static();
+      $key && $instance -> key         = $key;
+      $cypher && $instance -> cypher   = $cypher;
+      $mode && $instance -> mode       = $mode;
+
+      $instance->string = $instance::string_decrypt($encrypted_string, $instance->key, $instance -> cypher, $instance -> mode);
 
       return $instance;
 
