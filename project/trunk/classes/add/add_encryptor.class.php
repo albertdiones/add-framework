@@ -134,11 +134,11 @@ CLASS add_encryptor {
     */
    public static function string_encrypt($string, $key, $cypher = false, $mode = false) {
 
-      if ($cypher === false) {
+      if (!$cypher) {
          $cypher = static::DEFAULT_CYPHER;
       }
 
-      if ($mode === false) {
+      if (!$mode) {
          $mode = static::DEFAULT_MODE;
       }
 
