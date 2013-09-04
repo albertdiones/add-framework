@@ -172,8 +172,8 @@ ABSTRACT CLASS dom_wrapper {
          # :first
          $selector_chunk = preg_replace('/\:first/','[1]',$selector_chunk);
          $selector_chunk = preg_replace('/\:last/','[last()]',$selector_chunk);
-         $selector_chunk = preg_replace('/\:gt\((\d+)\)/e','"[position()>".($1+1)."]"',$selector_chunk);
-         $selector_chunk = preg_replace('/\:lt\((\d+)\)/e','"[position()<".($1+1)."]"',$selector_chunk);
+         $selector_chunk = preg_replace_callback('/\:gt\((\d+)\)/',function($matches) { return "[position()>".($matches[1]+1)."]"; },$selector_chunk);
+         $selector_chunk = preg_replace_callback('/\:lt\((\d+)\)/',function($matches) { return "[position()<".($matches[1]+1)."]"; },$selector_chunk);
          $selector_chunk = str_replace("\\ "," ",$selector_chunk);
          $selector_chunk = preg_replace('/\:contains\((.+)\)/','[contains(.,$1)]',$selector_chunk);
          $xpath_parts[] = $selector_chunk;
