@@ -3,7 +3,6 @@
  * DOM wrapper for dom and html elements manipulation, with CSS like searching (see find())
  * Based on the function names of Jquery
  *
- *
  * @author albertdiones@gmail.com
  *
  * @package ADD MVC DOM Tools
@@ -37,30 +36,44 @@ ABSTRACT CLASS dom_wrapper {
     * @todo Remove or fix the code on if (is_object($arg)) { onwards
     */
    public function factory($arg) {
-      if ($arg===false && $arg===NULL)
+      if ($arg===false || $arg===NULL)
          return false;
 
       if (is_string($arg)) {
+
+         if (!$arg) {
+            throw new e_developer("Blank string parameter passed to ".get_called_class()."::".__FUNCTION__);
+         }
+
          if (isset($this) && $this instanceof self) {
             return $this->find($arg);
          }
          else {
             if (file_exists($arg) || filter_var($arg, FILTER_VALIDATE_URL)) {
                $file_contents = file_get_contents($arg);
+            }
+            else if ($arg) {
+               $file_contents = $arg;
+            }
 
-               $dom_document  = @DOMDocument::loadHTML(iconv("UTF-8", "ASCII//IGNORE//TRANSLIT",$file_contents));
+            $fixed_contents = iconv("UTF-8", "ASCII//IGNORE//TRANSLIT",$file_contents);
 
-               $document = self::factory($dom_document);
-               return $document;
+            $fixed_contents = preg_replace( '/[^\P{Cc}\s]+/u', '', $fixed_contents);
+
+            if (!$fixed_contents) {
+               throw new e_developer("Fixing the content resulted to blank string",$arg);
             }
-            else if ($arg && strlen($arg) > 200) {
-               $dom_document  = @DOMDocument::loadHTML(iconv("UTF-8", "ASCII//IGNORE//TRANSLIT",$arg));
-               $document = self::factory($dom_document);
-               return $document;
+
+            $dom_document  = @DOMDocument::loadHTML($fixed_contents);
+
+            if (!$dom_document) {
+               throw new e_developer("Failed to create domdocument from contents",$arg);
             }
-            else {
-               throw new e_developer("Unknown parameter");
-            }
+
+            $document = self::factory($dom_document);
+
+            return $document;
+
          }
       }
       if (is_object($arg)) {
@@ -88,7 +101,6 @@ ABSTRACT CLASS dom_wrapper {
 
   /**
    * enables function call by $arg()
-   *
    * example: $document('div > .odd');
    * @param string $arg the css3 string to query
    *
@@ -146,15 +158,15 @@ ABSTRACT CLASS dom_wrapper {
       $selector_chunks = preg_split('/(?<!\\\\)\s+/',$selector);
       $xpath_parts = array();
       foreach ($selector_chunks as $selector_chunk) {
-         $selector_chunk = str_replace(',',' | ',$selector_chunk);
+         $selector_chunk = str_replace(',',' | //',$selector_chunk);
          # .class or #id (without tagname)
          $selector_chunk = preg_replace('/^([\W])\w/','*$0',$selector_chunk);
          # [name] or [name=value]
-         $selector_chunk = preg_replace('/\[(.+(\=.+)?)\]/','[@$1]',$selector_chunk);
+         $selector_chunk = preg_replace('/\[(.+?(\=.+?)?)\]/','[@$1]',$selector_chunk);
          # .class
          $selector_chunk = preg_replace('/\.([\w-]+)/','[contains(concat(" ",normalize-space(@class)," ")," $1 ")]',$selector_chunk);
          # #id
-         $selector_chunk = preg_replace('/\#([\w\-]+)/','[@id="$1"]',$selector_chunk);
+         $selector_chunk = preg_replace('/^([\w\-]*)\#([\w\-]+)/','$1[@id="$2"]$3',$selector_chunk);
          # :eq(n)
          $selector_chunk = preg_replace('/\:eq\((\d+)\)/e','"[".($1+1)."]"',$selector_chunk);
          # :first
@@ -163,9 +175,10 @@ ABSTRACT CLASS dom_wrapper {
          $selector_chunk = preg_replace('/\:gt\((\d+)\)/e','"[position()>".($1+1)."]"',$selector_chunk);
          $selector_chunk = preg_replace('/\:lt\((\d+)\)/e','"[position()<".($1+1)."]"',$selector_chunk);
          $selector_chunk = str_replace("\\ "," ",$selector_chunk);
-         $selector_chunk = preg_replace('/\:contains\((.+)\)/e','"[contains(.,$1)]"',$selector_chunk);
+         $selector_chunk = preg_replace('/\:contains\((.+)\)/','[contains(.,$1)]',$selector_chunk);
          $xpath_parts[] = $selector_chunk;
       }
+
       $xpath = array("/");
       foreach ($xpath_parts as $i=>$xpath_part) {
          if ($i>0) {
@@ -180,7 +193,7 @@ ABSTRACT CLASS dom_wrapper {
          $xpath[] = $xpath_part;
       }
       $xpath = implode("/",$xpath);
-      //debug::var_dump($xpath);
+      //add_debug::var_dump($xpath);
       return $xpath;
    }
 }
