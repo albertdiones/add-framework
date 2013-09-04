@@ -126,7 +126,7 @@ ABSTRACT CLASS ctrl_abstract {
    }
 
    /**
-    * recursive compact($array_keys)
+    * Accepts 2 dimensional array of keys to be fetched from global variables
     *
     * Returns a multi dimension array of the global variables value of $gpc_array_keys
     *
