@@ -118,17 +118,26 @@ ABSTRACT CLASS ctrl_abstract {
 
    /**
     * recursive compact($array_keys)
-    * Returns an array of GPC from the $array_keys
     *
-    * @param array $gpc_array_keys
+    * Returns a multi dimension array of the global variables value of $gpc_array_keys
+    *
+    * @param array $gpc_array_keys - 2 dimension array of keys
     *
     * @see ctrl_abstract::process_mode()
+    *
+    * <code>
+    * if (!$_GET['foo']) {
+    *   add:redirect('?foo=bar');
+    * }
+    * debug::var_dump($_GET, ctrl_abstract::recursive_compact( array( '_GET' => array('foo') ) ));
+    * </code>
     *
     * @since ADD MVC 0.1, ctrl_tpl_page 0.1
     */
    public static function recursive_compact($gpc_array_keys) {
       $compact_array = array();
 
+      # Magic quotes backward support https://code.google.com/p/add-mvc-framework/issues/detail?id=118
       $magic_quotes_on = get_magic_quotes_gpc()
          && $real_gpcs = array('_GET','_POST','_COOKIE','_REQUEST');
 
@@ -141,6 +150,7 @@ ABSTRACT CLASS ctrl_abstract {
             $compact_array[$array_key] = empty($gpc_array[$array_key]) ? null : $gpc_array[$array_key];
          }
 
+         # stripslahes if magic quotes is on https://code.google.com/p/add-mvc-framework/issues/detail?id=118
          if ( $magic_quotes_on && in_array($gpc_key,$real_gpcs) ) {
             foreach ($compact_array as $field => &$value) {
                $value = stripslashes($value);
@@ -154,6 +164,9 @@ ABSTRACT CLASS ctrl_abstract {
 
    /**
     * Assign a variable to the view
+    * Arguments are the same as Smarty's assign
+    *
+    * @see http://www.smarty.net/docs/en/api.assign.tpl
     *
     * @since ADD MVC 0.6, ctrl_tpl_page 1.0
     */
@@ -172,7 +185,9 @@ ABSTRACT CLASS ctrl_abstract {
 
 
    /**
-    * Returns the data
+    * Returns the data assigned
+    *
+    * @see assign()
     *
     * @since ADD MVC 0.10
     */
