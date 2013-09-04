@@ -130,7 +130,7 @@ ABSTRACT CLASS ctrl_abstract {
       $compact_array = array();
 
       $magic_quotes_on = get_magic_quotes_gpc()
-         && $real_gpcs = array('_GET','_POST','_COOKIE');
+         && $real_gpcs = array('_GET','_POST','_COOKIE','_REQUEST');
 
       foreach ($gpc_array_keys as $gpc_key => $array_keys) {
          e_developer::assert(isset($GLOBALS[$gpc_key]),"Invalid GPC key $gpc_key");
