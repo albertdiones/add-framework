@@ -77,11 +77,25 @@ ABSTRACT CLASS ctrl_abstract {
     * Usually you won't need to extend/overload this, use process_mode_* methods instead
     *
     * @see https://code.google.com/p/add-mvc-framework/wiki/modesAndSubModes
+    * @see ctrl_tpl_page::process_data()
     *
     * @param array $common_gpc
     * @since ADD MVC 0.1
     *
-    * @version 1.0
+    * <code>
+    * ABSTRACT CLASS ctrl_abstract_member_page EXTENDS ctrl_tpl_page {
+    *    function process_data() {
+    *
+    *       # Require log in for such pages
+    *       member::require_logged_in();
+    *
+    *       $this->pre_mode_process(array());
+    *       $this->process_mode(array());
+    *       $this->post_mode_process(array());
+    *    }
+    * }
+    * </code>
+    *
     */
    public function process_mode( $common_gpc = array() ) {
       $mode = $this->mode;
