@@ -33,7 +33,7 @@ ABSTRACT CLASS ctrl_abstract {
    /**
     * The views cache
     *
-    * Placeholder for the controller's smarty class instance
+    * Placeholder for the controller's Smarty class instance
     *
     * @see ctrl_tpl_page::view()
     *
@@ -43,7 +43,11 @@ ABSTRACT CLASS ctrl_abstract {
 
 
    /**
-    * The view data
+    * The controller data
+    *
+    * passed to the view through Smarty's assign()
+    *
+    * @see ctrl_tpl_page::print_response()
     *
     * @since ADD MVC 0.6
     */
