@@ -128,6 +128,10 @@ ABSTRACT CLASS ctrl_abstract {
     */
    public static function recursive_compact($gpc_array_keys) {
       $compact_array = array();
+
+      $magic_quotes_on = get_magic_quotes_gpc()
+         && $real_gpcs = array('_GET','_POST','_COOKIE');
+
       foreach ($gpc_array_keys as $gpc_key => $array_keys) {
          e_developer::assert(isset($GLOBALS[$gpc_key]),"Invalid GPC key $gpc_key");
          $gpc_array = $GLOBALS[$gpc_key];
@@ -135,6 +139,12 @@ ABSTRACT CLASS ctrl_abstract {
          foreach ($array_keys as $array_key) {
             e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
             $compact_array[$array_key] = empty($gpc_array[$array_key]) ? null : $gpc_array[$array_key];
+         }
+
+         if ( $magic_quotes_on && in_array($gpc_key,$real_gpcs) ) {
+            foreach ($compact_array as $field => &$value) {
+               $value = stripslashes($value);
+            }
          }
 
       }
