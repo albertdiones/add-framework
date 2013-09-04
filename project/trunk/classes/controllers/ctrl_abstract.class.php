@@ -191,7 +191,19 @@ ABSTRACT CLASS ctrl_abstract {
     *
     * @see http://www.smarty.net/docs/en/api.assign.tpl
     *
-    * @since ADD MVC 0.6, ctrl_tpl_page 1.0
+    * @since ADD MVC 0.6
+    * <code>
+    *    CLASS ctrl_page_index EXTENDS ctrl_tpl_page {
+    *       public function process_mode_default($gpc) {
+    *
+    *          # Assigns current date to $date_today
+    *          $this->assign('date_today',date('M d Y'));
+    *
+    *          # Assigns all from $_SESSION
+    *          $this->assign($_SESSION);
+    *       }
+    *    }
+    * </code>
     */
    public function assign() {
       $arg1 = func_get_arg(0);
