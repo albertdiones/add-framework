@@ -168,7 +168,7 @@ ABSTRACT CLASS dom_wrapper {
          # #id
          $selector_chunk = preg_replace('/^([\w\-]*)\#([\w\-]+)/','$1[@id="$2"]$3',$selector_chunk);
          # :eq(n)
-         $selector_chunk = preg_replace('/\:eq\((\d+)\)/e','"[".($1+1)."]"',$selector_chunk);
+         $selector_chunk = preg_replace_callback('/\:eq\((\d+)\)/',function($matches) { return "[".($matches[1]+1)."]"; },$selector_chunk);
          # :first
          $selector_chunk = preg_replace('/\:first/','[1]',$selector_chunk);
          $selector_chunk = preg_replace('/\:last/','[last()]',$selector_chunk);
