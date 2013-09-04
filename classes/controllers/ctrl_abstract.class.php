@@ -32,6 +32,11 @@ ABSTRACT CLASS ctrl_abstract {
 
    /**
     * The views cache
+    *
+    * Placeholder for the controller's smarty class instance
+    *
+    * @see ctrl_tpl_page::view()
+    *
     * @since ADD MVC 0.0
     */
    protected static $views = array();
