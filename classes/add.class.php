@@ -459,6 +459,7 @@ CLASS add {
 
             }
 
+            $error['filepathname'] = $error['file'];
             $error['file'] = basename($error['file']);
 
             $compiled_tpl_preg = '/[\da-f]{40}\.file\.(.*\.tpl)\.php/';
