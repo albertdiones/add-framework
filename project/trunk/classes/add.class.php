@@ -449,7 +449,7 @@ CLASS add {
                }
 
                preg_match('/^\s+?(?=\S)/m',$code_on_error,$code_white_space);
-               $code_on_error = str_replace($code_on_error[0],'',$code_on_error);
+               $code_on_error = str_replace($code_white_space[0],'',$code_on_error);
 
                $smarty->assign('code_on_error',highlight_string($code_on_error,true));
                $smarty->assign('code_on_error_end',$code_on_error_x);
