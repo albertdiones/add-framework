@@ -470,7 +470,7 @@ CLASS add {
 
             $error['file_lines'] = array();
             foreach ($error['backtrace'] as $backtrace_data) {
-               $error['file_lines'][] = array( 'file' => basename($backtrace_data['file']), 'line' => $backtrace_data['line'] );
+               $error['file_lines'][] = array( 'file' => basename($backtrace_data['file']), 'line' => $backtrace_data['line'], 'filepathname' => $backtrace_data['file'] );
             }
 
 
