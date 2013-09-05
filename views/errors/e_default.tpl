@@ -15,9 +15,9 @@
       <br />
       <b>{$error.file}:{$error.line}</b>
       {foreach $error['file_lines'] as $x => $error_file_line}
-         <small style='font-size:{max(12-$x,8)}px'>
+         <span style='font-size:{max(12-$x,8)}px'>
          &lt; {$error_file_line.file}:{$error_file_line.line}
-         </small>
+         </span>
       {/foreach}
    </div>
    {if !empty($code_on_error)}
