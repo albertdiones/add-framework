@@ -27,7 +27,7 @@
             <code>{if $error.line == $x}<span style='color:red'>&#x25BA;</span>{else}{$x}{/if}<br /></code>
          {/for}
       </div>
-      <div style="float:left;width:90%;text-align:left;white-space:nowrap; padding:5px 10px;">{$code_on_error}</div>
+      <div style="float:left;width:87%;text-align:left;white-space:nowrap; padding:5px 10px;">{$code_on_error}</div>
    </div>
    {/if}
    <div style='clear:both'></div>
