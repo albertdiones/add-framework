@@ -9,7 +9,7 @@
    {/foreach}
 {else}
 <div style="{block name='error.style'}margin:5px auto;border:1px solid #333; background:{block name='error.style.background.value'}#FFAAAA{/block}; padding:5px 10px;width:900px; font-family:verdana; font-size:12px{/block}">
-   <div style='float:left;text-align:center;'>
+   <div style='float:left;text-align:center;min-width:46%;margin:5px 10px;'>
       <small>{$error.type}</small>
       <p><b>{$error.message}</b>{if $error.num_occured > 1} x {$error.num_occured}{/if}</p>
       <br />
