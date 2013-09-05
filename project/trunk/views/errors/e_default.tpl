@@ -13,9 +13,9 @@
       <div style="font-weight:bold;margin:5px 10px;">{$error.type}</div>
       <div style="font-size:14px;padding:5px 10px;margin:5px 10px;background-color:#F88;">{$error.message}</b>{if $error.num_occured > 1} x {$error.num_occured}{/if}</div>
       <div style="margin:5px 10px">
-         <span style="font-weight:bold">{$error.file}:{$error.line}</span>
+         <span style="font-weight:bold" title='{$error.filepathname|escape}'>{$error.file}:{$error.line}</span>
          {foreach $error['file_lines'] as $x => $error_file_line}
-            <span style='font-size:{max(12-$x,8)}px'>
+            <span style='font-size:{max(12-$x,8)}px' title='{$error_file_line.filepathname|escape}'>
             &lt; {$error_file_line.file}:{$error_file_line.line}
             </span>
          {/foreach}
