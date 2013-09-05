@@ -13,12 +13,12 @@
       <small>{$error.type}</small>
       <p><b>{$error.message}</b>{if $error.num_occured > 1} x {$error.num_occured}{/if}</p>
       <br />
-      <small style="font-size:8px;">
-         {$error.file}:{$error.line}
-         {foreach $error['file_lines'] as $error_file_line}
-            &lt; {$error_file_line.file}:{$error_file_line.line}
-         {/foreach}
-      </small>
+      <b>{$error.file}:{$error.line}</b>
+      {foreach $error['file_lines'] as $x => $error_file_line}
+         <small style='font-size:{max(12-$x,8)}px'>
+         &lt; {$error_file_line.file}:{$error_file_line.line}
+         </small>
+      {/foreach}
    </div>
    {if !empty($code_on_error)}
    <div style='float:right;font-size:12px;width:49%;background:#eee;padding:5px 10px;border:1px solid #333;overflow:hidden;'>
