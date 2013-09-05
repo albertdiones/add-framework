@@ -9,7 +9,7 @@
    {/foreach}
 {else}
 <div style="{block name='error.style'}margin:5px auto;border:1px solid #333; background:{block name='error.style.background.value'}#FFAAAA{/block}; padding:5px 10px;width:900px; font-family:verdana; font-size:12px{/block}">
-   <div style='float:left'>
+   <div style='float:left;text-align:center;'>
       <small>{$error.type}</small>
       <p><b>{$error.message}</b>{if $error.num_occured > 1} x {$error.num_occured}{/if}</p>
       <br />
@@ -21,7 +21,7 @@
       {/foreach}
    </div>
    {if !empty($code_on_error)}
-   <div style='float:right;font-size:12px;width:49%;border:1px solid #333;overflow:hidden;background:white'>
+   <div style='float:left;margin:5px 10px;min-width:49%;font-size:12px;border:1px solid #333;overflow:hidden;background:white'>
       <div style="float:left;color:#000;text-align:center;background-color:#ddd;padding:3px 5px;">
          {for $x = $code_on_error_start to $code_on_error_end}
             <code style="background:transparent">{if $error.line == $x}<span style='color:red'>&#x25BA;</span>{else}{$x}{/if}<br /></code>
