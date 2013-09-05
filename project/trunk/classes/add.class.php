@@ -443,7 +443,7 @@ CLASS add {
                $code_on_error_start = max($error['line'] - $code_on_error_padding,1);
 
                $smarty->assign('code_on_error_start', $code_on_error_start);
-               $code_on_error_end = min($error['line'] + $code_on_error_padding,count($file_codes)-1);
+               $code_on_error_end = min($error['line'] + $code_on_error_padding,count($file_codes));
 
                for ($code_on_error_x = $code_on_error_start; $code_on_error_x <= $code_on_error_end; $code_on_error_x++) {
                   $code_on_error .= $file_codes[$code_on_error_x-1]."<br />";
@@ -453,7 +453,7 @@ CLASS add {
                $code_on_error = preg_replace('/^'.preg_quote($code_white_space[0],'/').'/','',$code_on_error);
 
                $smarty->assign('code_on_error',$code_on_error);
-               $smarty->assign('code_on_error_end',$code_on_error_x);
+               $smarty->assign('code_on_error_end',$code_on_error_end);
 
             }
 
