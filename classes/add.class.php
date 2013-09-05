@@ -39,7 +39,16 @@ CLASS add {
     *
     * @since ADD MVC 0.7
     */
-   static $errors = array();
+   static $errors = array(
+         E_ERROR           => array(),
+         E_WARNING         => array(),
+         E_NOTICE          => array(),
+         E_STRICT          => array(),
+         E_DEPRECATED      => array(),
+         E_USER_ERROR      => array(),
+         E_USER_WARNING    => array(),
+         E_USER_NOTICE     => array(),
+      );
 
    /**
     * Weather to handle shutdown or not
