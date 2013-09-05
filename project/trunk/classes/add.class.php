@@ -420,7 +420,7 @@ CLASS add {
    static function print_errors() {
 
       # Get the error constants
-      static $error_code_strings = array_filter(array_keys(get_defined_constants()),function($c) { return preg_match('/^E_/',$c); } );
+      #static $error_code_strings = array_filter(array_keys(get_defined_constants()),function($c) { return preg_match('/^E_/',$c); } );
 
 
       $default_error_tpl = "errors/e_default.tpl";
