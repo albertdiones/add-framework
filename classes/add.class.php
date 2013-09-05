@@ -350,22 +350,6 @@ CLASS add {
     */
    public static function handle_error($errno , $errstr , $errfile = NULL, $errline = NULL , $errcontext = NULL) {
 
-      static $error_code_strings = array(
-            E_ERROR           => 'E_ERROR',
-            E_WARNING         => 'E_WARNING',
-            E_PARSE           => 'E_PARSE',
-            E_NOTICE          => 'E_NOTICE',
-            E_STRICT          => 'E_STRICT',
-            E_DEPRECATED      => 'E_DEPRECATED',
-            E_CORE_ERROR      => 'E_CORE_ERROR',
-            E_CORE_WARNING    => 'E_CORE_WARNING',
-            E_COMPILE_ERROR   => 'E_COMPILE_ERROR',
-            E_COMPILE_WARNING => 'E_COMPILE_WARNING',
-            E_USER_ERROR      => 'E_USER_ERROR',
-            E_USER_WARNING    => 'E_USER_WARNING',
-            E_USER_NOTICE     => 'E_USER_NOTICE'
-         );
-
       static $error_code_readable_strings = array(
             E_ERROR           => 'Fatal Error',
             E_WARNING         => 'Warning',
@@ -386,7 +370,7 @@ CLASS add {
          return;
       }
 
-      $error_index = isset($error_code_strings[$errno]) ? $error_code_strings[$errno] : $errno;
+      $error_index = $errno;
 
       if (!isset(static::$errors[$error_index]))
          static::$errors[$error_index] = array();
@@ -434,10 +418,18 @@ CLASS add {
     * Print errors
     */
    static function print_errors() {
-      $default_error_tpl = "errors/default.tpl";
+
+      # Get the error constants
+      static $error_code_strings = array_filter(array_keys(get_defined_constants()),function($c) { return preg_match('/^E_/',$c); } );
+
+
+      $default_error_tpl = "errors/e_default.tpl";
       $smarty = new add_smarty();
       foreach (static::$errors as $error_index => $errors) {
-         $error_tpl = "errors/".strtolower($error_index).".tpl";
+
+         $error_string_index = isset($error_code_strings[$error_index]) ? $error_code_strings[$error_index] : $error_index;
+
+         $error_tpl = "errors/".strtolower($error_string_index).".tpl";
          if (!$smarty->templateExists($error_tpl)) {
             $error_tpl = $default_error_tpl;
          }
