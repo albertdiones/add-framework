@@ -13,7 +13,7 @@
       <small>{$error.type}</small>
       <p><b>{$error.message}</b>{if $error.num_occured > 1} x {$error.num_occured}{/if}</p>
       <br />
-      <b>{$error.file}:{$error.line}</b>
+      <span style="font-weight:bold">{$error.file}:{$error.line}</span>
       {foreach $error['file_lines'] as $x => $error_file_line}
          <span style='font-size:{max(12-$x,8)}px'>
          &lt; {$error_file_line.file}:{$error_file_line.line}
