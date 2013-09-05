@@ -24,10 +24,10 @@
    <div style='float:right;font-size:12px;width:49%;background:#eee;padding:5px 10px;border:1px solid #333;overflow:hidden;'>
       <div style="float:left;width:10%;color:#000;text-align:center;">
          {for $x = $code_on_error_start to $code_on_error_end}
-            <code style="width:1000%;display:block">{if $error.line == $x}<span style='color:red'>&#x25BA;</span>{else}{$x}{/if}<br /></code>
+            <code>{if $error.line == $x}<span style='color:red'>&#x25BA;</span>{else}{$x}{/if}<br /></code>
          {/for}
       </div>
-      <div style="float:left;width:90%;text-align:left">{$code_on_error}</div>
+      <div style="float:left;width:90%;text-align:left;white-space:nowrap">{$code_on_error}</div>
    </div>
    {/if}
    <div style='clear:both'></div>
