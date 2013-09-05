@@ -438,17 +438,18 @@ CLASS add {
                $code_on_error = "";
                $file_codes = file($error['file']);
 
-               $code_on_error_padding = 3;
+               $code_on_error_padding = 6;
 
-               $code_on_error_start = max($error['line'] - 3,1);
+               $code_on_error_start = max($error['line'] - $code_on_error_padding,1);
 
                $smarty->assign('code_on_error_start', $code_on_error_start);
+               $code_on_error_end = min($error['line'] + $code_on_error_padding,count($file_codes)-1);
 
-               for ($code_on_error_x = $code_on_error_start; $code_on_error_x <= ($error['line'] + $code_on_error_padding); $code_on_error_x++) {
+               for ($code_on_error_x = $code_on_error_start; $code_on_error_x <= $code_on_error_end; $code_on_error_x++) {
                   $code_on_error .= $file_codes[$code_on_error_x-1];
                }
 
-               preg_match('/^\s+?(?=\S)/m',$code_on_error,$code_white_space);
+               preg_match('/^[[:blank:]]+?(?=\S)/m',$code_on_error,$code_white_space);
                $code_on_error = str_replace($code_white_space[0],'',$code_on_error);
 
                $smarty->assign('code_on_error',highlight_string($code_on_error,true));
