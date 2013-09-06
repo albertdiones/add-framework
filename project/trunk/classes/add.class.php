@@ -434,7 +434,7 @@ CLASS add {
             E_USER_NOTICE     => 'E_USER_NOTICE'
          );
 
-      $default_error_tpl = "errors/default.tpl";
+      $default_error_tpl = "errors/e_default.tpl";
       $smarty = new add_smarty();
       foreach (static::$errors as $error_index => $errors) {
 
