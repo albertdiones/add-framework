@@ -345,7 +345,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
             }
          }
          # Prevent misuse on live exceptions
-         if (add::is_development() || add::is_developer()) {
+         if (add::is_development()) {
             $this->view()->assign('exception',$this);
          }
          $this->view()->assign('user_message',$user_message);
@@ -365,7 +365,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @since ADD MVC 0.7
     */
    public function print_exception() {
-      add::handle_error(E_USER_ERROR, $this->getMessage(), $this->getFile(), $this->getLine(),null);
+      add::handle_error(E_USER_ERROR, $this->getMessage(), $this->getFile(), $this->getLine(),$this->data);
    }
 
    /**
