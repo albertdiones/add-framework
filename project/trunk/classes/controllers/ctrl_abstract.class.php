@@ -175,9 +175,10 @@ ABSTRACT CLASS ctrl_abstract {
 
          # stripslahes if magic quotes is on https://code.google.com/p/add-mvc-framework/issues/detail?id=118
          if ( $magic_quotes_on && in_array($gpc_key,$real_gpcs) ) {
-            foreach ($compact_array as $field => &$value) {
-               $value = stripslashes($value);
-            }
+             array_walk_recursive(
+                  $compact_array,
+                  function(&$value,$key) { $value = stripslashes($value); }
+               );
          }
 
       }
