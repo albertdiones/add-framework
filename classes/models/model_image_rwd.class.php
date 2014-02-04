@@ -1,6 +1,6 @@
 <?php
 /**
- * A class for models (tables) that represent photos
+ * A class for table rows with corresponding (1) photo file on the filesystem
  *
  * <code>
  * CLASS user_photo EXTENDS model_image_rwd {
