@@ -1,4 +1,4 @@
-\<?php
+<?php
 /**
  * A class for models (tables) that represent photos
  *
