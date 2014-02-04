@@ -414,7 +414,7 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
     */
    public static function add_new_image($data,$image_arg) {
       if (!$image_arg) {
-         throw new Exception("Image parameter is empty");
+         throw new e_system("Image parameter is empty");
       }
 
       static::db()->StartTrans();
