@@ -59,8 +59,16 @@ ABSTRACT CLASS model_image_rwd EXTENDS model_rwd {
    public function get_gd(/* Polymorphic */) {
       if (!isset($this) || (isset($this) && !$this instanceof self)) {
          $args = func_get_args();
-         if (is_string($args[0]) && isset($_FILES[$args[0]])) {
-            return self::get_gd_by_input($args[0]);
+         if (is_string($args[0])) {
+            if (isset($_FILES[$args[0]])) {
+               return self::get_gd_by_input($args[0]);
+            }
+            else if (file_exists($args[0])) {
+               return self::get_gd_by_filename($args[0]);
+            }
+            else {
+               throw new e_system("model_image_rwd::get_gd() argument is invalid",$args);
+            }
          }
          else if (self::is_gd_resource($args[0])) {
             return $args[0];
