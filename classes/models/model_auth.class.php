@@ -54,18 +54,18 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     */
    const TERM_PASSWORD = 'password';
 
-/**
- * Required variables
+   /**
+    * Required variables
 
    const SESSION_KEY;
    const NAME_FIELD;
 
    static $type_index_fields = array(
-         'int'    => self::TABLE_PK,
-         'string' => static::USERNAME_FIELD
-      );
+   'int'    => self::TABLE_PK,
+   'string' => static::USERNAME_FIELD
+   );
 
-*/
+    */
 
    /**
     * name function
@@ -207,13 +207,13 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     */
    public function set_password($password,$confirm_password = false) {
 
-      e_developer(is_string($password),"Password argument is not string",func_get_args());
+      e_developer::assert(is_string($password),"Password argument is not string",func_get_args());
 
-      if ($confirm_password !== false && $password === $confirm_password) {
+      if ($confirm_password !== false && $password !== $confirm_password) {
          throw new e_user("Password confirmation incorrect");
       }
 
-      $this->{PASSWORD_FIELD} = $this->hash_password($password);
+      $this->{static::PASSWORD_FIELD} = $this->hash_password($password);
 
    }
 
