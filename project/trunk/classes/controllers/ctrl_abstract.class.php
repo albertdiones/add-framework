@@ -121,7 +121,7 @@ ABSTRACT CLASS ctrl_abstract {
             $reserved_gpc['sub_mode'] = $this->sub_mode;
          }
 
-         $merged_gpc = array_merge($reserved_gpc, $common_gpc, $mode_gpc);
+         $merged_gpc = array_merge($reserved_gpc, $common_gpc, $mode_gpc,$this->data);
 
          $this->assign($merged_gpc);
          $this->assign('mode',$mode);
