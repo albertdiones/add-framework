@@ -170,6 +170,11 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
     * The pre-display process of the controller
     * (former $this->process())
     *
+    * Note(Issue #131): in case of an exception thrown on pre_mode_process and process_mode
+    *   the chain of those 2 and post_mode_process() may not execute
+    *   https://code.google.com/p/add-mvc-framework/issues/detail?id=131
+    *
+    *
     * @since ADD MVC 0.0
     *
     * @version 0.1
