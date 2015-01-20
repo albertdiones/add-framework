@@ -34,14 +34,19 @@ require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
 
+# Set the handlers
 spl_autoload_register('add::load_class');
 set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
-if (!isset($C->incs_dir))
+# Set the includes dir
+if (!isset($C->incs_dir)) {
    $C->incs_dir            = $C->root_dir.'/includes';
+}
 
+
+# Merge config declared class directories
 $C->classes_dirs        = array_merge(
       array( $C->incs_dir.'/classes'),
       isset($C->classes_dirs)
@@ -50,17 +55,24 @@ $C->classes_dirs        = array_merge(
       array($C->add_dir.'/classes')
    );
 
-if (!isset($C->configs_dir))
+
+# Set these rarely used directory variables
+if (!isset($C->configs_dir)) {
    $C->configs_dir         = $C->incs_dir.'/configs';
+}
 
-if (!isset($C->views_dir))
+if (!isset($C->views_dir)) {
    $C->views_dir           = $C->incs_dir.'/views';
-
-if (!isset($C->caches_dir))
+}
+if (!isset($C->caches_dir)) {
    $C->caches_dir          = $C->incs_dir.'/caches';
+}
 
+
+# Load the common functions
 add::load_functions('common');
 
+# Just initialize the variables according to the environment status
 add::environment_status(true);
 
 /**
