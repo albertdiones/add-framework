@@ -1,6 +1,6 @@
 {*SMARTY*}
 
-{if add::current_controller()->content_type() == 'text/plain'}
+{if add::content_type() == 'text/plain'}
 ================================================================================================
 
    {$error.type} - *{$error.message}* x {$error.num_occured}
