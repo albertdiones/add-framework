@@ -143,13 +143,11 @@ CLASS add_curl {
     * @since ADD MVC 0.8-data_mining
     */
    public function __construct() {
-      if (!isset($this->cookie_file))
+      if (!isset($this->cookie_file)) {
          $this->cookie_file = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cookies';
-      if ($this->enable_cache) {
-         $this->cache_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cache';
-         if (!file_exists($this->cache_dir))
-            mkdir($this->cache_dir,0777);
       }
+
+      $this->cache_path();
 
       $this->set_curl_options();
 
@@ -460,7 +458,24 @@ CLASS add_curl {
     * @since ADD MVC 0.5
     */
    public function cache_path() {
-      e_developer::assert($this->cache_dir,"Cache directory is blank");
+
+      # Fix https://code.google.com/p/add-mvc-framework/issues/detail?id=152
+      if (!$this->enable_cache) {
+         return null;
+      }
+
+      if (empty($this->cache_dir)) {
+         $this->cache_dir = add::config()->caches_dir.'/'.preg_replace('/\W+/','_',get_called_class()).'.class.cache';
+         if (!file_exists($this->cache_dir)) {
+            mkdir($this->cache_dir,0777);
+         }
+      }
+      # ^ Fix https://code.google.com/p/add-mvc-framework/issues/detail?id=152
+
+
+      e_developer::assert($this->cache_dir,"Cache directory variable is blank");
+
+
 
       $cache_file_name = sha1($this->url);
       if ($this->curl_options[CURLOPT_HTTPPROXYTUNNEL]) {
