@@ -64,7 +64,7 @@ ABSTRACT CLASS add_adodb {
           * if connection failed, it'll contain boolean false
           */
          if (!$adodb_wrapper -> Connect() || !$adodb_wrapper -> _connectionID) {
-            throw new e_database("Failed to connect to the database",-1);
+            throw new e_database("Failed to connect to the database",$adodb_wrapper,-1);
          }
          #debug::var_dump($adodb_wrapper -> adodb);
          $adodb_wrapper -> adodb->SetFetchMode(static::FETCH_MODE);
