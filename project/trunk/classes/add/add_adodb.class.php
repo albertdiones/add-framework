@@ -57,7 +57,9 @@ ABSTRACT CLASS add_adodb {
             )
          ) {
          $adodb_wrapper = $GLOBALS[$global_varname] = new static($adodb);
-         $adodb_wrapper -> Connect();
+         if (!$adodb_wrapper -> Connect()) {
+            throw new e_database("Failed to connect to the database",-1);
+         }
          $adodb_wrapper -> adodb->SetFetchMode(static::FETCH_MODE);
       }
 
