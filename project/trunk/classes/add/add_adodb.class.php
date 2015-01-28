@@ -57,6 +57,12 @@ ABSTRACT CLASS add_adodb {
             )
          ) {
          $adodb_wrapper = $GLOBALS[$global_varname] = new static($adodb);
+
+         /**
+          * ADODB _connectionID property contains the connection link resource,
+          *
+          * if connection failed, it'll contain boolean false
+          */
          if (!$adodb_wrapper -> Connect() || !$adodb_wrapper -> _connectionID) {
             throw new e_database("Failed to connect to the database",-1);
          }
