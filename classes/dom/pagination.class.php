@@ -80,6 +80,11 @@ CLASS pagination EXTENDS dom_element_wrapper {
       $this->merge_get    = (bool) $merge_get;
       $this->page_get_key = (string) $page_get_key;
 
+      # https://code.google.com/p/add-mvc-framework/issues/detail?id=154
+      if ($this->current_page <= 0) {
+         throw new e_system("Invalid current page argument",func_get_args());
+      }
+
       parent::__construct("div");
 
       $this->get_document();
@@ -109,14 +114,14 @@ CLASS pagination EXTENDS dom_element_wrapper {
          return "";
 
       $visible_page_start = max(
-            1,
-            min($this->current_page,$max_page) - $this->hidden_page_padding
-         );
+         1,
+         min($this->current_page,$max_page) - $this->hidden_page_padding
+      );
 
       $visible_page_end = min(
-            $max_page,
-            $this->current_page + $this->hidden_page_padding
-         );
+         $max_page,
+         $this->current_page + $this->hidden_page_padding
+      );
 
       $visible_pages   = array();
       $visible_pages[] = 1;
@@ -136,7 +141,7 @@ CLASS pagination EXTENDS dom_element_wrapper {
          if ( $this->current_page != $pagex ) {
             $page_query   = array( $this->page_get_key => $pagex );
             $query_array  =
-                  $this->merge_get
+               $this->merge_get
                   ? array_merge($_GET,$page_query)
                   : $page_query;
 
