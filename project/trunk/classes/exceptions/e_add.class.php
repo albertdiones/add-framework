@@ -61,6 +61,9 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     * @param mixed $data extra data of the error
     * @param int $error_number the error code
     *
+    * @todo Fix define of $parenthesis_count
+    *
+    *
     * @since ADD MVC 0.0
     * @version 0.1
     */
@@ -274,6 +277,8 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    /**
     * The mail body / message
     * Extend this to child classes
+    *
+    * @todo current_user_ip on IP https://code.google.com/p/add-mvc-framework/issues/detail?id=157
     *
     * @since ADD MVC 0.0
     */
