@@ -15,13 +15,13 @@
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_CompileBase
-{
+class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_CompileBase {
+
     /**
      * Compiles code for the speical $smarty variables
      *
-     * @param  array  $args     array with attributes from parser
-     * @param  object $compiler compiler object
+     * @param array  $args     array with attributes from parser
+     * @param object $compiler compiler object
      * @return string compiled code
      */
     public function compile($args, $compiler, $parameter)
@@ -70,7 +70,6 @@ class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_C
 
             case 'version':
                 $_version = Smarty::SMARTY_VERSION;
-
                 return "'$_version'";
 
             case 'const':
@@ -78,7 +77,6 @@ class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_C
                     $compiler->trigger_template_error("(secure mode) constants not permitted");
                     break;
                 }
-
                 return "@constant({$_index[1]})";
 
             case 'config':
@@ -89,12 +87,10 @@ class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_C
                 }
             case 'ldelim':
                 $_ldelim = $compiler->smarty->left_delimiter;
-
                 return "'$_ldelim'";
 
             case 'rdelim':
                 $_rdelim = $compiler->smarty->right_delimiter;
-
                 return "'$_rdelim'";
 
             default:
@@ -107,8 +103,9 @@ class Smarty_Internal_Compile_Private_Special_Variable extends Smarty_Internal_C
                 $compiled_ref = $compiled_ref . "[$_ind]";
             }
         }
-
         return $compiled_ref;
     }
 
 }
+
+?>

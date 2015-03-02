@@ -35,7 +35,8 @@ function smarty_make_timestamp($string)
             // strtotime() was not able to parse $string, use "now":
             return time();
         }
-
         return $time;
     }
 }
+
+?>

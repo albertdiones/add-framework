@@ -27,3 +27,5 @@ function smarty_modifiercompiler_lower($params, $compiler)
     // no MBString fallback
     return 'strtolower(' . $params[0] . ')';
 }
+
+?>
