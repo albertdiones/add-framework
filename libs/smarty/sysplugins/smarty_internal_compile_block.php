@@ -84,7 +84,7 @@ class Smarty_Internal_Compile_Block extends Smarty_Internal_CompileBase
             $this->template->block_data[$_name]['source'] = '';
             // build {block} for child block
             self::$block_data[$_name]['source'] =
-                "{$compiler->smarty->left_delimiter}private_child_block name={$_attr['name']} file='{$compiler->template->source->filepath}' type='{$compiler->template->source->type}' resource='{$compiler->template->template_resource}'" .
+                "{$compiler->smarty->left_delimiter}private_child_block name={$_attr['name']} file='{$compiler->template->source->filepath}'" .
                 " uid='{$compiler->template->source->uid}' line={$compiler->lex->line}";
             if ($_attr['nocache']) {
                 self::$block_data[$_name]['source'] .= ' nocache';
@@ -361,7 +361,7 @@ class Smarty_Internal_Compile_Private_Child_Block extends Smarty_Internal_Compil
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $required_attributes = array('name', 'file', 'uid', 'line', 'type', 'resource');
+    public $required_attributes = array('name', 'file', 'uid', 'line');
 
 
     /**
@@ -377,11 +377,7 @@ class Smarty_Internal_Compile_Private_Child_Block extends Smarty_Internal_Compil
         $_attr = $this->getAttributes($compiler, $args);
 
         // update template with original template resource of {block}
-        if (trim($_attr['type'], "'") == 'file') {
-            $compiler->template->template_resource = realpath(trim($_attr['file'], "'"));
-        } else {
-            $compiler->template->template_resource = trim($_attr['resource'], "'");
-        }
+        $compiler->template->template_resource = realpath(trim($_attr['file'], "'"));
         // source object
         unset ($compiler->template->source);
         $exists = $compiler->template->source->exists;
