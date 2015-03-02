@@ -27,7 +27,7 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
     if ($_double_encode === null) {
         $_double_encode = version_compare(PHP_VERSION, '5.2.3', '>=');
     }
-
+    
     if (!$char_set) {
         $char_set = Smarty::$_CHARSET;
     }
@@ -46,7 +46,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                     $string = preg_replace('!&(#?\w+);!', '%%%SMARTY_START%%%\\1%%%SMARTY_END%%%', $string);
                     $string = htmlspecialchars($string, ENT_QUOTES, $char_set);
                     $string = str_replace(array('%%%SMARTY_START%%%', '%%%SMARTY_END%%%'), array('&', ';'), $string);
-
                     return $string;
                 }
             }
@@ -66,11 +65,10 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                         $string = preg_replace('!&(#?\w+);!', '%%%SMARTY_START%%%\\1%%%SMARTY_END%%%', $string);
                         $string = htmlspecialchars($string, ENT_QUOTES, $char_set);
                         $string = str_replace(array('%%%SMARTY_START%%%', '%%%SMARTY_END%%%'), array('&', ';'), $string);
-
                         return $string;
                     }
                 }
-
+                
                 // htmlentities() won't convert everything, so use mb_convert_encoding
                 return mb_convert_encoding($string, 'HTML-ENTITIES', $char_set);
             }
@@ -85,7 +83,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                     $string = preg_replace('!&(#?\w+);!', '%%%SMARTY_START%%%\\1%%%SMARTY_END%%%', $string);
                     $string = htmlentities($string, ENT_QUOTES, $char_set);
                     $string = str_replace(array('%%%SMARTY_START%%%', '%%%SMARTY_END%%%'), array('&', ';'), $string);
-
                     return $string;
                 }
             }
@@ -108,7 +105,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
             for ($x = 0; $x < $_length; $x++) {
                 $return .= '%' . bin2hex($string[$x]);
             }
-
             return $return;
 
         case 'hexentity':
@@ -119,7 +115,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                 foreach (smarty_mb_to_unicode($string, Smarty::$_CHARSET) as $unicode) {
                     $return .= '&#x' . strtoupper(dechex($unicode)) . ';';
                 }
-
                 return $return;
             }
             // no MBString fallback
@@ -127,7 +122,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
             for ($x = 0; $x < $_length; $x++) {
                 $return .= '&#x' . bin2hex($string[$x]) . ';';
             }
-
             return $return;
 
         case 'decentity':
@@ -138,7 +132,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                 foreach (smarty_mb_to_unicode($string, Smarty::$_CHARSET) as $unicode) {
                     $return .= '&#' . $unicode . ';';
                 }
-
                 return $return;
             }
             // no MBString fallback
@@ -146,7 +139,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
             for ($x = 0; $x < $_length; $x++) {
                 $return .= '&#' . ord($string[$x]) . ';';
             }
-
             return $return;
 
         case 'javascript':
@@ -156,7 +148,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
         case 'mail':
             if (Smarty::$_MBSTRING) {
                 require_once(SMARTY_PLUGINS_DIR . 'shared.mb_str_replace.php');
-
                 return smarty_mb_str_replace(array('@', '.'), array(' [AT] ', ' [DOT] '), $string);
             }
             // no MBString fallback
@@ -174,7 +165,6 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                         $return .= chr($unicode);
                     }
                 }
-
                 return $return;
             }
 
@@ -188,10 +178,11 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                     $return .= substr($string, $_i, 1);
                 }
             }
-
             return $return;
 
         default:
             return $string;
     }
 }
+
+?>

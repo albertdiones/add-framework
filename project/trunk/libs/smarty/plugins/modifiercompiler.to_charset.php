@@ -30,3 +30,5 @@ function smarty_modifiercompiler_to_charset($params, $compiler)
 
     return 'mb_convert_encoding(' . $params[0] . ', ' . $params[1] . ', "' . addslashes(Smarty::$_CHARSET) . '")';
 }
+
+?>
