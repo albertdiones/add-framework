@@ -8,6 +8,7 @@
  * @see ctrl_tpl_page, ctrl_tpl_ajax and ctrl_tpl_aux
  *
  * @since ADD MVC 0.10
+ * @version 2.0
  */
 ABSTRACT CLASS ctrl_abstract {
 
@@ -68,9 +69,8 @@ ABSTRACT CLASS ctrl_abstract {
          }
       }
 
-      if (!isset($this->mode)) {
+      if (!isset($this->mode))
          $this->mode = 'default';
-      }
    }
 
    /**
@@ -82,6 +82,8 @@ ABSTRACT CLASS ctrl_abstract {
     *
     * @param array $common_gpc
     * @since ADD MVC 0.1
+    *
+    * @version 2.0
     *
     * <code>
     * ABSTRACT CLASS ctrl_abstract_member_page EXTENDS ctrl_tpl_page {
@@ -122,7 +124,23 @@ ABSTRACT CLASS ctrl_abstract {
             $reserved_gpc['sub_mode'] = $this->sub_mode;
          }
 
-         $merged_gpc = array_merge($reserved_gpc, $common_gpc, $mode_gpc,$this->data);
+         $merged_gpc = array_merge($reserved_gpc, $common_gpc, $mode_gpc);
+
+
+         # Filtering the GPC variables before assigning them
+         foreach ($merged_gpc as $gpc_name => $gpc_var) {
+            $filter_method = "gpc_filter_$gpc_name";
+
+            if (method_exists($this, $filter_method)) {
+               if (!$this->$filter_method($gpc_var)) {
+                  $merged_gpc[$gpc_name] = null;
+               }
+            }
+            else if (is_array($gpc_var)) {
+               trigger_error("GPC variable $gpc_name is array, but no filter was found", E_USER_WARNING);
+               #$merged_gpc[$gpc_name] = array();
+            }
+         }
 
          $this->assign($merged_gpc);
          $this->assign('mode',$mode);
@@ -169,21 +187,120 @@ ABSTRACT CLASS ctrl_abstract {
          e_developer::assert(isset($GLOBALS[$gpc_key]),"Invalid GPC key $gpc_key");
          $gpc_array = $GLOBALS[$gpc_key];
 
-         foreach ($array_keys as $array_key) {
-            e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
-            $compact_array[$array_key] = empty($gpc_array[$array_key]) ? null : $gpc_array[$array_key];
+         if (is_string($array_keys)) {
+            trigger_error("GPC:$gpc_key keys for should be array, string given: $array_keys");
+            $array_keys = array($array_keys);
          }
 
+         foreach ($array_keys as $array_key) {
+            e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
+
+            # Normal: $compact_array['myKey'] = 'User's Input';
+            # Array: $compact_array['myKey[myKey2]'] = 'User's Input';
+            # Declaration : _POST => array( 'myKey[][myKey2]', array('myKey'=> 'MyKey2'), 'myKey[][][][SuperDimensional']
+            # Output : array( 'myKey' => array('myKey2' => 'User\'s Input'))
+            if (preg_match('/^\w+(\[.*?\])+$/',$array_key)) {
+               $main_key = preg_replace('/^(\w+)\[.+$/','$1',$array_key);
+
+               $unfiltered_gpc_value = $gpc_array[$main_key];
+               $gpc_value            = array();
+
+               preg_match_all('/\[(?P<keys>.*?)\]/',$array_key, $dimensions);
+
+               $dimension_keys = $dimensions['keys'];
+
+               $current_dimension_indexes = "";
+
+
+               #debug::var_dump($main_key,$gpc_array,$unfiltered_gpc_value);
+               $gpc_value = static::get_gpc_value($unfiltered_gpc_value, $dimension_keys);
+
+
+               if (empty($compact_array[$main_key])) {
+                  $compact_array[$main_key] = empty($gpc_value) && $gpc_value !== '0' ? null : $gpc_value;
+               }
+               else if (is_array($compact_array[$main_key])) {
+                  $compact_array[$main_key] = static::gpc_merge($compact_array[$main_key], $gpc_value);
+               }
+
+            }
+            else {
+               $compact_array[$array_key] = empty($gpc_array[$array_key]) && $gpc_array[$array_key] !== '0' ? null : $gpc_array[$array_key];;
+            }
+         }
          # stripslahes if magic quotes is on https://code.google.com/p/add-mvc-framework/issues/detail?id=118
          if ( $magic_quotes_on && in_array($gpc_key,$real_gpcs) ) {
-             array_walk_recursive(
-                  $compact_array,
-                  function(&$value,$key) { $value = stripslashes($value); }
-               );
+            foreach ($compact_array as $field => &$value) {
+               $value = stripslashes($value);
+            }
          }
 
       }
       return $compact_array;
+   }
+
+
+   /**
+    * GPC Merge Recursive
+    *
+    *
+    */
+   public function gpc_merge() {
+      $gpc_arrays = func_get_args();
+      $merged = array_shift($gpc_arrays);
+      foreach ($gpc_arrays as $array) {
+         foreach ($array as $field => $value) {
+            if (is_array($value)) {
+               $merged[$field] = static::gpc_merge($merged[$field],$value);
+            }
+            if (!isset($merged[$field])) {
+               $merged[$field] = $value;
+            }
+         }
+      }
+      return $merged;
+   }
+
+
+   /**
+    * GPC key
+    *
+    * @param array $unfiltered_variable the (multi)dimensional array that we will get
+    * @param array $dimension_keys the string dimension
+    *
+    */
+   public static function get_gpc_value($unfiltered_variable, $dimension_keys) {
+      $filtered_variable   = array();
+      #debug::var_dump($dimension_keys);
+      while (($dimension_key = array_shift($dimension_keys))!==null) {
+         #debug::var_dump($dimension_key);
+         if ($dimension_key === "") {
+            foreach ($unfiltered_variable as $unfiltered_item_field => $unfiltered_item_value) {
+               if (filter_var($unfiltered_item_field,FILTER_VALIDATE_INT, array('options' => array('min_range'=>0))) === false) {
+                  break;
+               }
+               if ($dimension_keys) {
+                  $filtered_variable["$unfiltered_item_field"] = static::get_gpc_value($unfiltered_item_value,$dimension_keys);
+               }
+               else {
+                  $filtered_variable["$unfiltered_item_field"] = $unfiltered_item_value;
+               }
+            }
+            return $filtered_variable;
+         }
+         else {
+            $current_dimension_indexes .= "[".var_export($dimension_key,true)."]";
+            eval('$current_dimension = &$filtered_variable'.$current_dimension_indexes.';');
+            eval('$current_unfiltered_dimension = &$unfiltered_variable'.$current_dimension_indexes.';');
+            if ($dimension_keys) {
+               $current_dimension = static::get_gpc_value($current_unfiltered_dimension, $dimension_keys);
+            }
+            else {
+               $current_dimension = $current_unfiltered_dimension;
+            }
+         }
+      }
+      return $filtered_variable;
    }
 
 
