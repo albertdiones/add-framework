@@ -68,8 +68,9 @@ ABSTRACT CLASS ctrl_abstract {
          }
       }
 
-      if (!isset($this->mode))
+      if (!isset($this->mode)) {
          $this->mode = 'default';
+      }
    }
 
    /**
