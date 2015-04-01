@@ -18,12 +18,12 @@
  *
  * @package ADD MVC Controllers
  * @since ADD MVC 0.0
- * @version 1.0
+ * @version 2.0-Reload
  *
  * @todo ADD MVC version 1.0: implement i_ctrl (version 0.9) for this
  *
  */
-ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
+ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract {
 
    /**
     * The mode of the process
@@ -130,19 +130,21 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
             die();
          }
 
-         if ($this->mode)
+         if ($this->mode) {
             $exception_label = "user_".$this->mode;
-         else
+         }
+         else {
+            # This part may not be happening at all
             $exception_label = "user";
+         }
+
          /**
-          *
-          *
-          * // what if $e is unrelated to $this->gpc_filter_exception
-          * if ($this->gpc_filter_exception instanceof e_user_input) {
-          *    $e = $this->gpc_filter_exception;
-          * }
-          *
+          * If there is a gpc filter exception, use it as error before this error
+          * It is not 100% sure that $e is related to $this->gpc_filter_exception
           */
+         if ($this->gpc_filter_exception instanceof e_user_input) {
+            $e = $this->gpc_filter_exception;
+         }
 
          $this->add_exception($e,$exception_label);
       }
@@ -204,7 +206,7 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
     * @todo ADD MVC version 1.0: remove backward compatibility
     * @since ADD MVC 0.0
     */
-   public static function view_filepath() {
+   public function view_filepath() {
       $view_filepath = 'pages/'.static::view_basename().'.tpl';
 
       if (!static::view()->TemplateExists($view_filepath) && (!isset($this) || ! $this instanceof ctrl_default_page) ) {
@@ -215,10 +217,11 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract IMPLEMENTS i_ctrl_with_view {
    }
 
    /**
-    * Future version of view_filepath
+    * Backward support for views not inside includes/views/pages/ directory
     *
+    * @since ADD MVC 0.10
     */
-   public static function view_filepath_009() {
+   public function view_filepath_009() {
       return static::view_basename().'.tpl';
    }
    /**
