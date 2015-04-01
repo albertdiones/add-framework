@@ -1,4 +1,4 @@
-#summary Project Home Page
+#ADD Framework
 
 = ADD Framework=
 
@@ -11,8 +11,8 @@ ADD MVC Framework is made from combining a custom made model, controller and a h
 
 = Links =
    *  Getting Started With ADD MVC Framework https://code.google.com/p/add-mvc-framework/wiki/GettingStarted
-   * Report A Bug https://code.google.com/p/add-mvc-framework/issues/entry?template=Defect%20report%20from%20user
-   * Ask a question https://code.google.com/p/add-mvc-framework/issues/entry?template=Ask%20a%20Question
+   * Report A Bug https://github.com/albertdiones/add-framework/issues/new?labels=bug
+   * Ask a question https://github.com/albertdiones/add-framework/issues/new?labels=question
    * FAQs https://code.google.com/p/add-mvc-framework/issues/list?can=1&q=label%3AFAQ+status%3AVerified&colspec=Summary&cells=tiles
 
 = Information =
