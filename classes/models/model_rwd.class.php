@@ -222,10 +222,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       }
       else {
          $instances = static::instances_from_sql(
-               "
+            "
                SELECT %s FROM %s
                WHERE ".static::db()->meta_quote($field)." = ".str_replace('%','%%',static::db()->quote($field_value))
-            );
+         );
          if (!$instances)
             return false;
          $instance = $instances[0];
@@ -332,14 +332,14 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       }
 
       e_developer::assert(
-            !isset(static::$instances[$class][$table][$field][$field_value]),
-            "Attempt to cache $class row ($table:$field:$field_value) twice",
-            NULL,
-            array(
-                  static::$instances,
-                  get_defined_vars()
-               )
-         );
+         !isset(static::$instances[$class][$table][$field][$field_value]),
+         "Attempt to cache $class row ($table:$field:$field_value) twice",
+         NULL,
+         array(
+            static::$instances,
+            get_defined_vars()
+         )
+      );
       static::$instances[$class][$table][$field][$field_value] = $instance;
       return static::$instances[$class][$table][$field][$field_value];
    }
@@ -378,10 +378,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $Q_table = static::db()->meta_quote(static::TABLE);
 
       $sql = sprintf(
-            $sql_format,
-            "$Q_table.*",
-            $Q_table
-         );
+         $sql_format,
+         "$Q_table.*",
+         $Q_table
+      );
 
       e_developer::assert($sql,"Failed to create sql from '$sql_format'");
 
@@ -397,10 +397,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       }
 
       $result = static::db()->SelectLimit(
-            $sql,
-            $numrows,
-            $offset
-         );
+         $sql,
+         $numrows,
+         $offset
+      );
 
       $rows = $result->getArray();
 
@@ -427,16 +427,16 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public static function get_where_order_page($conditions,$order_by=NULL,$page=NULL,$per_page=10) {
       return static::instances_from_sql(
-                  "SELECT %s FROM %s "
-                  .str_replace(
-                        '%',
-                        '%%',
-                        static::normalize_where($conditions)
-                        .static::normalize_order_by($order_by)
-                     ),
-                  $page,
-                  $per_page
-               );
+         "SELECT %s FROM %s "
+         .str_replace(
+            '%',
+            '%%',
+            static::normalize_where($conditions)
+            .static::normalize_order_by($order_by)
+         ),
+         $page,
+         $per_page
+      );
    }
 
    /**
@@ -450,8 +450,8 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       return (int)static::db()->getOne(
          "SELECT count(*) AS count
             FROM ".static::db()->meta_quote(static::TABLE)
-            .static::normalize_where($conditions)
-         );
+         .static::normalize_where($conditions)
+      );
    }
 
    /**
@@ -465,7 +465,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @since ADD MVC 0.0
     */
    static function get_page_instances($page=1,$order_by = '',$conditions=array(),$per_page=10) {
-     return static::get_where_order_page($conditions,$order_by,$page,$per_page);
+      return static::get_where_order_page($conditions,$order_by,$page,$per_page);
    }
 
 
@@ -564,7 +564,15 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
             else {
                $operator = "=";
             }
-            $where_conditions[] = static::db()->meta_quote($field)."$operator".static::db()->quote($value);
+            #$where_conditions[] = static::db()->meta_quote($field)."$operator".static::db()->quote($value);/*
+            if ($value === null && $operator == "=") {
+               #debug::lines_backtrace();
+               $where_conditions[] = static::db()->meta_quote($field)." IS NULL ";
+               #debug::var_dump($where_conditions);
+            }
+            else {
+               $where_conditions[] = static::db()->meta_quote($field)."$operator".static::db()->quote($value);
+            }/**/
          }
 
          if ($where_conditions) {
@@ -632,12 +640,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public function delete() {
       $delete_query_successful = static::db()->query(
-            "
+         "
             DELETE
             FROM ".static::TABLE."
             WHERE ".$this->pk_where().
-            (static::db()->hasLimit ? " LIMIT 1" : "")
-         );
+         (static::db()->hasLimit ? " LIMIT 1" : "")
+      );
 
       if ($delete_query_successful) {
          return (bool) static::db()->Affected_Rows();
@@ -662,12 +670,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
 
-/**
- * -----------------
- * Extension support functions
- * Classes extending this function can extend these to support other structures
- * -----------------
- */
+   /**
+    * -----------------
+    * Extension support functions
+    * Classes extending this function can extend these to support other structures
+    * -----------------
+    */
    /**
     * Gets the primary key
     *
@@ -724,24 +732,24 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    public function pk_where() {
       $where = static::normalize_where(
-            array(
-                  $this->table_pk() => $this->id()
-               )
-            ,
-            ""
-         );
+         array(
+            $this->table_pk() => $this->id()
+         )
+         ,
+         ""
+      );
       return "($where)";
    }
-/**
- * -----------------
- * Debugging functions
- * -----------------
- */
+   /**
+    * -----------------
+    * Debugging functions
+    * -----------------
+    */
 
-  /**
-   * var_dump()s the instance cache
-   * @since ADD MVC 0.0
-   */
+   /**
+    * var_dump()s the instance cache
+    * @since ADD MVC 0.0
+    */
    public static function debug_instances() {
       $class = get_called_class();
       if ($class)
@@ -758,11 +766,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       return $this->data;
    }
 
-/**
- * -----------------
- * Non-instance related (fields and arrays)
- * -----------------
- */
+   /**
+    * -----------------
+    * Non-instance related (fields and arrays)
+    * -----------------
+    */
    /**
     * get_column($field)
     *
@@ -774,11 +782,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    public static function get_column_array($field,$where=array()) {
 
       $column = static::db()->getAssoc(
-            "
+         "
             SELECT ".static::table_pk().",".static::db()->meta_quote($field)
-            ."FROM   ".static::TABLE
-            .static::normalize_where($where)
-         );
+         ."FROM   ".static::TABLE
+         .static::normalize_where($where)
+      );
 
       return $column;
    }
@@ -793,11 +801,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       return static::db()->MetaColumns(static::TABLE);
    }
 
-/**
- * -----------------
- * Complex special functions
- * -----------------
- */
+   /**
+    * -----------------
+    * Complex special functions
+    * -----------------
+    */
    /**
     * smart_field_query($query,$field,$threshold=0.5,$allowed_difference=0.25)
     *
@@ -837,12 +845,12 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
          $Q_like_query0       = static::db()->quote("% ".$query{0}."%");
 
          $probable_rows = static::db()->getArray(
-               "
+            "
                SELECT ".static::table_pk().", $Q_field
                FROM ".static::TABLE."
                WHERE $Q_field LIKE $Q_like_query0_start OR ".$Q_field." LIKE $Q_like_query0
                "
-            );
+         );
 
          $instance_scores = array();
          foreach ($probable_rows as $index => $probable_row) {
@@ -893,11 +901,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
 
-/**
- * -----------------
- * DEPRECATED functions
- * -----------------
- */
+   /**
+    * -----------------
+    * DEPRECATED functions
+    * -----------------
+    */
    /**
     * db_get_instance_cache()
     * This function is ussually called inside get_instance()
@@ -934,10 +942,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    static function db_row_array($table,$field,$field_value) {
       e_developer::assert(is_object(static::db()),get_called_class().' $D is not an object');
       $row = static::db()->getRow(
-            "
+         "
             SELECT * FROM ".static::db()->meta_quote($table)."
             WHERE ".static::db()->meta_quote($field)." = ".static::db()->quote($field_value)
-         );
+      );
       return $row;
    }
 
