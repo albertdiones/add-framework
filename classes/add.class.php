@@ -810,7 +810,7 @@ CLASS add {
     * @param string $url the href to redirect into
     * @todo do not die when failed to redirect
     */
-   function redirect($url) {
+   static function redirect($url) {
       header("Location: $url");
       die();
    }
