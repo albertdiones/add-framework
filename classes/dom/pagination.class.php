@@ -175,8 +175,17 @@ CLASS pagination EXTENDS dom_element_wrapper {
     * @since ADD MVC 0.0
     */
    public function __toString() {
-      if (!$this->hasChildNodes())
-         $this->create_html();
-      return $this->get_document()->saveHTML();
+      try {
+         if (!$this->hasChildNodes())
+            $this->create_html();
+         return $this->get_document()->saveHTML();
+      }
+      catch (e_add $e) {
+         $e->handle_exception();
+         return "Error Occurred";
+      }
+      catch (Exception $e) {
+         return "Unhandled Error Occured";
+      }
    }
 }
