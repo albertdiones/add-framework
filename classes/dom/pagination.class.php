@@ -123,46 +123,50 @@ CLASS pagination EXTENDS dom_element_wrapper {
          $this->current_page + $this->hidden_page_padding
       );
 
-      $visible_pages   = array();
-      $visible_pages[] = 1;
-      $visible_pages   = array_merge($visible_pages,range($visible_page_start,$visible_page_end));
-      $visible_pages[] = $max_page;
+      $visible_pages   = array_merge(array(1),range($visible_page_start,$visible_page_end),array($max_page));
 
       $visible_pages = array_unique($visible_pages);
 
-      $this->append("Pages: ");
+
+      $visible_page_urls = array();
 
       foreach ($visible_pages as $pagex) {
 
-         if (isset($previous_pagex) && $pagex > ($previous_pagex+1)) {
-            $this->append("&#8230;&#32;");
-         }
-
-         if ( $this->current_page != $pagex ) {
-            $page_query   = array( $this->page_get_key => $pagex );
-            $query_array  =
-               $this->merge_get
-                  ? array_merge($_GET,$page_query)
-                  : $page_query;
-
-            unset($query_array['add_mvc_path']);
-
-            $query_string = http_build_query($query_array);
-
-            $page_url = strpos($this->base_url,"?") === false ? "$this->base_url?$query_string" : "$this->base_url&$query_string";
-
-            $this->append("<a href='".htmlentities($page_url)."'>$pagex</a>");
-         }
-         else {
-            $this->append("<b>$pagex</b>");
-         }
-
-         $this->append("&#32;");
-
-         $previous_pagex = $pagex;
+         $visible_page_urls[$pagex] = $this->page_url($pagex);
 
       }
 
+      #var_dump($visible_page_urls,$visible_pages);
+
+      $view = new add_smarty();
+      $view -> assign('visible_page_urls',$visible_page_urls);
+      $view -> assign('current_page',$this->current_page);
+      #var_dump($view -> fetch('includes/pagination.tpl'));
+      $this->append($view -> fetch('includes/pagination.tpl'));
+
+   }
+
+   /**
+    *
+    * Gets the url of the $pagex
+    *
+    * @param $pagex
+    * @return string
+    */
+   public function page_url($pagex) {
+      $page_query   = array( $this->page_get_key => $pagex );
+      $query_array  =
+         $this->merge_get
+            ? array_merge($_GET,$page_query)
+            : $page_query;
+
+      unset($query_array['add_mvc_path']);
+
+      $query_string = http_build_query($query_array);
+
+      $page_url = strpos($this->base_url,"?") === false ? "$this->base_url?$query_string" : "$this->base_url&$query_string";
+
+      return $page_url;
    }
 
    /**
@@ -171,8 +175,17 @@ CLASS pagination EXTENDS dom_element_wrapper {
     * @since ADD MVC 0.0
     */
    public function __toString() {
-      if (!$this->hasChildNodes())
-         $this->create_html();
-      return $this->get_document()->saveHTML();
+      try {
+         if (!$this->hasChildNodes())
+            $this->create_html();
+         return $this->get_document()->saveHTML();
+      }
+      catch (e_add $e) {
+         $e->handle_exception();
+         return "Error Occurred";
+      }
+      catch (Exception $e) {
+         return "Unhandled Error Occured";
+      }
    }
 }
