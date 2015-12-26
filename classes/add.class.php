@@ -664,6 +664,12 @@ CLASS add {
       if (!$lib)
          throw new e_developer("Library $lib_name not found");
 
+
+      # Bug fix - if the lib is not casted to an object
+      if (is_array($lib)) {
+         $lib = (object) $lib;
+      }
+
       if (is_string($lib)) {
          $lib_path = $lib;
       }
@@ -671,7 +677,7 @@ CLASS add {
          $lib_path = $lib->init_path;
       }
       else {
-         throw new e_developer("Invalid format for $lib_name");
+         throw new e_developer("Invalid config format for $lib_name", $lib);
       }
       if ($lib_path[0] === '/')
          return $lib_path;
