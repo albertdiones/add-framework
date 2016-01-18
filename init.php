@@ -167,3 +167,6 @@ $C->assets_libs_path   = $C->assets_path.'libs/';
  */
 add::load_lib('adodb');
 add::load_lib('smarty');
+
+$C->default_timezone || $C->default_timezone = 'UTC';
+date_default_timezone_set($C->default_timezone);
