@@ -72,6 +72,12 @@ CLASS add {
     */
    protected static $content_type = 'text/html';
 
+
+   /**
+    * Stored variable (cache) if we are running on CLI or not
+    */
+   protected static $is_cli = false;
+
    /**
     * Gets the site config
     *
@@ -524,8 +530,8 @@ CLASS add {
 
                add_debug::print_config('environment_status');
                add_debug::print_config('add_dir');
-               add_debug::print_config('path');
-               if (php_sapi_name() != "cli") {
+               if (!add::$is_cli) {
+                  add_debug::print_config('path');
                   add_debug::print_config('developer_ips',true);
                   add_debug::print_data('current_user_ip',current_user_ip());
                   add_debug::print_data('POST variable', $_POST);
@@ -737,6 +743,14 @@ CLASS add {
       return $current_controller_class;
    }
 
+   static function check_cli() {
+      if ( php_sapi_name() == "cli") {
+         add::content_type('text/plain');
+         add::$is_cli = true;
+      }
+      return add::$is_cli;
+   }
+
    /**
     * add::current_controller_basename()
     * Returns the basename (minus the prefix) of the current controller
@@ -748,19 +762,21 @@ CLASS add {
       static $current_controller_basename;
       if (!isset($current_controller_basename)) {
 
-         $relative_path =
-               isset($_GET['add_mvc_path'])
-               ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
-               : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
+         if (!add::$is_cli) {
+            $relative_path =
+                  isset($_GET['add_mvc_path'])
+                  ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
+                  : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
 
-         $current_controller_basename = $relative_path;
-         $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
-         $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
-         $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
+            $current_controller_basename = $relative_path;
+            $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
+            $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
+            $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
 
-         if (preg_match('/\W+/',$current_controller_basename)) {
-            $current_controller_basename = false;
-            return $current_controller_basename;
+            if (preg_match('/\W+/',$current_controller_basename)) {
+               $current_controller_basename = false;
+               return $current_controller_basename;
+            }
          }
 
          if (!$current_controller_basename)
