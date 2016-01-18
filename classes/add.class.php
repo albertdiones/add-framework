@@ -908,6 +908,7 @@ CLASS add {
             ini_set('display_errors',0);
             add::$handle_shutdown = false;
          }
+         # TODO: Figure out why we have else instead of else if
          else {
             error_reporting(E_ALL);
             ini_set('display_errors',1);
@@ -918,7 +919,7 @@ CLASS add {
              * @since ADD MVC 0.7.2
              */
             if (add::is_development()) {
-               add::$handle_shutdown          = true;
+               add::$handle_shutdown          = !isset(add::config()->handle_shutdown) || add::config()->handle_shutdown == true;
 
                if (!isset($GLOBALS['add_mvc_root_timer'])) {
                   $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
