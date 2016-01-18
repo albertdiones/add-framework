@@ -1,12 +1,8 @@
 {*SMARTY*}
 
 {if add::content_type() == 'text/plain'}
-================================================================================================
-
-   {$error.type} - *{$error.message}* x {$error.num_occured}
-   {$error.file}:{$error.line}
-   {foreach $error['file_lines'] as $error_file_line}{$error_file_line.file}:{$error_file_line.line}
-   {/foreach}
+** {$error.type} - *{$error.message}* x {$error.num_occured} - {$error.file}:{$error.line}
+{foreach $error['file_lines'] as $error_file_line}{$error_file_line.file}:{$error_file_line.line} {/foreach}
 {else}
 <div style="{block name='error.style'}margin:5px auto;border:1px solid #333; background:{block name='error.style.background.value'}#FFAAAA{/block}; width:80%; font-family:verdana; font-size:12px{/block}">
    <div>
