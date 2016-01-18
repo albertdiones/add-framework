@@ -525,14 +525,16 @@ CLASS add {
                add_debug::print_config('environment_status');
                add_debug::print_config('add_dir');
                add_debug::print_config('path');
-               add_debug::print_config('developer_ips',true);
-               add_debug::print_data('current_user_ip',current_user_ip());
-               add_debug::print_data('POST variable', $_POST);
-               add_debug::print_data('GET variable', $_GET);
-               add_debug::print_data('COOKIE variable', $_COOKIE);
-               add_debug::print_data('REQUEST variable', $_COOKIE);
-               if (isset($_SESSION)) {
-                  add_debug::print_data('SESSION variable', $_SESSION);
+               if (php_sapi_name() != "cli") {
+                  add_debug::print_config('developer_ips',true);
+                  add_debug::print_data('current_user_ip',current_user_ip());
+                  add_debug::print_data('POST variable', $_POST);
+                  add_debug::print_data('GET variable', $_GET);
+                  add_debug::print_data('COOKIE variable', $_COOKIE);
+                  add_debug::print_data('REQUEST variable', $_REQUEST);
+                  if (isset($_SESSION)) {
+                     add_debug::print_data('SESSION variable', $_SESSION);
+                  }
                }
 
                $add_mvc_root_timer->lap("Shutdown");
