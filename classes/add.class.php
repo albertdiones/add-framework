@@ -127,11 +127,17 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function default_config() {
-      preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      if (isset($_SERVER['HTTP_HOST'])) {
+         preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      }
+      else {
+         $domain_parts = array();
+      }
+
       return (object) array(
             'super_domain'       => isset($domain_parts['super_domain']) ? $domain_parts['super_domain'] : null,
             'sub_domain'         => isset($domain_parts['sub_domain']) ? $domain_parts['sub_domain'] : null,
-            'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
+            'path'               => isset($_SERVER['REQUEST_URI']) ? preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']) : null,
             'root_dir'           => realpath('./'),
             'environment_status' => 'live',
             'developer_ips'      => array(),
