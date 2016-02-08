@@ -59,18 +59,35 @@ ABSTRACT CLASS ctrl_abstract {
     *
     * @see ctrl_tpl_page::execute()
     *
+    * 0.10.x - (add-framework:feature/abstractController) Allow dynamic setting of mode
+    *
     * @since ADD MVC 0.10
     */
-   public function set_mode() {
-      if (isset($_REQUEST['mode']) && preg_match('/^\w+$/',$_REQUEST['mode'])) {
-         $this->mode = $_REQUEST['mode'];
-         if (isset($_REQUEST['sub_mode']) && preg_match('/^\w+$/',$_REQUEST['sub_mode'])) {
-            $this->sub_mode = $_REQUEST['sub_mode'];
+   public function set_mode($mode = null, $sub_mode = null) {
+
+      # Default: Setting from request variables
+      if (empty($mode)) {
+         $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
+         empty($sub_mode) && $sub_mode = isset($_REQUEST['sub_mode']) ? $_REQUEST['sub_mode'] : null;
+      }
+
+      # When there is mode (from request or from arguments) and is valid characters
+      if ($mode && preg_match('/^\w+$/',$mode)) {
+         $this->mode = $mode;
+         if (isset($sub_mode) && preg_match('/^\w+$/',$sub_mode)) {
+            $this->sub_mode = $sub_mode;
          }
       }
 
-      if (!isset($this->mode))
+      # No request mode, no arguments
+      if (!isset($this->mode)) {
          $this->mode = 'default';
+         $this->sub_mode = null;
+      }
+
+      # Setting the mode and sub mode to be accessible by view
+      $this->data['mode'] = &$this->mode;
+      $this->data['sub_mode'] = &$this->sub_mode;
    }
 
    /**
