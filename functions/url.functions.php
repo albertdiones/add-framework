@@ -1,13 +1,6 @@
 <?php
 
 /**
- * URL functions
- *
- * @package ADD MVC\Functions
- *
- */
-
-/**
  * Returns the complete url according to $base
  *
  * @param string $base
@@ -57,4 +50,32 @@ function url_parts($url) {
    }
    return $url_parts;
 }
-?>
+
+/**
+ * Get the current url
+ *
+ */
+function current_url() {
+   return
+      # Protocol
+      "http".
+      (
+            isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"
+            ? "s"
+            : ""
+      )
+      ."://".
+      # Server Host Name
+      $_SERVER["HTTP_HOST"]
+      # Server port if applicable
+      .
+      (
+            in_array( $_SERVER["SERVER_PORT"] , array(80,443) )
+            ?
+            ""
+            : ":$_SERVER[SERVER_PORT]"
+      )
+      .
+      $_SERVER["REQUEST_URI"] # The path
+      ;
+}
