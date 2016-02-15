@@ -990,7 +990,7 @@ CLASS add {
       /**
        * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=39
        */
-      if (php_sapi_name() == "cli") {
+      if (add::$is_cli) {
          return true;
       }
 
