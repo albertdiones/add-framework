@@ -661,7 +661,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @deprecated use get_one() instead
     */
    static function get_one_where() {
-      return call_user_func_array(__CLASS__.'::get_one',func_get_args());
+      return call_user_func_array(get_called_class().'::get_one',func_get_args());
    }
 
    /**
