@@ -63,6 +63,13 @@ CLASS pagination EXTENDS dom_element_wrapper {
     */
    public $hidden_page_padding = 3;
 
+
+
+   /**
+    *  Max page - set on create_html()
+    */
+   public $max_page;
+
    /**
     * Creates a new pagination
     * @param int $total_count of items to paginates
@@ -108,7 +115,7 @@ CLASS pagination EXTENDS dom_element_wrapper {
     */
    public function create_html() {
 
-      $max_page = $this->max_page();
+      $max_page = $this->max_page = $this->max_page();
 
       if (!$max_page)
          return "";
@@ -141,6 +148,7 @@ CLASS pagination EXTENDS dom_element_wrapper {
       $view = new add_smarty();
       $view -> assign('visible_page_urls',$visible_page_urls);
       $view -> assign('current_page',$this->current_page);
+      $view -> assign('pagination',$this);
       #var_dump($view -> fetch('includes/pagination.tpl'));
       $this->append($view -> fetch('includes/pagination.tpl'));
 
