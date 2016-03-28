@@ -61,6 +61,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    protected static $instances=array();
 
+   /**
+    * Meta Columns cache
+    */
+   protected static $meta_columns = array();
+
 
 
    /**
@@ -480,7 +485,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    static function add_new($row_data) {
 
-      if (!static::validate_row($row_data)) {
+      if (!static::validate_full_row($row_data)) {
          return false;
       }
 
@@ -511,7 +516,9 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
-    * validates associative array for row insertion - can also fix or trim the field values to prepare them for database insertion
+    * Validates associative array for row insertion ( and selection )
+    *
+    * Can also fix or trim the field values to prepare them for database insertion ( and selection )
     *
     * @param array $row_data associative array of the table row
     *
@@ -535,6 +542,42 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
+    *
+    * Validates associative array, mostly for row insertion
+    * Also, fills up missing fields
+    * Then calls validate_row()
+    *
+    * @param array $row_data
+    * @return bool
+    * @throws
+    * @throws bool
+    * @throws e_unknown
+    */
+   static function validate_full_row(&$row_data) {
+
+      if (!is_array($row_data) && !is_object($row_data)) {
+         throw new e_database("Invalid data type for row", $row_data);
+      }
+
+      $row_data = array_merge(static::blank_row(), (array) $row_data);
+      $result = static::validate_row($row_data);
+      $row_data = array_filter($row_data);
+      return $result;
+   }
+
+   /**
+    * Returns a blank row
+    */
+   public static function blank_row() {
+      $meta_columns = static::meta_columns();
+      $row = array();
+      foreach ($meta_columns as $meta_column) {
+         $row[$meta_column->name] = null;
+      }
+      return $row;
+   }
+
+   /**
     * Returns the pk of the row
     *
     * @since ADD MVC 0.0
@@ -554,7 +597,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    static function normalize_where($conditions, $prefix = "WHERE") {
       $where_clause = "";
-      if (is_array($conditions)) {
+      if ( is_array($conditions) && static::validate_row($conditions) ) {
          $where_conditions = array();
          $args = array();
          foreach ($conditions as $field=>$value) {
@@ -798,7 +841,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @since ADD MVC 0.8.0
     */
    public static function meta_columns() {
-      return static::db()->MetaColumns(static::TABLE);
+      if (!isset(static::$meta_columns[static::TABLE])) {
+         static::$meta_columns[static::TABLE] = static::db()->MetaColumns(static::TABLE);
+      }
+      return static::$meta_columns[static::TABLE];
    }
 
    /**
