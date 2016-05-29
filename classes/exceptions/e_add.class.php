@@ -356,7 +356,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
          $this->view()->assign('user_message',$user_message);
          # note, to access config on the view, use add::config()
          #$this->view()->assign('C',add::config());
-         header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+         $this->send_headers();
          $this->print_response();
       }
       else {
@@ -450,5 +450,9 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     */
    public function print_response() {
       return $this->view()->display(static::view_filepath());
+   }
+
+   private function send_headers() {
+      header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
    }
 }
