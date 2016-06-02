@@ -33,7 +33,7 @@ function address2coords($address) {
       }
       else if ($status == 620) {
          // sent geocodes too fast
-         $delay += 100000;
+         $delay += 10000;
       }
       else {
          // failure to geocode
