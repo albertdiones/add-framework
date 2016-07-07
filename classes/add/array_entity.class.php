@@ -84,7 +84,7 @@ CLASS array_entity IMPLEMENTS Iterator {
     */
    public function __set($varname,$value) {
       if (!static::valid_magic_property($varname)) {
-         throw new e_developer("Invalid ".get_called_class()." variable $varname",$this);
+         throw new e_developer("Invalid ".get_called_class()." variable $varname",array($this,$this->data));
       }
       $this->data[$varname] = $value;
    }
