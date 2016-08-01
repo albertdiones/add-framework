@@ -561,7 +561,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
       $row_data = array_merge(static::blank_row(), (array) $row_data);
       $result = static::validate_row($row_data);
-      $row_data = array_filter($row_data);
+      #$row_data = array_filter($row_data);
       return $result;
    }
 
