@@ -510,7 +510,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $instance = static::get_instance($id);
 
       if (!$instance) {
-         throw new e_developer("Failed to insert new data (".static::TABLE." #$id) ".json_encode($row_data));
+         throw new e_developer("Failed to insert new data to table: ".static::TABLE." ", array( $row_data, $id));
       }
       return $instance;
    }
