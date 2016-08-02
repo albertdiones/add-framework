@@ -555,13 +555,19 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    static function validate_full_row(&$row_data) {
 
+      $original_row_data = $row_data;
+
       if (!is_array($row_data) && !is_object($row_data)) {
          throw new e_database("Invalid data type for row", $row_data);
       }
-
-      $row_data = array_merge(static::blank_row(), (array) $row_data);
+      $blank_row = static::blank_row();
+      $row_data = array_merge($blank_row, (array) $row_data);
       $result = static::validate_row($row_data);
-      #$row_data = array_filter($row_data);
+
+      $undefined_fields = array_diff_key($blank_row,$original_row_data);
+      $undefined_nopreset_fields = array_intersect_assoc($row_data,$undefined_fields);
+      $row_data = array_diff_assoc($row_data,$undefined_nopreset_fields);
+
       return $result;
    }
 
