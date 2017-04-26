@@ -564,8 +564,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $row_data = array_merge($blank_row, (array) $row_data);
       $result = static::validate_row($row_data);
 
+      # fields that are not on the original row
       $undefined_fields = array_diff_key($blank_row,$original_row_data);
+
+      # get the fields that are set to null after validation
       $undefined_nopreset_fields = array_intersect_assoc($row_data,$undefined_fields);
+
+      # unset the fields that are set to null after validation
       $row_data = array_diff_assoc($row_data,$undefined_nopreset_fields);
 
       return $result;
