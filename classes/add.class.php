@@ -245,12 +245,24 @@ CLASS add {
     * The error handler for exceptions
     * @param Exception $e the exception to handle
     * @since ADD MVC 0.0
+    * @todo use Throwable type hint
     */
-   static function handle_exception(Exception $e) {
+   static function handle_exception($e) {
       try {
 
          static::ob_flush();
 
+         switch (get_class($e)) {
+            case 'Error':
+               add::handle_error(E_ERROR,$e->getMessage(),$e->getFile());
+               return null;
+               break;
+            case 'Exception':
+               # continue
+               break;
+            default:
+               $e = new e_system("Invalid handle_exception() argument: $e", $e);
+         }
          try {
             if (method_exists($e,'handle_exception')) {
                return $e->handle_exception();
