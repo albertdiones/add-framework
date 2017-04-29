@@ -252,16 +252,12 @@ CLASS add {
 
          static::ob_flush();
 
-         switch (get_class($e)) {
-            case 'Error':
-               add::handle_error(E_ERROR,$e->getMessage(),$e->getFile());
-               return null;
-               break;
-            case 'Exception':
-               # continue
-               break;
-            default:
-               $e = new e_system("Invalid handle_exception() argument: $e", $e);
+         if ($e instanceof Error) {
+            add::handle_error( E_ERROR, $e->getMessage(), $e->getFile() );
+            return null;
+         }
+         else if ( ! ( $e instanceof Exception) ) {
+            $e = new e_system("Invalid handle_exception() argument: $e", $e);
          }
          try {
             if (method_exists($e,'handle_exception')) {
