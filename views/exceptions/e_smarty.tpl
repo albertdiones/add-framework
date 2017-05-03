@@ -4,7 +4,7 @@
 {if add::content_type() == 'text/plain'}
 = Template Error =
 
-   {$user_message|default:'Non-existing template path.'}
+   {$user_message|default:'Non-existing template path.'}({$exception_datetime})
 {else}
 <h1>Template Error</h1>
    {if $user_message}
@@ -12,7 +12,7 @@
    {else}
       <p>Non-existing template path.</p>
    {/if}
-
+   <p>{$exception_datetime}</p>
 {/if}
 {/block}
 
