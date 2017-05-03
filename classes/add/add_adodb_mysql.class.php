@@ -10,7 +10,7 @@
  */
 ABSTRACT CLASS add_adodb_mysql EXTENDS add_adodb {
    const VARNAME = 'MYSQL_D';
-   const DB_TYPE = 'mysql';
+   const DB_TYPE = 'mysqli';
 
    /**
     * Quote the fields and table
