@@ -619,6 +619,10 @@ TRAIT t_model_image
             throw new e_developer("$dir is a file instead of a directory");
       }
 
+      if (!is_writable($dir)) {
+         chmod($dir,0777);
+      }
+
       return self::save_gd2file($path_name, $image_gd);
    }
    /**
