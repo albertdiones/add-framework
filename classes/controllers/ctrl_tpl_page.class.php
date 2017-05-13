@@ -26,24 +26,6 @@
 ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract {
 
    /**
-    * The mode of the process
-    *
-    * @deprecated see ctrl_abstract property
-    *
-    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
-    */
-   protected $mode;
-
-   /**
-    * The sub mode of the mode
-    *
-    * @deprecated see ctrl_abstract property
-    *
-    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
-    */
-   protected $sub_mode;
-
-   /**
     * Mime type of this resource
     *
     * @deprecated see add::$content_type
