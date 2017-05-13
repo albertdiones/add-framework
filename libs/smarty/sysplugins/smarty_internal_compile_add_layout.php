@@ -19,7 +19,7 @@ CLASS Smarty_Internal_Compile_Add_Layout EXTENDS Smarty_Internal_Compile_Extends
     */
    public function getAttributes($compiler, $attributes) {
       $args = func_get_args();
-      $GLOBALS['debug_add_layout'] = $attributes;
+      #$GLOBALS['debug_add_layout'] = $attributes;
 
       $attributes = call_user_func_array('parent::'.__FUNCTION__,$args);
 
