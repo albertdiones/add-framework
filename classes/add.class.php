@@ -253,7 +253,7 @@ CLASS add {
          static::ob_flush();
 
          if ($e instanceof Error) {
-            add::handle_error( E_ERROR, $e->getMessage(), $e->getFile() );
+            add::handle_error( E_ERROR, $e->getMessage(), $e->getFile(), $e->getLine() );
             return null;
          }
          else if ( ! ( $e instanceof Exception) ) {
