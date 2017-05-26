@@ -71,6 +71,12 @@ ABSTRACT CLASS ctrl_abstract {
          empty($sub_mode) && $sub_mode = isset($_REQUEST['sub_mode']) ? $_REQUEST['sub_mode'] : null;
       }
 
+
+      # No request mode, no arguments
+      if (empty($mode)) {
+         $mode = 'default';
+      }
+
       # When there is mode (from request or from arguments) and is valid characters
       if ($mode && preg_match('/^\w+$/',$mode)) {
          $this->mode = $mode;
@@ -79,11 +85,6 @@ ABSTRACT CLASS ctrl_abstract {
          }
       }
 
-      # No request mode, no arguments
-      if (!isset($this->mode)) {
-         $this->mode = 'default';
-         $this->sub_mode = null;
-      }
 
       # Setting the mode and sub mode to be accessible by view
       $this->data['mode'] = &$this->mode;
