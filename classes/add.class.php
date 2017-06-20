@@ -136,7 +136,7 @@ CLASS add {
             'libs'            => (object) array(
                   'adodb'     => 'adodb/adodb.inc.php',
                   'smarty'    => 'smarty/Smarty.class.php',
-                  'phpmailer' => 'phpmailer/class.phpmailer.php',
+                  'phpmailer' => 'phpmailer/PHPMailerAutoload.php',
                ),
          );
    }
