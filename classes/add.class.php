@@ -535,6 +535,8 @@ CLASS add {
                add_debug::print_config('path');
                add_debug::print_config('developer_ips',true);
                add_debug::print_data('current_user_ip',current_user_ip());
+               add_debug::print_data('php:user',get_current_user());
+               add_debug::print_data('php:whoami',trim(shell_exec('whoami')));
                add_debug::print_data('POST variable', $_POST);
                add_debug::print_data('GET variable', $_GET);
                add_debug::print_data('COOKIE variable', $_COOKIE);
