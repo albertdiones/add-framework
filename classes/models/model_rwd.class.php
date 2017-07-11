@@ -138,8 +138,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @since ADD MVC 0.0
     */
    public function __destruct() {
-      if ($this->updated_data) {
-         $this->update_db_row();
+      try {
+         if ($this->updated_data) {
+            $this->update_db_row();
+         }
+      }
+      catch (e_add $e) {
+         $e->handle_exception();
       }
    }
 
