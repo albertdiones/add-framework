@@ -30,7 +30,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
    /**
     * The version of model_rwd
-    *
+    * @todo trash this constant?
     * @since ADD MVC 0.0
     */
    const VERSION = '1.4.2';
@@ -717,17 +717,21 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
 
 
    /**
+    * @deprecated use get_one() instead
+    */
+   static function get_one_where() {
+      return call_user_func_array(get_called_class().'::get_one',func_get_args());
+   }
+
+   /**
     * get a single instance of a row matching the $conditions
     * @param mixed $conditions the conditions that should match the row
     * @param string $order_by the order by value
-    * @deprecated
-    * @todo create new function model_rwd::get_one($conditions,$order_by)
     */
-   static function get_one_where($conditions=array(),$order_by="") {
+   static function get_one($conditions=array(),$order_by="") {
       $rows = static::get_where_order_page($conditions,$order_by,1,1);
       return $rows ? array_shift($rows) : false;
    }
-
 
    /**
     * -----------------

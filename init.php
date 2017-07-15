@@ -34,9 +34,7 @@ require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
 
-if ( php_sapi_name() == "cli") {
-   add::content_type('text/plain');
-}
+add::check_cli();
 
 # Set the handlers
 spl_autoload_register('add::load_class');
@@ -167,3 +165,6 @@ $C->assets_libs_path   = $C->assets_path.'libs/';
  */
 add::load_lib('adodb');
 add::load_lib('smarty');
+
+$C->default_timezone || $C->default_timezone = 'UTC';
+date_default_timezone_set($C->default_timezone);

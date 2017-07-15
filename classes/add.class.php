@@ -72,6 +72,12 @@ CLASS add {
     */
    protected static $content_type = 'text/html';
 
+
+   /**
+    * Stored variable (cache) if we are running on CLI or not
+    */
+   protected static $is_cli = false;
+
    /**
     * Gets the site config
     *
@@ -121,11 +127,17 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function default_config() {
-      preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      if (isset($_SERVER['HTTP_HOST'])) {
+         preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      }
+      else {
+         $domain_parts = array();
+      }
+
       return (object) array(
             'super_domain'       => isset($domain_parts['super_domain']) ? $domain_parts['super_domain'] : null,
             'sub_domain'         => isset($domain_parts['sub_domain']) ? $domain_parts['sub_domain'] : null,
-            'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
+            'path'               => isset($_SERVER['REQUEST_URI']) ? preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']) : null,
             'root_dir'           => realpath('./'),
             'environment_status' => 'live',
             'developer_ips'      => array(),
@@ -532,17 +544,19 @@ CLASS add {
 
                add_debug::print_config('environment_status');
                add_debug::print_config('add_dir');
-               add_debug::print_config('path');
-               add_debug::print_config('developer_ips',true);
-               add_debug::print_data('current_user_ip',current_user_ip());
-               add_debug::print_data('php:user',get_current_user());
-               add_debug::print_data('php:whoami',trim(shell_exec('whoami')));
-               add_debug::print_data('POST variable', $_POST);
-               add_debug::print_data('GET variable', $_GET);
-               add_debug::print_data('COOKIE variable', $_COOKIE);
-               add_debug::print_data('REQUEST variable', $_COOKIE);
-               if (isset($_SESSION)) {
-                  add_debug::print_data('SESSION variable', $_SESSION);
+               if (!add::$is_cli) {
+                  add_debug::print_config('path');
+                  add_debug::print_config('developer_ips',true);
+                  add_debug::print_data('current_user_ip',current_user_ip());
+                  add_debug::print_data('php:user',get_current_user());
+                  add_debug::print_data('php:whoami',trim(shell_exec('whoami')));
+                  add_debug::print_data('POST variable', $_POST);
+                  add_debug::print_data('GET variable', $_GET);
+                  add_debug::print_data('COOKIE variable', $_COOKIE);
+                  add_debug::print_data('REQUEST variable', $_COOKIE);
+                  if (isset($_SESSION)) {
+                     add_debug::print_data('SESSION variable', $_SESSION);
+                  }
                }
 
                $add_mvc_root_timer->lap("Shutdown");
@@ -745,6 +759,14 @@ CLASS add {
       return $current_controller_class;
    }
 
+   static function check_cli() {
+      if ( php_sapi_name() == "cli") {
+         add::content_type('text/plain');
+         add::$is_cli = true;
+      }
+      return add::$is_cli;
+   }
+
    /**
     * add::current_controller_basename()
     * Returns the basename (minus the prefix) of the current controller
@@ -756,19 +778,21 @@ CLASS add {
       static $current_controller_basename;
       if (!isset($current_controller_basename)) {
 
-         $relative_path =
-               isset($_GET['add_mvc_path'])
-               ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
-               : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
+         if (!add::$is_cli) {
+            $relative_path =
+                  isset($_GET['add_mvc_path'])
+                  ? preg_replace('/^'.preg_quote(add::config()->path,'/').'/','',$_GET['add_mvc_path'])
+                  : preg_replace('/^.*\/(.+?)(\?.*)?$/','$1',$_SERVER['REQUEST_URI']);
 
-         $current_controller_basename = $relative_path;
-         $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
-         $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
-         $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
+            $current_controller_basename = $relative_path;
+            $current_controller_basename = preg_replace('/\-+/','_',$current_controller_basename);
+            $current_controller_basename = preg_replace('/\.php$/','',$current_controller_basename);
+            $current_controller_basename = preg_replace('/\//','__',$current_controller_basename);
 
-         if (preg_match('/\W+/',$current_controller_basename)) {
-            $current_controller_basename = false;
-            return $current_controller_basename;
+            if (preg_match('/\W+/',$current_controller_basename)) {
+               $current_controller_basename = false;
+               return $current_controller_basename;
+            }
          }
 
          if (!$current_controller_basename)
@@ -918,6 +942,7 @@ CLASS add {
             ini_set('display_errors',0);
             add::$handle_shutdown = false;
          }
+         # TODO: Figure out why we have else instead of else if
          else {
             error_reporting(E_ALL);
             ini_set('display_errors',1);
@@ -928,7 +953,7 @@ CLASS add {
              * @since ADD MVC 0.7.2
              */
             if (add::is_development()) {
-               add::$handle_shutdown          = true;
+               add::$handle_shutdown          = !isset(add::config()->handle_shutdown) || add::config()->handle_shutdown == true;
 
                if (!isset($GLOBALS['add_mvc_root_timer'])) {
                   $GLOBALS['add_mvc_root_timer'] = add_development_timer::start("Framework Configuration");
@@ -975,7 +1000,7 @@ CLASS add {
       /**
        * @see http://code.google.com/p/add-mvc-framework/issues/detail?id=39
        */
-      if (php_sapi_name() == "cli") {
+      if (add::$is_cli) {
          return true;
       }
 
