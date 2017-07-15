@@ -611,12 +611,16 @@ TRAIT t_model_image
       $dir = dirname($path_name);
 
       if (!file_exists($dir)) {
-         if (!mkdir($dir, 0777, true)) {
+         if (!mkdir($dir, 0775, true)) {
             throw new e_system("Failed to make image directory: $dir");
          }
       }
       elseif (!is_dir($dir)) {
             throw new e_developer("$dir is a file instead of a directory");
+      }
+
+      if (!is_writable($dir)) {
+         chmod($dir,0775);
       }
 
       return self::save_gd2file($path_name, $image_gd);

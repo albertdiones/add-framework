@@ -51,6 +51,15 @@ CLASS e_database EXTENDS e_unknown {
       }
    }
 
+   protected function send_headers() {
+      if ( in_array($this->getCode(),array(1,2006)) ) {
+         header($_SERVER['SERVER_PROTOCOL'] . ' 503 Service Unavailable', true, 503);
+      }
+      else {
+         parent::send_headers();
+      }
+   }
+
 
    /**
     * The handling of the exception
