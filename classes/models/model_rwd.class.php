@@ -61,6 +61,11 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    protected static $instances=array();
 
+   /**
+    * Meta Columns cache
+    */
+   protected static $meta_columns = array();
+
 
 
    /**
@@ -133,8 +138,13 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @since ADD MVC 0.0
     */
    public function __destruct() {
-      if ($this->updated_data) {
-         $this->update_db_row();
+      try {
+         if ($this->updated_data) {
+            $this->update_db_row();
+         }
+      }
+      catch (e_add $e) {
+         $e->handle_exception();
       }
    }
 
@@ -480,7 +490,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    static function add_new($row_data) {
 
-      if (!static::validate_row($row_data)) {
+      if (!static::validate_full_row($row_data)) {
          return false;
       }
 
@@ -505,13 +515,15 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
       $instance = static::get_instance($id);
 
       if (!$instance) {
-         throw new e_developer("Failed to insert new data (".static::TABLE." #$id) ".json_encode($row_data));
+         throw new e_developer("Failed to insert new data to table: ".static::TABLE." ", array( $row_data, $id));
       }
       return $instance;
    }
 
    /**
-    * validates associative array for row insertion - can also fix or trim the field values to prepare them for database insertion
+    * Validates associative array for row insertion ( and selection )
+    *
+    * Can also fix or trim the field values to prepare them for database insertion ( and selection )
     *
     * @param array $row_data associative array of the table row
     *
@@ -535,6 +547,53 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
    }
 
    /**
+    *
+    * Validates associative array, mostly for row insertion
+    * Also, fills up missing fields
+    * Then calls validate_row()
+    *
+    * @param array $row_data
+    * @return bool
+    * @throws
+    * @throws bool
+    * @throws e_unknown
+    */
+   static function validate_full_row(&$row_data) {
+
+      $original_row_data = $row_data;
+
+      if (!is_array($row_data) && !is_object($row_data)) {
+         throw new e_database("Invalid data type for row", $row_data);
+      }
+      $blank_row = static::blank_row();
+      $row_data = array_merge($blank_row, (array) $row_data);
+      $result = static::validate_row($row_data);
+
+      # fields that are not on the original row
+      $undefined_fields = array_diff_key($blank_row,$original_row_data);
+
+      # get the fields that are set to null after validation
+      $undefined_nopreset_fields = array_intersect_assoc($row_data,$undefined_fields);
+
+      # unset the fields that are set to null after validation
+      $row_data = array_diff_assoc($row_data,$undefined_nopreset_fields);
+
+      return $result;
+   }
+
+   /**
+    * Returns a blank row
+    */
+   public static function blank_row() {
+      $meta_columns = static::meta_columns();
+      $row = array();
+      foreach ($meta_columns as $meta_column) {
+         $row[$meta_column->name] = null;
+      }
+      return $row;
+   }
+
+   /**
     * Returns the pk of the row
     *
     * @since ADD MVC 0.0
@@ -554,7 +613,7 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     */
    static function normalize_where($conditions, $prefix = "WHERE") {
       $where_clause = "";
-      if (is_array($conditions)) {
+      if ( is_array($conditions) && static::validate_row($conditions) ) {
          $where_conditions = array();
          $args = array();
          foreach ($conditions as $field=>$value) {
@@ -798,7 +857,10 @@ ABSTRACT CLASS model_rwd EXTENDS array_entity {
     * @since ADD MVC 0.8.0
     */
    public static function meta_columns() {
-      return static::db()->MetaColumns(static::TABLE);
+      if (!isset(static::$meta_columns[static::TABLE])) {
+         static::$meta_columns[static::TABLE] = static::db()->MetaColumns(static::TABLE);
+      }
+      return static::$meta_columns[static::TABLE];
    }
 
    /**

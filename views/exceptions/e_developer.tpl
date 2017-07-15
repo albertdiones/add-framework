@@ -4,7 +4,7 @@
 {if add::content_type() == 'text/plain'}
 = Developer Error =
 
-   {$user_message|default:'A developer error occured. Our developers has been notified about this and we will fix it as soon as we can.'}
+   {$user_message|default:'A developer error occured. Our developers has been notified about this and we will fix it as soon as we can.'}({$exception_datetime})
 {else}
    <h1>Developer Error</h1>
    {if $user_message}
@@ -12,5 +12,6 @@
    {else}
       <p>A developer error occured. Our developers has been notified about this and we will fix it as soon as we can.</p>
    {/if}
+   <p>{$exception_datetime}</p>
 {/if}
 {/block}

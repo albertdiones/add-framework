@@ -26,24 +26,6 @@
 ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract {
 
    /**
-    * The mode of the process
-    *
-    * @deprecated see ctrl_abstract property
-    *
-    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
-    */
-   protected $mode;
-
-   /**
-    * The sub mode of the mode
-    *
-    * @deprecated see ctrl_abstract property
-    *
-    * @since ADD MVC 0.3, ctrl_tpl_page 0.2.3
-    */
-   protected $sub_mode;
-
-   /**
     * Mime type of this resource
     *
     * @deprecated see add::$content_type
@@ -274,6 +256,15 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract {
    }
 
    /**
+    * Cache id
+    */
+   public function cache_id() {
+      $cache_id = array($this->mode);
+      !empty($this->sub_mode) && $cache_id[] = $this->sub_mode;
+      return implode("--", $cache_id );
+   }
+
+   /**
     * display() the Smarty template of $this controller
     *
     * @param array $data assign()`ed data
@@ -292,10 +283,11 @@ ABSTRACT CLASS ctrl_tpl_page EXTENDS ctrl_abstract {
       }
 
       $tpl = static::view_filepath();
+      #debug::var_dump($this->cache_id());
 
       if ($this->view()->templateExists($tpl)) {
          $this->view()->assign($data);
-         $this->view()->display($tpl);
+         $this->view()->display($tpl, $this->cache_id(), $this->cache_id());
       }
       else {
          $template_vars = $data;

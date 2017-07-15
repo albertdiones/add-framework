@@ -124,10 +124,12 @@ ABSTRACT CLASS model_auth EXTENDS model_rwd IMPLEMENTS i_auth_entity {
     */
    static function password_check($arg1,$password) {
 
+      # arg1 is username
       if (is_string($arg1)) {
          $username = $arg1;
          $instance = static::get_instance($username);
       }
+      # arg1 is an object instance of model_auth
       else if ($arg1 instanceof self) {
          $instance = $arg1;
       }

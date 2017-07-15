@@ -136,7 +136,7 @@ CLASS add {
             'libs'            => (object) array(
                   'adodb'     => 'adodb/adodb.inc.php',
                   'smarty'    => 'smarty/Smarty.class.php',
-                  'phpmailer' => 'phpmailer/class.phpmailer.php',
+                  'phpmailer' => 'phpmailer/PHPMailerAutoload.php',
                ),
          );
    }
@@ -245,12 +245,20 @@ CLASS add {
     * The error handler for exceptions
     * @param Exception $e the exception to handle
     * @since ADD MVC 0.0
+    * @todo use Throwable type hint
     */
-   static function handle_exception(Exception $e) {
+   static function handle_exception($e) {
       try {
 
          static::ob_flush();
 
+         if ($e instanceof Error) {
+            add::handle_error( E_ERROR, $e->getMessage(), $e->getFile(), $e->getLine() );
+            return null;
+         }
+         else if ( ! ( $e instanceof Exception) ) {
+            $e = new e_system("Invalid handle_exception() argument: $e", $e);
+         }
          try {
             if (method_exists($e,'handle_exception')) {
                return $e->handle_exception();
@@ -527,6 +535,8 @@ CLASS add {
                add_debug::print_config('path');
                add_debug::print_config('developer_ips',true);
                add_debug::print_data('current_user_ip',current_user_ip());
+               add_debug::print_data('php:user',get_current_user());
+               add_debug::print_data('php:whoami',trim(shell_exec('whoami')));
                add_debug::print_data('POST variable', $_POST);
                add_debug::print_data('GET variable', $_GET);
                add_debug::print_data('COOKIE variable', $_COOKIE);
