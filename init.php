@@ -51,14 +51,15 @@ if (!isset($C->incs_dir)) {
 
 
 # Merge config declared class directories
+$add_classes = $C->add_dir.'/classes';
 $C->classes_dirs        = array_merge(
       array( $C->incs_dir.'/classes'),
       isset($C->classes_dirs)
          ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
          : array(),
-      array($C->add_dir.'/classes')
+      array($add_classes)
    );
-
+# Note: you can add $C->classes_dirs_filepath_callback[$class_dir] to your config to make custom class file finding
 
 # Set these rarely used directory variables
 if (!isset($C->configs_dir)) {

@@ -164,6 +164,50 @@ CLASS add {
       return $incs_path;
    }
 
+   /**
+    * @param $classname
+    * @param $classes_dir
+    * @param $basename
+    * @return bool
+    */
+   public static function find_basename_on_dir( $basename, $classes_dir ) {
+      $class_filepath_search = glob( "$classes_dir/{,*/}$basename.php", GLOB_BRACE );
+
+      if ( $class_filepath_search ) {
+         return $class_filepath_search[ 0 ];
+      } else {
+         return false;
+      }
+   }
+
+
+
+   /**
+    * Find a specific class on the specified directory
+    *
+    * @var string $classname - includes the namespaces
+    * @var string $classes_dir - the directory to search from
+    *
+    */
+   static function find_class_file_on_dir($classname,$classes_dir) {
+
+      if (strpos($classes_dir,add::config()->add_dir) === 0) {
+         $classname = preg_replace('/^add_framework\\\\/','',$classname).".class";
+      }
+
+      $classless_basename = str_replace('\\','.',$classname);
+      $basename = $classless_basename.".class";
+
+      $class_filepath =  static::find_basename_on_dir( $basename , $classes_dir);
+
+      if ($class_filepath) {
+         return $class_filepath;
+      }
+      else {
+         return static::find_basename_on_dir( $classless_basename , $classes_dir);
+      }
+   }
+
 
    /**
     * Autoload class function
@@ -178,26 +222,25 @@ CLASS add {
    static function load_class($classname) {
 
 
-      global $C;
-
       if (class_exists('e_developer',false))
          e_developer::assert($classname,"Blank classname");
 
       # Iterate it through classes directories
       foreach (add::config()->classes_dirs as $classes_dir) {
-         # Load it from the application's class dir
+         # Load it from the application's class dir\
 
-         $class_filepath_wildcard = "$classes_dir/{,*/}$classname.class.php";
-         $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
-
-         # Backward support to 0.2 (without .class)
-         if (!$class_filepath_search) {
-            $class_filepath_wildcard = "$classes_dir/{,*/}$classname.php";
-            $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
+         if (isset(add::config()->classes_dirs_filepath_callback[$classes_dir])) {
+            $class_filepath_callback = add::config()->classes_dirs_filepath_callback[$classes_dir];
+         }
+         else {
+            $class_filepath_callback = __CLASS__.'::find_class_file_on_dir';
          }
 
-         if ($class_filepath_search) {
-            $class_filepath = $class_filepath_search[0];
+         $class_filepath = call_user_func_array(
+            $class_filepath_callback,
+            array($classname, $classes_dir)
+         );
+         if ($class_filepath) {
             break;
          }
 
