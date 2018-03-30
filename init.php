@@ -15,24 +15,29 @@
  * To be used to check if PHP Version is correct
  * @since ADD MVC 0.1
  */
-DEFINE('ADD_MIN_PHP_VERSION','5.3.8');
+DEFINE('ADD_MIN_PHP_VERSION','5.4.0');
 if (version_compare(phpversion(),ADD_MIN_PHP_VERSION) === -1) {
    die("ADD MVC Error: PHP version must be at least ".ADD_MIN_PHP_VERSION." or higher!");
 }
 
 
-if (!isset($C)) {
-   $C = new STDClass();
+if (!isset($add_framework_config)) {
+   if (isset($C)) {
+      $add_framework_config = $C;
+   }
+   else {
+      $add_framework_config = new STDClass();
+   }
 }
 
 # Sets the add_dir if not set. And it may be smart not to let the user(developer) set this on the first place
-if (empty($C->add_dir)) {
-   $C->add_dir = realpath(dirname(__FILE__));
+if (empty($add_framework_config->add_dir)) {
+   $add_framework_config->add_dir = realpath(dirname(__FILE__));
 }
 
-require $C->add_dir.'/classes/add.class.php';
+require $add_framework_config->add_dir.'/classes/add.class.php';
 
-$GLOBALS[add::CONFIG_VARNAME] = add::config($C);
+$GLOBALS[add::CONFIG_VARNAME] = add::config($add_framework_config);
 
 if ( php_sapi_name() == "cli") {
    add::content_type('text/plain');
@@ -45,32 +50,31 @@ set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
 # Set the includes dir
-if (!isset($C->incs_dir)) {
-   $C->incs_dir            = $C->root_dir.'/includes';
+if (!isset($add_framework_config->incs_dir)) {
+   $add_framework_config->incs_dir            = $add_framework_config->root_dir.'/includes';
 }
 
 
 # Merge config declared class directories
-$add_classes = $C->add_dir.'/classes';
-$C->classes_dirs        = array_merge(
-      array( $C->incs_dir.'/classes'),
-      isset($C->classes_dirs)
-         ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
+$add_framework_config->classes_dirs        = array_merge(
+      array( $add_framework_config->incs_dir.'/classes'),
+      isset($add_framework_config->classes_dirs)
+         ? (is_array($add_framework_config->classes_dirs) ? $add_framework_config->classes_dirs : (array) $add_framework_config->classes_dirs)
          : array(),
-      array($add_classes)
+      array($add_framework_config->add_dir.'/classes')
    );
 # Note: you can add $C->classes_dirs_filepath_callback[$class_dir] to your config to make custom class file finding
 
 # Set these rarely used directory variables
-if (!isset($C->configs_dir)) {
-   $C->configs_dir         = $C->incs_dir.'/configs';
+if (!isset($add_framework_config->configs_dir)) {
+   $add_framework_config->configs_dir         = $add_framework_config->incs_dir.'/configs';
 }
 
-if (!isset($C->views_dir)) {
-   $C->views_dir           = $C->incs_dir.'/views';
+if (!isset($add_framework_config->views_dir)) {
+   $add_framework_config->views_dir           = $add_framework_config->incs_dir.'/views';
 }
-if (!isset($C->caches_dir)) {
-   $C->caches_dir          = $C->incs_dir.'/caches';
+if (!isset($add_framework_config->caches_dir)) {
+   $add_framework_config->caches_dir          = $add_framework_config->incs_dir.'/caches';
 }
 
 
@@ -87,36 +91,36 @@ add::environment_status(true);
  *
  *
  */
-if (isset($C->developer_emails)) {
-   if (is_string($C->developer_emails)) {
-      e_add::$email_addresses = $C->developer_emails;
+if (isset($add_framework_config->developer_emails)) {
+   if (is_string($add_framework_config->developer_emails)) {
+      e_add::$email_addresses = $add_framework_config->developer_emails;
    }
-   else if ( is_object($C->developer_emails) || is_array($C->developer_emails) ) {
-      e_add::$email_addresses = implode(", ", (array)$C->developer_emails );
+   else if ( is_object($add_framework_config->developer_emails) || is_array($add_framework_config->developer_emails) ) {
+      e_add::$email_addresses = implode(", ", (array)$add_framework_config->developer_emails );
    }
 }
 
-if (add::is_development() && !is_writeable($C->caches_dir)) {
-   $C->caches_dir = sys_get_temp_dir().'/add_mvc_caches_'.sha1($C->root_dir);
-   if (!file_exists($C->caches_dir)) {
+if (add::is_development() && !is_writeable($add_framework_config->caches_dir)) {
+   $add_framework_config->caches_dir = sys_get_temp_dir().'/add_mvc_caches_'.sha1($add_framework_config->root_dir);
+   if (!file_exists($add_framework_config->caches_dir)) {
       umask(0);
-      mkdir($C->caches_dir);
+      mkdir($add_framework_config->caches_dir);
    }
-   else if (!is_dir($C->caches_dir)) {
-      throw new e_system("Cache directory is not a directory", $C->caches_dir);
+   else if (!is_dir($add_framework_config->caches_dir)) {
+      throw new e_system("Cache directory is not a directory", $add_framework_config->caches_dir);
    }
 }
 
-if (!is_writeable($C->caches_dir)) {
+if (!is_writeable($add_framework_config->caches_dir)) {
 
-   if (!file_exists($C->caches_dir)) {
-      throw new e_system("Cache directory is not existing ",$C->caches_dir);
+   if (!file_exists($add_framework_config->caches_dir)) {
+      throw new e_system("Cache directory is not existing ",$add_framework_config->caches_dir);
    }
-   if (!is_dir($C->caches_dir)) {
-      throw new e_system("Cache directory is not a directory (environment status: ".add::environment_status().")",$C->caches_dir);
+   if (!is_dir($add_framework_config->caches_dir)) {
+      throw new e_system("Cache directory is not a directory (environment status: ".add::environment_status().")",$add_framework_config->caches_dir);
    }
 
-   $cache_files = new DirectoryIterator($C->caches_dir);
+   $cache_files = new DirectoryIterator($add_framework_config->caches_dir);
 
    foreach ($cache_files as $cache_file) {
 
@@ -125,7 +129,7 @@ if (!is_writeable($C->caches_dir)) {
       }
 
       if (!is_writable($cache_file->getPathname())) {
-         throw new e_system("Cache directory is not writeable and one (or more) of it's files are not writeable",array($C->caches_dir,$cache_file->getPathname()));
+         throw new e_system("Cache directory is not writeable and one (or more) of it's files are not writeable",array($add_framework_config->caches_dir,$cache_file->getPathname()));
       }
 
    }
@@ -136,31 +140,31 @@ if (!is_writeable($C->caches_dir)) {
 
 }
 
-if (!isset($C->assets_dir))
-   $C->assets_dir = $C->root_dir.'/assets';
+if (!isset($add_framework_config->assets_dir))
+   $add_framework_config->assets_dir = $add_framework_config->root_dir.'/assets';
 
-if (!isset($C->images_dir))
-   $C->images_dir = $C->assets_dir.'/images';
+if (!isset($add_framework_config->images_dir))
+   $add_framework_config->images_dir = $add_framework_config->assets_dir.'/images';
 
-if (!isset($C->css_dir))
-   $C->css_dir    = $C->assets_dir.'/css';
-$C->js_dir        = $C->assets_dir.'/js';
+if (!isset($add_framework_config->css_dir))
+   $add_framework_config->css_dir    = $add_framework_config->assets_dir.'/css';
+$add_framework_config->js_dir        = $add_framework_config->assets_dir.'/js';
 
-$C->domain        = ( $C->sub_domain ? "$C->sub_domain." : "" ).$C->super_domain;
-$C->base_url      = "http://$C->domain$C->path";
+$add_framework_config->domain        = ( $add_framework_config->sub_domain ? "$add_framework_config->sub_domain." : "" ).$add_framework_config->super_domain;
+$add_framework_config->base_url      = "http://$add_framework_config->domain$add_framework_config->path";
 
-set_include_path($C->incs_dir);
+set_include_path($add_framework_config->incs_dir);
 
 
 /**
  * assets
  * @author albertdiones@gmail.com
  */
-$C->assets_path = $C->path.'assets/';
-$C->css_path    = $C->assets_path.'css/';
-$C->js_path     = $C->assets_path.'js/';
-$C->images_path = $C->assets_path.'images/';
-$C->assets_libs_path   = $C->assets_path.'libs/';
+$add_framework_config->assets_path = $add_framework_config->path.'assets/';
+$add_framework_config->css_path    = $add_framework_config->assets_path.'css/';
+$add_framework_config->js_path     = $add_framework_config->assets_path.'js/';
+$add_framework_config->images_path = $add_framework_config->assets_path.'images/';
+$add_framework_config->assets_libs_path   = $add_framework_config->assets_path.'libs/';
 
 
 /**

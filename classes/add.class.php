@@ -24,7 +24,7 @@ CLASS add {
     *
     * @since ADD MVC 0.0
     */
-   const CONFIG_VARNAME = 'C';
+   const CONFIG_VARNAME = 'add_framework_config';
 
    /**
     * The home or index controller's basename
