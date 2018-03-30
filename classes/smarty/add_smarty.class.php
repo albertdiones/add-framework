@@ -32,6 +32,17 @@ CLASS add_smarty EXTENDS Smarty {
          $this -> setTemplateDir(array($C->views_dir,$C->add_dir.'/views/'));
       }
 
+
+      #$this->setPluginsDir(array_merge([$C->add_dir.'/smarty-plugins/'],$this->plugins_dir));
+
+      #debug::var_dump($this->plugins_dir);
+
+      # workaround
+      $files = glob($C->add_dir.'/smarty-plugins/' . '/*.php');
+      foreach ($files as $file) {
+         require_once($file);
+      }
+
       $this -> compile_dir  = $C->caches_dir.'/smarty_compile/';
       $this -> config_dir   = $C->configs_dir.'/smarty/';
       $this -> cache_dir    = $C->caches_dir.'/smarty_cache/';
