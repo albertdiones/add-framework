@@ -20,6 +20,7 @@ if (version_compare(phpversion(),ADD_MIN_PHP_VERSION) === -1) {
    die("ADD MVC Error: PHP version must be at least ".ADD_MIN_PHP_VERSION." or higher!");
 }
 
+require 'vendor/autoload.php';
 
 if (!isset($C)) {
    $C = new STDClass();
