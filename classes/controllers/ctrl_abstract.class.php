@@ -211,7 +211,7 @@ ABSTRACT CLASS ctrl_abstract {
          }
 
          foreach ($array_keys as $array_key) {
-            e_developer::assert(is_scalar($array_key),"Invalid GPC array key $array_key");
+            e_developer::assert(is_scalar($array_key),"Invalid GPC array key ".json_encode($array_key));
 
             # Normal: $compact_array['myKey'] = 'User's Input';
             # Array: $compact_array['myKey[myKey2]'] = 'User's Input';
