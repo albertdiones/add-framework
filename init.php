@@ -20,7 +20,7 @@ if (version_compare(phpversion(),ADD_MIN_PHP_VERSION) === -1) {
    die("ADD MVC Error: PHP version must be at least ".ADD_MIN_PHP_VERSION." or higher!");
 }
 
-require 'vendor/autoload.php';
+
 
 if (!isset($C)) {
    $C = new STDClass();
@@ -44,6 +44,7 @@ spl_autoload_register('add::load_class');
 set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
+
 
 # Set the includes dir
 if (!isset($C->incs_dir)) {
@@ -164,8 +165,4 @@ $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
 
-/**
- * Libraries
- */
-add::load_lib('adodb');
-add::load_lib('smarty');
+require 'vendor/autoload.php';
