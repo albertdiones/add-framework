@@ -128,11 +128,14 @@ CLASS dom_element_wrapper EXTENDS dom_wrapper {
    public function append($content) {
       $doc = new DOMDocument();
       $random_element = "xml".rand(1,100);
-      $doc->loadXML("<$random_element>".$content."</$random_element>");
-      $node = $doc->documentElement->firstChild;
-      $imported_node = $this->get_document()->importNode($node,true);
-      $this->appendChild($imported_node);
-      return $imported_node;
+      $doc->loadXML("<$random_element>".trim($content)."</$random_element>");
+      $imported_nodes = array();
+      foreach ($doc->childNodes as $child) {
+         $imported_nodes[] = $imported_node = $this->get_document()->importNode($child, true);
+         $this->appendChild($imported_node);
+      }
+      #$imported_node = $this->get_document()->importNode($node,true);
+      return $imported_nodes;
    }
 
    /**

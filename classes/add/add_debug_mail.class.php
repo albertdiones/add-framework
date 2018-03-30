@@ -88,7 +88,12 @@ ABSTRACT CLASS add_debug_mail EXTENDS add_debug {
     * @see http://www.php.net/manual/en/language.oop5.decon.php#object.destruct
     */
    function __destruct() {
-      self::send();
+      try {
+         self::send();
+      }
+      catch (e_add $e) {
+         $e->handle_exception();
+      }
    }
 
    /**

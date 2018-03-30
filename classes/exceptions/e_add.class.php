@@ -452,7 +452,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
       return $this->view()->display(static::view_filepath());
    }
 
-   private function send_headers() {
+   protected function send_headers() {
       header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
    }
 }
