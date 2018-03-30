@@ -1,0 +1,19 @@
+{
+    "name": "addph/framework",
+    "description": "ADD Framework",
+    "require": {
+        "adodb/adodb-php": "5.*",
+        "smarty/smarty": "3.*",
+        "phpmailer/phpmailer": "5.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "^2.9"
+    },
+    "authors": [
+        {
+            "name": "Albert Diones",
+            "email": "albertdiones@gmail.com"
+        }
+    ]
+}
