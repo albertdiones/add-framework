@@ -134,7 +134,7 @@ CLASS add {
              * Library init files
              */
             'libs'            => (object) array(
-                  'adodb'     => 'adodb/adodb.inc.php',
+                  'adodb'     => 'adodb/adodb-php/adodb.inc.php',
                   'smarty'    => 'smarty/Smarty.class.php',
                   'phpmailer' => 'phpmailer/PHPMailerAutoload.php',
                ),
@@ -222,8 +222,9 @@ CLASS add {
    static function load_class($classname) {
 
 
-      if (class_exists('e_developer',false))
+      if (class_exists('e_developer',false)) {
          e_developer::assert($classname,"Blank classname");
+      }
 
       # Iterate it through classes directories
       foreach (add::config()->classes_dirs as $classes_dir) {
@@ -266,7 +267,7 @@ CLASS add {
 
          $e_class = 'e_developer';
 
-         if (class_exists($e_class)) {
+         if (class_exists($e_class,false)) {
             throw new $e_class("$classname not found from $class_filepath");
          }
          else {
@@ -732,10 +733,18 @@ CLASS add {
       else {
          throw new e_developer("Invalid config format for $lib_name", $lib);
       }
-      if ($lib_path[0] === '/')
+      if ($lib_path[0] === '/') {
          return $lib_path;
-      else
-         return static::include_filepath('libs/'.$lib_path);
+      }
+      else {
+         $vendor_filepath = add::config()->add_dir.'/vendor/'.$lib_path;
+         if (file_exists($vendor_filepath)) {
+            return $vendor_filepath;
+         }
+         else {
+            return static::include_filepath( 'libs/' . $lib_path );
+         }
+      }
    }
 
    /**
