@@ -51,17 +51,33 @@ if (!isset($C->incs_dir)) {
    $C->incs_dir            = $C->root_dir.'/includes';
 }
 
+if (!isset($C->app_name) && !empty($C->super_domain)) {
+   $C->app_name = $C->super_domain;
+}
+if (!isset($C->app_namespace) && !empty($C->app_name)) {
+   $C->app_namespace = $C->app_name;
+}
+
 
 # Merge config declared class directories
-$add_classes = $C->add_dir.'/classes';
+$add_classes_dir = realpath($C->add_dir).'/classes';
+$app_classes_dir = realpath($C->incs_dir).'/classes';
+
+
+# Default namespace
+$C->classes_dir_default_namespace[$add_classes_dir] = 'addph\\framework\\';
+$C->classes_dir_default_namespace[$app_classes_dir] = $C->app_namespace.'\\';
+
 $C->classes_dirs        = array_merge(
-      array( $C->incs_dir.'/classes'),
+      array( $app_classes_dir ),
       isset($C->classes_dirs)
          ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
          : array(),
-      array($add_classes)
+      array($add_classes_dir)
    );
 # Note: you can add $C->classes_dirs_filepath_callback[$class_dir] to your config to make custom class file finding
+
+
 
 # Set these rarely used directory variables
 if (!isset($C->configs_dir)) {

@@ -188,8 +188,8 @@ CLASS add {
     */
    static function find_class_file_on_dir($classname,$classes_dir) {
 
-      if (strpos($classes_dir,add::config()->add_dir) === 0) {
-         $classname = preg_replace('/^add_framework\\\\/','',$classname).".class";
+      if ($default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir]) {
+         $classname = preg_replace('/^'.preg_quote($default_namespace).'/','',$classname).".class";
       }
 
       $classless_basename = str_replace('\\','.',$classname);
