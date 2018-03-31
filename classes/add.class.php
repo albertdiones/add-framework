@@ -121,11 +121,13 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function default_config() {
-      preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      if (isset($_SERVER['HTTP_HOST'])) {
+         preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      }
       return (object) array(
             'super_domain'       => isset($domain_parts['super_domain']) ? $domain_parts['super_domain'] : null,
             'sub_domain'         => isset($domain_parts['sub_domain']) ? $domain_parts['sub_domain'] : null,
-            'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
+            'path'               => preg_replace('/\/[^\/]*?$/','/',@$_SERVER['REQUEST_URI']),
             'root_dir'           => realpath('./'),
             'environment_status' => 'live',
             'developer_ips'      => array(),
@@ -188,11 +190,13 @@ CLASS add {
     */
    static function find_class_file_on_dir($classname,$classes_dir) {
 
+      #var_dump($classname,$default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir], $classname = preg_replace('/^'.preg_quote($default_namespace.'\\').'/','',$classname).".class");
       if ($default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir]) {
-         $classname = preg_replace('/^'.preg_quote($default_namespace).'/','',$classname).".class";
+         $classname = preg_replace('/^'.preg_quote( $default_namespace ).'\\\\/','',$classname).".class";
       }
 
       $classless_basename = str_replace('\\','.',$classname);
+      #var_dump($classname);var_dump($classless_basename);var_dump($default_namespace);echo "<br/>";
       $basename = $classless_basename.".class";
 
       $class_filepath =  static::find_basename_on_dir( $basename , $classes_dir);
@@ -803,7 +807,7 @@ CLASS add {
    static function current_controller_basename() {
       global $C;
       static $current_controller_basename;
-      if (!isset($current_controller_basename)) {
+      if (!isset($current_controller_basename) && ( isset($_GET['add_mvc_path']) || isset($_SERVER['REQUEST_URI'])) ) {
 
          $relative_path =
                isset($_GET['add_mvc_path'])
@@ -1011,6 +1015,15 @@ CLASS add {
       return add::$environment_status === 'development';
    }
 
+   /**
+    * Check if running on CLI
+    *
+    * @return bool
+    */
+   public function is_cli() {
+      return php_sapi_name() == "cli";
+   }
+
 
    /**
     * is_developer()
@@ -1050,7 +1063,9 @@ CLASS add {
       if ($new_content_type) {
          ini_set('html_errors',$new_content_type != 'text/plain');
          static::$content_type = $new_content_type;
-         header("Content-type: ".static::$content_type);
+         if (!static::is_cli()) {
+            header("Content-type: ".static::$content_type);
+         }
       }
       return static::$content_type;
    }

@@ -34,6 +34,7 @@ if (empty($C->add_dir)) {
 require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
+$C = &$GLOBALS[add::CONFIG_VARNAME];
 
 if ( php_sapi_name() == "cli") {
    add::content_type('text/plain');
@@ -65,10 +66,14 @@ $app_classes_dir = realpath($C->incs_dir).'/classes';
 
 
 # Default namespace
-$C->classes_dir_default_namespace[$add_classes_dir] = 'addph\\framework\\';
-$C->classes_dir_default_namespace[$app_classes_dir] = $C->app_namespace.'\\';
+$C->classes_dir_default_namespace[$add_classes_dir] = '\\addph\\framework';
+$C->classes_dir_default_namespace[$app_classes_dir] = '\\'.$C->app_namespace;
 
-$C->classes_dirs        = array_merge(
+foreach ($C->classes_dir_default_namespace as &$namespace) {
+   $namespace = trim($namespace,'\\');
+}
+
+$C->classes_dirs = array_merge(
       array( $app_classes_dir ),
       isset($C->classes_dirs)
          ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
