@@ -179,6 +179,10 @@ CLASS add {
       }
    }
 
+   static function strip_namespace_from_class($classname,$default_namespace) {
+      return preg_replace('/^'.preg_quote( trim($default_namespace,'\\') ).'\\\\/','',$classname);
+   }
+
 
 
    /**
@@ -192,7 +196,7 @@ CLASS add {
 
       #var_dump($classname,$default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir], $classname = preg_replace('/^'.preg_quote($default_namespace.'\\').'/','',$classname).".class");
       if ($default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir]) {
-         $classname = preg_replace('/^'.preg_quote( $default_namespace ).'\\\\/','',$classname).".class";
+         $classname = static::strip_namespace_from_class($classname,$default_namespace);
       }
 
       $classless_basename = str_replace('\\','.',$classname);

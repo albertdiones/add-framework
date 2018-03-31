@@ -66,8 +66,8 @@ $app_classes_dir = realpath($C->incs_dir).'/classes';
 
 
 # Default namespace
-$C->classes_dir_default_namespace[$add_classes_dir] = '\\addph\\framework';
-$C->classes_dir_default_namespace[$app_classes_dir] = '\\'.$C->app_namespace;
+$C->classes_dir_default_namespace[$add_classes_dir] = 'addph\\framework';
+$C->classes_dir_default_namespace[$app_classes_dir] = $C->app_namespace;
 
 foreach ($C->classes_dir_default_namespace as &$namespace) {
    $namespace = trim($namespace,'\\');
