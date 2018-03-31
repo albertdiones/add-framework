@@ -134,9 +134,6 @@ CLASS add {
              * Library init files
              */
             'libs'            => (object) array(
-                  'adodb'     => 'adodb/adodb-php/adodb.inc.php',
-                  'smarty'    => 'smarty/Smarty.class.php',
-                  'phpmailer' => 'phpmailer/PHPMailerAutoload.php',
                ),
          );
    }
