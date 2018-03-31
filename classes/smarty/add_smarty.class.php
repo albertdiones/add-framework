@@ -33,9 +33,9 @@ CLASS add_smarty EXTENDS Smarty {
       }
 
 
-      #$this->setPluginsDir(array_merge([$C->add_dir.'/smarty-plugins/'],$this->plugins_dir));
+      $this->addPluginsDir($C->add_dir.'/smarty-plugins/');
 
-      #debug::var_dump($this->plugins_dir);
+      #debug::var_dump($txhis->plugins_dir);
 
       # workaround
       $files = glob($C->add_dir.'/smarty-plugins/' . '/*.php');
