@@ -183,6 +183,16 @@ CLASS add {
       return preg_replace('/^'.preg_quote( trim($default_namespace,'\\') ).'\\\\/','',$classname);
    }
 
+    /**
+     * Converts classname to the filename
+     *
+     * @param $classname
+     * @return string
+     */
+   static function classname2basename($classname) {
+       return implode('.', array_reverse(explode('\\',$classname)) );
+   }
+
 
 
    /**
@@ -199,7 +209,7 @@ CLASS add {
          $classname = static::strip_namespace_from_class($classname,$default_namespace);
       }
 
-      $classless_basename = str_replace('\\','.',$classname);
+      $classless_basename = add::classname2basename($classname);
       #var_dump($classname);var_dump($classless_basename);var_dump($default_namespace);echo "<br/>";
       $basename = $classless_basename.".class";
 

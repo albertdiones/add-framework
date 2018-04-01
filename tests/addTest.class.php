@@ -59,5 +59,34 @@ class addTest extends TestCase
       $this->assertEquals($expected_result, $result);
       
    }
+
+
+   /**
+    * @test
+    * */
+   public function test_classname2basename() {
+
+      $classname = 'addph\framework\action_abstract';
+      $expected_result = 'action_abstract.framework.addph';
+      $result = add::classname2basename($classname);
+      $this->assertEquals($expected_result, $result);
+
+   }
+
+
+   /**
+    * @test
+    * */
+   public function test_classname2basename2() {
+
+      $classname = 'action_abstract';
+      $expected_result = 'action_abstract';
+      $result = add::classname2basename($classname);
+      $this->assertEquals($expected_result, $result);
+
+   }
+
+
+
 }
 ?>
