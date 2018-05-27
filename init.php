@@ -21,6 +21,7 @@ if (version_compare(phpversion(),ADD_MIN_PHP_VERSION) === -1) {
 }
 
 
+
 if (!isset($C)) {
    $C = new STDClass();
 }
@@ -33,6 +34,7 @@ if (empty($C->add_dir)) {
 require $C->add_dir.'/classes/add.class.php';
 
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
+$C = &$GLOBALS[add::CONFIG_VARNAME];
 
 if ( php_sapi_name() == "cli") {
    add::content_type('text/plain');
@@ -44,20 +46,42 @@ set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
+
 # Set the includes dir
 if (!isset($C->incs_dir)) {
    $C->incs_dir            = $C->root_dir.'/includes';
 }
 
+if (!isset($C->app_name) && !empty($C->super_domain)) {
+   $C->app_name = $C->super_domain;
+}
+if (!isset($C->app_namespace) && !empty($C->app_name)) {
+   $C->app_namespace = $C->app_name;
+}
+
 
 # Merge config declared class directories
-$C->classes_dirs        = array_merge(
-      array( $C->incs_dir.'/classes'),
+$add_classes_dir = realpath($C->add_dir).'/classes';
+$app_classes_dir = realpath($C->incs_dir).'/classes';
+
+
+# Default namespace
+$C->classes_dir_default_namespace[$add_classes_dir] = 'addph\\framework';
+$C->classes_dir_default_namespace[$app_classes_dir] = $C->app_namespace;
+
+foreach ($C->classes_dir_default_namespace as &$namespace) {
+   $namespace = trim($namespace,'\\');
+}
+
+$C->classes_dirs = array_merge(
+      array( $app_classes_dir ),
       isset($C->classes_dirs)
          ? (is_array($C->classes_dirs) ? $C->classes_dirs : (array) $C->classes_dirs)
          : array(),
-      array($C->add_dir.'/classes')
+      array($add_classes_dir)
    );
+# Note: you can add $C->classes_dirs_filepath_callback[$class_dir] to your config to make custom class file finding
+
 
 
 # Set these rarely used directory variables
@@ -162,8 +186,4 @@ $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
 
-/**
- * Libraries
- */
-add::load_lib('adodb');
-add::load_lib('smarty');
+require 'vendor/autoload.php';

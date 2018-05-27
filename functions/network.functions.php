@@ -52,6 +52,6 @@ function current_user_ip() {
       }
    }
 
-   return $_SERVER['REMOTE_ADDR'];
+   return @$_SERVER['REMOTE_ADDR'];
 
 }

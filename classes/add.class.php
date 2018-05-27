@@ -121,11 +121,13 @@ CLASS add {
     * @since ADD MVC 0.7
     */
    public static function default_config() {
-      preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      if (isset($_SERVER['HTTP_HOST'])) {
+         preg_match('/^((?P<sub_domain>\w+)\.)?(?P<super_domain>((\w+\.)+(?P<tld>\w+))|\w+)$/',$_SERVER['HTTP_HOST'],$domain_parts);
+      }
       return (object) array(
             'super_domain'       => isset($domain_parts['super_domain']) ? $domain_parts['super_domain'] : null,
             'sub_domain'         => isset($domain_parts['sub_domain']) ? $domain_parts['sub_domain'] : null,
-            'path'               => preg_replace('/\/[^\/]*?$/','/',$_SERVER['REQUEST_URI']),
+            'path'               => preg_replace('/\/[^\/]*?$/','/',@$_SERVER['REQUEST_URI']),
             'root_dir'           => realpath('./'),
             'environment_status' => 'live',
             'developer_ips'      => array(),
@@ -134,9 +136,6 @@ CLASS add {
              * Library init files
              */
             'libs'            => (object) array(
-                  'adodb'     => 'adodb/adodb.inc.php',
-                  'smarty'    => 'smarty/Smarty.class.php',
-                  'phpmailer' => 'phpmailer/PHPMailerAutoload.php',
                ),
          );
    }
@@ -164,6 +163,66 @@ CLASS add {
       return $incs_path;
    }
 
+   /**
+    * @param $classname
+    * @param $classes_dir
+    * @param $basename
+    * @return bool
+    */
+   public static function find_basename_on_dir( $basename, $classes_dir ) {
+      $class_filepath_search = glob( "$classes_dir/{,*/}$basename.php", GLOB_BRACE );
+
+      if ( $class_filepath_search ) {
+         return $class_filepath_search[ 0 ];
+      } else {
+         return false;
+      }
+   }
+
+   static function strip_namespace_from_class($classname,$default_namespace) {
+      return preg_replace('/^'.preg_quote( trim($default_namespace,'\\') ).'\\\\/','',$classname);
+   }
+
+    /**
+     * Converts classname to the filename
+     *
+     * @param $classname
+     * @return string
+     */
+   static function classname2basename($classname) {
+       return implode('.', array_reverse(explode('\\',$classname)) );
+   }
+
+
+
+   /**
+    * Find a specific class on the specified directory
+    *
+    * @var string $classname - includes the namespaces
+    * @var string $classes_dir - the directory to search from
+    *
+    */
+   static function find_class_file_on_dir($classname,$classes_dir) {
+
+      #var_dump($classname,$default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir], $classname = preg_replace('/^'.preg_quote($default_namespace.'\\').'/','',$classname).".class");
+      if ($default_namespace = @add::config()->classes_dir_default_namespace[$classes_dir]) {
+         $classname = static::strip_namespace_from_class($classname,$default_namespace);
+      }
+
+      $classless_basename = add::classname2basename($classname);
+      #var_dump($classname);var_dump($classless_basename);var_dump($default_namespace);echo "<br/>";
+      $basename = $classless_basename.".class";
+
+      $class_filepath =  static::find_basename_on_dir( $basename , $classes_dir);
+
+      if ($class_filepath) {
+         return $class_filepath;
+      }
+      else {
+         return static::find_basename_on_dir( $classless_basename , $classes_dir);
+      }
+   }
+
 
    /**
     * Autoload class function
@@ -178,26 +237,26 @@ CLASS add {
    static function load_class($classname) {
 
 
-      global $C;
-
-      if (class_exists('e_developer',false))
+      if (class_exists('e_developer',false)) {
          e_developer::assert($classname,"Blank classname");
+      }
 
       # Iterate it through classes directories
       foreach (add::config()->classes_dirs as $classes_dir) {
-         # Load it from the application's class dir
+         # Load it from the application's class dir\
 
-         $class_filepath_wildcard = "$classes_dir/{,*/}$classname.class.php";
-         $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
-
-         # Backward support to 0.2 (without .class)
-         if (!$class_filepath_search) {
-            $class_filepath_wildcard = "$classes_dir/{,*/}$classname.php";
-            $class_filepath_search = glob($class_filepath_wildcard,GLOB_BRACE);
+         if (isset(add::config()->classes_dirs_filepath_callback[$classes_dir])) {
+            $class_filepath_callback = add::config()->classes_dirs_filepath_callback[$classes_dir];
+         }
+         else {
+            $class_filepath_callback = __CLASS__.'::find_class_file_on_dir';
          }
 
-         if ($class_filepath_search) {
-            $class_filepath = $class_filepath_search[0];
+         $class_filepath = call_user_func_array(
+            $class_filepath_callback,
+            array($classname, $classes_dir)
+         );
+         if ($class_filepath) {
             break;
          }
 
@@ -223,7 +282,7 @@ CLASS add {
 
          $e_class = 'e_developer';
 
-         if (class_exists($e_class)) {
+         if (class_exists($e_class,false)) {
             throw new $e_class("$classname not found from $class_filepath");
          }
          else {
@@ -689,10 +748,18 @@ CLASS add {
       else {
          throw new e_developer("Invalid config format for $lib_name", $lib);
       }
-      if ($lib_path[0] === '/')
+      if ($lib_path[0] === '/') {
          return $lib_path;
-      else
-         return static::include_filepath('libs/'.$lib_path);
+      }
+      else {
+         $vendor_filepath = add::config()->add_dir.'/vendor/'.$lib_path;
+         if (file_exists($vendor_filepath)) {
+            return $vendor_filepath;
+         }
+         else {
+            return static::include_filepath( 'libs/' . $lib_path );
+         }
+      }
    }
 
    /**
@@ -754,7 +821,7 @@ CLASS add {
    static function current_controller_basename() {
       global $C;
       static $current_controller_basename;
-      if (!isset($current_controller_basename)) {
+      if (!isset($current_controller_basename) && ( isset($_GET['add_mvc_path']) || isset($_SERVER['REQUEST_URI'])) ) {
 
          $relative_path =
                isset($_GET['add_mvc_path'])
@@ -962,6 +1029,15 @@ CLASS add {
       return add::$environment_status === 'development';
    }
 
+   /**
+    * Check if running on CLI
+    *
+    * @return bool
+    */
+   public function is_cli() {
+      return php_sapi_name() == "cli";
+   }
+
 
    /**
     * is_developer()
@@ -1001,7 +1077,9 @@ CLASS add {
       if ($new_content_type) {
          ini_set('html_errors',$new_content_type != 'text/plain');
          static::$content_type = $new_content_type;
-         header("Content-type: ".static::$content_type);
+         if (!static::is_cli()) {
+            header("Content-type: ".static::$content_type);
+         }
       }
       return static::$content_type;
    }

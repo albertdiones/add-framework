@@ -4,15 +4,6 @@
  *
  *
  */
-
-/**
- * Require PHPMailer
- *
- */
-if (!class_exists('phpmailer')) {
-   add::load_lib('phpmailer');
-}
-
 /**
  * Mailer Abstract
  *
@@ -43,7 +34,7 @@ if (!class_exists('phpmailer')) {
  *
  * @package ADD MVC Controllers
  */
-ABSTRACT CLASS ctrl_mailer_abstract EXTENDS phpmailer {
+ABSTRACT CLASS ctrl_mailer_abstract EXTENDS PHPMailer {
 
    /**
     * Default Wordwrap 70 characters
