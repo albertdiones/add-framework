@@ -381,7 +381,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public function view() {
       static $view;
 
-      if (!class_exists('smarty')) {
+      if (!class_exists('Smarty')) {
          return false;
       }
 
