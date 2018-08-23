@@ -6,7 +6,7 @@
  *
  * @since ADD MVC 0.7.2
  */
-CLASS add_development_timer EXTENDS add_debug_timer {
+CLASS add_development_timer EXTENDS \addph\debug\debug_timer {
 
 /**
  * Always visible when not live

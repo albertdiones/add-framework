@@ -587,21 +587,21 @@ CLASS add {
             $smarty = new add_smarty();
             $smarty->display('debug/handle_shutdown.tpl');
 
-            if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof add_debug_timer) {
+            if (isset($add_mvc_root_timer) && $add_mvc_root_timer instanceof \addph\debug_timer) {
 
-               add_debug::print_config('environment_status');
-               add_debug::print_config('add_dir');
-               add_debug::print_config('path');
-               add_debug::print_config('developer_ips',true);
-               add_debug::print_data('current_user_ip',current_user_ip());
-               add_debug::print_data('php:user',get_current_user());
-               add_debug::print_data('php:whoami',trim(shell_exec('whoami')));
-               add_debug::print_data('POST variable', $_POST);
-               add_debug::print_data('GET variable', $_GET);
-               add_debug::print_data('COOKIE variable', $_COOKIE);
-               add_debug::print_data('REQUEST variable', $_COOKIE);
+               debug::print_config('environment_status');
+               debug::print_config('add_dir');
+               debug::print_config('path');
+               debug::print_config('developer_ips',true);
+               debug::print_data('current_user_ip',current_user_ip());
+               debug::print_data('php:user',get_current_user());
+               debug::print_data('php:whoami',trim(shell_exec('whoami')));
+               debug::print_data('POST variable', $_POST);
+               debug::print_data('GET variable', $_GET);
+               debug::print_data('COOKIE variable', $_COOKIE);
+               debug::print_data('REQUEST variable', $_COOKIE);
                if (isset($_SESSION)) {
-                  add_debug::print_data('SESSION variable', $_SESSION);
+                  debug::print_data('SESSION variable', $_SESSION);
                }
 
                $add_mvc_root_timer->lap("Shutdown");
@@ -622,7 +622,7 @@ CLASS add {
     *
     */
    public static function ob_flush() {
-      if (!add_debug::dumping()) {
+      if (!debug::dumping()) {
          while (ob_get_level()) {
             echo ob_get_clean();
          }
@@ -1034,7 +1034,7 @@ CLASS add {
     *
     * @return bool
     */
-   public function is_cli() {
+   public static function is_cli() {
       return php_sapi_name() == "cli";
    }
 
