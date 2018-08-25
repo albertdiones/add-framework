@@ -6,7 +6,15 @@
  *
  * @since ADD MVC 0.7.2
  */
-CLASS add_development_timer EXTENDS \addph\debug\debug_timer {
+CLASS add_development_timer EXTENDS \addph\debug\timer {
+
+   public static function config() {
+      return add::config();
+   }
+
+   public static function set_config($config) {
+      throw new e_developer("Wrong use of function");
+   }
 
 /**
  * Always visible when not live
