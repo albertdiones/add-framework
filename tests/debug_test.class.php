@@ -5,8 +5,7 @@
  * Date: 25/08/2018
  * Time: 19:18
  */
-require "add_base_test.class.php";
-class debug_test EXTENDS add_base_test {
+class debug_test EXTENDS \addph\framework\test\base {
 
 
    public function setUp() {

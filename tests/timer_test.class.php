@@ -1,6 +1,5 @@
 <?php
 use add_development_timer as timer;
-require 'debug_test.class.php';
 
 class timer_test extends debug_test
 {

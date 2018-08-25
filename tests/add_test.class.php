@@ -1,37 +1,7 @@
 <?php
-require 'add_base_test.class.php';
 
-class add_test extends add_base_test
+class add_test extends \addph\framework\test\base
 {
-
-   public function setUp() {
-
-      if (!class_exists('add',false)) {
-         $C = (object) array(
-            'add_dir' => realpath('./'),
-
-            'app_namespace' => 'addph',
-
-            'path'               => '/',
-
-            'environment_status' => 'development',
-            'version'            => '1.1',
-            'developer_ips'      => array(
-               #'123.123.123.123', # add.ph (server IP)
-            ),
-            'developer_emails'   => array('albert@add.ph','albertdiones@gmail.com'),
-
-
-         );
-         require $C->add_dir.'/init.php';
-         add::$handle_shutdown = false;
-      }
-   }
-
-   public function tearDown() {
-
-   }
-
 
    /**
     * @test

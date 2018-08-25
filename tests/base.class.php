@@ -1,7 +1,9 @@
 <?php
+namespace addph\framework\test;
 use PHPUnit\Framework\TestCase;
+use \add;
 
-ABSTRACT CLASS add_base_test EXTENDS TestCase
+ABSTRACT CLASS base EXTENDS TestCase
 {
 
    public function setUp() {
