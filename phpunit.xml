@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="tests/init.php"
+         verbose="true">
+
+    <testsuites>
+        <testsuite name='ADD framework tests'>
+            <file>tests/add_test.class.php</file>
+            <file>tests/debug_test.class.php</file>
+            <file>tests/timer_test.class.php</file>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <ini name="display_errors" value="true"/>
+        <const name="PHPUNIT_TESTSUITE" value="true"/>
+    </php>
+</phpunit>

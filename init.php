@@ -33,6 +33,7 @@ if (empty($C->add_dir)) {
 
 require $C->add_dir.'/classes/add.class.php';
 
+
 $GLOBALS[add::CONFIG_VARNAME] = add::config($C);
 $C = &$GLOBALS[add::CONFIG_VARNAME];
 
@@ -46,6 +47,7 @@ set_exception_handler('add::handle_exception');
 set_error_handler('add::handle_error');
 register_shutdown_function('add::handle_shutdown');
 
+require 'vendor/autoload.php';
 
 # Set the includes dir
 if (!isset($C->incs_dir)) {
@@ -186,4 +188,5 @@ $C->images_path = $C->assets_path.'images/';
 $C->assets_libs_path   = $C->assets_path.'libs/';
 
 
-require 'vendor/autoload.php';
+$C->smarty_class = 'add_smarty';
+
