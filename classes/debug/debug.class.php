@@ -16,4 +16,8 @@ ABSTRACT CLASS debug EXTENDS \addph\debug\debug {
       return add::config();
    }
 
+   public static function set_config($config) {
+      throw new e_developer("Wrong use of function");
+   }
+
 }

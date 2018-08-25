@@ -1,7 +1,7 @@
 <?php
-use PHPUnit\Framework\TestCase;
+require 'add_base_test.class.php';
 
-class addTest extends TestCase
+class add_test extends add_base_test
 {
 
    public function setUp() {
