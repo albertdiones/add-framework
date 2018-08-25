@@ -6,7 +6,8 @@
  */
 CLASS ctrl_abstract_admin_instances EXTENDS ctrl_abstract_instances {
    /**
-    * Standard prefix for classes inheriting this class
+    *
+    * @deprecated use standard_prefix()
     *
     */
    static $standard_prefix = '/^[^\W_]+\_[^\W_]+\_admin\_\_?/';
@@ -60,6 +61,14 @@ CLASS ctrl_abstract_admin_instances EXTENDS ctrl_abstract_instances {
     * @since homeland voice 0.0
     */
    public $mode_gpc_export = array('_GET' => array('type') );
+
+   /**
+    * Standard prefix for classes inheriting this class
+    *
+    */
+   public function standard_prefix() {
+      return static::$standard_prefix;
+   }
 
 
    /**

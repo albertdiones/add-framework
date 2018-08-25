@@ -128,86 +128,86 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
                switch ($function) {
                   case 'is_int':
                      $message = "$arguments is not integer";
-                  break;
+                     break;
 
                   case 'is_array':
                      $message = "$arguments is not array";
-                  break;
+                     break;
 
                   case 'is_bool':
                      $message = "$arguments is not boolean";
-                  break;
+                     break;
 
                   case 'is_callable':
                      $message = "$arguments is not callable";
-                  break;
+                     break;
 
                   case 'is_double':
                      $message = "$arguments is not double";
-                  break;
+                     break;
 
                   case 'is_float':
                      $message = "$arguments is not float";
-                  break;
+                     break;
 
                   case 'is_null':
                      $message = "$arguments is not null";
-                  break;
+                     break;
 
                   case 'is_numeric':
                      $message = "$arguments is not numeric";
-                  break;
+                     break;
 
                   case 'is_object':
                      $message = "$arguments is not object";
-                  break;
+                     break;
 
                   case 'is_resource':
                      $message = "$arguments is not resource";
-                  break;
+                     break;
 
                   case 'is_scalar':
                      $message = "$arguments is not scalar";
-                  break;
+                     break;
 
                   case 'is_string':
                      $message = "$arguments is not string";
-                  break;
+                     break;
 
 
                   case 'isset':
                      $message = "$arguments is not set";
-                  break;
+                     break;
 
                   case 'empty':
                      $message = "$arguments is not empty";
-                  break;
+                     break;
 
 
                   case 'ctype_digit':
                      $message = "$arguments is not numeric";
-                  break;
+                     break;
 
 
                   case 'is_float':
                      $message = "$arguments is not float";
-                  break;
+                     break;
 
                   case 'filter_var':
                      $message = "$arguments is not accepted";
-                  break;
+                     break;
 
                   case 'filter_has_var':
                      $message = "$arguments does not exist";
-                  break;
+                     break;
 
                   case 'filter_input_array':
                      $message = "$arguments is not accepted";
-                  break;
+                     break;
 
                   case 'filter_has_var':
                      $message = "$arguments does not exist";
-                  break;
+                     break;
 
                   default:
                      $message ="Failed to validate $function ($arguments) ";
@@ -231,11 +231,11 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
     */
    public function mail() {
       mail(
-            $this->mail_to(),
-            $this->mail_subject(),
-            "<pre style='font-size:12px'>".htmlentities($this->mail_body())."</pre>",
-            "MIME-Version: 1.0\r\nContent-type: text/html; charset=iso-8859-1"
-         );
+         $this->mail_to(),
+         $this->mail_subject(),
+         "<pre style='font-size:12px'>".htmlentities($this->mail_body())."</pre>",
+         "MIME-Version: 1.0\r\nContent-type: text/html; charset=iso-8859-1"
+      );
    }
 
    /**
@@ -285,10 +285,10 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public function mail_body() {
 
       $important_info = array(
-            "Path"   => $_SERVER['REQUEST_URI'],
-            "IP"     => $_SERVER['REMOTE_ADDR'],
-            "User Agent"     => $_SERVER['HTTP_USER_AGENT'],
-         );
+         "Path"   => $_SERVER['REQUEST_URI'],
+         "IP"     => $_SERVER['REMOTE_ADDR'],
+         "User Agent"     => $_SERVER['HTTP_USER_AGENT'],
+      );
 
       $original_message = $this->getMessage();
       $message = $this->truncated_subject();
@@ -381,7 +381,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public function view() {
       static $view;
 
-      if (!class_exists('smarty')) {
+      if (!class_exists('Smarty')) {
          return false;
       }
 
@@ -451,8 +451,7 @@ CLASS e_add EXTENDS Exception IMPLEMENTS i_with_view {
    public function print_response() {
       return $this->view()->display(static::view_filepath());
    }
-
-   protected function send_headers() {
+   public function send_headers() {
       header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
    }
 }

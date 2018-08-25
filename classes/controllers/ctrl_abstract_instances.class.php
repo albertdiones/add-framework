@@ -29,7 +29,8 @@ ABSTRACT CLASS ctrl_abstract_instances EXTENDS ctrl_tpl_page {
 
 
    /**
-    * Standard prefix for classes inheriting this class
+    *
+    * @deprecated use standard_prefix()
     *
     */
    static $standard_prefix = '/^[^\W_]+\_([^\W_]+\_\_)*/';
@@ -39,6 +40,10 @@ ABSTRACT CLASS ctrl_abstract_instances EXTENDS ctrl_tpl_page {
     *
     */
    protected $model;
+
+   public function standard_prefix() {
+      return static::$standard_prefix;
+   }
 
    public function execute() {
       $model_class = $this->model();
@@ -159,7 +164,7 @@ ABSTRACT CLASS ctrl_abstract_instances EXTENDS ctrl_tpl_page {
       $called_class = get_called_class();
 
       if (!isset($this->model)) {
-         $this->model = preg_replace(static::$standard_prefix, '', $called_class, 1, $count);
+         $this->model = preg_replace(static::standard_prefix(), '', $called_class, 1, $count);
 
          if (!$count) {
             throw new e_developer("Can't auto find model for ".$called_class);
